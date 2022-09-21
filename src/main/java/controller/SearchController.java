@@ -24,6 +24,7 @@ public class SearchController extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		String txtS=req.getParameter("txtS");
 		DAO dao =new DAO();
+		
 		List<Product> list=dao.SearchProduct(txtS);
 		List<Category> listC = dao.getAllCategory();
 		/*set data to jsp*/

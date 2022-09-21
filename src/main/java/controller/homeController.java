@@ -21,10 +21,21 @@ public class homeController extends HttpServlet {
 		resp.setContentType("text/html");
 		resp.setCharacterEncoding("UTF-8");
 		req.setCharacterEncoding("UTF-8");
-		DAO dao =new DAO();
-		List<Product> list=dao.getAllProduct();
+		String pIndex = req.getParameter("index");
+		int index = Integer.parseInt(pIndex);
+		
+		DAO dao = new DAO();
+		int count = dao.getTotalProduct();
+		int pageSize = 20;
+		int endPage = count/pageSize;
+		if(count%pageSize>0) {
+			endPage++;
+		}
+		List<Product> list = dao.pagingProduct(index);
 		List<Category> listC = dao.getAllCategory();
 		/*set data to jsp*/
+		req.setAttribute("tag", index);
+		req.setAttribute("endPage", endPage);
 	    req.setAttribute("listP", list);
 	    req.setAttribute("listCC", listC);
 //        req.setAttribute("p", last);

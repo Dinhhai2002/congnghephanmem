@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,10 +37,10 @@
 							<ul class="category-list">
 								<!-- category-item-active -->
 								<c:forEach items="${listCC}" var="o">
-									<li class="category-item"><a href="category?cid=${o.cateId}"
-									class="category-item_link">${o.cateName}</a></li>
+									<li class="category-item"><a
+										href="category?cid=${o.cateId}" class="category-item_link">${o.cateName}</a></li>
 								</c:forEach>
-								
+
 							</ul>
 						</nav>
 					</div>
@@ -87,63 +87,68 @@
 						</div>
 						<div class="home-product">
 							<div class="grid__row">
-							<c:forEach items="${listP}" var="o">
-							
-								<div class="grid__column-2-4">
-									<a class="home-product-item" href="#">
-										<div class="home-product-item__img"
-											style="background-image: url(${o.pImage});"></div>
-										<h4 class="home-product-item__name">${o.pName}</h4>
-										<div class="home-product-item__price">
-											<span class="home-product-item__price-old">1.200.000đ</span>
-											<span class="home-product-item__price-current">${o.pPrice}</span>
-										</div>
-										<div class="home-product-item__action">
-											<!-- home-product-item__like--liked -->
-											<span
-												class="home-product-item__like home-product-item__like--liked ">
-												<i class='home-product-item__like-icon-empty bx bxs-heart'></i>
-												<i class='home-product-item__like-icon-fill bx bxs-heart'></i>
+								<c:forEach items="${listP}" var="o">
 
-
-											</span>
-											<div class="home-product-item__rating">
-												<i class='home-product-item__star-gold bx bxs-star'></i> <i
-													class='home-product-item__star-gold bx bxs-star'></i> <i
-													class='home-product-item__star-gold bx bxs-star'></i> <i
-													class='home-product-item__star-gold bx bxs-star'></i> <i
-													class="bx bxs-star"></i>
+									<div class="grid__column-2-4">
+										<a class="home-product-item" href="#">
+											<div class="home-product-item__img"
+												style="background-image: url(${o.pImage});"></div>
+											<h4 class="home-product-item__name">${o.pName}</h4>
+											<div class="home-product-item__price">
+												<span class="home-product-item__price-old">1.200.000đ</span>
+												<span class="home-product-item__price-current">${o.pPrice}</span>
 											</div>
-											<span class="home-product-item__sold">Đã bán 88</span>
-										</div>
-										<div class="home-product-item__origin">
-											<span class="home-product-item__brand">Whoo</span> <span
-												class="home-product-item__origin-name">Nhật Bản</span>
-										</div>
-										<div class="home-product-item__favourite">
-											<i style="font-size: 1.8rem;" class='bx bx-check'></i> <span>Yêu
-												thích</span>
-										</div>
-										<div class="home-product-item__sale-off">
-											<span class="home-product-item__sale-off-percent">10%</span>
-											<span class="home-product-item__sale-off-label">Giảm</span>
-										</div>
-									</a>
-								</div>
-								
-							</c:forEach>	
+											<div class="home-product-item__action">
+												<!-- home-product-item__like--liked -->
+												<span
+													class="home-product-item__like home-product-item__like--liked ">
+													<i class='home-product-item__like-icon-empty bx bxs-heart'></i>
+													<i class='home-product-item__like-icon-fill bx bxs-heart'></i>
+
+
+												</span>
+												<div class="home-product-item__rating">
+													<i class='home-product-item__star-gold bx bxs-star'></i> <i
+														class='home-product-item__star-gold bx bxs-star'></i> <i
+														class='home-product-item__star-gold bx bxs-star'></i> <i
+														class='home-product-item__star-gold bx bxs-star'></i> <i
+														class="bx bxs-star"></i>
+												</div>
+												<span class="home-product-item__sold">Đã bán 88</span>
+											</div>
+											<div class="home-product-item__origin">
+												<span class="home-product-item__brand">Whoo</span> <span
+													class="home-product-item__origin-name">Nhật Bản</span>
+											</div>
+											<div class="home-product-item__favourite">
+												<i style="font-size: 1.8rem;" class='bx bx-check'></i> <span>Yêu
+													thích</span>
+											</div>
+											<div class="home-product-item__sale-off">
+												<span class="home-product-item__sale-off-percent">10%</span>
+												<span class="home-product-item__sale-off-label">Giảm</span>
+											</div>
+										</a>
+									</div>
+
+								</c:forEach>
 
 
 							</div>
 						</div>
 						<ul class="pagination home-product__pagination">
-							<li class="pagination-item"><a href="#"
-								class="pagination-item__link"> <i style="font-size: 2.5rem;"
-									class='pagination-item__icon bx bx-chevron-left'></i>
-							</a></li>
-							<li class="pagination-item pagination-item--active"><a
-								href="#" class="pagination-item__link">1</a></li>
-							<li class="pagination-item"><a href="#"
+							<c:if test="${tag > 1}">
+								<li class="pagination-item"><a
+									href="home?index=${(tag - 1)}" class="pagination-item__link">
+										<i style="font-size: 2.5rem;"
+										class='pagination-item__icon bx bx-chevron-left'></i>
+								</a></li>
+							</c:if>
+							<c:forEach begin="1" end="${endPage}" var="i">
+								<li class="pagination-item ${tag == i?"pagination-item--active":""}"><a
+									href="home?index=${i}" class="pagination-item__link">${i}</a></li>
+							</c:forEach>
+							<!--  <li class="pagination-item"><a href="#"
 								class="pagination-item__link">2</a></li>
 							<li class="pagination-item"><a href="#"
 								class="pagination-item__link">3</a></li>
@@ -152,13 +157,16 @@
 							<li class="pagination-item"><a href="#"
 								class="pagination-item__link">5</a></li>
 							<li class="pagination-item"><a href="#"
-								class="pagination-item__link">...</a></li>
-							<li class="pagination-item"><a href="#"
-								class="pagination-item__link"> <i style="font-size: 2.5rem;"
-									class='pagination-item__icon bx bx-chevron-right'></i>
-							</a></li>
-							<li class="pagination-item"><a href="#"
-								class="pagination-item__link">14</a></li>
+								class="pagination-item__link">...</a></li>-->
+							<c:if test="${tag < endPage}">
+								<li class="pagination-item"><a
+									href="home?index=${(tag + 1)}" class="pagination-item__link">
+										<i style="font-size: 2.5rem;"
+										class='pagination-item__icon bx bx-chevron-right'></i>
+								</a></li>
+							</c:if>
+							<!--  <li class="pagination-item"><a href="#"
+								class="pagination-item__link">14</a></li> -->
 
 						</ul>
 					</div>
@@ -166,7 +174,7 @@
 			</div>
 		</div>
 		<jsp:include page="footer.jsp"></jsp:include>
-		
+
 	</div>
 	<!-- <div class="modal">
         <div class="modal__overlay">
