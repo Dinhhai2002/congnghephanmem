@@ -23,12 +23,14 @@ public class CategoryController extends HttpServlet {
 		resp.setCharacterEncoding("UTF-8");
 		req.setCharacterEncoding("UTF-8");
 		String cateId=req.getParameter("cid");
+		
 		DAO dao =new DAO();
 		List<Category> listC = dao.getAllCategory();
 		List<Product> list=dao.getProductbyCateId(cateId);
 		
 	    req.setAttribute("listP", list);
 	    req.setAttribute("listCC", listC);
+	    req.setAttribute("tag", cateId);
 //        req.setAttribute("p", last);
 		RequestDispatcher rq=req.getRequestDispatcher("/views/home.jsp");
 		rq.forward(req, resp);

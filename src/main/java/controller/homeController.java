@@ -26,7 +26,7 @@ public class homeController extends HttpServlet {
 		
 		DAO dao = new DAO();
 		int count = dao.getTotalProduct();
-		int pageSize = 20;
+		int pageSize = dao.pageSize;
 		int endPage = count/pageSize;
 		if(count%pageSize>0) {
 			endPage++;

@@ -114,13 +114,13 @@ public class DAO {
 		}
 		return 0;
 	}
-    
+    public int pageSize = 3;
     public List<Product> pagingProduct(int index) {
         List<Product> list = new ArrayList<>();
         String query = "select * from product\r\n"
         		+ "order by pId\r\n"
         		+ "offset ? rows fetch next ? rows only;";
-        int pageSize = 20;
+        
         try {
             conn = new connect().getConnection();
             ps = conn.prepareStatement(query);
