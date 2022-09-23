@@ -37,7 +37,7 @@
 							<ul class="category-list">
 								<!-- category-item-active -->
 								<c:forEach items="${listCC}" var="o">
-									<li class="category-item"><a
+									<li class="category-item" ${tag==o.cateId?"active":""}><a
 										href="category?cid=${o.cateId}" class="category-item_link">${o.cateName}</a></li>
 								</c:forEach>
 
@@ -144,10 +144,59 @@
 										class='pagination-item__icon bx bx-chevron-left'></i>
 								</a></li>
 							</c:if>
-							<c:forEach begin="1" end="${endPage}" var="i">
-								<li class="pagination-item ${tag == i?"pagination-item--active":""}"><a
-									href="home?index=${i}" class="pagination-item__link">${i}</a></li>
-							</c:forEach>
+
+							<c:if test="${endPage < 10}">
+								<c:forEach begin="1" end="${endPage}" var="i">
+									<li class="pagination-item ${tag == i?"pagination-item--active":""}"><a
+										href="home?index=${i}" class="pagination-item__link">${i}</a></li>
+								</c:forEach>
+							</c:if>
+							<c:if test="${endPage >= 10}">
+								<c:if test="${tag <= 3}">
+									<c:forEach begin="1" end="5" var="i">
+										<li class="pagination-item ${tag == i?"pagination-item--active":""}"><a
+											href="home?index=${i}" class="pagination-item__link">${i}</a></li>
+									</c:forEach>
+									<li class="pagination-item"><span
+										class="pagination-item__link">...</span></li>
+									<c:forEach begin="${endPage - 2}" end="${endPage}" var="i">
+										<li class="pagination-item ${tag == i?"pagination-item--active":""}"><a
+											href="home?index=${i}" class="pagination-item__link">${i}</a></li>
+									</c:forEach>
+								</c:if>
+								<c:if test="${tag > 3 && tag < endPage - 6}">
+									<li class="pagination-item"><span
+										class="pagination-item__link">...</span></li>
+									<c:forEach begin="${tag - 2}" end="${tag + 2}" var="i">
+										<li class="pagination-item ${tag == i?"pagination-item--active":""}"><a
+											href="home?index=${i}" class="pagination-item__link">${i}</a></li>
+									</c:forEach>
+									<li class="pagination-item"><span
+										class="pagination-item__link">...</span></li>
+									<c:forEach begin="${endPage - 2}" end="${endPage}" var="i">
+										<li class="pagination-item ${tag == i?"pagination-item--active":""}"><a
+											href="home?index=${i}" class="pagination-item__link">${i}</a></li>
+									</c:forEach>
+								</c:if>
+								<c:if test="${tag >= endPage - 6}">
+								<c:if test="${tag <= endPage - 5}">
+									<li class="pagination-item"><span
+										class="pagination-item__link">...</span></li>
+									<c:forEach begin="${tag - 2}" end="${endPage}" var="i">
+										<li class="pagination-item ${tag == i?"pagination-item--active":""}"><a
+											href="home?index=${i}" class="pagination-item__link">${i}</a></li>
+									</c:forEach>
+								</c:if>
+								<c:if test="${tag > endPage - 5}">
+									<li class="pagination-item"><span
+										class="pagination-item__link">...</span></li>
+									<c:forEach begin="${endPage - 6}" end="${endPage}" var="i">
+										<li class="pagination-item ${tag == i?"pagination-item--active":""}"><a
+											href="home?index=${i}" class="pagination-item__link">${i}</a></li>
+									</c:forEach>
+								</c:if>
+								</c:if>
+							</c:if>
 							<!--  <li class="pagination-item"><a href="#"
 								class="pagination-item__link">2</a></li>
 							<li class="pagination-item"><a href="#"
