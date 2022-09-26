@@ -13,6 +13,7 @@
 	type="text/css" />
 <link href="<c:url value="/css/login.css"/>" rel="stylesheet"
 	type="text/css" />
+
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 <title>Đăng nhập tài khoản</title>
 </head>
@@ -25,35 +26,37 @@
             <!-- register form -->
             
             <!-- login form -->
-             <div class="auth-form">
-                <div class="auth-form__container">
+             <form action="login" method="get" class="auth-form">
+                <div  class="auth-form__container">
                     <div class="auth-form__header">
                         <h3 class="auth-form__heading">
                             Đăng nhập
                         </h3>
-                        <span class="auth-form__switch-btn">Đăng kí</span>
+                        <a href="/Shopee/signup"><span class="auth-form__switch-btn">Đăng kí</span></a>
     
                     </div>
+                    <span class="text_danger">${mess}</span>
                     <div class="auth-form__form">
                         <div class="auth-form__group">
-                            <input type="text" class="auth-form__input " placeholder="Tên Đăng nhập">
+                            <input name="username"type="text" class="auth-form__input " placeholder="Tên Đăng nhập">
                         </div>
                         <div class="auth-form_group">
-                            <input type="password" class="auth-form__input" placeholder="Mật khẩu của bạn" >
+                            <input name="password"type="password" class="auth-form__input" placeholder="Mật khẩu của bạn" >
                         </div>
                        
                     </div>
                     <div class="auth-form__aside">
                         <div class="auth-form__help">
-                            <a href="" class="auth-form__help-link auth-form__help-forgot">Quên mật khẩu</a>
+                            <a href="/Shopee/forgotPassword" class="auth-form__help-link auth-form__help-forgot">Quên mật khẩu</a>
                             <span class="auth-form__help-separate"></span>
                             <a href="" class="auth-form__help-link">Cần trợ giúp?</a>
                         </div>
                     </div>
                     <div class="auth-form__controls">
                         <button class="btn auth-form__controls-backs btn-normal">TRỞ LẠI</button>
-                        <button class="btn btn-primary">ĐĂNG NHẬP</button>
+                        <button type="submit"class="btn btn-primary">ĐĂNG NHẬP</button>
                     </div>
+                     
                 </div>
                 <div class="auth-form__socials">
                     <a href="" class="auth-form__socials-facebook btn btn--size-s btn--with-icon">
@@ -70,10 +73,12 @@
                         
                     </a>
                 </div>
+               
+                </form>
             </div>
 
 
         </div> 
-    </div> 
+  
 </body>
 </html>

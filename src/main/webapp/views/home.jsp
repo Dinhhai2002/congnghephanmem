@@ -14,8 +14,8 @@
 	type="text/css" />
 <link href="<c:url value="/css/main.css"/>" rel="stylesheet"
 	type="text/css" />
-<link href="<c:url value="/css/login.css"/>" rel="stylesheet"
-	type="text/css" />
+
+
 <link
 	href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap&subset=vietnamese"
 	rel="stylesheet">
@@ -37,7 +37,7 @@
 							<ul class="category-list">
 								<!-- category-item-active -->
 								<c:forEach items="${listCC}" var="o">
-									<li class="category-item"><a href="category?cid=${o.cateId}"
+									<li class="category-item ${tag==o.cateId?"active":""}"><a href="category?cid=${o.cateId}"
 									class="category-item_link">${o.cateName}</a></li>
 								</c:forEach>
 								
@@ -90,7 +90,7 @@
 							<c:forEach items="${listP}" var="o">
 							
 								<div class="grid__column-2-4">
-									<a class="home-product-item" href="#">
+									<a class="home-product-item" href="detail?pid=${o.pId}">
 										<div class="home-product-item__img"
 											style="background-image: url(${o.pImage});"></div>
 										<h4 class="home-product-item__name">${o.pName}</h4>

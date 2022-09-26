@@ -24,7 +24,7 @@
         <div class="modal__body"> 
             <!-- register form -->
             
-            <div class="auth-form">
+            <form action="register" method="get" class="auth-form">
                 <div class="auth-form__container">
                     <div class="auth-form__header">
                         <h3 class="auth-form__heading">
@@ -35,19 +35,22 @@
                     </div>
                     <div class="auth-form__form">
                         <div class="auth-form__group">
-                            <input type="text" class="auth-form__input " placeholder="Nhập UserName">
+                            <input name="user"type="text" class="auth-form__input " placeholder="Nhập UserName">
                         </div>
                         <div class="auth-form_group">
-                            <input type="password" class="auth-form__input" placeholder="Mật khẩu của bạn" >
+                            <input name="pass"type="password" class="auth-form__input" placeholder="Mật khẩu của bạn" >
                         </div>
                         <div class="auth-form_group">
-                            <input type="password" class="auth-form__input" placeholder="Nhập lại mật khẩu" >
+                            <input name="re_pass"type="password" class="auth-form__input" placeholder="Nhập lại mật khẩu" >
                         </div>
                         <div class="auth-form__group">
-                            <input type="text" class="auth-form__input " placeholder="Email của bạn">
+                            <input name="email"type="text" class="auth-form__input " placeholder="Email của bạn">
                         </div>
                         <div class="auth-form__group">
-                            <input type="text" class="auth-form__input " placeholder="Số điện thoại">
+                            <input name="phoneNumber"type="text" class="auth-form__input " placeholder="Số điện thoại">
+                        </div>
+                        <div class="auth-form__group">
+                            <input name="address"type="text" class="auth-form__input " placeholder="Địa chỉ">
                         </div>
                         
                     </div>
@@ -60,7 +63,7 @@
                     </div>
                     <div class="auth-form__controls">
                         <button class="btn auth-form__controls-backs btn-normal">TRỞ LẠI</button>
-                        <button class="btn btn-primary">ĐĂNG KÝ</button>
+                        <button type="submit"class="btn btn-primary">ĐĂNG KÝ</button>
                     </div>
                 </div>
                 <div class="auth-form__socials">
@@ -78,7 +81,7 @@
                         
                     </a>
                 </div>
-            </div> 
+            </form> 
 
 
         </div> 

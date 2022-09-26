@@ -1,8 +1,5 @@
 body{
-    background-image:url('../img/background.png');
-    background-repeat:no-repeat;
-    background-size:cover;
-    background-position-y: -45px;
+   
     
 }
 /* modal  */
@@ -11,6 +8,10 @@ body{
     top: 0;left: 0;right:0;bottom: 0;
     display:flex;
     animation: fadeIn ease-in 0.2s;
+     background-image:url('../img/background.png');
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position-y: -45px;
 }
 .modal__overlay{
     position: absolute;
@@ -29,7 +30,10 @@ body{
     border-radius:5px;
     animation: growth linear 0.1s;
 }
-
+.text_danger{
+	color:red !important;
+	font-size:20px;
+}
 
 /* btn css */
 
@@ -152,4 +156,5 @@ body{
 .pagination-item__icon{
 
 }
+
 

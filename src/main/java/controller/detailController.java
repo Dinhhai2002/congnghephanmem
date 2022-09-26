@@ -14,25 +14,23 @@ import dao.DAO;
 import entity.Category;
 import entity.Product;
 
-@WebServlet(urlPatterns="/category")
-
-public class CategoryController extends HttpServlet {
+@WebServlet(urlPatterns="/detail")
+public class detailController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html");
 		resp.setCharacterEncoding("UTF-8");
 		req.setCharacterEncoding("UTF-8");
-		String cateId=req.getParameter("cid");
+		String pid=req.getParameter("pid");
 		
 		DAO dao =new DAO();
 		List<Category> listC = dao.getAllCategory();
-		List<Product> list=dao.getProductbyCateId(cateId);
+		Product a=dao.getProductById(pid);
 		
-	    req.setAttribute("listP", list);
+	    req.setAttribute("p", a);
 	    req.setAttribute("listCC", listC);
-	    req.setAttribute("tag", cateId);
 //        req.setAttribute("p", last);
-		RequestDispatcher rq=req.getRequestDispatcher("/views/home.jsp");
+		RequestDispatcher rq=req.getRequestDispatcher("/views/detail.jsp");
 		rq.forward(req, resp);
 	}
 	@Override

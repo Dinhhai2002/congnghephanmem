@@ -46,7 +46,12 @@
 		<artifactId>mssql-jdbc</artifactId>
 		<version>${mssql-version}</version>
 	</dependency>
-	
+	<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
+		</dependency>
 	
 	
   </dependencies>
