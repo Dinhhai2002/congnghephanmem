@@ -138,6 +138,11 @@
 						</div>
 						<ul class="pagination home-product__pagination">
 							<c:if test="${tag > 1}">
+							<li class="pagination-item"><a
+									href="home?index=1" class="pagination-item__link">
+										<i style="font-size: 2.5rem;"
+										class='pagination-item__icon bx bx-chevrons-left'></i>
+								</a></li>
 								<li class="pagination-item"><a
 									href="home?index=${(tag - 1)}" class="pagination-item__link">
 										<i style="font-size: 2.5rem;"
@@ -197,25 +202,20 @@
 								</c:if>
 								</c:if>
 							</c:if>
-							<!--  <li class="pagination-item"><a href="#"
-								class="pagination-item__link">2</a></li>
-							<li class="pagination-item"><a href="#"
-								class="pagination-item__link">3</a></li>
-							<li class="pagination-item"><a href="#"
-								class="pagination-item__link">4</a></li>
-							<li class="pagination-item"><a href="#"
-								class="pagination-item__link">5</a></li>
-							<li class="pagination-item"><a href="#"
-								class="pagination-item__link">...</a></li>-->
+							
 							<c:if test="${tag < endPage}">
 								<li class="pagination-item"><a
 									href="home?index=${(tag + 1)}" class="pagination-item__link">
 										<i style="font-size: 2.5rem;"
 										class='pagination-item__icon bx bx-chevron-right'></i>
 								</a></li>
+								<li class="pagination-item"><a
+									href="home?index=${endPage}" class="pagination-item__link">
+										<i style="font-size: 2.5rem;"
+										class='pagination-item__icon bx bx-chevrons-right'></i>
+								</a></li>
 							</c:if>
-							<!--  <li class="pagination-item"><a href="#"
-								class="pagination-item__link">14</a></li> -->
+							
 
 						</ul>
 					</div>
