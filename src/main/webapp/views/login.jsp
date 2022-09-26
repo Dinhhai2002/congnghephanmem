@@ -62,8 +62,8 @@
                             Kết nối với Facebook
                         </span>
                     </a>
-                    <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=https://localhost:8080/AccessGoogle/login-google&response_type=code
-		&client_id=414397036755-9dsjjv3boaslau9g9l2hrvebal34h5a2.apps.googleusercontent.com&approval_prompt=force"" class="auth-form__socials-google btn btn--with-icon">
+                    <a href="https://accounts.google.com/o/oauth2/auth?scope=profile&redirect_uri=http://localhost:8080/Shopee/logingoogle&response_type=code
+		&client_id=965552027153-4qmaigfiko3ajcldouedsj1h9kts562i.apps.googleusercontent.com&approval_prompt=force"" class="auth-form__socials-google btn btn--with-icon">
                         <i class='auth-form__socials-icon fa-brands bx bxl-google' ></i>
                         <span class="auth-form__socials-title">
                             Kết nối với Google
