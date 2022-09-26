@@ -39,7 +39,6 @@
 			<version>${jsp.api.version}</version>
 		</dependency>
 
-
 	<!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
 	<dependency>
 		<groupId>com.microsoft.sqlserver</groupId>
