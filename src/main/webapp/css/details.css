@@ -148,6 +148,11 @@ a:hover{
     background-color: var(--primary-color) !important;
     border-color: var(--primary-color) !important;
 }
+.btn-primary:hover {
+    color: rgb(255, 255, 255);
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+}
 .product_rassurance {
     padding: 10px;
     margin-top: 15px;
@@ -161,7 +166,8 @@ a:hover{
     text-align: center;
 }
 .btn-primary{
-    background-color: var(--primary-color) !important;
+    background-color: transparent !important;
+    color: #007bff;
 }
 .product_rassurance .list-inline li:hover {
     color: #343a40;
@@ -212,7 +218,7 @@ a .active{
 .gallery-wrap-img{
     object-fit: contain;
     width: 100%;
-    height:140px;
+    height:280px;
 }
 .img-big-wrap a{
     display:block;
@@ -994,3 +1000,91 @@ body{
     line-height:30px;
     font-weight: 500;
 }
+/*footer  */
+footer{
+    background-color: transparent !important;
+}
+.grid__column-2-4-modifier{
+    padding-left:0;
+    padding-right:0;
+}
+
+.footer{
+    padding-top: 12px;
+    border-top: 3px solid var(--primary-color);
+    background-color: var(--white-color);
+}
+
+.footer__heading{
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    color: var(--text-color)  !important;
+
+}
+
+.footer__heading-list{
+     padding-left:0;
+     list-style: none  !important;
+}
+
+.footer__heading-item{
+
+}
+
+.footer__heading-link{
+       text-decoration: none;
+       font-size: 1.2rem;
+       color:#666;
+       padding:2px 0;
+       display: flex;
+       align-items:center;
+}
+.footer__heading-link:hover{
+    color:var(--primary-color);
+}
+.footer__heading-icon{
+    font-size: 1.8rem;
+    margin-top: -1px;
+    margin-right: 8px;
+
+}
+.footer__download{
+   display: flex;
+   align-items:center;
+}
+
+.footer__download-qrcode{
+   width: 80px;
+   height: 80px;
+   border:1px solid var(--border-color);
+}
+.footer__download-apps{
+    flex: 1;
+    margin-left: 16px;
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+}
+.footer__download-app-img{
+    height: 16px;
+}
+
+.footer__download-apps-link{
+    text-decoration: none;
+    color:transparent;
+    padding-top: 5px;
+    display: block;
+}
+.footer__bottom{
+    padding:12px 0;
+    background-color: #f5f5f5;
+    margin-top: 30px;
+}
+.footer-text{
+    margin:0;
+    font-size: 1.4rem;
+    text-align: center;
+    color: var(--text-color);
+
+}
+

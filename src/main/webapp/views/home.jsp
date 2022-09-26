@@ -14,8 +14,8 @@
 	type="text/css" />
 <link href="<c:url value="/css/main.css"/>" rel="stylesheet"
 	type="text/css" />
-<link href="<c:url value="/css/login.css"/>" rel="stylesheet"
-	type="text/css" />
+
+
 <link
 	href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap&subset=vietnamese"
 	rel="stylesheet">
@@ -40,7 +40,6 @@
 									<li class="category-item" ${tag==o.cateId?"active":""}><a
 										href="category?cid=${o.cateId}" class="category-item_link">${o.cateName}</a></li>
 								</c:forEach>
-
 							</ul>
 						</nav>
 					</div>
@@ -87,23 +86,24 @@
 						</div>
 						<div class="home-product">
 							<div class="grid__row">
-								<c:forEach items="${listP}" var="o">
 
-									<div class="grid__column-2-4">
-										<a class="home-product-item" href="#">
-											<div class="home-product-item__img"
-												style="background-image: url(${o.pImage});"></div>
-											<h4 class="home-product-item__name">${o.pName}</h4>
-											<div class="home-product-item__price">
-												<span class="home-product-item__price-old">1.200.000đ</span>
-												<span class="home-product-item__price-current">${o.pPrice}</span>
-											</div>
-											<div class="home-product-item__action">
-												<!-- home-product-item__like--liked -->
-												<span
-													class="home-product-item__like home-product-item__like--liked ">
-													<i class='home-product-item__like-icon-empty bx bxs-heart'></i>
-													<i class='home-product-item__like-icon-fill bx bxs-heart'></i>
+							<c:forEach items="${listP}" var="o">
+							
+								<div class="grid__column-2-4">
+									<a class="home-product-item" href="detail?pid=${o.pId}">
+										<div class="home-product-item__img"
+											style="background-image: url(${o.pImage});"></div>
+										<h4 class="home-product-item__name">${o.pName}</h4>
+										<div class="home-product-item__price">
+											<span class="home-product-item__price-old">1.200.000đ</span>
+											<span class="home-product-item__price-current">${o.pPrice}</span>
+										</div>
+										<div class="home-product-item__action">
+											<!-- home-product-item__like--liked -->
+											<span
+												class="home-product-item__like home-product-item__like--liked ">
+												<i class='home-product-item__like-icon-empty bx bxs-heart'></i>
+												<i class='home-product-item__like-icon-fill bx bxs-heart'></i>
 
 
 												</span>
@@ -138,6 +138,11 @@
 						</div>
 						<ul class="pagination home-product__pagination">
 							<c:if test="${tag > 1}">
+							<li class="pagination-item"><a
+									href="home?index=1" class="pagination-item__link">
+										<i style="font-size: 2.5rem;"
+										class='pagination-item__icon bx bx-chevrons-left'></i>
+								</a></li>
 								<li class="pagination-item"><a
 									href="home?index=${(tag - 1)}" class="pagination-item__link">
 										<i style="font-size: 2.5rem;"
@@ -197,25 +202,20 @@
 								</c:if>
 								</c:if>
 							</c:if>
-							<!--  <li class="pagination-item"><a href="#"
-								class="pagination-item__link">2</a></li>
-							<li class="pagination-item"><a href="#"
-								class="pagination-item__link">3</a></li>
-							<li class="pagination-item"><a href="#"
-								class="pagination-item__link">4</a></li>
-							<li class="pagination-item"><a href="#"
-								class="pagination-item__link">5</a></li>
-							<li class="pagination-item"><a href="#"
-								class="pagination-item__link">...</a></li>-->
+							
 							<c:if test="${tag < endPage}">
 								<li class="pagination-item"><a
 									href="home?index=${(tag + 1)}" class="pagination-item__link">
 										<i style="font-size: 2.5rem;"
 										class='pagination-item__icon bx bx-chevron-right'></i>
 								</a></li>
+								<li class="pagination-item"><a
+									href="home?index=${endPage}" class="pagination-item__link">
+										<i style="font-size: 2.5rem;"
+										class='pagination-item__icon bx bx-chevrons-right'></i>
+								</a></li>
 							</c:if>
-							<!--  <li class="pagination-item"><a href="#"
-								class="pagination-item__link">14</a></li> -->
+							
 
 						</ul>
 					</div>

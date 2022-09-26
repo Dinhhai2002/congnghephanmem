@@ -1,7 +1,7 @@
 package entity;
 
 public class Product {
-	private int Pid;
+	private int pId;
 	private String pName;
 	private float pPrice;
 	private String pImage;
@@ -13,10 +13,10 @@ public class Product {
 	public Product() {
 		super();
 	}
-	public Product(int pid, String pName, float pPrice, String pImage, String pDescription, int pQuantity, int cateID,
+	public Product(int pId, String pName, float pPrice, String pImage, String pDescription, int pQuantity, int cateID,
 			int isAdd, int sellId) {
 		super();
-		Pid = pid;
+		this.pId = pId;
 		this.pName = pName;
 		this.pPrice = pPrice;
 		this.pImage = pImage;
@@ -26,11 +26,11 @@ public class Product {
 		this.isAdd = isAdd;
 		this.sellId = sellId;
 	}
-	public int getPid() {
-		return Pid;
+	public int getpId() {
+		return pId;
 	}
-	public void setPid(int pid) {
-		Pid = pid;
+	public void setpId(int pId) {
+		this.pId = pId;
 	}
 	public String getpName() {
 		return pName;
@@ -82,10 +82,12 @@ public class Product {
 	}
 	@Override
 	public String toString() {
-		return "Product [Pid=" + Pid + ", pName=" + pName + ", pPrice=" + pPrice + ", pImage=" + pImage
+		return "Product [pId=" + pId + ", pName=" + pName + ", pPrice=" + pPrice + ", pImage=" + pImage
 				+ ", pDescription=" + pDescription + ", pQuantity=" + pQuantity + ", cateID=" + cateID + ", isAdd="
 				+ isAdd + ", sellId=" + sellId + "]";
 	}
+	
+	
 	
 	
 	

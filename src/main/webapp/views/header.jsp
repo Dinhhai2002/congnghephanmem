@@ -30,19 +30,32 @@
 						</a></li>
 					</ul>
 					<ul class="header__navbar-list">
-                    
-                      <a href="SignUp.jsp"><li class="header__navbar-items header__navbar-items--strong header__navbar-items--separate">Đăng kí</li></a>
-                      <a href="/Shopee/views/login.jsp"><li class="header__navbar-items header__navbar-items--strong">Đăng nhập</li></a>
-                      <li class="header__navbar-items header__navbar-items--strong">Tài khoản
+					<c:if test="${sessionScope.acc.isSell==1}">
+					 <a href="#">
+                      <li class="header__navbar-items header__navbar-items--strong header__navbar-items--separate">Manager Product</li>
+                      </a>
+                      </c:if>
+                    <c:if test="${sessionScope.acc==null}">
+                      <a href="/Shopee/register">
+                      <li class="header__navbar-items header__navbar-items--strong header__navbar-items--separate">Đăng kí</li>
+                      </a>
+                     
+                      <a href="/Shopee/login"><li class="header__navbar-items header__navbar-items--strong">Đăng nhập</li></a>
+                       </c:if>
+                       <c:if test="${sessionScope.acc!=null}">
+                      <li class="header__navbar-items header__navbar-items--strong">
+                      <a style="color:#fff;font-size:20px;margin:0 8px;"><i class='bx bxs-user-circle'></i></a>
+                      ${sessionScope.acc.uName }
                         
                         <ul class="header__navbar-items-notify">
                            <a href=""><li>Trang cá nhân</li></a> 
                            <a href=""><li>Đơn mua</li></a> 
                            <a href=""><li>Đăng kí thành người bán</li></a>
-                           <a href=""><li>Đăng xuất</li></a>
+                           <a href="/Shopee/logout"><li>Đăng xuất</li></a>
 
                         </ul>
                       </li>
+                       </c:if>
                       
                   </ul>
 				</nav>
