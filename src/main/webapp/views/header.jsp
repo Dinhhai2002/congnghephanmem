@@ -30,7 +30,7 @@
 						</a></li>
 					</ul>
 					<ul class="header__navbar-list">
-					<c:if test="${sessionScope.acc.isSell==1}">
+					<c:if test="${sessionScope.acc.idRole==2}">
 					 <a href="#">
                       <li class="header__navbar-items header__navbar-items--strong header__navbar-items--separate">Manager Product</li>
                       </a>

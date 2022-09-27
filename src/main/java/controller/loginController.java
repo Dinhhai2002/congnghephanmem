@@ -33,7 +33,7 @@ public class loginController extends HttpServlet {
 			} else {
 				HttpSession session=req.getSession();
 				session.setAttribute("acc", a);
-				req.getRequestDispatcher("/home").forward(req, resp);
+				req.getRequestDispatcher("/home?index=1").forward(req, resp);
 			}
 		} else {
 			req.getRequestDispatcher("/views/login.jsp").forward(req, resp);

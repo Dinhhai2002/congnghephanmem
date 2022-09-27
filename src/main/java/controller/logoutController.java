@@ -18,7 +18,7 @@ public class logoutController extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		HttpSession session=req.getSession();
 		session.removeAttribute("acc");
-		req.getRequestDispatcher("/home").forward(req, resp);
+		req.getRequestDispatcher("/home?index=1").forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
