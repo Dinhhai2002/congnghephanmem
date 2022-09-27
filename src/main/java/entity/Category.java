@@ -1,32 +1,51 @@
 package entity;
 
+import java.util.Date;
+
 public class Category {
-	private int cateId;
-	private String cateName;
+	private int cId;
+	private String cName;
+	private Date createAt;
+	private Date updateAt;
 	public Category() {
 		super();
 	}
-	public Category(int cateId, String cateName) {
+	public Category(int cId, String cName, Date createAt, Date updateAt) {
 		super();
-		this.cateId = cateId;
-		this.cateName = cateName;
+		this.cId = cId;
+		this.cName = cName;
+		this.createAt = createAt;
+		this.updateAt = updateAt;
 	}
-	public int getCateId() {
-		return cateId;
+	public int getcId() {
+		return cId;
 	}
-	public void setCateId(int cateId) {
-		this.cateId = cateId;
+	public void setcId(int cId) {
+		this.cId = cId;
 	}
-	public String getCateName() {
-		return cateName;
+	public String getcName() {
+		return cName;
 	}
-	public void setCateName(String cateName) {
-		this.cateName = cateName;
+	public void setcName(String cName) {
+		this.cName = cName;
+	}
+	public Date getCreateAt() {
+		return createAt;
+	}
+	public void setCreateAt(Date createAt) {
+		this.createAt = createAt;
+	}
+	public Date getUpdateAt() {
+		return updateAt;
+	}
+	public void setUpdateAt(Date updateAt) {
+		this.updateAt = updateAt;
 	}
 	@Override
 	public String toString() {
-		return "Category [cateId=" + cateId + ", cateName=" + cateName + "]";
+		return "Category [cId=" + cId + ", cName=" + cName + ", createAt=" + createAt + ", updateAt=" + updateAt + "]";
 	}
+	
 	
 	
 }

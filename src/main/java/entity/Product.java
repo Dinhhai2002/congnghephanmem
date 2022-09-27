@@ -1,5 +1,10 @@
 package entity;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Date;
+
 public class Product {
 	private int pId;
 	private String pName;
@@ -8,13 +13,14 @@ public class Product {
 	private String pDescription;
 	private int pQuantity;
 	private int cateID;
-	private int isAdd;
-	private int sellId;
+	private int shopId;
+	private Date createAt;
+	private Date updateAt;
 	public Product() {
 		super();
 	}
 	public Product(int pId, String pName, float pPrice, String pImage, String pDescription, int pQuantity, int cateID,
-			int isAdd, int sellId) {
+			int shopId, Date createAt, Date updateAt) {
 		super();
 		this.pId = pId;
 		this.pName = pName;
@@ -23,8 +29,9 @@ public class Product {
 		this.pDescription = pDescription;
 		this.pQuantity = pQuantity;
 		this.cateID = cateID;
-		this.isAdd = isAdd;
-		this.sellId = sellId;
+		this.shopId = shopId;
+		this.createAt = createAt;
+		this.updateAt = updateAt;
 	}
 	public int getpId() {
 		return pId;
@@ -68,25 +75,30 @@ public class Product {
 	public void setCateID(int cateID) {
 		this.cateID = cateID;
 	}
-	public int getIsAdd() {
-		return isAdd;
+	public int getShopId() {
+		return shopId;
 	}
-	public void setIsAdd(int isAdd) {
-		this.isAdd = isAdd;
+	public void setShopId(int shopId) {
+		this.shopId = shopId;
 	}
-	public int getSellId() {
-		return sellId;
+	public Date getCreateAt() {
+		return createAt;
 	}
-	public void setSellId(int sellId) {
-		this.sellId = sellId;
+	public void setCreateAt(Date createAt) {
+		this.createAt = createAt;
+	}
+	public Date getUpdateAt() {
+		return updateAt;
+	}
+	public void setUpdateAt(Date updateAt) {
+		this.updateAt = updateAt;
 	}
 	@Override
 	public String toString() {
 		return "Product [pId=" + pId + ", pName=" + pName + ", pPrice=" + pPrice + ", pImage=" + pImage
-				+ ", pDescription=" + pDescription + ", pQuantity=" + pQuantity + ", cateID=" + cateID + ", isAdd="
-				+ isAdd + ", sellId=" + sellId + "]";
+				+ ", pDescription=" + pDescription + ", pQuantity=" + pQuantity + ", cateID=" + cateID + ", shopId="
+				+ shopId + ", createAt=" + createAt + ", updateAt=" + updateAt + "]";
 	}
-	
 	
 	
 	

@@ -35,8 +35,8 @@
 					<ul class="category-list">
 						<!-- category-item-active -->
 						<c:forEach items="${listCC}" var="o">
-							<li class="category-item ${tag==o.cateId?"active":""}"><a
-								href="category?cid=${o.cateId}" class="category-item_link">${o.cateName}</a></li>
+							<li class="category-item ${tag==o.cId?"active":""}"><a
+								href="category?cid=${o.cId}" class="category-item_link">${o.cName}</a></li>
 						</c:forEach>
 
 					</ul>

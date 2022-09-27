@@ -34,7 +34,8 @@ public class DAO {
                         rs.getInt(6),
                         rs.getInt(7),
                         rs.getInt(8),
-                        rs.getInt(9)));
+                        rs.getDate(9),
+                        rs.getDate(10)));
             }
         } catch (Exception e) {
         }
@@ -57,7 +58,8 @@ public class DAO {
                         rs.getInt(6),
                         rs.getInt(7),
                         rs.getInt(8),
-                        rs.getInt(9)));
+                        rs.getDate(9),
+                        rs.getDate(10)));
             }
         } catch (Exception e) {
         }
@@ -80,7 +82,8 @@ public class DAO {
                         rs.getInt(6),
                         rs.getInt(7),
                         rs.getInt(8),
-                        rs.getInt(9)));
+                        rs.getDate(9),
+                        rs.getDate(10)));
             }
         } catch (Exception e) {
         }
@@ -88,14 +91,14 @@ public class DAO {
     }
     public Product getProductById(String id) {
         
-        String query = "select * from product where Pid=?";
+        String query = "select * from product where pId=?";
         try {
             conn = new connect().getConnection();
             ps = conn.prepareStatement(query);
             ps.setString(1,id );
             rs = ps.executeQuery();
             while (rs.next()) {
-                return new Product(rs.getInt(1),
+            	return new Product(rs.getInt(1),
                         rs.getString(2),
                         rs.getFloat(3),
                         rs.getString(4),
@@ -103,7 +106,8 @@ public class DAO {
                         rs.getInt(6),
                         rs.getInt(7),
                         rs.getInt(8),
-                        rs.getInt(9));
+                        rs.getDate(9),
+                        rs.getDate(10));
             }
         } catch (Exception e) {
         }
@@ -118,7 +122,9 @@ public class DAO {
             rs = ps.executeQuery();
             while (rs.next()) {
                 list.add(new Category(rs.getInt(1),
-                        rs.getString(2)));
+                        rs.getString(2),
+                        rs.getDate(3),
+                        rs.getDate(4)));
             }
         } catch (Exception e) {
         }
@@ -138,17 +144,22 @@ public class DAO {
              return new user(rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
-                        rs.getInt(4),
-                        rs.getInt(5),
+                        rs.getString(4),
+                        rs.getString(5),
                         rs.getString(6),
                         rs.getString(7),
-                        rs.getString(8));}
+                        rs.getInt(8),
+                        rs.getInt(9),
+                        rs.getString(10),
+                       rs.getDate(11),
+                       rs.getDate(12));
+            }
         } catch (Exception e) {
         }
         return null;
    }
     public void SignUp(String user,String pass,String email,String Address,String phoneNumber) {
-      	 String query = "insert into [user] values(?,?,0,0,?,?,?)";
+      	 String query = "insert into [user] values(?,?,?,?,?,?,null,1,null,Date(),null)";
            try {
                conn = new connect().getConnection();
                ps = conn.prepareStatement(query);
@@ -174,11 +185,16 @@ public class DAO {
                 	  return new user(rs.getInt(1),
                               rs.getString(2),
                               rs.getString(3),
-                              rs.getInt(4),
-                              rs.getInt(5),
+                              rs.getString(4),
+                              rs.getString(5),
                               rs.getString(6),
                               rs.getString(7),
-                              rs.getString(8));}
+                              rs.getInt(8),
+                              rs.getInt(9),
+                              rs.getString(10),
+                             rs.getDate(11),
+                             rs.getDate(12));
+                  }
               } catch (Exception e) {
               }
               return null;
@@ -194,14 +210,19 @@ public class DAO {
                 ps.setString(2,email );
                 rs = ps.executeQuery();
                 while (rs.next()) {
-              	  return new user(rs.getInt(1),
+                	return new user(rs.getInt(1),
                             rs.getString(2),
                             rs.getString(3),
-                            rs.getInt(4),
-                            rs.getInt(5),
+                            rs.getString(4),
+                            rs.getString(5),
                             rs.getString(6),
                             rs.getString(7),
-                            rs.getString(8));}
+                            rs.getInt(8),
+                            rs.getInt(9),
+                            rs.getString(10),
+                           rs.getDate(11),
+                           rs.getDate(12));
+                }
             } catch (Exception e) {
             }
             return null;
@@ -251,7 +272,7 @@ public class DAO {
             ps.setInt(2, pageSize);
             rs = ps.executeQuery();
             while (rs.next()) {
-                list.add(new Product(rs.getInt(1),
+            	list.add(new Product(rs.getInt(1),
                         rs.getString(2),
                         rs.getFloat(3),
                         rs.getString(4),
@@ -259,7 +280,8 @@ public class DAO {
                         rs.getInt(6),
                         rs.getInt(7),
                         rs.getInt(8),
-                        rs.getInt(9)));
+                        rs.getDate(9),
+                        rs.getDate(10)));
             }
         } catch (Exception e) {
         }

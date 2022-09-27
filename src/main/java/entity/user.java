@@ -1,28 +1,38 @@
 package entity;
 
+import java.util.Date;
+
 public class user {
 	private int uId;
 	private String uName;
-	private String uPassword;
-	private int isSell;
-	private int isAdmin;
+	private String uFullName;
 	private String uEmail;
 	private String uAddress;
+	private String uPassword;
 	private String uPhone;
+	private int eWallet;
+	private int idRole;
+	private String uImage;
+	private Date createAt;
+	private Date updateAt;
 	public user() {
 		super();
 	}
-	public user(int uId, String uName, String uPassword, int isSell, int isAdmin, String uEmail, String uAddress,
-			String uPhone) {
+	public user(int uId, String uName, String uFullName, String uEmail, String uAddress, String uPassword,
+			String uPhone, int eWallet, int idRole, String uImage, Date createAt, Date updateAt) {
 		super();
 		this.uId = uId;
 		this.uName = uName;
-		this.uPassword = uPassword;
-		this.isSell = isSell;
-		this.isAdmin = isAdmin;
+		this.uFullName = uFullName;
 		this.uEmail = uEmail;
 		this.uAddress = uAddress;
+		this.uPassword = uPassword;
 		this.uPhone = uPhone;
+		this.eWallet = eWallet;
+		this.idRole = idRole;
+		this.uImage = uImage;
+		this.createAt = createAt;
+		this.updateAt = updateAt;
 	}
 	public int getuId() {
 		return uId;
@@ -36,23 +46,11 @@ public class user {
 	public void setuName(String uName) {
 		this.uName = uName;
 	}
-	public String getuPassword() {
-		return uPassword;
+	public String getuFullName() {
+		return uFullName;
 	}
-	public void setuPassword(String uPassword) {
-		this.uPassword = uPassword;
-	}
-	public int getIsSell() {
-		return isSell;
-	}
-	public void setIsSell(int isSell) {
-		this.isSell = isSell;
-	}
-	public int getIsAdmin() {
-		return isAdmin;
-	}
-	public void setIsAdmin(int isAdmin) {
-		this.isAdmin = isAdmin;
+	public void setuFullName(String uFullName) {
+		this.uFullName = uFullName;
 	}
 	public String getuEmail() {
 		return uEmail;
@@ -66,17 +64,57 @@ public class user {
 	public void setuAddress(String uAddress) {
 		this.uAddress = uAddress;
 	}
+	public String getuPassword() {
+		return uPassword;
+	}
+	public void setuPassword(String uPassword) {
+		this.uPassword = uPassword;
+	}
 	public String getuPhone() {
 		return uPhone;
 	}
 	public void setuPhone(String uPhone) {
 		this.uPhone = uPhone;
 	}
+	public int geteWallet() {
+		return eWallet;
+	}
+	public void seteWallet(int eWallet) {
+		this.eWallet = eWallet;
+	}
+	public int getIdRole() {
+		return idRole;
+	}
+	public void setIdRole(int idRole) {
+		this.idRole = idRole;
+	}
+	public String getuImage() {
+		return uImage;
+	}
+	public void setuImage(String uImage) {
+		this.uImage = uImage;
+	}
+	public Date getCreateAt() {
+		return createAt;
+	}
+	public void setCreateAt(Date createAt) {
+		this.createAt = createAt;
+	}
+	public Date getUpdateAt() {
+		return updateAt;
+	}
+	public void setUpdateAt(Date updateAt) {
+		this.updateAt = updateAt;
+	}
 	@Override
 	public String toString() {
-		return "user [uId=" + uId + ", uName=" + uName + ", uPassword=" + uPassword + ", isSell=" + isSell
-				+ ", isAdmin=" + isAdmin + ", uEmail=" + uEmail + ", uAddress=" + uAddress + ", uPhone=" + uPhone + "]";
+		return "user [uId=" + uId + ", uName=" + uName + ", uFullName=" + uFullName + ", uEmail=" + uEmail
+				+ ", uAddress=" + uAddress + ", uPassword=" + uPassword + ", uPhone=" + uPhone + ", eWallet=" + eWallet
+				+ ", idRole=" + idRole + ", uImage=" + uImage + ", createAt=" + createAt + ", updateAt=" + updateAt
+				+ "]";
 	}
+	
+	
 	
 	
 	
