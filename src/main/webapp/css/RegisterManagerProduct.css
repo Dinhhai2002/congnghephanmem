@@ -15,6 +15,7 @@ body{
     border-radius: 10px;
     padding:20px 20px;
     margin-right: 120px;
+    margin-bottom: 30px;
 }
 .content_header{
     display: flex;
