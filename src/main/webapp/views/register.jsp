@@ -24,64 +24,66 @@
         <div class="modal__body"> 
             <!-- register form -->
             
-            <form action="register" method="get" class="auth-form">
-                <div class="auth-form__container">
-                    <div class="auth-form__header">
-                        <h3 class="auth-form__heading">
-                            Đăng kí
+            <form action="register" method="get" class="authForm">
+                <div class="authForm__body">
+                    <div class="authForm__header">
+                        <h3 class="authForm__heading">
+                            Đăng Ký
                         </h3>
-                        <span class="auth-form__switch-btn">Đăng nhập</span>
-    
+                        <a href="/Shopee/login" class="authForm__switch-btn">
+                            Đăng Nhập
+                        </a>
                     </div>
-                    <div class="auth-form__form">
-                        <div class="auth-form__group">
-                            <input name="user"type="text" class="auth-form__input " placeholder="Nhập UserName">
+                    <div class="authForm__form">
+                        <div class="authForm__group">
+                            <input name="user" type="text" class="authForm__input" placeholder="Nhập Email">
                         </div>
-                        <div class="auth-form_group">
-                            <input name="pass"type="password" class="auth-form__input" placeholder="Mật khẩu của bạn" >
+                        <div class="authForm__group">
+                            <input type="password" class="authForm__input" placeholder="Nhập mật khẩu">
                         </div>
-                        <div class="auth-form_group">
-                            <input name="re_pass"type="password" class="auth-form__input" placeholder="Nhập lại mật khẩu" >
+                        <div class="authForm__group">
+                            <input name="pass" type="password" class="authForm__input" placeholder="Nhập lại mật khẩu">
                         </div>
-                        <div class="auth-form__group">
-                            <input name="email"type="text" class="auth-form__input " placeholder="Email của bạn">
+                        <div class="authForm__group">
+                            <input name="re_pass" type="password" class="authForm__input" placeholder="Nhập lại mật khẩu">
                         </div>
-                        <div class="auth-form__group">
-                            <input name="phoneNumber"type="text" class="auth-form__input " placeholder="Số điện thoại">
+                        <div class="authForm__group">
+                            <input name="email" type="text" class="authForm__input" placeholder="Nhập email của bạn">
                         </div>
-                        <div class="auth-form__group">
-                            <input name="address"type="text" class="auth-form__input " placeholder="Địa chỉ">
+                        <div class="authForm__group">
+                            <input name="phoneNumber" type="text" class="authForm__input" placeholder="Nhập số điện thoại">
                         </div>
-                        
+                        <div class="authForm__group">
+                            <input name="address" type="text" class="authForm__input" placeholder="Nhập địa chỉ của bạn">
+                        </div>
                     </div>
-                    <div class="auth-form__aside">
-                        <p class="auth-form__policy-text">
-                            Bằng việc đăng kí,bạn đã đồng ý với F8-shop về
-                            <a href="" class="auth-form__text-link">Điều khoản dịch vụ</a> &
-                            <a href="" class="auth-form__text-link">Chính sách bảo mật</a>
+                    <div class="authForm__policy">
+                        <p class="authForm__policy-text">
+                            Bằng việc đăng ký, bạn đã đồng ý với Shopee về
+                            <a href="#" class="authForm__policy-link">Điều khoản dịch vụ</a> &
+                            <a href="#" class="authForm__policy-link">Chính sách bảo mật</a>
                         </p>
                     </div>
-                    <div class="auth-form__controls">
-                        <button class="btn auth-form__controls-backs btn-normal">TRỞ LẠI</button>
-                        <button type="submit"class="btn btn-primary">ĐĂNG KÝ</button>
+                    <div class="authForm__controls">
+                        <button class="btn btn-hover">TRỞ LẠI</button>
+                        <button class="btn btn--primary ml-8">ĐĂNG KÝ</button>
                     </div>
                 </div>
-                <div class="auth-form__socials">
-                    <a href="" class="auth-form__socials-facebook btn btn--size-s btn--with-icon">
-                        <i class='auth-form__socials-icon bx bxl-facebook-circle'></i>
-                        <span class="auth-form__socials-title">
+                <div class="authForm__social">
+                    <a href="#" class="btn btn__social social__icon-fb">
+                        <i class="authForm__social-icon fab fa-facebook-square"></i>
+                        <span>
                             Kết nối với Facebook
                         </span>
                     </a>
-                    <a href="" class="auth-form__socials-google btn btn--with-icon">
-                        <i class='auth-form__socials-icon fa-brands bx bxl-google'  ></i>
-                        <span class="auth-form__socials-title">
+                    <a href="#" class="btn btn__social social__icon-gg">
+                        <i class="authForm__social-icon fab fa-google"></i>
+                        <span>
                             Kết nối với Google
                         </span>
-                        
                     </a>
                 </div>
-            </form> 
+            </form>  
 
 
         </div> 

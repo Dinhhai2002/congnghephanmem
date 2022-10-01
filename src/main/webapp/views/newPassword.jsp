@@ -3,7 +3,7 @@
 <head>
 <meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<title>Snippet - BBBootstrap</title>
+<title>new password</title>
 <link
 	href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css'
 	rel='stylesheet'>
@@ -20,6 +20,22 @@
 .custom-control-label::before {
 	background-color: #dee2e6;
 	border: #dee2e6
+}
+.bg-info{
+	background-image: linear-gradient(0,#fe6432,#f6412d) !important;
+}
+.btn-info {
+    color: #fff;
+    background-color: #EE4D2D;
+    border-color: #EE4D2D;
+}
+.btn-info:hover {
+    color: #fff;
+    background-color: #EE4D2D;
+    border-color: #EE4D2D;
+}
+.border-info {
+    border-color: #EE4D2D!important;
 }
 </style>
 </head>

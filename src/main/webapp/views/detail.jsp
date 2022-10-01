@@ -17,6 +17,15 @@
 	rel='stylesheet'>
 <link href="<c:url value="/css/details.css"/>" rel="stylesheet"
 	type="text/css" />
+	<link href="<c:url value="/css/base.css"/>" rel="stylesheet"
+	type="text/css" />
+	<link href="<c:url value="/css/main.css"/>" rel="stylesheet"
+	type="text/css" />
+	<link href="<c:url value="/css/grid.css"/>" rel="stylesheet"
+	type="text/css" />
+	<link href="<c:url value="/css/responsive.css"/>" rel="stylesheet"
+	type="text/css" />
+	
 
 
 
@@ -66,7 +75,7 @@
 								<!-- gallery-wrap .end// -->
 							</aside>
 							<aside class="col-sm-7">
-								<article class="card-body p-5">
+								<article style="font-size:20px"class="card-body p-5">
 									<h3 class="title mb-3">${p.pName}</h3>
 
 									<p class="price-detail-wrap">
@@ -115,8 +124,8 @@
 									</div>
 									<!-- row.// -->
 									<hr>
-									<a href="#" class="btn btn-lg btn-primary text-uppercase">
-										Buy now </a> <a href="#"
+									<a style="padding-top: 8px;border: 1px solid red;"href="#" class="btn btn-lg btn-primary text-uppercase">
+										Buy now </a> <a style="padding-top: 8px;border: 1px solid red;" href="#"
 										class="btn btn-lg btn-outline-primary text-uppercase"> <i
 										class="fas fa-shopping-cart"></i> Add to cart
 									</a>

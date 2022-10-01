@@ -8,13 +8,23 @@
 	src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-
+<title> OTP</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 <style type="text/css">
 .form-gap {
     padding-top: 70px;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #EE4D2D;
+    border-color: #EE4D2D;
+}
+.btn-primary:hover {
+    color: #fff;
+    background-color: #EE4D2D;
+    border-color: #EE4D2D;
 }
 </style>
 </head>
