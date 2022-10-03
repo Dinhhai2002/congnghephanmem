@@ -36,13 +36,14 @@
                     </div>
                     <div class="authForm__form">
                         <div class="authForm__group">
-                            <input name="user" type="text" class="authForm__input" placeholder="Nhập Email">
+                            <input name="user" type="text" class="authForm__input" placeholder="Nhập tên người dùng">
                         </div>
                         <div class="authForm__group">
-                            <input type="password" class="authForm__input" placeholder="Nhập mật khẩu">
+                            <input name="fullname" type="text" class="authForm__input" placeholder="Nhập họ tên đầy đủ">
                         </div>
+                        
                         <div class="authForm__group">
-                            <input name="pass" type="password" class="authForm__input" placeholder="Nhập lại mật khẩu">
+                            <input name="pass" type="password" class="authForm__input" placeholder="Nhập mật khẩu">
                         </div>
                         <div class="authForm__group">
                             <input name="re_pass" type="password" class="authForm__input" placeholder="Nhập lại mật khẩu">
@@ -56,6 +57,7 @@
                         <div class="authForm__group">
                             <input name="address" type="text" class="authForm__input" placeholder="Nhập địa chỉ của bạn">
                         </div>
+                        
                     </div>
                     <div class="authForm__policy">
                         <p class="authForm__policy-text">
