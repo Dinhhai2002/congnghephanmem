@@ -144,5 +144,6 @@
 		</div>
 	</div>
 	<%-- <jsp:include page="footer.jsp"></jsp:include> --%>
+	 <script src="<c:url value="/js/detail.js"/>"></script>
 </body>
 </html>

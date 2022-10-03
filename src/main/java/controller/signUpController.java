@@ -33,6 +33,7 @@ public class signUpController extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		String username=request.getParameter("user");
+		String fullname=request.getParameter("fullname");
 		String pass=request.getParameter("pass");
 		String repass=request.getParameter("re_pass");
 		String email=request.getParameter("email");
@@ -88,6 +89,7 @@ public class signUpController extends HttpServlet {
 				mySession.setAttribute("otp",otpvalue); 
 				mySession.setAttribute("email",email);
 				mySession.setAttribute("username",username);
+				mySession.setAttribute("fullname", fullname);
 				mySession.setAttribute("password", pass);
 				mySession.setAttribute("phoneNumber", phoneNumber);
 				mySession.setAttribute("address", address);

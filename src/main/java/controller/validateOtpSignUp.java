@@ -21,6 +21,7 @@ public class validateOtpSignUp extends HttpServlet {
 		int otp=(int)session.getAttribute("otp");
 		String username=(String) session.getAttribute("username");
 		String pass=(String) session.getAttribute("password");
+		String fullname=(String) session.getAttribute("fullname");
 		String  email=(String) session.getAttribute("email");
 		String phoneNumber=(String) session.getAttribute("phoneNumber");
 		String address=(String) session.getAttribute("address");
@@ -32,7 +33,7 @@ public class validateOtpSignUp extends HttpServlet {
 		if (value==otp) 
 		{
 			DAO dao=new DAO();
-			dao.SignUp(username, pass,email,phoneNumber,address);
+			dao.SignUp(username, fullname,email,address,pass,phoneNumber);
 				request.setAttribute("status", "success");
 			  dispatcher=request.getRequestDispatcher("/login");
 			dispatcher.forward(request, response);

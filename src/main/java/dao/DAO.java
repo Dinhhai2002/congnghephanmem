@@ -158,22 +158,24 @@ public class DAO {
         }
         return null;
    }
-    public void SignUp(String user,String pass,String email,String Address,String phoneNumber) {
-      	 String query = "insert into [user] values(?,?,?,?,?,?,null,1,null,Date(),null)";
+    public void SignUp(String user,String fullname,String email,String Address,String password,String phoneNumber) {
+      	 String query = "insert into [user] values(?,?,?,?,?,?,null,1,null,getdate(),null)";
            try {
                conn = new connect().getConnection();
                ps = conn.prepareStatement(query);
                ps.setString(1, user);
-               ps.setString(2, pass);
+               ps.setString(2, fullname);
                ps.setString(3, email);
                ps.setString(4, Address);
-               ps.setString(5, phoneNumber);
+               ps.setString(5, password);
+               ps.setString(6, phoneNumber);
                ps.executeUpdate();
                
            } catch (Exception e) {
            }
            
       }
+    
        public user CheckAccount(String user) {
          	 String query = "select * from [user] where [uName]=?";
               try {
