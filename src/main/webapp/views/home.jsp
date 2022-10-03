@@ -25,6 +25,8 @@
 	rel="stylesheet">
 <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css'
 	rel='stylesheet'>
+	<link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
 </head>
 <body>
 	<div class="app">
@@ -32,27 +34,23 @@
 		<div class="container">
 			<div class="grid wide">
 				<div class="row no-gutters">
-					<div class="col l-12 m-12 c-12">
-						<div class="banner-top">
-							<a href="" class="banner-top_link"></a> <span
-								class="banner-top__arrow"> 
-								<i class='banner-top__arrow-icon bx bx-chevron-left' ></i>
-							</span> <span class="banner-top__arrow"> <i
-								class="banner-top__arrow-icon bx bx-chevron-right"></i>
-							</span>
-							<div class="banner-top__carousel">
-								<i class="banner-top__carousel-dot bx bxs-circle"></i> <i
-									class="banner-top__carousel-dot bx bxs-circle"></i> <i
-									class="banner-top__carousel-dot banner-top__carousel-dot-highlight fas fa-circle"></i>
-								<i class="banner-top__carousel-dot bx bxs-circle"></i> <i
-									class="banner-top__carousel-dot bx bxs-circle"></i> <i
-									class="banner-top__carousel-dot bx bxs-circle"></i> <i
-									class="banner-top__carousel-dot bx bxs-circle"></i> <i
-									class="banner-top__carousel-dot bx bxs-circle"></i> <i
-									class="banner-top__carousel-dot bx bxs-circle"></i> <i
-									class="banner-top__carousel-dot bx bxs-circle"></i>
-							</div>
-						</div>
+					<div class="gridswipper col l-12 m-12 c-12">
+						<div class="swiper mySwiper">
+                            <div class="swiper-wrapper">
+                              <div class="swiper-slide"><img src="./assets/img/banner/banner1.jpeg" alt=""></div>
+                              <div class="swiper-slide"><img src="./assets/img/banner/m-banner10.jpeg" alt=""></div>
+                              <div class="swiper-slide"><img src="./assets/img/banner/m-banner11.jpeg" alt=""></div>
+                              <div class="swiper-slide"><img src="./assets/img/banner/banner1.jpeg" alt=""></div>
+                              <div class="swiper-slide"><img src="./assets/img/banner/banner1.jpeg" alt=""></div>
+                              <div class="swiper-slide"><img src="./assets/img/banner/banner1.jpeg" alt=""></div>
+                              <div class="swiper-slide"><img src="./assets/img/banner/banner1.jpeg" alt=""></div>
+                              <div class="swiper-slide"><img src="./assets/img/banner/banner1.jpeg" alt=""></div>
+                              <div class="swiper-slide">Slide 9</div>
+                            </div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper-pagination"></div>
+                          </div>
 					</div>
 				</div>
 
@@ -525,5 +523,24 @@
 
         </div>
     </div> -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+            <script>
+                var swiper = new Swiper(".mySwiper", {
+                  spaceBetween: 30,
+                  centeredSlides: true,
+                  autoplay: {
+                    delay: 2500,
+                    disableOnInteraction: false,
+                  },
+                  pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                  },
+                  navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                  },
+                });
+              </script>
 </body>
 </html>
