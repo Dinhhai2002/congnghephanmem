@@ -14,19 +14,23 @@
 	type="text/css" />
 <link href="<c:url value="/css/main.css"/>" rel="stylesheet"
 	type="text/css" />
-	<link href="<c:url value="/css/grid.css"/>" rel="stylesheet"
+<link href="<c:url value="/css/grid.css"/>" rel="stylesheet"
 	type="text/css" />
-	<link href="<c:url value="/css/responsive.css"/>" rel="stylesheet"
+<link href="<c:url value="/css/responsive.css"/>" rel="stylesheet"
 	type="text/css" />
 
- 
+
 <link
 	href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap&subset=vietnamese"
 	rel="stylesheet">
 <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css'
 	rel='stylesheet'>
-	<link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 </head>
 <body>
 	<div class="app">
@@ -36,21 +40,37 @@
 				<div class="row no-gutters">
 					<div class="gridswipper col l-12 m-12 c-12">
 						<div class="swiper mySwiper">
-                            <div class="swiper-wrapper">
-                              <div class="swiper-slide"><img src="./assets/img/banner/banner1.jpeg" alt=""></div>
-                              <div class="swiper-slide"><img src="./assets/img/banner/m-banner10.jpeg" alt=""></div>
-                              <div class="swiper-slide"><img src="./assets/img/banner/m-banner11.jpeg" alt=""></div>
-                              <div class="swiper-slide"><img src="./assets/img/banner/banner1.jpeg" alt=""></div>
-                              <div class="swiper-slide"><img src="./assets/img/banner/banner1.jpeg" alt=""></div>
-                              <div class="swiper-slide"><img src="./assets/img/banner/banner1.jpeg" alt=""></div>
-                              <div class="swiper-slide"><img src="./assets/img/banner/banner1.jpeg" alt=""></div>
-                              <div class="swiper-slide"><img src="./assets/img/banner/banner1.jpeg" alt=""></div>
-                              <div class="swiper-slide">Slide 9</div>
-                            </div>
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-pagination"></div>
-                          </div>
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<img src="./assets/img/banner/banner1.jpeg" alt="">
+								</div>
+								<div class="swiper-slide">
+									<img src="./assets/img/banner/m-banner10.jpeg" alt="">
+								</div>
+								<div class="swiper-slide">
+									<img src="./assets/img/banner/m-banner11.jpeg" alt="">
+								</div>
+								<div class="swiper-slide">
+									<img src="./assets/img/banner/banner1.jpeg" alt="">
+								</div>
+								<div class="swiper-slide">
+									<img src="./assets/img/banner/banner1.jpeg" alt="">
+								</div>
+								<div class="swiper-slide">
+									<img src="./assets/img/banner/banner1.jpeg" alt="">
+								</div>
+								<div class="swiper-slide">
+									<img src="./assets/img/banner/banner1.jpeg" alt="">
+								</div>
+								<div class="swiper-slide">
+									<img src="./assets/img/banner/banner1.jpeg" alt="">
+								</div>
+								<div class="swiper-slide">Slide 9</div>
+							</div>
+							<div class="swiper-button-next"></div>
+							<div class="swiper-button-prev"></div>
+							<div class="swiper-pagination"></div>
+						</div>
 					</div>
 				</div>
 
@@ -172,9 +192,8 @@
 								<c:forEach items="${listCC}" var="o">
 									<li class="category-list__item ${tag==o.cId?"active":""}">
 										<a href="category?cid=${o.cId}"
-										class="category-list__item-link  ">
-											
-											<i class='category-list__item-icon bx bx-chevron-right' ></i>
+										class="category-list__item-link  "> <i
+											class='category-list__item-icon bx bx-chevron-right'></i>
 											${o.cName}
 									</a>
 									</li>
@@ -227,7 +246,7 @@
 						</div>
 
 
-					
+
 					</div>
 					<div class="col l-10 lo-10 m-12 c-12">
 						<div class="row sm-gutter">
@@ -239,8 +258,8 @@
 										<button class="btn">Mới Nhất</button>
 										<button class="btn">Bán Chạy</button>
 										<div class="sort-bar-by-options__price">
-											<span>Giá</span> 
-												<i class='sort-bart-by-options__icon bx bxs-chevron-down' ></i>
+											<span>Giá</span> <i
+												class='sort-bart-by-options__icon bx bxs-chevron-down'></i>
 											<div class="sort-bar-by-options__price-list">
 												<a href="" class="sort-bar-by-options__price-item">
 													<p class="sort-bar-by-options__price-text">Giá: Thấp
@@ -258,8 +277,9 @@
 										</p>
 										<button
 											class="btn sort-bar-mini-page-controller__icon-disabled">
-											
-												<i class='sort-bar-mini-page-controller__icon bx bxs-chevron-left-circle' ></i>
+
+											<i
+												class='sort-bar-mini-page-controller__icon bx bxs-chevron-left-circle'></i>
 										</button>
 										<button class="btn">
 											<i
@@ -269,14 +289,15 @@
 								</div>
 							</div>
 						</div>
-						<div class="row sm-gutter search-item-result__items">
+						<div id="content" class="row sm-gutter search-item-result__items">
 
 							<c:forEach items="${listP}" var="o">
 								<!-- search-item-1 -->
 								<div class="col l-2-4 lo-3 m-4 c-6 search-item-result__item">
-									<a href="/Shopee/detail?pid=${o.pId }" class="search-item-result__item-link">
+									<a href="/Shopee/detail?pid=${o.pId }"
+										class="search-item-result__item-link">
 										<div class="search-item-result__item-bgc">
-											
+
 											<div class="search-item-result__item-tag-left">
 												<div class="mall-tag hide-tag">
 													<span>Mall</span>
@@ -366,8 +387,8 @@
 											</div>
 											<div class="search-item-result__item-react">
 												<div class="search-item-result__item-like">
-													
-													<i class='search-item-result__item-like-icon bx bx-heart' ></i>
+
+													<i class='search-item-result__item-like-icon bx bx-heart'></i>
 													<!-- <i class="search-item-result__item-like-icon fas fa-heart"></i> -->
 												</div>
 												<div class="search-item-result__item-rated">
@@ -385,30 +406,85 @@
 									</a>
 								</div>
 							</c:forEach>
-						
-							
+
+
 						</div>
-						<ul class="pagination hide-on-mb">
-							<li class="pagination-item"><a href=""
-								class="pagination-item-link"> <i
-									class="pagination-item-icon bx bxs-chevron-left"></i>
-							</a></li>
-							<li class="pagination-item"><a href=""
-								class="pagination-item-link bgc-highlight"> 1 </a></li>
-							<li class="pagination-item"><a href=""
-								class="pagination-item-link"> 2 </a></li>
-							<li class="pagination-item"><a href=""
-								class="pagination-item-link"> 3 </a></li>
-							<li class="pagination-item"><a href=""
-								class="pagination-item-link"> 4 </a></li>
-							<li class="pagination-item"><a href=""
-								class="pagination-item-link"> 5 </a></li>
-							<li class="pagination-item"><a href=""
-								class="pagination-item-link"> ... </a></li>
-							<li class="pagination-item"><a href=""
-								class="pagination-item-link"> <i
-									class="pagination-item-icon bx bxs-chevron-right"></i>
-							</a></li>
+						<ul id="page" class="pagination hide-on-mb">
+							<c:if test="${tag > 1}">
+								<li class="pagination-item"><a
+									href="javascript:void(0)" class="pagination-item-link">
+										<i style="font-size: 2.5rem;"
+										class='pagination-item-icon bx bx-chevron-left'><p hidden>${tag-1}</p></i>
+								</a></li>
+							</c:if>
+							<c:if test="${endPage < 10}">
+								<c:forEach begin="1" end="${endPage}" var="i">
+									<li class="pagination-item"><a href="javascript:void(0)"
+										class="pagination-item-link ${tag == i?"bgc-highlight":""}">${i}</a></li>
+								</c:forEach>
+							</c:if>
+
+							<c:if test="${endPage >= 10}">
+								<c:if test="${tag <= 4}">
+									<c:forEach begin="1" end="5" var="i">
+										<li class="pagination-item"><a href="javascript:void(0)"
+											class="pagination-item-link ${tag == i?"bgc-highlight":""}">${i}</a></li>
+									</c:forEach>
+									<li class="pagination-item"><span
+										class="pagination-item-link">...</span></li>
+									<c:forEach begin="${endPage}" end="${endPage}" var="i">
+										<li class="pagination-item"><a href="javascript:void(0)"
+											class="pagination-item-link ${tag == i?"bgc-highlight":""}">${i}</a></li>
+									</c:forEach>
+								</c:if>
+								<c:if test="${tag > 4 && tag < endPage - 4}">
+
+									<li class="pagination-item"><a href="javascript:void(0)"
+										class="pagination-item-link ${tag == 1?"bgc-highlight":""}">1</a></li>
+
+									<li class="pagination-item"><span
+										class="pagination-item-link">...</span></li>
+									<c:forEach begin="${tag - 1}" end="${tag + 2}" var="i">
+										<li class="pagination-item"><a href="javascript:void(0)"
+											class="pagination-item-link ${tag == i?"bgc-highlight":""}">${i}</a></li>
+									</c:forEach>
+									<li class="pagination-item"><span
+										class="pagination-item-link">...</span></li>
+									<c:forEach begin="${endPage}" end="${endPage}" var="i">
+										<li class="pagination-item"><a href="javascript:void(0)"
+											class="pagination-item-link ${tag == i?"bgc-highlight":""}">${i}</a></li>
+									</c:forEach>
+								</c:if>
+								<c:if test="${tag == endPage - 4}">
+									<li class="pagination-item"><a href="javascript:void(0)"
+										class="pagination-item-link ${tag == 1?"bgc-highlight":""}">1</a></li>
+									<li class="pagination-item"><span
+										class="pagination-item-link">...</span></li>
+									<c:forEach begin="${tag - 2}" end="${endPage}" var="i">
+										<li class="pagination-item"><a href="javascript:void(0)"
+											class="pagination-item-link ${tag == i?"bgc-highlight":""}">${i}</a></li>
+									</c:forEach>
+								</c:if>
+								<c:if test="${tag > endPage - 4}">
+									<li class="pagination-item"><a href="javascript:void(0)"
+										class="pagination-item-link ${tag == 1?"bgc-highlight":""}">1</a></li>
+									<li class="pagination-item"><span
+										class="pagination-item-link">...</span></li>
+									<c:forEach begin="${endPage - 5}" end="${endPage}" var="i">
+										<li class="pagination-item"><a href="javascript:void(0)"
+											class="pagination-item-link ${tag == i?"bgc-highlight":""}">${i}</a></li>
+									</c:forEach>
+								</c:if>
+							</c:if>
+
+
+							<c:if test="${tag < endPage}">
+								<li class="pagination-item"><a
+									href="javascript:void(0)" class="pagination-item-link">
+										<i style="font-size: 2.5rem;"
+										class='pagination-item-icon bx bx-chevron-right'><p hidden>${tag+1}</p></i>
+								</a></li>
+							</c:if>
 						</ul>
 					</div>
 				</div>
@@ -523,24 +599,8 @@
 
         </div>
     </div> -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-            <script>
-                var swiper = new Swiper(".mySwiper", {
-                  spaceBetween: 30,
-                  centeredSlides: true,
-                  autoplay: {
-                    delay: 2500,
-                    disableOnInteraction: false,
-                  },
-                  pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                  },
-                  navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                  },
-                });
-              </script>
+
+	<!-- =========== Scripts =========  -->
+	<script src="<c:url value="/js/home.js"/>"></script>
 </body>
 </html>

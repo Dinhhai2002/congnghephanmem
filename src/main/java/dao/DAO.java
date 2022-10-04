@@ -260,7 +260,7 @@ public class DAO {
 		}
 		return 0;
 	}
-    public int pageSize = 4;
+    public int pageSize = 3;
     public List<Product> pagingProduct(int index) {
         List<Product> list = new ArrayList<>();
         String query = "select * from product\r\n"
