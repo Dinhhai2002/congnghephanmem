@@ -1,2 +1,2 @@
-this is our subject project
-this project is about a Ecommerce web site 
+this is our subject project.
+this project is build a Ecommerce web site with MVC JSP servlet
