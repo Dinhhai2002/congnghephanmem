@@ -2,6 +2,7 @@
  * 
  */
 //search item with ajax
+
 function searchByName(param) {
 	var txtS = param.value;
 	$.ajax({
@@ -19,12 +20,33 @@ function searchByName(param) {
 		}
 	});
 }
+ 
+var cId = 1;
+//category with ajax
+function cateAjax(cateId) {
+	$.ajax({
+		url: "/Shopee/category",
+		type: "get",
+		data: {
+			cid: cateId
+		},
+		success: function(data) {
+			var row = document.getElementById("content")
+			row.innerHTML = data;
+		},
+		error: function(xhr) {
+
+		}
+	});
+	document.getElementById(cId).classList.remove("active");
+	document.getElementById(cateId).classList.add("active");
+	cId = cateId;
+	
+}
+
 
 //paging with ajax
-
-
 $(document).on('click', '.pagination-item-link', function() {
-
 	//lấy phần tử bấm chuột - chính là  $(".example1")
 	var index = $(this);
 	//lấy nội dung
@@ -58,13 +80,11 @@ $(document).on('click', '.pagination-item-link', function() {
 		}
 	});
 });
-$(document).on('click', '.bx-chevron-left', function() {
 
-	//lấy phần tử bấm chuột - chính là  $(".example1")
+$(document).on('click', '.bx-chevron-left', function() {
 	var index = $(this);
 	//lấy nội dung
 	var htmlcontent = index.text();
-
 	$.ajax({
 		url: "/Shopee/pagingAjax",
 		type: "get",
@@ -96,12 +116,8 @@ $(document).on('click', '.bx-chevron-left', function() {
 });
 
 $(document).on('click', '.bx-chevron-right', function() {
-
-	//lấy phần tử bấm chuột - chính là  $(".example1")
 	var index = $(this);
-	//lấy nội dung
 	var htmlcontent = index.text();
-
 	$.ajax({
 		url: "/Shopee/pagingAjax",
 		type: "get",

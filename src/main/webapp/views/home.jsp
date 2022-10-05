@@ -190,9 +190,9 @@
 							</h2>
 							<ul class="category-list__list">
 								<c:forEach items="${listCC}" var="o">
-									<li class="category-list__item ${tag==o.cId?"active":""}">
-										<a href="category?cid=${o.cId}"
-										class="category-list__item-link  "> <i
+									<li class="category-list__item">
+										<a id="${o.cId}" style="cursor: pointer;" onclick="cateAjax(${o.cId})"
+										class="category-list__item-link"> <i
 											class='category-list__item-icon bx bx-chevron-right'></i>
 											${o.cName}
 									</a>
@@ -294,7 +294,7 @@
 							<c:forEach items="${listP}" var="o">
 								<!-- search-item-1 -->
 								<div class="col l-2-4 lo-3 m-4 c-6 search-item-result__item">
-									<a href="/Shopee/detail?pid=${o.pId }"
+									<a href="/Shopee/detail?pid=${o.pId}"
 										class="search-item-result__item-link">
 										<div class="search-item-result__item-bgc">
 
@@ -412,14 +412,14 @@
 						<ul id="page" class="pagination hide-on-mb">
 							<c:if test="${tag > 1}">
 								<li class="pagination-item"><a
-									href="javascript:void(0)" class="pagination-item-link">
+									href="#content" class="pagination-item-link">
 										<i style="font-size: 2.5rem;"
 										class='pagination-item-icon bx bx-chevron-left'><p hidden>${tag-1}</p></i>
 								</a></li>
 							</c:if>
 							<c:if test="${endPage < 10}">
 								<c:forEach begin="1" end="${endPage}" var="i">
-									<li class="pagination-item"><a href="javascript:void(0)"
+									<li class="pagination-item"><a href="#content"
 										class="pagination-item-link ${tag == i?"bgc-highlight":""}">${i}</a></li>
 								</c:forEach>
 							</c:if>
@@ -427,51 +427,51 @@
 							<c:if test="${endPage >= 10}">
 								<c:if test="${tag <= 4}">
 									<c:forEach begin="1" end="5" var="i">
-										<li class="pagination-item"><a href="javascript:void(0)"
+										<li class="pagination-item"><a href="#content"
 											class="pagination-item-link ${tag == i?"bgc-highlight":""}">${i}</a></li>
 									</c:forEach>
 									<li class="pagination-item"><span
 										class="pagination-item-link">...</span></li>
 									<c:forEach begin="${endPage}" end="${endPage}" var="i">
-										<li class="pagination-item"><a href="javascript:void(0)"
+										<li class="pagination-item"><a href="#content"
 											class="pagination-item-link ${tag == i?"bgc-highlight":""}">${i}</a></li>
 									</c:forEach>
 								</c:if>
 								<c:if test="${tag > 4 && tag < endPage - 4}">
 
-									<li class="pagination-item"><a href="javascript:void(0)"
+									<li class="pagination-item"><a href="#content"
 										class="pagination-item-link ${tag == 1?"bgc-highlight":""}">1</a></li>
 
 									<li class="pagination-item"><span
 										class="pagination-item-link">...</span></li>
 									<c:forEach begin="${tag - 1}" end="${tag + 2}" var="i">
-										<li class="pagination-item"><a href="javascript:void(0)"
+										<li class="pagination-item"><a href="#content"
 											class="pagination-item-link ${tag == i?"bgc-highlight":""}">${i}</a></li>
 									</c:forEach>
 									<li class="pagination-item"><span
 										class="pagination-item-link">...</span></li>
 									<c:forEach begin="${endPage}" end="${endPage}" var="i">
-										<li class="pagination-item"><a href="javascript:void(0)"
+										<li class="pagination-item"><a href="#content"
 											class="pagination-item-link ${tag == i?"bgc-highlight":""}">${i}</a></li>
 									</c:forEach>
 								</c:if>
 								<c:if test="${tag == endPage - 4}">
-									<li class="pagination-item"><a href="javascript:void(0)"
+									<li class="pagination-item"><a href="#content"
 										class="pagination-item-link ${tag == 1?"bgc-highlight":""}">1</a></li>
 									<li class="pagination-item"><span
 										class="pagination-item-link">...</span></li>
 									<c:forEach begin="${tag - 2}" end="${endPage}" var="i">
-										<li class="pagination-item"><a href="javascript:void(0)"
+										<li class="pagination-item"><a href="#content"
 											class="pagination-item-link ${tag == i?"bgc-highlight":""}">${i}</a></li>
 									</c:forEach>
 								</c:if>
 								<c:if test="${tag > endPage - 4}">
-									<li class="pagination-item"><a href="javascript:void(0)"
+									<li class="pagination-item"><a href="#content"
 										class="pagination-item-link ${tag == 1?"bgc-highlight":""}">1</a></li>
 									<li class="pagination-item"><span
 										class="pagination-item-link">...</span></li>
 									<c:forEach begin="${endPage - 5}" end="${endPage}" var="i">
-										<li class="pagination-item"><a href="javascript:void(0)"
+										<li class="pagination-item"><a href="#content"
 											class="pagination-item-link ${tag == i?"bgc-highlight":""}">${i}</a></li>
 									</c:forEach>
 								</c:if>
@@ -480,7 +480,7 @@
 
 							<c:if test="${tag < endPage}">
 								<li class="pagination-item"><a
-									href="javascript:void(0)" class="pagination-item-link">
+									href="#content" class="pagination-item-link">
 										<i style="font-size: 2.5rem;"
 										class='pagination-item-icon bx bx-chevron-right'><p hidden>${tag+1}</p></i>
 								</a></li>

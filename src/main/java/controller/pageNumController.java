@@ -32,7 +32,7 @@ public class pageNumController extends HttpServlet {
 		PrintWriter out = resp.getWriter();
 		if (index > 1) {
 			out.println("<li class=\"pagination-item\"><a\r\n"
-					+ "	href=\"javascript:void(0)\" class=\"pagination-item-link\">\r\n"
+					+ "	href=\"#content\" class=\"pagination-item-link\">\r\n"
 					+ "	<i style=\"font-size: 2.5rem;\"\r\n"
 					+ "	class='pagination-item-icon bx bx-chevron-left'><p hidden>" + (index - 1) + "</p></i>\r\n"
 					+ "	</a></li>");
@@ -40,9 +40,9 @@ public class pageNumController extends HttpServlet {
 		if (endPage < 10) {
 			for (int i = 1; i <= endPage; i++) {
 				out.println((index == i)
-						? "<li class=\"pagination-item\"><a href=\"javascript:void(0)\"\r\n"
+						? "<li class=\"pagination-item\"><a href=\"#content\"\r\n"
 								+ "	class=\"pagination-item-link bgc-highlight\">" + i + "</a></li>"
-						: "<li class=\"pagination-item\"><a href=\"javascript:void(0)\"\r\n"
+						: "<li class=\"pagination-item\"><a href=\"#content\"\r\n"
 								+ "	class=\"pagination-item-link\">" + i + "</a></li>");
 			}
 
@@ -50,79 +50,79 @@ public class pageNumController extends HttpServlet {
 			if (index <= 4) {
 				for (int i = 1; i <= 5; i++) {
 					out.println((index == i)
-							? "<li class=\"pagination-item\"><a href=\"javascript:void(0)\"\r\n"
+							? "<li class=\"pagination-item\"><a href=\"#content\"\r\n"
 									+ "	class=\"pagination-item-link bgc-highlight\">" + i + "</a></li>"
-							: "<li class=\"pagination-item\"><a href=\"javascript:void(0)\"\r\n"
+							: "<li class=\"pagination-item\"><a href=\"#content\"\r\n"
 									+ "	class=\"pagination-item-link\">" + i + "</a></li>");
 				}
 				out.println(
 						"<li class=\"pagination-item\"><span\r\n" + "class=\"pagination-item-link\">...</span></li>");
 				out.println((index == endPage)
-						? "<li class=\"pagination-item\"><a href=\"javascript:void(0)\"\r\n"
+						? "<li class=\"pagination-item\"><a href=\"#content\"\r\n"
 								+ "	class=\"pagination-item-link bgc-highlight\">" + endPage + "</a></li>"
-						: "<li class=\"pagination-item\"><a href=\"javascript:void(0)\"\r\n"
+						: "<li class=\"pagination-item\"><a href=\"#content\"\r\n"
 								+ "	class=\"pagination-item-link\">" + endPage + "</a></li>");
 			}
 			if (index > 4 && index < endPage - 4) {
 				out.println((index == 1)
-						? "<li class=\"pagination-item\"><a href=\"javascript:void(0)\"\r\n"
+						? "<li class=\"pagination-item\"><a href=\"#content\"\r\n"
 								+ "	class=\"pagination-item-link bgc-highlight\">1</a></li>"
-						: "<li class=\"pagination-item\"><a href=\"javascript:void(0)\"\r\n"
+						: "<li class=\"pagination-item\"><a href=\"#content\"\r\n"
 								+ "	class=\"pagination-item-link\">1</a></li>");
 				out.println(
 						"<li class=\"pagination-item\"><span\r\n" + "class=\"pagination-item-link\">...</span></li>");
 				for (int i = index - 1; i <= index + 2; i++) {
 					out.println((index == i)
-							? "<li class=\"pagination-item\"><a href=\"javascript:void(0)\"\r\n"
+							? "<li class=\"pagination-item\"><a href=\"#content\"\r\n"
 									+ "	class=\"pagination-item-link bgc-highlight\">" + i + "</a></li>"
-							: "<li class=\"pagination-item\"><a href=\"javascript:void(0)\"\r\n"
+							: "<li class=\"pagination-item\"><a href=\"#content\"\r\n"
 									+ "	class=\"pagination-item-link\">" + i + "</a></li>");
 				}
 				out.println(
 						"<li class=\"pagination-item\"><span\r\n" + "class=\"pagination-item-link\">...</span></li>");
 				out.println((index == endPage)
-						? "<li class=\"pagination-item\"><a href=\"javascript:void(0)\"\r\n"
+						? "<li class=\"pagination-item\"><a href=\"#content\"\r\n"
 								+ "	class=\"pagination-item-link bgc-highlight\">" + endPage + "</a></li>"
-						: "<li class=\"pagination-item\"><a href=\"javascript:void(0)\"\r\n"
+						: "<li class=\"pagination-item\"><a href=\"#content\"\r\n"
 								+ "	class=\"pagination-item-link\">" + endPage + "</a></li>");
 
 			}
 			if (index == endPage - 4) {
 				out.println((index == 1)
-						? "<li class=\"pagination-item\"><a href=\"javascript:void(0)\"\r\n"
+						? "<li class=\"pagination-item\"><a href=\"#content\"\r\n"
 								+ "	class=\"pagination-item-link bgc-highlight\">1</a></li>"
-						: "<li class=\"pagination-item\"><a href=\"javascript:void(0)\"\r\n"
+						: "<li class=\"pagination-item\"><a href=\"#content\"\r\n"
 								+ "	class=\"pagination-item-link\">1</a></li>");
 				out.println(
 						"<li class=\"pagination-item\"><span\r\n" + "class=\"pagination-item-link\">...</span></li>");
 				for (int i = index - 2; i <= endPage; i++) {
 					out.println((index == i)
-							? "<li class=\"pagination-item\"><a href=\"javascript:void(0)\"\r\n"
+							? "<li class=\"pagination-item\"><a href=\"#content\"\r\n"
 									+ "	class=\"pagination-item-link bgc-highlight\">" + i + "</a></li>"
-							: "<li class=\"pagination-item\"><a href=\"javascript:void(0)\"\r\n"
+							: "<li class=\"pagination-item\"><a href=\"#content\"\r\n"
 									+ "	class=\"pagination-item-link\">" + i + "</a></li>");
 				}
 			}
 			if (index > endPage - 4) {
 				out.println((index == 1)
-						? "<li class=\"pagination-item\"><a href=\"javascript:void(0)\"\r\n"
+						? "<li class=\"pagination-item\"><a href=\"#content\"\r\n"
 								+ "	class=\"pagination-item-link bgc-highlight\">1</a></li>"
-						: "<li class=\"pagination-item\"><a href=\"javascript:void(0)\"\r\n"
+						: "<li class=\"pagination-item\"><a href=\"#content\"\r\n"
 								+ "	class=\"pagination-item-link\">1</a></li>");
 				out.println(
 						"<li class=\"pagination-item\"><span\r\n" + "class=\"pagination-item-link\">...</span></li>");
 				for (int i = endPage - 5; i <= endPage; i++) {
 					out.println((index == i)
-							? "<li class=\"pagination-item\"><a href=\"javascript:void(0)\"\r\n"
+							? "<li class=\"pagination-item\"><a href=\"#content\"\r\n"
 									+ "	class=\"pagination-item-link bgc-highlight\">" + i + "</a></li>"
-							: "<li class=\"pagination-item\"><a href=\"javascript:void(0)\"\r\n"
+							: "<li class=\"pagination-item\"><a href=\"#content\"\r\n"
 									+ "	class=\"pagination-item-link\">" + i + "</a></li>");
 				}
 			}
 		}
 		if (index < endPage) {
 			out.println("<li class=\"pagination-item\"><a\r\n"
-					+ "	href=\"javascript:void(0)\" class=\"pagination-item-link\">\r\n"
+					+ "	href=\"#content\" class=\"pagination-item-link\">\r\n"
 					+ "	<i style=\"font-size: 2.5rem;\"\r\n"
 					+ "	class='pagination-item-icon bx bx-chevron-right'><p hidden>" + (index + 1) + "</p></i>\r\n"
 					+ "	</a></li>");
