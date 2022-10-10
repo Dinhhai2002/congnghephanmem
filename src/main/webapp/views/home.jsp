@@ -274,7 +274,7 @@
 							<c:forEach items="${listP}" var="o">
 								<!-- search-item-1 -->
 								<div class="col l-2-4 lo-3 m-4 c-6 search-item-result__item">
-									<a href="/Shopee/detail?pid=${o.pId }" class="search-item-result__item-link">
+									<a href="/Shopee/detail?pId=${o.pId}&quantity=1&action=" class="search-item-result__item-link">
 										<div class="search-item-result__item-bgc">
 											
 											<div class="search-item-result__item-tag-left">

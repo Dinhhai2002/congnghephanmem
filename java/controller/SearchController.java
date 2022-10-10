@@ -10,34 +10,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.CategoryDao;
 import dao.DAO;
 import entity.Category;
 import entity.Product;
 
-@WebServlet(urlPatterns="/home")
-public class homeController extends HttpServlet {
+@WebServlet(urlPatterns="/search")
+
+public class SearchController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html");
 		resp.setCharacterEncoding("UTF-8");
 		req.setCharacterEncoding("UTF-8");
-		String pIndex = req.getParameter("index");
-		int index = Integer.parseInt(pIndex);
+		String txtS=req.getParameter("txtS");
+		DAO dao =new DAO();
+		CategoryDao categoryDao = new CategoryDao();
 		
-		DAO dao = new DAO();
-		int count = dao.getTotalProduct();
-		int pageSize = dao.pageSize;
-		int endPage = count/pageSize;
-		if(count%pageSize>0) {
-			endPage++;
-		}
-		List<Product> list = dao.pagingProduct(index);
-		List<Category> listC = dao.getAllCategory();
+		List<Product> list=dao.SearchProduct(txtS);
+		List<Category> listC = categoryDao.findAll();
 		/*set data to jsp*/
-		req.setAttribute("tag", index);
-		req.setAttribute("endPage", endPage);
 	    req.setAttribute("listP", list);
 	    req.setAttribute("listCC", listC);
+	    req.setAttribute("txtSearch", txtS);
 //        req.setAttribute("p", last);
 		RequestDispatcher rq=req.getRequestDispatcher("/views/home.jsp");
 		rq.forward(req, resp);
@@ -47,5 +42,4 @@ public class homeController extends HttpServlet {
 		// TODO Auto-generated method stub
 		super.doPost(req, resp);
 	}
-		
 }

@@ -1,43 +1,45 @@
 package controller;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.Map;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import dao.DAO;
-import entity.Category;
-import entity.Product;
+import entity.CartItem;
+import entity.User;
 
-@WebServlet(urlPatterns="/search")
-
-public class SearchController extends HttpServlet {
+@WebServlet(urlPatterns={"/member/checkout"})
+public class CheckOutController extends HttpServlet{
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html");
 		resp.setCharacterEncoding("UTF-8");
 		req.setCharacterEncoding("UTF-8");
-		String txtS=req.getParameter("txtS");
-		DAO dao =new DAO();
 		
-		List<Product> list=dao.SearchProduct(txtS);
-		List<Category> listC = dao.getAllCategory();
-		/*set data to jsp*/
-	    req.setAttribute("listP", list);
-	    req.setAttribute("listCC", listC);
-	    req.setAttribute("txtSearch", txtS);
-//        req.setAttribute("p", last);
-		RequestDispatcher rq=req.getRequestDispatcher("/views/home.jsp");
-		rq.forward(req, resp);
+		
+		HttpSession httpSession = req.getSession();
+		Object obj = httpSession.getAttribute("acc");
+		Object obj1 = httpSession.getAttribute("cart");
+		
+		User acc = (User) obj; //ép về kiểm của
+		Map<Integer, CartItem> map = (Map<Integer, CartItem>) obj1;
+		
+		httpSession.setAttribute("cart", map);
+		httpSession.setAttribute("acc", acc);		
+		
+		req.getRequestDispatcher("/views/checkout.jsp").forward(req, resp);
 	}
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		super.doPost(req, resp);
 	}
+
 }

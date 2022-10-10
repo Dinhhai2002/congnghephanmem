@@ -17,6 +17,7 @@
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/jstl/jstl -->
 		<dependency>
+		
 			<groupId>jstl</groupId>
 			<artifactId>jstl</artifactId>
 			<version>${jstl.version}</version>
@@ -91,6 +92,12 @@
 		</dependency>
 
 
+<!-- https://mvnrepository.com/artifact/com.paypal.sdk/rest-api-sdk -->
+<dependency>
+    <groupId>com.paypal.sdk</groupId>
+    <artifactId>rest-api-sdk</artifactId>
+    <version>1.14.0</version>
+</dependency>
 
 	</dependencies>
 	<build>
