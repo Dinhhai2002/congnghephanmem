@@ -8,6 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import dao.DAO;
+import entity.user;
 
 @WebServlet(urlPatterns="/logingoogle")
 	
@@ -16,6 +20,12 @@ import javax.servlet.http.HttpServletResponse;
 	  public LoginGoogleServlet() {
 	    super();
 	  }
+	  
+	  /*
+	   * check count Account(username,email)
+	   * if(count==1)->đẩy về trang home
+	   * else ->insert account->đẩy về trang home
+	   * */
 	  protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	      throws ServletException, IOException {
 	    String code = request.getParameter("code");
@@ -25,11 +35,35 @@ import javax.servlet.http.HttpServletResponse;
 	    } else {
 	      String accessToken = GoogleUtils.getToken(code);
 	      GooglePojo googlePojo = GoogleUtils.getUserInfo(accessToken);
-	      request.setAttribute("id", googlePojo.getId());
-	      request.setAttribute("name", googlePojo.getName());
-	      request.setAttribute("email", googlePojo.getEmail());
-	      RequestDispatcher dis = request.getRequestDispatcher("/home?index=1");
-	      dis.forward(request, response);
+	      String username=googlePojo.getName();
+	      String email=googlePojo.getEmail();
+	      String image=googlePojo.getPicture();
+	      DAO dao=new DAO();
+	      int NumberAccountGoogle=dao.numberAccount(username, email);
+	    	user checkAccountGoogle=dao.CheckAccountforgotPassword(username, email);
+	      if(NumberAccountGoogle==1 && checkAccountGoogle.getIsAccountGoogle()==1)
+	      {
+	    	  HttpSession session=request.getSession();
+				session.setAttribute("acc", checkAccountGoogle);
+				RequestDispatcher dis = request.getRequestDispatcher("/home?index=1");
+			      dis.forward(request, response);
+	      }
+	      else if(NumberAccountGoogle==0){
+	    	  dao.insertAcountGoogle(username, email,image);
+	    	 
+	    	  HttpSession session=request.getSession();
+				session.setAttribute("acc", dao.CheckAccountforgotPassword(username, email));
+				RequestDispatcher dis = request.getRequestDispatcher("/home?index=1");
+			      dis.forward(request, response);
+	    	  
+	      }
+	      else {
+	    	  response.sendRedirect("/Shopee/login");
+	      }
+	      //request.setAttribute("id", googlePojo.getId());
+	      //request.setAttribute("name", googlePojo.getName());
+	      //request.setAttribute("email", googlePojo.getEmail());
+	     
 	    }
 	  }
 	  protected void doPost(HttpServletRequest request, HttpServletResponse response)

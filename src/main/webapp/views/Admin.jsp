@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Admin</title>
 <link  rel="stylesheet" href="<c:url value="/css/admin.css"/>" >
 </head>
 <body>

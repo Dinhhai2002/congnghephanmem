@@ -12,6 +12,7 @@ public class user {
 	private String uPhone;
 	private int eWallet;
 	private int idRole;
+	private int isAccountGoogle;
 	private String uImage;
 	private Date createAt;
 	private Date updateAt;
@@ -19,7 +20,7 @@ public class user {
 		super();
 	}
 	public user(int uId, String uName, String uFullName, String uEmail, String uAddress, String uPassword,
-			String uPhone, int eWallet, int idRole, String uImage, Date createAt, Date updateAt) {
+			String uPhone, int eWallet, int idRole, int isAccountGoogle, String uImage, Date createAt, Date updateAt) {
 		super();
 		this.uId = uId;
 		this.uName = uName;
@@ -30,6 +31,7 @@ public class user {
 		this.uPhone = uPhone;
 		this.eWallet = eWallet;
 		this.idRole = idRole;
+		this.isAccountGoogle = isAccountGoogle;
 		this.uImage = uImage;
 		this.createAt = createAt;
 		this.updateAt = updateAt;
@@ -88,6 +90,12 @@ public class user {
 	public void setIdRole(int idRole) {
 		this.idRole = idRole;
 	}
+	public int getIsAccountGoogle() {
+		return isAccountGoogle;
+	}
+	public void setIsAccountGoogle(int isAccountGoogle) {
+		this.isAccountGoogle = isAccountGoogle;
+	}
 	public String getuImage() {
 		return uImage;
 	}
@@ -110,8 +118,8 @@ public class user {
 	public String toString() {
 		return "user [uId=" + uId + ", uName=" + uName + ", uFullName=" + uFullName + ", uEmail=" + uEmail
 				+ ", uAddress=" + uAddress + ", uPassword=" + uPassword + ", uPhone=" + uPhone + ", eWallet=" + eWallet
-				+ ", idRole=" + idRole + ", uImage=" + uImage + ", createAt=" + createAt + ", updateAt=" + updateAt
-				+ "]";
+				+ ", idRole=" + idRole + ", isAccountGoogle=" + isAccountGoogle + ", uImage=" + uImage + ", createAt="
+				+ createAt + ", updateAt=" + updateAt + "]";
 	}
 	
 	

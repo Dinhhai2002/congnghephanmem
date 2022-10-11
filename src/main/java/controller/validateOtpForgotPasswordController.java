@@ -13,7 +13,13 @@ import javax.servlet.http.HttpSession;
 @WebServlet(urlPatterns="/ValidateOtp")
 public class validateOtpForgotPasswordController extends HttpServlet{
 	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RequestDispatcher dispatcher=null;
+		dispatcher=request.getRequestDispatcher("/views/EnterOtp.jsp");
+		dispatcher.forward(request, response);
+	}
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int value=Integer.parseInt(request.getParameter("otp"));
 		HttpSession session=request.getSession();
 		int otp=(int)session.getAttribute("otp");
@@ -26,11 +32,11 @@ public class validateOtpForgotPasswordController extends HttpServlet{
 		if (value==otp) 
 		{
 			
+				request.setAttribute("phoneNumber", request.getParameter("phoneNumber"));
 				request.setAttribute("email", request.getParameter("email"));
 				request.setAttribute("username", request.getParameter("username"));
 				request.setAttribute("status", "success");
-			  dispatcher=request.getRequestDispatcher("/views/newPassword.jsp");
-			dispatcher.forward(request, response);
+			  response.sendRedirect("/Shopee/newPassword");
 			
 		}
 		else
@@ -42,4 +48,5 @@ public class validateOtpForgotPasswordController extends HttpServlet{
 		
 		}
 	}
+	
 }

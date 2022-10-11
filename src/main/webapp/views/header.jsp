@@ -59,6 +59,20 @@
                                     </a>
                                 </li> 
                             </c:if>
+                            <c:if test="${sessionScope.acc.idRole==2}">
+                                <li class="navbar__item">
+                                    <a href="" class="navbar__item-link medium-text">
+                                        Admin
+                                    </a>
+                                </li> 
+                            </c:if>
+                            <c:if test="${sessionScope.acc.idRole==4}">
+                                <li class="navbar__item">
+                                    <a href="" class="navbar__item-link medium-text">
+                                        Shipper
+                                    </a>
+                                </li> 
+                            </c:if>
                             <c:if test="${sessionScope.acc==null}">
                                 <li class="navbar__item">
                             <a href="/Shopee/register" class="navbar__item-link medium-text">
@@ -73,13 +87,29 @@
                     </c:if>
                                 <li class="navbar__item border-none">
                                     <div class="navbar__item-user">
-                                        <img src="./assets/img/avatar_user.jpeg" alt="" class="navbarItem__user-img">
+                                    
+                                    
+                                       <c:if test="${sessionScope.acc!=null}">
+                                    	<c:if test="${empty sessionScope.acc.uImage}">
+                                    	<img src="<c:url value="/img/anhdaidiennull.jpg"/>" alt="" class="navbarItem__user-img">
+                                    	</c:if> 
+                                    	</c:if>                         
+                                    
+                                  
+                                      <c:if test="${sessionScope.acc!=null}">
+                                    <c:if test="${not empty sessionScope.acc.uImage}">
+                                    	<img src="<c:url value="${sessionScope.acc.uImage}"/>" alt="" class="navbarItem__user-img">
+                                    	</c:if> 
+                                    	</c:if>                           
+                                    
+                                   
+                                        <%-- <img src="<c:url value="/img/anhdaidiennull.jpg"/>" alt="" class="navbarItem__user-img"> --%>
                                         <a href="" class="navbar__item-link medium-text">
                                             ${sessionScope.acc.uName }
                                         </a>
                                         <ul class="navbarItem__user-list">
                                             <li class="navbarItem__user-item">
-                                                <a href="" class="navbarItem__user-link">
+                                                <a href="/Shopee/myAccount" class="navbarItem__user-link">
                                                     Tài Khoản Của Tôi
                                                 </a>
                                             </li>

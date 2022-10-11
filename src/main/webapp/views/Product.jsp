@@ -1,16 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shopee</title>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-<link href="<c:url value="/css/base.css"/>" rel="stylesheet"
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopee</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="<c:url value="/css/base.css"/>" rel="stylesheet"
 	type="text/css" />
 <link href="<c:url value="/css/main.css"/>" rel="stylesheet"
 	type="text/css" />
@@ -18,96 +20,188 @@
 	type="text/css" />
 	<link href="<c:url value="/css/responsive.css"/>" rel="stylesheet"
 	type="text/css" />
-
- 
-<link
-	href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap&subset=vietnamese"
-	rel="stylesheet">
-<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css'
-	rel='stylesheet'>
-	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-	    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-	<link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
-  <style type="text/css">
-  .footer-logo-background{
-  /* background: url("<c:url value="/img/bg-icon.png"/>"); */
-  background: url("${pageContext.request.contextPath}/img/bg-icon.png");
-  }
-  </style>
+    <link rel="stylesheet" href="/fontawesome/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css'
+	rel='stylesheet'>
 </head>
-<body>
-	<div class="app">
-		<jsp:include page="header.jsp"></jsp:include>
-		<div class="container">
-			<div class="grid wide">
-				<div class="row no-gutters">
-					<div class="gridswipper col l-12 m-12 c-12">
-						<div class="swiper mySwiper">
-                            <div class="swiper-wrapper">
-                              <div class="swiper-slide"><img src="https://ucarecdn.com/07322294-7f1a-44d0-98f8-fdde85a4cc39/z3788007980337_e2b5cc30c3abcad1cf0ea9d9d2e7cb84.jpg" alt=""></div>
-                              <div class="swiper-slide"><img src="https://ucarecdn.com/09b55ace-b66f-46c6-a499-d45199c40ced/z3788007984286_8a456c60cc73ec5f634e2c07f6f965e4.jpg" alt=""></div>
-                              <div class="swiper-slide"><img src="https://ucarecdn.com/eaef859f-79c9-437b-8f63-69d8adde27e6/z3788007984292_9dc701e54e6e63f600c4c25c602b652a.jpg" alt=""></div>
-                              <div class="swiper-slide"><img src="https://ucarecdn.com/a6546423-6e0e-4d0b-8152-f3f8d97031cb/z3788007984296_b6c7a274737f8341912682368c11b656.jpg" alt=""></div>
-                              <div class="swiper-slide"><img src="https://ucarecdn.com/5fc02732-e7bc-48b1-b658-961a0cd13edb/z3788008001379_78e65fb74dfbb8525a4580513a25b347.jpg" alt=""></div>
-                              <div class="swiper-slide"><img src="https://ucarecdn.com/522627fe-7415-459a-a364-351c2b0c3340/z3788008012653_c7e237fe2dd20180f10f7daa97972146.jpg" alt=""></div>
-                              <div class="swiper-slide"><img src="https://ucarecdn.com/2eca270a-89f5-49a9-adfa-5beaf95b7e22/z3788007994009_ec5e1defa2e702fc0401db963950abe2.jpg" alt=""></div>
-                              <div class="swiper-slide"><img src="https://ucarecdn.com/bbcb0bc2-9c39-4625-a3d2-af3761643c80/z3788008021666_da8cea312c24955943877a1c01dce595.jpg" alt=""></div>
-                              <div class="swiper-slide"><img src="https://ucarecdn.com/580ef643-68da-48f7-b075-634cb8e5cc6d/z3788194475345_7a43857d0ead2dd2ccb521074d9ec505.jpg" alt=""></div>
-                            </div>
-                            <div class="swiper-button-next"></div>
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-pagination"></div>
-                          </div>
-					</div>
-				</div>
 
-		<div class="row no-gutters">
-                    <div class="col l-12 c-12 m-12 ofs-carousel">
-                        <div class="ofs-carousel__header">
-                            <a href="#" class="ofs-carousel__title-shop">
-                                Danh mục sản phẩm
+<body>
+    <div class="app">
+		<jsp:include page="header.jsp"></jsp:include>
+        <div class="container">
+            <div class="grid wide">
+          
+                <!-- Body -->
+                <div class="shop-category-on-mb-tb hide-on-pc">
+                    <h3 class="img-carousel__items-title">
+                        Danh Mục
+                    </h3>
+                    <ul class="row no-gutters shop-category-on-mb-tb-list">
+                        <li class="col m-3 c-4 shop-category-on-mb-tb-item">
+                            <a href="" class="shop-category-on-mb-tb-item-link">
+                                <div class="shop-category-on-mb-tb-item-wrap">
+                                    <div class="shop-category-on-mb-tb-item-img1"></div>
+                                </div>
+                                <p class="shop-category-on-mb-tb-item-text">
+                                    Máy Tính Bàn
+                                </p>
                             </a>
-                            <a href="/Shopee/product?index=1" class="ofs-carousel__title">
-                                <span>Xem tất cả</span>
-                                <i class="fas fa-chevron-right"></i>
+                            <a href="" class="shop-category-on-mb-tb-item-link">
+                                <div class="shop-category-on-mb-tb-item-wrap">
+                                    <div class="shop-category-on-mb-tb-item-img6"></div>
+                                </div>
+                                <p class="shop-category-on-mb-tb-item-text">
+                                    Màn Hình
+                                </p>
                             </a>
-                        </div>
-                    </div>
+                        </li>
+                        <li class="col m-3 c-4 shop-category-on-mb-tb-item">
+                            <a href="" class="shop-category-on-mb-tb-item-link">
+                                <div class="shop-category-on-mb-tb-item-wrap">
+                                    <div class="shop-category-on-mb-tb-item-img2"></div>
+                                </div>
+                                <p class="shop-category-on-mb-tb-item-text">
+                                    Linh Kiện Máy Tính
+                                </p>
+                            </a>
+                            <a href="" class="shop-category-on-mb-tb-item-link">
+                                <div class="shop-category-on-mb-tb-item-wrap">
+                                    <div class="shop-category-on-mb-tb-item-img7"></div>
+                                </div>
+                                <p class="shop-category-on-mb-tb-item-text">
+                                    Thiết Bị Lưu Trữ
+                                </p>
+                            </a>
+                        </li>
+                        <li class="col m-3 c-4 shop-category-on-mb-tb-item">
+                            <a href="" class="shop-category-on-mb-tb-item-link">
+                                <div class="shop-category-on-mb-tb-item-wrap">
+                                    <div class="shop-category-on-mb-tb-item-img3"></div>
+                                </div>
+                                <p class="shop-category-on-mb-tb-item-text">
+                                    Thiết Bị Mạng
+                                </p>
+                            </a>
+                            <a href="" class="shop-category-on-mb-tb-item-link">
+                                <div class="shop-category-on-mb-tb-item-wrap">
+                                    <div class="shop-category-on-mb-tb-item-img8"></div>
+                                </div>
+                                <p class="shop-category-on-mb-tb-item-text">
+                                    Máy In & Máy Scan
+                                </p>
+                            </a>
+                        </li>
+                        <li class="col m-3 c-4 shop-category-on-mb-tb-item">
+                            <a href="" class="shop-category-on-mb-tb-item-link">
+                                <div class="shop-category-on-mb-tb-item-wrap">
+                                    <div class="shop-category-on-mb-tb-item-img4"></div>
+                                </div>
+                                <p class="shop-category-on-mb-tb-item-text">
+                                    Phụ Kiện Máy Tính
+                                </p>
+                            </a>
+                            <a href="" class="shop-category-on-mb-tb-item-link">
+                                <div class="shop-category-on-mb-tb-item-wrap">
+                                    <div class="shop-category-on-mb-tb-item-img9"></div>
+                                </div>
+                                <p class="shop-category-on-mb-tb-item-text">
+                                    Laptop
+                                </p>
+                            </a>
+                        </li>
+                        <li class="col m-3 c-4 shop-category-on-mb-tb-item">
+                            <a href="" class="shop-category-on-mb-tb-item-link">
+                                <div class="shop-category-on-mb-tb-item-wrap">
+                                    <div class="shop-category-on-mb-tb-item-img5"></div>
+                                </div>
+                                <p class="shop-category-on-mb-tb-item-text">
+                                    Khác
+                                </p>
+                            </a>
+                            <a href="" class="shop-category-on-mb-tb-item-link">
+                                <div class="shop-category-on-mb-tb-item-wrap">
+                                    <div class="shop-category-on-mb-tb-item-img10"></div>
+                                </div>
+                                <p class="shop-category-on-mb-tb-item-text">
+                                    Gaming
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
-                <div class="top-sales-wrap">
-                    <div class="top-sales">
-                        <ul class="row no-gutters top-sales-list">
-                        <c:forEach items="${listCC}" var="o">
-                            <li class="col l-2 lo-2 m-3 c-4 top-sales-item">
-                                <a href="/Shopee/product?index=1" class="top-sales-item-link">
-                                    <div style="margin-right:4px;"class="top-sales-item-link__container">
-                                        <div class="top-sales-item-link__img">
-                                            <div style="background: center / contain no-repeat url(<c:url value="${o.cImage}"/>) " class="top-sales-item-link__img-bgc1"></div>
-                                        </div>
-                                        <p class="top-sales-item-link__text">
-                                            ${o.cName}
-                                        </p>
-                                        
+                <div class="row sm-gutter body-content">
+                    <div class="col m-12 c-12 search-item-result-on-mb-tb hide-on-pc">
+                        <ul class="row no-gutters search-item-result-on-mb-tb-list">
+                            <li class="col m-3 c-3 search-item-result-on-mb-tb-item">
+                                <a href="" class="search-item-result-on-mb-tb-link border-primary color-primary">
+                                    <span class="search-item-result-on-mb-tb-text">
+                                        Phổ Biến
+                                    </span>
+                                    <span class="separate"></span>
+                                </a>
+                            </li>
+                            <li class="col m-3 c-3 search-item-result-on-mb-tb-item">
+                                <a href="" class="search-item-result-on-mb-tb-link">
+                                    <span class="search-item-result-on-mb-tb-text">
+                                        Mới Nhất
+                                        <span class="separate"></span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="col m-3 c-3 search-item-result-on-mb-tb-item">
+                                <a href="" class="search-item-result-on-mb-tb-link">
+                                    <span class="search-item-result-on-mb-tb-text">
+                                        Bán Chạy
+                                        <span class="separate"></span>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="col c-3 m-3 search-item-result-on-mb-tb-item">
+                                <a href="" class="search-item-result-on-mb-tb-link">
+                                    <span class="search-item-result-on-mb-tb-text">
+                                        Giá
+                                    </span>
+                                    <div class="search-item-result-on-mb-tb-icon">
+                                        <i class="fas fa-chevron-up"></i>
+                                        <i class="fas fa-chevron-down"></i>
                                     </div>
                                 </a>
                             </li>
-                            </c:forEach>
                         </ul>
                     </div>
-                    <span class="ofs-carousel__arrow-next hide-on-mb-tb">
-                        <i class="fas fa-chevron-right"></i>
-                    </span>
-                </div>
-               
+                    <div class="col l-2 lo-2 hide-on-mb-tb">
+                        <div class="category-list">
+                            <h2 class="category-list__title">
+                                <a href="" class="category-list__title-link">
+                                    <i class="category-list__title-icon fas fa-bars"></i>
+                                    <span>Tất cả danh mục</span>
+                                </a>
+                            </h2>
+                            <ul class="category-list__list">
+                                <c:forEach items="${listCC}" var="o">
+                                <li class="category-list__item ${tag==o.cId?"active":""}">
+                                    <a href="category?cid=${o.cId}" class="category-list__item-link category-list__item-link-highlight">
+                                        <i class="category-list__item-icon fas fa-caret-right"></i>
+                                        ${o.cName}
+                                    </a>
+                                </li>
+                               </c:forEach>
+                               
+                                
+                               
+                                
+                               </ul>
+                        </div>
 
-                
+      
 
-                <!-- Body -->
-                <div class="row sm-gutter body-content">
-        
-                    <div class="col  m-12 c-12">
+                    </div>
+                    <div class="col l-10 lo-10 m-12 c-12">
                         <div class="row sm-gutter">
                             <div class="col l-12 lo-12 hide-on-mb-tb">
                                 <div class="sort-bar">
@@ -157,7 +251,7 @@
                         </div>
                         <div class="row sm-gutter search-item-result__items">
 
-                             <c:forEach items="${listP}" var="o"> 
+<c:forEach items="${listP}" var="o"> 
                    
                             <div class="col l-2-4 lo-3 m-4 c-6 search-item-result__item">
                                 <a href="/Shopee/detail?pid=${o.pId}" class="search-item-result__item-link">
@@ -271,40 +365,67 @@
                                 </a>
                             </div>
                         </c:forEach> 
-                     
+
                            
-                            
-                             
+
+                 
+
+
+                        
+                          
+
+
+                            <!-- search-item-50 -->
+                          
                         </div>
                         <ul class="pagination hide-on-mb">
-                           <a href="/Shopee/product?index=1"class="pagination_btn">Xem tất cả</a>
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item-link">
+                                    <i class="pagination-item-icon fas fa-chevron-left"></i>
+                                </a>
+                            </li>
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item-link bgc-highlight">
+                                    1
+                                </a>
+                            </li>
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item-link">
+                                    2
+                                </a>
+                            </li>
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item-link">
+                                    3
+                                </a>
+                            </li>
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item-link">
+                                    4
+                                </a>
+                            </li>
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item-link">
+                                    5
+                                </a>
+                            </li>
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item-link">
+                                    ...
+                                </a>
+                            </li>
+                            <li class="pagination-item">
+                                <a href="" class="pagination-item-link">
+                                    <i class="pagination-item-icon fas fa-chevron-right"></i>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
-			</div>
-		</div>
-		<jsp:include page="footer.jsp"></jsp:include>
-
-	</div>
-	
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-            <script>
-                var swiper = new Swiper(".mySwiper", {
-                  spaceBetween: 30,
-                  centeredSlides: true,
-                  autoplay: {
-                    delay: 2500,
-                    disableOnInteraction: false,
-                  },
-                  pagination: {
-                    el: ".swiper-pagination",
-                    clickable: true,
-                  },
-                  navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                  },
-                });
-              </script>
+        </div>
+        </div>
+      <jsp:include page="footer.jsp"></jsp:include>
+            </div>
 </body>
+
 </html>

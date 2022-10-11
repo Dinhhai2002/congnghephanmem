@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>JSP Page</title>
+<title>Giỏ hàng</title>
 <link href="<c:url value="/css/base.css"/>" rel="stylesheet"
 	type="text/css" />
 <link href="<c:url value="/css/main.css"/>" rel="stylesheet"
