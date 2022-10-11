@@ -5,22 +5,22 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Date;
 
-public class Product {
+public class Product1 {
 	private int pId;
 	private String pName;
 	private float pPrice;
 	private String pImage;
 	private String pDescription;
 	private int pQuantity;
-	private int cateID;
-	private int shopId;
+	private Category category;
+	private Shop shop;
 	private Date createAt;
-	private Date updateAt;
-	public Product() {
+	//private Date updateAt;
+	public Product1() {
 		super();
 	}
-	public Product(int pId, String pName, float pPrice, String pImage, String pDescription, int pQuantity, int cateID,
-			int shopId, Date createAt, Date updateAt) {
+	public Product1(int pId, String pName, float pPrice, String pImage, String pDescription, int pQuantity,
+			Category category, Shop shop, Date createAt) {
 		super();
 		this.pId = pId;
 		this.pName = pName;
@@ -28,10 +28,9 @@ public class Product {
 		this.pImage = pImage;
 		this.pDescription = pDescription;
 		this.pQuantity = pQuantity;
-		this.cateID = cateID;
-		this.shopId = shopId;
+		this.category = category;
+		this.shop = shop;
 		this.createAt = createAt;
-		this.updateAt = updateAt;
 	}
 	public int getpId() {
 		return pId;
@@ -69,17 +68,17 @@ public class Product {
 	public void setpQuantity(int pQuantity) {
 		this.pQuantity = pQuantity;
 	}
-	public int getCateID() {
-		return cateID;
+	public Category getCategory() {
+		return category;
 	}
-	public void setCateID(int cateID) {
-		this.cateID = cateID;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
-	public int getShopId() {
-		return shopId;
+	public Shop getShop() {
+		return shop;
 	}
-	public void setShopId(int shopId) {
-		this.shopId = shopId;
+	public void setShop(Shop shop) {
+		this.shop = shop;
 	}
 	public Date getCreateAt() {
 		return createAt;
@@ -87,20 +86,12 @@ public class Product {
 	public void setCreateAt(Date createAt) {
 		this.createAt = createAt;
 	}
-	public Date getUpdateAt() {
-		return updateAt;
-	}
-	public void setUpdateAt(Date updateAt) {
-		this.updateAt = updateAt;
-	}
 	@Override
 	public String toString() {
 		return "Product [pId=" + pId + ", pName=" + pName + ", pPrice=" + pPrice + ", pImage=" + pImage
-				+ ", pDescription=" + pDescription + ", pQuantity=" + pQuantity + ", cateID=" + cateID + ", shopId="
-				+ shopId + ", createAt=" + createAt + ", updateAt=" + updateAt + "]";
+				+ ", pDescription=" + pDescription + ", pQuantity=" + pQuantity + ", category=" + category + ", shop="
+				+ shop + ", createAt=" + createAt + "]";
 	}
-	
-	
 	
 	
 }

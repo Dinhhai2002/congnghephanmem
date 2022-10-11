@@ -10,7 +10,7 @@ import java.util.List;
 import connect.connect;
 import entity.Category;
 import entity.Product;
-import entity.user;
+import entity.User;
 
 public class DAO {
 	
@@ -121,17 +121,14 @@ public class DAO {
             ps = conn.prepareStatement(query);
             rs = ps.executeQuery();
             while (rs.next()) {
-                list.add(new Category(rs.getInt(1),
-                        rs.getString(2),
-                        rs.getDate(3),
-                        rs.getDate(4)));
+                list.add(new Category(rs.getInt(1),rs.getString(2)));
             }
         } catch (Exception e) {
         }
         return list;
     }
 
-    public user Login(String user,String pass) {
+    public User Login(String user,String pass) {
    	 String query = "select * from [user] where [uName]=? and [uPassword]=?";
         try {
             conn = new connect().getConnection();
@@ -141,7 +138,7 @@ public class DAO {
             
             rs = ps.executeQuery();
             while (rs.next()) {
-             return new user(rs.getInt(1),
+             return new User(rs.getInt(1),
                         rs.getString(2),
                         rs.getString(3),
                         rs.getString(4),
@@ -151,8 +148,7 @@ public class DAO {
                         rs.getInt(8),
                         rs.getInt(9),
                         rs.getString(10),
-                       rs.getDate(11),
-                       rs.getDate(12));
+                       rs.getDate(11));
             }
         } catch (Exception e) {
         }
@@ -176,7 +172,7 @@ public class DAO {
            
       }
     
-       public user CheckAccount(String user) {
+       public User CheckAccount(String user) {
          	 String query = "select * from [user] where [uName]=?";
               try {
                   conn = new connect().getConnection();
@@ -184,8 +180,8 @@ public class DAO {
                   ps.setString(1, user);
                   rs = ps.executeQuery();
                   while (rs.next()) {
-                	  return new user(rs.getInt(1),
-                              rs.getString(2),
+                	  return new User(rs.getInt(1),
+                			  rs.getString(2),
                               rs.getString(3),
                               rs.getString(4),
                               rs.getString(5),
@@ -194,8 +190,7 @@ public class DAO {
                               rs.getInt(8),
                               rs.getInt(9),
                               rs.getString(10),
-                             rs.getDate(11),
-                             rs.getDate(12));
+                             rs.getDate(11));
                   }
               } catch (Exception e) {
               }
@@ -203,7 +198,7 @@ public class DAO {
          }
        
        //check account forgotPassword
-       public user CheckAccountforgotPassword(String user,String email) {
+       public User CheckAccountforgotPassword(String user,String email) {
        	 String query = "select * from [user] where [uName]=? and uEmail=?";
             try {
                 conn = new connect().getConnection();
@@ -212,18 +207,17 @@ public class DAO {
                 ps.setString(2,email );
                 rs = ps.executeQuery();
                 while (rs.next()) {
-                	return new user(rs.getInt(1),
-                            rs.getString(2),
-                            rs.getString(3),
-                            rs.getString(4),
-                            rs.getString(5),
-                            rs.getString(6),
-                            rs.getString(7),
-                            rs.getInt(8),
-                            rs.getInt(9),
-                            rs.getString(10),
-                           rs.getDate(11),
-                           rs.getDate(12));
+                	return new User(rs.getInt(1),
+                			 rs.getString(2),
+                             rs.getString(3),
+                             rs.getString(4),
+                             rs.getString(5),
+                             rs.getString(6),
+                             rs.getString(7),
+                             rs.getInt(8),
+                             rs.getInt(9),
+                             rs.getString(10),
+                            rs.getDate(11));
                 }
             } catch (Exception e) {
             }
@@ -260,7 +254,7 @@ public class DAO {
 		}
 		return 0;
 	}
-    public int pageSize = 5;
+    public int pageSize = 4;
     public List<Product> pagingProduct(int index) {
         List<Product> list = new ArrayList<>();
         String query = "select * from product\r\n"

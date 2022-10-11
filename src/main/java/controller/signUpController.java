@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.DAO;
-import entity.user;
+import entity.User;
 
 @WebServlet(urlPatterns="/register")
 
@@ -46,7 +46,7 @@ public class signUpController extends HttpServlet {
 		
 		if(email!=null && !email.equals("") && username!=null && !username.equals("") && pass.equals(repass)&& pass!=null && repass!=null) {
 			DAO dao=new DAO();
-			user a=dao.CheckAccountforgotPassword(username, email);
+			User a=dao.CheckAccountforgotPassword(username, email);
 			if(a==null)
 			{
 				// sending otp

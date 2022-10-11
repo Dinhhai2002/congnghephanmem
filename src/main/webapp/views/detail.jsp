@@ -109,12 +109,16 @@
 										<div class="col-sm-5">
 											<dl class="param param-inline">
 												<dt>Quantity:</dt>
-												<div class="model_quantity_number">
-													<a class="model_quantity_number_add" href="#"><i
-														class='bx bx-plus'></i></a>
-													<p class="model_quantity_number_quan">2</p>
-													<a class="model_quantity_number_remove" href="#"><i
+												<div class="model_quantity_number">         									
+												<a class="model_quantity_number_remove" 
+												href="detail?pId=${p.pId}&quantity=${quantity}&action=sub"><i
 														class='bx bx-minus'></i></a>
+														
+													<p class="model_quantity_number_quan">${quantity}</p>
+													<a class="model_quantity_number_add" 
+													href="detail?pId=${p.pId}&quantity=${quantity}&action=add"><i
+														class='bx bx-plus'></i></a>
+													
 												</div>
 											</dl>
 											<!-- item-property .// -->
@@ -125,7 +129,8 @@
 									<!-- row.// -->
 									<hr>
 									<a style="padding-top: 8px;border: 1px solid red;"href="#" class="btn btn-lg btn-primary text-uppercase">
-										Buy now </a> <a style="padding-top: 8px;border: 1px solid red;" href="#"
+										Buy now </a> <a style="padding-top: 8px;border: 1px solid red;" 
+										href="/Shopee/member/cart-add?pId=${p.pId}&quantity=${quantity}"
 										class="btn btn-lg btn-outline-primary text-uppercase"> <i
 										class="fas fa-shopping-cart"></i> Add to cart
 									</a>
@@ -144,6 +149,6 @@
 		</div>
 	</div>
 	<%-- <jsp:include page="footer.jsp"></jsp:include> --%>
-	 <script src="<c:url value="/js/detail.js"/>"></script>
+	<%--  <script src="<c:url value="/js/detail.js"/>"></script> --%>
 </body>
 </html>

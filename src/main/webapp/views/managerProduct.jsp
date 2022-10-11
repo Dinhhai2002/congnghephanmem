@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Product Management</title>
+<title>Bootstrap CRUD Data Table for Database with Modal Form</title>
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 <link rel="stylesheet"
@@ -207,7 +207,8 @@
 					</div>
 					<div class="col-sm-6">
 						<a href="#addEmployeeModal" class="btn btn-success"
-							data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>New Product</span></a>
+							data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add
+								New Product</span></a>
 
 					</div>
 				</div>

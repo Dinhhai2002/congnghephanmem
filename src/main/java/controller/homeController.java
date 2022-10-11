@@ -10,9 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.CategoryDao;
 import dao.DAO;
+import dao.ProductDao;
 import entity.Category;
-import entity.Product;
+//import entity.Product;
+import entity.Product1;
 
 @WebServlet(urlPatterns="/home")
 public class homeController extends HttpServlet {
@@ -21,21 +24,24 @@ public class homeController extends HttpServlet {
 		resp.setContentType("text/html");
 		resp.setCharacterEncoding("UTF-8");
 		req.setCharacterEncoding("UTF-8");
-		String pIndex = req.getParameter("index");
-		int index = Integer.parseInt(pIndex);
+		//String pIndex = req.getParameter("index");
+		//int index = Integer.parseInt(pIndex);
 		
-		DAO dao = new DAO();
-		int count = dao.getTotalProduct();
+		//DAO dao = new DAO();
+		/*int count = dao.getTotalProduct();
 		int pageSize = dao.pageSize;
 		int endPage = count/pageSize;
 		if(count%pageSize>0) {
 			endPage++;
-		}
-		List<Product> list = dao.pagingProduct(index);
-		List<Category> listC = dao.getAllCategory();
+		}*/
+		CategoryDao categoryDao = new CategoryDao();
+		ProductDao productDao = new ProductDao();
+		//List<Product> list = dao.pagingProduct(index);
+		List<Category> listC = categoryDao.findAll();
+		List<Product1> list = productDao.findAll();
 		/*set data to jsp*/
-		req.setAttribute("tag", index);
-		req.setAttribute("endPage", endPage);
+		//req.setAttribute("tag", index);
+		//req.setAttribute("endPage", endPage);
 	    req.setAttribute("listP", list);
 	    req.setAttribute("listCC", listC);
 //        req.setAttribute("p", last);
