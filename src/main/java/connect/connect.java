@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 public class connect {
 
 	private final String serverName = "localhost";//laptop-sslks646\\sqlexpress
-	private final String dbName = "FakeShopee";
+	private final String dbName = "Fake";
 	private final String portNumber = "1433";
 	private final String instance = "";// LEAVE THIS ONE EMPTY IF YOUR SQL IS A SINGLE INSTANCE
 	private final String userID = "sa";

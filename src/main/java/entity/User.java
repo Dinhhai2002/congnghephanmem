@@ -2,7 +2,7 @@ package entity;
 
 import java.util.Date;
 
-public class user {
+public class User {
 	private int uId;
 	private String uName;
 	private String uFullName;
@@ -10,16 +10,16 @@ public class user {
 	private String uAddress;
 	private String uPassword;
 	private String uPhone;
-	private int eWallet;
 	private int idRole;
+	private int eWallet;
 	private String uImage;
 	private Date createAt;
-	private Date updateAt;
-	public user() {
+	//private Date updateAt;
+	public User() {
 		super();
 	}
-	public user(int uId, String uName, String uFullName, String uEmail, String uAddress, String uPassword,
-			String uPhone, int eWallet, int idRole, String uImage, Date createAt, Date updateAt) {
+	public User(int uId, String uName, String uFullName, String uEmail, String uAddress, String uPassword,
+			String uPhone, int idRole, int eWallet, String uImage, Date createAt) {
 		super();
 		this.uId = uId;
 		this.uName = uName;
@@ -28,11 +28,10 @@ public class user {
 		this.uAddress = uAddress;
 		this.uPassword = uPassword;
 		this.uPhone = uPhone;
-		this.eWallet = eWallet;
 		this.idRole = idRole;
+		this.eWallet = eWallet;
 		this.uImage = uImage;
 		this.createAt = createAt;
-		this.updateAt = updateAt;
 	}
 	public int getuId() {
 		return uId;
@@ -76,17 +75,17 @@ public class user {
 	public void setuPhone(String uPhone) {
 		this.uPhone = uPhone;
 	}
-	public int geteWallet() {
-		return eWallet;
-	}
-	public void seteWallet(int eWallet) {
-		this.eWallet = eWallet;
-	}
 	public int getIdRole() {
 		return idRole;
 	}
 	public void setIdRole(int idRole) {
 		this.idRole = idRole;
+	}
+	public int geteWallet() {
+		return eWallet;
+	}
+	public void seteWallet(int eWallet) {
+		this.eWallet = eWallet;
 	}
 	public String getuImage() {
 		return uImage;
@@ -100,23 +99,12 @@ public class user {
 	public void setCreateAt(Date createAt) {
 		this.createAt = createAt;
 	}
-	public Date getUpdateAt() {
-		return updateAt;
-	}
-	public void setUpdateAt(Date updateAt) {
-		this.updateAt = updateAt;
-	}
 	@Override
 	public String toString() {
-		return "user [uId=" + uId + ", uName=" + uName + ", uFullName=" + uFullName + ", uEmail=" + uEmail
-				+ ", uAddress=" + uAddress + ", uPassword=" + uPassword + ", uPhone=" + uPhone + ", eWallet=" + eWallet
-				+ ", idRole=" + idRole + ", uImage=" + uImage + ", createAt=" + createAt + ", updateAt=" + updateAt
-				+ "]";
+		return "User [uId=" + uId + ", uName=" + uName + ", uFullName=" + uFullName + ", uEmail=" + uEmail
+				+ ", uAddress=" + uAddress + ", uPassword=" + uPassword + ", uPhone=" + uPhone + ", idRole=" + idRole
+				+ ", eWallet=" + eWallet + ", uImage=" + uImage + ", createAt=" + createAt + "]";
 	}
-	
-	
-	
-	
 	
 	
 }
