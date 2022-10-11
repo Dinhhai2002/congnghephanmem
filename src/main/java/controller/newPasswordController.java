@@ -20,27 +20,28 @@ import dao.DAO;
 public class newPasswordController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("/views/newPassword.jsp").forward(request, response);
+	}
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String newPassword = request.getParameter("password");
 		String confPassword = request.getParameter("confPassword");
 		String email=(String) session.getAttribute("email");
+		String phoneNumber=(String) session.getAttribute("phoneNumber");
 		String username=(String) session.getAttribute("username");
 		if (newPassword != null && confPassword != null && newPassword.equals(confPassword)) {
 				
 			DAO dao=new DAO();
 			dao.updatePassword(newPassword,username,email);
+			dao.updatePasswordSMS(newPassword, username, phoneNumber);
 			request.setAttribute("status", "resetSuccess");
-			request.getRequestDispatcher("/login").forward(request, response);
+			response.sendRedirect("/Shopee/login");
 			
 		}
 	else {
 		request.setAttribute("status", "resetFailed");
-		request.getRequestDispatcher("/views/login.jsp").forward(request, response);;
+		request.getRequestDispatcher("/views/newPassword.jsp").forward(request, response);;
 	}
-	}
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doPost(req, resp);
 	}
 }

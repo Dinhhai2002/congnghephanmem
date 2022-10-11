@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.DAO;
-import entity.User;
+import entity.user;
 
 @WebServlet(urlPatterns="/register")
 
@@ -29,10 +29,15 @@ public class signUpController extends HttpServlet {
 	private static final long serialVersionUID = 4823215816154221221L;
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.getRequestDispatcher("/views/register.jsp").forward(request, response);
+	}
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
 		String username=request.getParameter("user");
+		
 		String fullname=request.getParameter("fullname");
 		String pass=request.getParameter("pass");
 		String repass=request.getParameter("re_pass");
@@ -46,8 +51,27 @@ public class signUpController extends HttpServlet {
 		
 		if(email!=null && !email.equals("") && username!=null && !username.equals("") && pass.equals(repass)&& pass!=null && repass!=null) {
 			DAO dao=new DAO();
-			User a=dao.CheckAccountforgotPassword(username, email);
-			if(a==null)
+			user checkAccount=dao.CheckAccount(username);
+			user checkemail=dao.CheckEmail(email);
+			user checkPhoneNumber=dao.CheckPhoneNumber(phoneNumber);
+			int NumberAccount=dao.numberAccount(username, email);
+	    	user checkAccountGoogle=dao.CheckAccountforgotPassword(username, email);
+			if(NumberAccount==1 && checkAccountGoogle.getIsAccountGoogle()==0)
+			{
+				request.setAttribute("mess", "email này đã tồn tại");
+				request.getRequestDispatcher("/views/register.jsp").forward(request, response);
+			}
+			else if(checkPhoneNumber!=null)
+			{
+				request.setAttribute("mess", "số điện thoại đã tồn tại");
+				request.getRequestDispatcher("/views/register.jsp").forward(request, response);
+			}
+			else if(checkAccount!=null)
+			{
+				request.setAttribute("mess", "tài khoản đã tồn tại");
+				request.getRequestDispatcher("/views/register.jsp").forward(request, response);
+			}
+			else if((checkAccount==null && NumberAccount==1 && checkAccountGoogle.getIsAccountGoogle()==1&& checkPhoneNumber==null)||(checkAccount==null && checkemail==null && NumberAccount==0 && checkPhoneNumber==null))
 			{
 				// sending otp
 				Random rand = new Random();
@@ -83,7 +107,7 @@ public class signUpController extends HttpServlet {
 				catch (MessagingException e) {
 					throw new RuntimeException(e);
 				}
-				dispatcher = request.getRequestDispatcher("/views/EnterOtpSignUp.jsp");
+				
 				request.setAttribute("message","OTP is sent to your email id");
 				//request.setAttribute("connection", con);
 				mySession.setAttribute("otp",otpvalue); 
@@ -93,7 +117,7 @@ public class signUpController extends HttpServlet {
 				mySession.setAttribute("password", pass);
 				mySession.setAttribute("phoneNumber", phoneNumber);
 				mySession.setAttribute("address", address);
-				dispatcher.forward(request, response);
+				response.sendRedirect("/Shopee/ValidateOtpSignup");
 				//request.setAttribute("status", "success");
 			}
 			else {
@@ -120,12 +144,5 @@ public class signUpController extends HttpServlet {
 //		else {
 //			req.getRequestDispatcher("/views/register.jsp").forward(req, resp);
 //		}
-		
-		
-	}
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doPost(req, resp);
 	}
 }

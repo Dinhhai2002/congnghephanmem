@@ -11,20 +11,20 @@
 	type="text/css" />
 <link href="<c:url value="/css/main.css"/>" rel="stylesheet"
 	type="text/css" />
-<link href="<c:url value="/css/login.css"/>" rel="stylesheet"
+<link href="<c:url value="/css/signUp.css"/>" rel="stylesheet"
 	type="text/css" />
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-<title>Đăng nhập tài khoản</title>
+<title>Đăng ký tài khoản</title>
 </head>
 <body>
-	<div class="modal">
+	 <div class="modal">
         <div class="modal__overlay">
 
         </div>
         <div class="modal__body"> 
             <!-- register form -->
             
-            <form action="register" method="get" class="authForm">
+            <form action="register" method="post" class="authForm">
                 <div class="authForm__body">
                     <div class="authForm__header">
                         <h3 class="authForm__heading">
@@ -35,27 +35,35 @@
                         </a>
                     </div>
                     <div class="authForm__form">
+                    	<h3 style="color:red;">${mess}</h3>
                         <div class="authForm__group">
-                            <input name="user" type="text" class="authForm__input" placeholder="Nhập tên người dùng">
+                            <input id="username"name="user" type="text" class="authForm__input" placeholder="Nhập tên người dùng" pattern="[A-Za-z0-9]{5,}" title="không đúng" >
+                            <small></small>
                         </div>
                         <div class="authForm__group">
-                            <input name="fullname" type="text" class="authForm__input" placeholder="Nhập họ tên đầy đủ">
+                            <input id="fullName"name="fullname" type="text" class="authForm__input" placeholder="Nhập họ tên đầy đủ" >
+                            <small></small>
                         </div>
                         
                         <div class="authForm__group">
-                            <input name="pass" type="password" class="authForm__input" placeholder="Nhập mật khẩu">
+                            <input id="pass"name="pass" type="password" class="authForm__input" placeholder="Nhập mật khẩu" pattern="[A-Za-z0-9]{5,}" title="không đúng"  >
+                            <small></small>
                         </div>
                         <div class="authForm__group">
-                            <input name="re_pass" type="password" class="authForm__input" placeholder="Nhập lại mật khẩu">
+                            <input id="repass"name="re_pass" type="password" class="authForm__input" placeholder="Nhập lại mật khẩu" >
+                            <small></small>
                         </div>
                         <div class="authForm__group">
-                            <input name="email" type="text" class="authForm__input" placeholder="Nhập email của bạn">
+                            <input id="email"name="email" type="text" class="authForm__input" placeholder="Nhập email của bạn" >
+                            <small></small>
                         </div>
                         <div class="authForm__group">
-                            <input name="phoneNumber" type="text" class="authForm__input" placeholder="Nhập số điện thoại">
+                            <input id="phoneNumber"name="phoneNumber" type="text" class="authForm__input" placeholder="Nhập số điện thoại" >
+                            <small></small>
                         </div>
                         <div class="authForm__group">
-                            <input name="address" type="text" class="authForm__input" placeholder="Nhập địa chỉ của bạn">
+                            <input id="address" name="address" type="text" class="authForm__input" placeholder="Nhập địa chỉ của bạn" >
+                            <small></small>
                         </div>
                         
                     </div>
@@ -67,19 +75,21 @@
                         </p>
                     </div>
                     <div class="authForm__controls">
-                        <button class="btn btn-hover">TRỞ LẠI</button>
-                        <button class="btn btn--primary ml-8">ĐĂNG KÝ</button>
+                        <a href="/Shopee/home?index=1"class="btn btn-hover">TRỞ LẠI</a>
+                        <button type="submit"class="btn btn--primary ml-8">ĐĂNG KÝ</button>
                     </div>
                 </div>
                 <div class="authForm__social">
                     <a href="#" class="btn btn__social social__icon-fb">
-                        <i class="authForm__social-icon fab fa-facebook-square"></i>
+                        <i
+						class='authForm__social-icon bx bxl-facebook-circle'></i>
                         <span>
                             Kết nối với Facebook
                         </span>
                     </a>
-                    <a href="#" class="btn btn__social social__icon-gg">
-                        <i class="authForm__social-icon fab fa-google"></i>
+                    <a href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http://localhost:8080/Shopee/logingoogle&response_type=code
+                        &client_id=965552027153-4qmaigfiko3ajcldouedsj1h9kts562i.apps.googleusercontent.com&approval_prompt=force" class="btn btn__social social__icon-gg">
+                        <img src="<c:url value="/img/g-normal.png"/>" alt="" class="authForm__social-img">
                         <span>
                             Kết nối với Google
                         </span>
@@ -90,5 +100,6 @@
 
         </div> 
     </div> 
+                <script src="<c:url value="./js/signUp.js"/>"></script>
 </body>
 </html>

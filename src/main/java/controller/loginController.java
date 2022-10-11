@@ -1,12 +1,17 @@
 package controller;
 
 import java.io.IOException;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import java.io.PrintWriter;
+
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,40 +27,82 @@ import entity.User;
 public class loginController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		
+		Cookie arr[]=req.getCookies();
+		if(arr!=null)
+		{
+			for(Cookie o: arr)
+			{
+				if(o.getName().equals("username"))
+				{
+					req.setAttribute("username", o.getValue());
+				}
+				if(o.getName().equals("pass"))
+				{
+					req.setAttribute("pass", o.getValue());
+				}
+			}
+		}
+		req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
+	}
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html");
 		resp.setCharacterEncoding("UTF-8");
 		req.setCharacterEncoding("UTF-8");
+		PrintWriter out=resp.getWriter();
 		String username = req.getParameter("username");
 		String pass = req.getParameter("password");
+		String remember=req.getParameter("remember");
 
 		CartItemDao cartItemDao = new CartItemDao();
 		DAO dao = new DAO();
-		User a = dao.Login(username, pass);
-		if (username != null && pass != null) {
-			if (a == null) {
-				req.setAttribute("mess", "Bạn đã nhập sai mật khẩu hoặc tên người dùng");
-				req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
-			} else {
-				HttpSession session=req.getSession();
-				session.setAttribute("acc", a);
-				List<CartItem> listCartItem = cartItemDao.findAllByuId(a.getuId());
-				Map<Integer, CartItem> map = new HashMap<Integer, CartItem>();
+
+		user a = dao.Login(username, pass);
+		try {
+			if (username != null && pass != null) {
+				if (a == null) {
+					req.setAttribute("mess", "Bạn đã nhập sai mật khẩu hoặc tên người dùng");
+					req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
+				} else {
+					HttpSession session=req.getSession();
+					session.setAttribute("acc", a);
+					List<CartItem> listCartItem = cartItemDao.findAllByuId(a.getuId());
+					Map<Integer, CartItem> map = new HashMap<Integer, CartItem>();
 				 for (int i = 0; i < listCartItem.size(); i++) {
 					 map.put(listCartItem.get(i).getProduct().getpId(), listCartItem.get(i));
 			        }
 				session.setAttribute("cart", map);
-				req.getRequestDispatcher("/home?index=1").forward(req, resp);
+					Cookie u=new Cookie("username",username);
+					Cookie p=new Cookie("pass",pass);
+					u.setMaxAge(60*60*24*365);
+					if(remember!=null)
+					{
+						p.setMaxAge(60*60*24*365);
+					}
+					else {
+						p.setMaxAge(0);
+					}
+					
+					
+					resp.addCookie(u);
+					resp.addCookie(p);
+					resp.sendRedirect("/Shopee/home?index=1");
+					System.out.print("success");
+				}
+			} else {
+				req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
+
 			}
-		} else {
-			req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
 		}
-
+		catch(Exception e){
+			
+		}
+		out.close();
 	}
+	
 
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doPost(req, resp);
-	}
+	
 
 }

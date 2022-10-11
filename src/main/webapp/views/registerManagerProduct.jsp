@@ -19,7 +19,7 @@
 	type="text/css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap&subset=vietnamese" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-    <title>Document</title>
+    <title>Đăng kí thành người bán</title>
 </head>
 <body>
     <div class="app">

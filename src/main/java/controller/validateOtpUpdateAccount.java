@@ -12,46 +12,44 @@ import javax.servlet.http.HttpSession;
 
 import dao.DAO;
 
-@WebServlet(urlPatterns="/ValidateOtpSignup")
-public class validateOtpSignUp extends HttpServlet {
+@WebServlet(urlPatterns="/ValidateOtpUpdateAccount")
+public class validateOtpUpdateAccount extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestDispatcher dispatcher=null; 
-		dispatcher=request.getRequestDispatcher("/views/EnterOtpSignUp.jsp");
+		dispatcher=request.getRequestDispatcher("/views/EnterOtpUpdateAccount.jsp");
 			dispatcher.forward(request, response);
 	}
-	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int value=Integer.parseInt(request.getParameter("otp"));
 		HttpSession session=request.getSession();
 		int otp=(int)session.getAttribute("otp");
+		String id=(String) session.getAttribute("id");
 		String username=(String) session.getAttribute("username");
-		String pass=(String) session.getAttribute("password");
 		String fullname=(String) session.getAttribute("fullname");
 		String  email=(String) session.getAttribute("email");
 		String phoneNumber=(String) session.getAttribute("phoneNumber");
 		String address=(String) session.getAttribute("address");
-		
-		
 		RequestDispatcher dispatcher=null;
-		
-		
 		if (value==otp) 
 		{
 			DAO dao=new DAO();
-			dao.SignUp(username, fullname,email,address,pass,phoneNumber);
+			dao.UpdateAccount(id, username, fullname, email, address, phoneNumber);
+			session.setAttribute("acc", dao.CheckAccountUpdate(username, fullname, email, address, phoneNumber));
+			request.setAttribute("mess", "Cập nhật thành công");
 				request.setAttribute("status", "success");
-			  response.sendRedirect("/Shopee/login");
+			  response.sendRedirect("/Shopee/myAccount");
 			
 		}
 		else
 		{
 			request.setAttribute("message","wrong otp");
 			
-		   dispatcher=request.getRequestDispatcher("/views/EnterOtpSignUp.jsp");
+		   dispatcher=request.getRequestDispatcher("/views/EnterOtpUpdateAccount.jsp");
 			dispatcher.forward(request, response);
 		
 		}
 	}
+	
 }

@@ -2,7 +2,7 @@ package entity;
 
 import java.util.Date;
 
-public class User {
+public class user {
 	private int uId;
 	private String uName;
 	private String uFullName;
@@ -10,16 +10,16 @@ public class User {
 	private String uAddress;
 	private String uPassword;
 	private String uPhone;
-	private int idRole;
 	private int eWallet;
+	private int idRole;
+	private int isAccountGoogle;
 	private String uImage;
 	private Date createAt;
-	//private Date updateAt;
-	public User() {
+	public user() {
 		super();
 	}
-	public User(int uId, String uName, String uFullName, String uEmail, String uAddress, String uPassword,
-			String uPhone, int idRole, int eWallet, String uImage, Date createAt) {
+	public user(int uId, String uName, String uFullName, String uEmail, String uAddress, String uPassword,
+			String uPhone, int eWallet, int idRole, int isAccountGoogle, String uImage, Date createAt) {
 		super();
 		this.uId = uId;
 		this.uName = uName;
@@ -28,8 +28,9 @@ public class User {
 		this.uAddress = uAddress;
 		this.uPassword = uPassword;
 		this.uPhone = uPhone;
-		this.idRole = idRole;
 		this.eWallet = eWallet;
+		this.idRole = idRole;
+		this.isAccountGoogle = isAccountGoogle;
 		this.uImage = uImage;
 		this.createAt = createAt;
 	}
@@ -75,17 +76,23 @@ public class User {
 	public void setuPhone(String uPhone) {
 		this.uPhone = uPhone;
 	}
+	public int geteWallet() {
+		return eWallet;
+	}
+	public void seteWallet(int eWallet) {
+		this.eWallet = eWallet;
+	}
 	public int getIdRole() {
 		return idRole;
 	}
 	public void setIdRole(int idRole) {
 		this.idRole = idRole;
 	}
-	public int geteWallet() {
-		return eWallet;
+	public int getIsAccountGoogle() {
+		return isAccountGoogle;
 	}
-	public void seteWallet(int eWallet) {
-		this.eWallet = eWallet;
+	public void setIsAccountGoogle(int isAccountGoogle) {
+		this.isAccountGoogle = isAccountGoogle;
 	}
 	public String getuImage() {
 		return uImage;
@@ -101,10 +108,15 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "User [uId=" + uId + ", uName=" + uName + ", uFullName=" + uFullName + ", uEmail=" + uEmail
-				+ ", uAddress=" + uAddress + ", uPassword=" + uPassword + ", uPhone=" + uPhone + ", idRole=" + idRole
-				+ ", eWallet=" + eWallet + ", uImage=" + uImage + ", createAt=" + createAt + "]";
+		return "user [uId=" + uId + ", uName=" + uName + ", uFullName=" + uFullName + ", uEmail=" + uEmail
+				+ ", uAddress=" + uAddress + ", uPassword=" + uPassword + ", uPhone=" + uPhone + ", eWallet=" + eWallet
+				+ ", idRole=" + idRole + ", isAccountGoogle=" + isAccountGoogle + ", uImage=" + uImage + ", createAt="
+				+ createAt + "]";
 	}
+	
+	
+	
+	
 	
 	
 }

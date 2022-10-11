@@ -64,28 +64,27 @@ body {
 						to secure your password!</p>
 					<ol class="list-unstyled">
 						<li><span class="text-primary text-medium">1. </span>Enter
-							your email address below.</li>
+							your phone  below.</li>
 						<li><span class="text-primary text-medium">2. </span>Our
-							system will send you an OTP to your email</li>
+							system will send you an OTP to your phone</li>
 						<li><span class="text-primary text-medium">3. </span>Enter the OTP on the 
 						next page</li>
 					</ol>
 				</div>
-				<form class="card mt-4" action="forgotPasswordEmail" method="post">
+				<form class="card mt-4" action="forgotPasswordSMS" method="post">
 					<div class="card-body">
 					<h3 style="color:red;">${mess}</h3>
 						<div class="form-group">
-							<label for="user-for-pass">Enter your username</label> <input
+							<label for="user-for-pass">Nhập username</label> <input
 								class="form-control" type="text" name="username"
 								id="user-for-pass" required="">
 						</div>
 						<div class="form-group">
-							<label for="email-for-pass">Enter your email address</label> <input
-								class="form-control" type="text" name="email" id="email-for-pass" required=""><small
+							<label for="email-for-pass">Nhập số điện thoại</label> <input
+								class="form-control" type="text" name="phoneNumber" id="email-for-pass" required=""><small
 								class="form-text text-muted">Enter the registered email address . Then we'll
 								email a OTP to this address.</small>
 						</div>
-						
 					</div>
 					<div class="card-footer">
 						<button class="btn btn-success" type="submit">Get New
