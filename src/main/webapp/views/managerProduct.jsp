@@ -123,7 +123,7 @@
                                         <th>Tên sản phẩm</th>
                                         <th>hình ảnh</th>
                                         <th>Giá</th>
-                                        <th>Tình trạng đơn hàng</th>
+                                        <th>Thao tác</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -131,29 +131,16 @@
                                         <tr style="margin:8px 0;">
                                             
                                             
-                                            <td>Giày adidas</td>
+                                            <td>${o.pName}</td>
+                                            <c:url value="/image?fname=${o.pImage}" var="imgUrl"></c:url>
                                             <td>
-                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnAMhxybe3Dj4npaJLC5bmTXxLah9b-owEoQ&usqp=CAU">
+                                                <img src="${imgUrl}">
                                             </td>
-                                            <td>900 $</td>
-                                            <td><a href="#editEmployeeModal" class="edit"
+                                            <td>${o.pPrice} $</td>
+                                            <td><a href="editP?id=${o.pId}" class="edit"
                                                 data-toggle="modal"><i class='bx bxs-pencil'></i></a> 
                                                 <a
-                                                href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class='bx bx-trash'></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            
-                                           
-                                            <td>Giày adidas</td>
-                                            <td>
-                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnAMhxybe3Dj4npaJLC5bmTXxLah9b-owEoQ&usqp=CAU">
-                                            </td>
-                                            <td>900 $</td>
-                                            <td><a href="#editEmployeeModal" class="edit"
-                                                data-toggle="modal"><i class='bx bxs-pencil'></i></a> 
-                                                <a
-                                                href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class='bx bx-trash'></i></a>
+                                                href="deleteP?id=${o.pId}" class="delete" data-toggle="modal"><i class='bx bx-trash'></i></a>
                                             </td>
                                         </tr>
                                         
@@ -191,7 +178,7 @@
 	<div id="addEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="add" method="post">
+				<form action="addP" method="post" enctype="multipart/form-data">
 					<div class="modal-header">
 						<h4 class="modal-title">Thêm sản phẩm mới</h4>
 						<button type="button" class="close" data-dismiss="modal"
@@ -203,11 +190,10 @@
 								class="form-control" required/>
 						</div>
 						<div class="form-group form-group-col">
-                            <c:url value="/image?fname=${category.icon }" var="imgUrl"></c:url>
+                            
                             <img class="img-responsive" width="100px" src="./assets/img/avatar_user.jpeg"
                             alt="">
-                            <label style="margin-top:10px">Ảnh đại diện</label> <input type="file" name="icon"
-                            value="${category.icon }"  />
+                            <label style="margin-top:10px">Ảnh sản phẩm</label> <input type="file" name="image" />
                             </div>
                            
 						<div class="form-group">
@@ -215,18 +201,18 @@
 								class="form-control" required  required />
 						</div>
 						<div class="form-group">
-							<label>Tiêu đề</label>
-							<textarea name="title" class="form-control" required ></textarea>
-						</div>
-						<div class="form-group">
 							<label>Mô tả sản phẩm</label>
 							<textarea name="description" class="form-control" ></textarea>
+						</div>
+						<div class="form-group">
+							<label>Số lương nhập vào kho</label> <input name="quantity" type="text"
+								class="form-control" required  required />
 						</div>
 						<div class="form-group">
 							<label>Danh mục sản phẩm</label> <select name="category"
 								class="form-select" aria-label="Default select example">
 								<c:forEach items="${listC}" var="o">
-									<option value="${o.id}">${o.name}</option>
+									<option value="${o.cId}">${o.cName}</option>
 								</c:forEach>
 							</select>
 						</div>
