@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.DAO;
-import entity.user;
+import dao.UserDao;
+import entity.User;
 
 @WebServlet(urlPatterns="/logingoogle")
 	
@@ -38,9 +38,9 @@ import entity.user;
 	      String username=googlePojo.getName();
 	      String email=googlePojo.getEmail();
 	      String image=googlePojo.getPicture();
-	      DAO dao=new DAO();
-	      int NumberAccountGoogle=dao.numberAccount(username, email);
-	    	user checkAccountGoogle=dao.CheckAccountforgotPassword(username, email);
+	      UserDao userDao= new UserDao();
+	      int NumberAccountGoogle=userDao.numberAccount(username, email);
+	    	User checkAccountGoogle=userDao.CheckAccountforgotPassword(username, email);
 	      if(NumberAccountGoogle==1 && checkAccountGoogle.getIsAccountGoogle()==1)
 	      {
 	    	  HttpSession session=request.getSession();
@@ -49,10 +49,10 @@ import entity.user;
 			      dis.forward(request, response);
 	      }
 	      else if(NumberAccountGoogle==0){
-	    	  dao.insertAcountGoogle(username, email,image);
+	    	  userDao.insertAcountGoogle(username, email,image);
 	    	 
 	    	  HttpSession session=request.getSession();
-				session.setAttribute("acc", dao.CheckAccountforgotPassword(username, email));
+				session.setAttribute("acc", userDao.CheckAccountforgotPassword(username, email));
 				RequestDispatcher dis = request.getRequestDispatcher("/home?index=1");
 			      dis.forward(request, response);
 	    	  

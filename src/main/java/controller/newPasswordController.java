@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.DAO;
+import dao.UserDao;
 
 
 @WebServlet(urlPatterns="/newPassword")
@@ -32,9 +32,9 @@ public class newPasswordController extends HttpServlet {
 		String username=(String) session.getAttribute("username");
 		if (newPassword != null && confPassword != null && newPassword.equals(confPassword)) {
 				
-			DAO dao=new DAO();
-			dao.updatePassword(newPassword,username,email);
-			dao.updatePasswordSMS(newPassword, username, phoneNumber);
+			UserDao userDao = new UserDao();
+			userDao.updatePassword(newPassword,username,email);
+			userDao.updatePasswordSMS(newPassword, username, phoneNumber);
 			request.setAttribute("status", "resetSuccess");
 			response.sendRedirect("/Shopee/login");
 			

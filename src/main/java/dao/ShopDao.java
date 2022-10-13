@@ -41,5 +41,21 @@ public class ShopDao {
 		e.printStackTrace();}
 		return null;
     }
+ public int getShopIdByuId(int uId) {
+		String query = "select shopId from [user] inner join shop on shop.[uId] = [user].[uId]\r\n"
+				+ "where [user].[uId] = ?";
+		try {
+			conn = new connect().getConnection();
+	        ps = conn.prepareStatement(query);
+	        ps.setInt(1, uId);
+	        rs = ps.executeQuery();
+	        while (rs.next()) {
+	        	return rs.getInt(1);
+	        }
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return -1;
+	}
 
 }

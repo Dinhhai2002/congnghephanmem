@@ -2,7 +2,7 @@ package entity;
 
 import java.util.Date;
 
-public class user {
+public class User {
 	private int uId;
 	private String uName;
 	private String uFullName;
@@ -15,10 +15,10 @@ public class user {
 	private int isAccountGoogle;
 	private String uImage;
 	private Date createAt;
-	public user() {
+	public User() {
 		super();
 	}
-	public user(int uId, String uName, String uFullName, String uEmail, String uAddress, String uPassword,
+	public User(int uId, String uName, String uFullName, String uEmail, String uAddress, String uPassword,
 			String uPhone, int eWallet, int idRole, int isAccountGoogle, String uImage, Date createAt) {
 		super();
 		this.uId = uId;
@@ -108,15 +108,10 @@ public class user {
 	}
 	@Override
 	public String toString() {
-		return "user [uId=" + uId + ", uName=" + uName + ", uFullName=" + uFullName + ", uEmail=" + uEmail
+		return "User [uId=" + uId + ", uName=" + uName + ", uFullName=" + uFullName + ", uEmail=" + uEmail
 				+ ", uAddress=" + uAddress + ", uPassword=" + uPassword + ", uPhone=" + uPhone + ", eWallet=" + eWallet
 				+ ", idRole=" + idRole + ", isAccountGoogle=" + isAccountGoogle + ", uImage=" + uImage + ", createAt="
 				+ createAt + "]";
 	}
-	
-	
-	
-	
-	
 	
 }

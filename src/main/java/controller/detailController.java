@@ -11,10 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.CategoryDao;
-import dao.DAO;
 import dao.ProductDao;
 import entity.Category;
-import entity.Product1;
+import entity.Product;
 
 @WebServlet(urlPatterns="/detail")
 public class detailController extends HttpServlet{
@@ -28,9 +27,9 @@ public class detailController extends HttpServlet{
 		String quantity = req.getParameter("quantity");
 		int x  = Integer.parseInt(quantity);
 		ProductDao productDao = new ProductDao();
-		CategoryDao cate = new CategoryDao();
-		List<Category> listC = cate.findAll();
-		Product1 pro = productDao.findOne(Integer.parseInt(pid));	
+		CategoryDao cateDao = new CategoryDao();
+		List<Category> listC = cateDao.getAllCategory();
+		Product pro = productDao.findOne(Integer.parseInt(pid));	
 		if(action.equals("add")){ 
 		    x += 1;
 		}

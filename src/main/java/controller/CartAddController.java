@@ -23,7 +23,7 @@ import dao.UserDao;
 import entity.Cart;
 import entity.CartItem;
 import entity.Category;
-import entity.Product1;
+import entity.Product;
 import entity.Shop;
 import entity.User;
 
@@ -50,7 +50,7 @@ public class CartAddController extends HttpServlet{
 		Object obj = httpSession.getAttribute("cart");
 		User acc = (User) user;
 		//Query sản phẩm vừa add từ trang detail
-		Product1 product = productDao.findOne(Integer.parseInt(pId));
+		Product product = productDao.findOne(Integer.parseInt(pId));
 		//Query Shop bán product đó 
 		Shop shop = shopDao.findOne(product.getShop().getShopId());
 		//Kiểm tra coi đã có cart chứa user và shop chưa

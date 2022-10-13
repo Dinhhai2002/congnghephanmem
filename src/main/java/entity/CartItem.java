@@ -3,13 +3,13 @@ package entity;
 public class CartItem {
 	private int id;
 	private Cart cart;
-	private Product1 product;
+	private Product product;
 	private int count;
 	private float totalPrice;
 	public CartItem() {
 		super();
 	}
-	public CartItem(int id, Cart cart, Product1 product, int count, float totalPrice) {
+	public CartItem(int id, Cart cart, Product product, int count, float totalPrice) {
 		super();
 		this.id = id;
 		this.cart = cart;
@@ -29,10 +29,10 @@ public class CartItem {
 	public void setCart(Cart cart) {
 		this.cart = cart;
 	}
-	public Product1 getProduct() {
+	public Product getProduct() {
 		return product;
 	}
-	public void setProduct(Product1 product) {
+	public void setProduct(Product product) {
 		this.product = product;
 	}
 	public int getCount() {
