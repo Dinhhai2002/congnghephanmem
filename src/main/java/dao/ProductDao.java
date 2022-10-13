@@ -253,9 +253,9 @@ public class ProductDao {
    	}
    	updateProduct(oldProduct);
    }
-   public List<Product> getTop5Product() {
+   public List<Product> getTop20Product() {
        List<Product> products = new ArrayList<>();
-       String query = "select top 5 * from product";
+       String query = "select top 20 * from product";
        
        try {
            conn = new connect().getConnection();
@@ -284,11 +284,11 @@ public class ProductDao {
        return products;
    }
    
-   public List<Product> getNext5Product(int amount) {
+   public List<Product> getNext10Product(int amount) {
        List<Product> products = new ArrayList<>();
        String query = "select * from product\r\n"
        		+ "order by pId\r\n"
-       		+ "offset ? rows fetch next 5 rows only;";
+       		+ "offset ? rows fetch next 10 rows only;";
        
        try {
            conn = new connect().getConnection();
