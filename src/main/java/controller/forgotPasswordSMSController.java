@@ -18,8 +18,9 @@ import javax.servlet.http.HttpSession;
 import com.twilio.Twilio;
 import com.twilio.type.PhoneNumber;
 import com.twilio.rest.api.v2010.account.Message;
-import dao.DAO;
-import entity.user;
+
+import dao.UserDao;
+import entity.User;
 @WebServlet(urlPatterns="/forgotPasswordSMS")
 public class forgotPasswordSMSController extends HttpServlet {
 	@Override
@@ -34,8 +35,8 @@ public class forgotPasswordSMSController extends HttpServlet {
 		int otpvalue = 0;
 		HttpSession mySession = request.getSession();
 		if(phoneNumber!=null && !phoneNumber.equals("") && username!=null && !username.equals("")) {
-			DAO dao=new DAO();
-			user a=dao.CheckAccountforgotPasswordSMS(username, phoneNumber);
+			UserDao userDao = new UserDao();
+			User a=userDao.CheckAccountforgotPasswordSMS(username, phoneNumber);
 			if(a!=null)
 			{
 				try {

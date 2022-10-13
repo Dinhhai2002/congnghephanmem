@@ -18,8 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.DAO;
-import entity.user;
+import dao.UserDao;
+import entity.User;
 
 @WebServlet(urlPatterns="/myAccount")
 public class myAccountController extends HttpServlet {
@@ -45,15 +45,15 @@ public class myAccountController extends HttpServlet {
 		String address=req.getParameter("address");
 		String email=req.getParameter("email");
 		
-		DAO dao=new DAO();
-		user checkPhoneNumber=dao.CheckPhoneNumber(phoneNumber);
-		user checkEmail=dao.CheckEmail(email);
-		int numberAccountUpdate=dao.numberAccountUpdate(username);
-		user a=dao.CheckAccountUpdate(username, fullName, email, address, phoneNumber);
+		UserDao userDao = new UserDao();
+		User checkPhoneNumber=userDao.CheckPhoneNumber(phoneNumber);
+		User checkEmail=userDao.CheckEmail(email);
+		int numberAccountUpdate=userDao.numberAccountUpdate(username);
+		User a=userDao.CheckAccountUpdate(username, fullName, email, address, phoneNumber);
 		if((a==null && phoneNumber.equals(phoneNumberSession) && username.equals(usernameSession) && emailSession.equals(email) && numberAccountUpdate==1)||(a==null && !phoneNumber.equals(phoneNumberSession) && checkPhoneNumber==null && username.equals(usernameSession) && emailSession.equals(email) && numberAccountUpdate==1))
 		{
-			dao.UpdateAccount(id, username, fullName, email, address, phoneNumber);
-			mySession.setAttribute("acc", dao.CheckAccountUpdate(username, fullName, email, address, phoneNumber));		
+			userDao.UpdateAccount(id, username, fullName, email, address, phoneNumber);
+			mySession.setAttribute("acc", userDao.CheckAccountUpdate(username, fullName, email, address, phoneNumber));		
 			req.setAttribute("mess", "Cập nhật thành công");
 			resp.sendRedirect("/Shopee/myAccount");
 		}

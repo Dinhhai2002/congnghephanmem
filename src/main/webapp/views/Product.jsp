@@ -184,8 +184,8 @@
                             </h2>
                             <ul class="category-list__list">
                                 <c:forEach items="${listCC}" var="o">
-                                <li class="category-list__item ${tag==o.cId?"active":""}">
-                                    <a href="category?cid=${o.cId}" class="category-list__item-link category-list__item-link-highlight">
+                                <li class="category-list__item ">
+                                    <a href="category?cid=${o.cId} " class="category-list__item-link ${tag==o.cId?"category-list__item-link-highlight":""} ">
                                         <i class="category-list__item-icon fas fa-caret-right"></i>
                                         ${o.cName}
                                     </a>
@@ -254,7 +254,7 @@
 <c:forEach items="${listP}" var="o"> 
                    
                             <div class="col l-2-4 lo-3 m-4 c-6 search-item-result__item">
-                                <a href="/Shopee/detail?pid=${o.pId}" class="search-item-result__item-link">
+                                <a href="/Shopee/detail?pId=${o.pId}&quantity=1&action=" class="search-item-result__item-link">
                                     <div class="search-item-result__item-bgc">
                                         
                                         <div class="search-item-result__item-tag-left">

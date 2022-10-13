@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.CartItemDao;
-import dao.DAO;
+import dao.UserDao;
 import entity.CartItem;
 import entity.User;
 
@@ -57,9 +57,9 @@ public class loginController extends HttpServlet {
 		String remember=req.getParameter("remember");
 
 		CartItemDao cartItemDao = new CartItemDao();
-		DAO dao = new DAO();
+		UserDao userDao = new UserDao();
 
-		user a = dao.Login(username, pass);
+		User a = userDao.Login(username, pass);
 		try {
 			if (username != null && pass != null) {
 				if (a == null) {

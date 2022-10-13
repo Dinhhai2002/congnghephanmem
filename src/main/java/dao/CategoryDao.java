@@ -19,7 +19,7 @@ public class CategoryDao {
     ResultSet rs = null;
     
     public Category findOne(int cateId) {
-		String sql = "SELECT * FROM category WHERE cateId = ? ";
+		String sql = "SELECT * FROM category WHERE cId = ? ";
 		try {
 		conn = new connect().getConnection();
 		PreparedStatement ps = conn.prepareStatement(sql);
@@ -34,20 +34,22 @@ public class CategoryDao {
 		e.printStackTrace();}
 		return null;
 	}
-	 public List<Category> findAll() {
-		 List<Category> categorys = new ArrayList<Category>();
-			String sql = "SELECT * FROM category";
-			try {
-			conn = new connect().getConnection();
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-			Category category = new Category();
-			category.setcId(rs.getInt("cId"));
-			category.setcName(rs.getString("cName"));
-			categorys.add(category);
-			}} catch (Exception e) {
-			e.printStackTrace();}
-			return categorys;
-	    }
+    public List<Category> getAllCategory() {
+        List<Category> list = new ArrayList<>();
+        String query = "select * from Category";
+        try {
+            conn = new connect().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new Category(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getDate(4),
+                        rs.getDate(5)));
+            }
+        } catch (Exception e) {
+        }
+        return list;
+    }
 }

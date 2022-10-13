@@ -11,10 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.CategoryDao;
-import dao.DAO;
 import dao.ProductDao;
 import entity.Category;
-import entity.Product1;
+import entity.Product;
 
 @WebServlet(urlPatterns="/detail")
 public class detailController extends HttpServlet{
@@ -24,13 +23,18 @@ public class detailController extends HttpServlet{
 		resp.setCharacterEncoding("UTF-8");
 		req.setCharacterEncoding("UTF-8");
 		String pid=req.getParameter("pId");
+		
 		String action = req.getParameter("action");
 		String quantity = req.getParameter("quantity");
 		int x  = Integer.parseInt(quantity);
 		ProductDao productDao = new ProductDao();
-		CategoryDao cate = new CategoryDao();
-		List<Category> listC = cate.findAll();
-		Product1 pro = productDao.findOne(Integer.parseInt(pid));	
+		CategoryDao cateDao = new CategoryDao();
+		
+		Product pro = productDao.findOne(Integer.parseInt(pid));
+		String cateId=String.valueOf(pro.getCategory().getcId());
+		List<Product> list=productDao.gettop5ProductbyCateId(cateId);
+		
+		
 		if(action.equals("add")){ 
 		    x += 1;
 		}
@@ -38,8 +42,8 @@ public class detailController extends HttpServlet{
 			x -= 1;
 		}	
 		req.setAttribute("p",pro);
-	    req.setAttribute("listCC", listC);
 	    req.setAttribute("quantity",x);
+	    req.setAttribute("listP", list);
 	    
 	    RequestDispatcher rq=req.getRequestDispatcher("/views/detail.jsp");
 		rq.forward(req, resp);

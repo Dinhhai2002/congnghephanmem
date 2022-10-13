@@ -1,8 +1,6 @@
 package entity;
 
-import java.math.BigDecimal;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
+
 import java.util.Date;
 
 public class Product {
@@ -12,15 +10,16 @@ public class Product {
 	private String pImage;
 	private String pDescription;
 	private int pQuantity;
-	private int cateID;
-	private int shopId;
+	private int cateId;
+	private Category category;
+	private Shop shop;
 	private Date createAt;
 	private Date updateAt;
 	public Product() {
 		super();
 	}
-	public Product(int pId, String pName, float pPrice, String pImage, String pDescription, int pQuantity, int cateID,
-			int shopId, Date createAt, Date updateAt) {
+	public Product(int pId, String pName, float pPrice, String pImage, String pDescription, int pQuantity, int cateId,
+			Category category, Shop shop, Date createAt, Date updateAt) {
 		super();
 		this.pId = pId;
 		this.pName = pName;
@@ -28,8 +27,9 @@ public class Product {
 		this.pImage = pImage;
 		this.pDescription = pDescription;
 		this.pQuantity = pQuantity;
-		this.cateID = cateID;
-		this.shopId = shopId;
+		this.cateId = cateId;
+		this.category = category;
+		this.shop = shop;
 		this.createAt = createAt;
 		this.updateAt = updateAt;
 	}
@@ -69,17 +69,23 @@ public class Product {
 	public void setpQuantity(int pQuantity) {
 		this.pQuantity = pQuantity;
 	}
-	public int getCateID() {
-		return cateID;
+	public int getCateId() {
+		return cateId;
 	}
-	public void setCateID(int cateID) {
-		this.cateID = cateID;
+	public void setCateId(int cateId) {
+		this.cateId = cateId;
 	}
-	public int getShopId() {
-		return shopId;
+	public Category getCategory() {
+		return category;
 	}
-	public void setShopId(int shopId) {
-		this.shopId = shopId;
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+	public Shop getShop() {
+		return shop;
+	}
+	public void setShop(Shop shop) {
+		this.shop = shop;
 	}
 	public Date getCreateAt() {
 		return createAt;
@@ -96,11 +102,9 @@ public class Product {
 	@Override
 	public String toString() {
 		return "Product [pId=" + pId + ", pName=" + pName + ", pPrice=" + pPrice + ", pImage=" + pImage
-				+ ", pDescription=" + pDescription + ", pQuantity=" + pQuantity + ", cateID=" + cateID + ", shopId="
-				+ shopId + ", createAt=" + createAt + ", updateAt=" + updateAt + "]";
+				+ ", pDescription=" + pDescription + ", pQuantity=" + pQuantity + ", cateId=" + cateId + ", category="
+				+ category + ", shop=" + shop + ", createAt=" + createAt + ", updateAt=" + updateAt + "]";
 	}
-	
-	
 	
 	
 }

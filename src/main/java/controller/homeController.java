@@ -11,11 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.CategoryDao;
-import dao.DAO;
 import dao.ProductDao;
 import entity.Category;
 //import entity.Product;
-import entity.Product1;
+import entity.Product;
 
 @WebServlet(urlPatterns="/home")
 public class homeController extends HttpServlet {
@@ -37,8 +36,8 @@ public class homeController extends HttpServlet {
 		CategoryDao categoryDao = new CategoryDao();
 		ProductDao productDao = new ProductDao();
 		//List<Product> list = dao.pagingProduct(index);
-		List<Category> listC = categoryDao.findAll();
-		List<Product1> list = productDao.findAll();
+		List<Category> listC = categoryDao.getAllCategory();
+		List<Product> list = productDao.findAll();
 		/*set data to jsp*/
 		//req.setAttribute("tag", index);
 		//req.setAttribute("endPage", endPage);

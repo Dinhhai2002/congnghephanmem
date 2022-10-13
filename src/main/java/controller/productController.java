@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.DAO;
+import dao.CategoryDao;
+import dao.ProductDao;
 import entity.Category;
 import entity.Product;
 
@@ -24,15 +25,16 @@ public class productController extends HttpServlet {
 		String pIndex = req.getParameter("index");
 		int index = Integer.parseInt(pIndex);
 		
-		DAO dao = new DAO();
-		int count = dao.getTotalProduct();
-		int pageSize = dao.pageSize;
+		ProductDao productDao=new ProductDao();
+		CategoryDao cateDao=new CategoryDao();
+		int count = productDao.getTotalProduct();
+		int pageSize = productDao.pageSize;
 		int endPage = count/pageSize;
 		if(count%pageSize>0) {
 			endPage++;
 		}
-		List<Product> list = dao.pagingProduct(index);
-		List<Category> listC = dao.getAllCategory();
+		List<Product> list = productDao.pagingProduct(index);
+		List<Category> listC = cateDao.getAllCategory();
 		/*set data to jsp*/
 		req.setAttribute("tag", index);
 		req.setAttribute("endPage", endPage);

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.CategoryDao;
-import dao.DAO;
+import dao.ProductDao;
 import entity.Category;
 import entity.Product;
 
@@ -25,10 +25,10 @@ public class CategoryController extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		String cateId=req.getParameter("cid");
 		
-		DAO dao =new DAO();
-		CategoryDao categoryDao = new CategoryDao();
-		List<Category> listC = categoryDao.findAll();
-		List<Product> list=dao.getProductbyCateId(cateId);
+		CategoryDao cateDao = new CategoryDao();
+		ProductDao productDao = new ProductDao();
+		List<Category> listC = cateDao.getAllCategory();
+		List<Product> list=productDao.getProductbyCateId(cateId);
 		
 	    req.setAttribute("listP", list);
 	    req.setAttribute("listCC", listC);

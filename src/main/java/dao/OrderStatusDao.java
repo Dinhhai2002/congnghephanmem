@@ -9,7 +9,7 @@ import entity.Cart;
 import entity.CartItem;
 import entity.Order;
 import entity.OrderStatus;
-import entity.Product1;
+import entity.Product;
 import entity.Shop;
 import entity.User;
 

@@ -19,8 +19,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.DAO;
-import entity.user;
+import dao.UserDao;
+import entity.User;
 
 @WebServlet(urlPatterns="/register")
 
@@ -50,12 +50,12 @@ public class signUpController extends HttpServlet {
 		HttpSession mySession = request.getSession();
 		
 		if(email!=null && !email.equals("") && username!=null && !username.equals("") && pass.equals(repass)&& pass!=null && repass!=null) {
-			DAO dao=new DAO();
-			user checkAccount=dao.CheckAccount(username);
-			user checkemail=dao.CheckEmail(email);
-			user checkPhoneNumber=dao.CheckPhoneNumber(phoneNumber);
-			int NumberAccount=dao.numberAccount(username, email);
-	    	user checkAccountGoogle=dao.CheckAccountforgotPassword(username, email);
+			UserDao userDao=new UserDao();
+			User checkAccount=userDao.CheckAccount(username);
+			User checkemail=userDao.CheckEmail(email);
+			User checkPhoneNumber=userDao.CheckPhoneNumber(phoneNumber);
+			int NumberAccount=userDao.numberAccount(username, email);
+	    	User checkAccountGoogle=userDao.CheckAccountforgotPassword(username, email);
 			if(NumberAccount==1 && checkAccountGoogle.getIsAccountGoogle()==0)
 			{
 				request.setAttribute("mess", "email này đã tồn tại");

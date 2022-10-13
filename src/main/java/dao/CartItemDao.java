@@ -9,7 +9,7 @@ import java.util.List;
 import connect.connect;
 import entity.Cart;
 import entity.CartItem;
-import entity.Product1;
+import entity.Product;
 import entity.Shop;
 import entity.User;
 
@@ -82,7 +82,7 @@ public class CartItemDao {
 			CartDao cartDao = new CartDao();
 			ProductDao productDao = new ProductDao();
 			Cart cart = cartDao.findOne(rs.getInt("cartId"));
-			Product1 product = productDao.findOne(rs.getInt("productId"));
+			Product product = productDao.findOne(rs.getInt("productId"));
 			
 			CartItem cartItem = new CartItem();
 			cartItem.setId(rs.getInt("id"));
@@ -106,7 +106,7 @@ public class CartItemDao {
 		while (rs.next()) {
 			ProductDao productDao = new ProductDao();
 			CartDao cartDao = new CartDao();
-			Product1 product = productDao.findOne(rs.getInt("productId"));
+			Product product = productDao.findOne(rs.getInt("productId"));
 			Cart cart = cartDao.findOne(rs.getInt("cartId"));
 		
 			CartItem cartItem = new CartItem();
@@ -138,7 +138,7 @@ public class CartItemDao {
 			ProductDao productDao = new ProductDao();
 			CartDao cartDao = new CartDao();
 		
-			Product1 product = productDao.findOne(rs.getInt("productId"));
+			Product product = productDao.findOne(rs.getInt("productId"));
 			Cart cart = cartDao.findOne(rs.getInt("cartId"));
 			
 			CartItem cartItem = new CartItem();
@@ -166,7 +166,7 @@ public class CartItemDao {
 			ProductDao productDao = new ProductDao();
 			CartDao cartDao = new CartDao();
 			//CartDao cartDao = new CartDao();
-			Product1 product = productDao.findOne(rs.getInt("productId"));
+			Product product = productDao.findOne(rs.getInt("productId"));
 			Cart cart = cartDao.findOne(rs.getInt("cartId"));
 		
 			CartItem cartItem = new CartItem();
@@ -191,7 +191,7 @@ public class CartItemDao {
 			CartDao cartDao = new CartDao();
 			ProductDao productDao = new ProductDao();
 			Cart cart = cartDao.findOne(rs.getInt("cartId"));
-			Product1 product = productDao.findOne(rs.getInt("productId"));
+			Product product = productDao.findOne(rs.getInt("productId"));
 			
 			CartItem cartItem = new CartItem();
 			cartItem.setId(rs.getInt("id"));
@@ -219,7 +219,7 @@ public class CartItemDao {
 				ProductDao productDao = new ProductDao();
 				CartDao cartDao = new CartDao();
 				//CartDao cartDao = new CartDao();
-				Product1 product = productDao.findOne(rs.getInt("productId"));
+				Product product = productDao.findOne(rs.getInt("productId"));
 				Cart cart = cartDao.findOne(rs.getInt("cartId"));
 				CartItem cartItem = new CartItem();
 				cartItem.setId(rs.getInt("id"));
@@ -244,7 +244,7 @@ public class CartItemDao {
 			CartDao cartDao = new CartDao();
 			//Cart cart = cartDao.findOneUserAndShop(user, shop);
 			Cart cart = cartDao.findOne(1);
-			Product1 product = productDao.findOne(1);
+			Product product = productDao.findOne(1);
 			CartItem cartItem = new CartItem();
 			cartItem.setId(1);
 			cartItem.setCart(cart);
