@@ -29,12 +29,16 @@ public class detailController extends HttpServlet{
 		int x  = Integer.parseInt(quantity);
 		ProductDao productDao = new ProductDao();
 		CategoryDao cateDao = new CategoryDao();
+
 		
 		Product pro = productDao.findOne(Integer.parseInt(pid));
 		String cateId=String.valueOf(pro.getCategory().getcId());
-		List<Product> list=productDao.gettop5ProductbyCateId(cateId);
+		List<Product> list=productDao.getTop5Product(cateId);
 		
 		
+
+			
+
 		if(action.equals("add")){ 
 		    x += 1;
 		}

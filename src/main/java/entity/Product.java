@@ -10,7 +10,6 @@ public class Product {
 	private String pImage;
 	private String pDescription;
 	private int pQuantity;
-	private int cateId;
 	private Category category;
 	private Shop shop;
 	private Date createAt;
@@ -18,7 +17,7 @@ public class Product {
 	public Product() {
 		super();
 	}
-	public Product(int pId, String pName, float pPrice, String pImage, String pDescription, int pQuantity, int cateId,
+	public Product(int pId, String pName, float pPrice, String pImage, String pDescription, int pQuantity,
 			Category category, Shop shop, Date createAt, Date updateAt) {
 		super();
 		this.pId = pId;
@@ -27,7 +26,6 @@ public class Product {
 		this.pImage = pImage;
 		this.pDescription = pDescription;
 		this.pQuantity = pQuantity;
-		this.cateId = cateId;
 		this.category = category;
 		this.shop = shop;
 		this.createAt = createAt;
@@ -69,12 +67,6 @@ public class Product {
 	public void setpQuantity(int pQuantity) {
 		this.pQuantity = pQuantity;
 	}
-	public int getCateId() {
-		return cateId;
-	}
-	public void setCateId(int cateId) {
-		this.cateId = cateId;
-	}
 	public Category getCategory() {
 		return category;
 	}
@@ -102,9 +94,8 @@ public class Product {
 	@Override
 	public String toString() {
 		return "Product [pId=" + pId + ", pName=" + pName + ", pPrice=" + pPrice + ", pImage=" + pImage
-				+ ", pDescription=" + pDescription + ", pQuantity=" + pQuantity + ", cateId=" + cateId + ", category="
-				+ category + ", shop=" + shop + ", createAt=" + createAt + ", updateAt=" + updateAt + "]";
+				+ ", pDescription=" + pDescription + ", pQuantity=" + pQuantity + ", category=" + category + ", shop="
+				+ shop + ", createAt=" + createAt + ", updateAt=" + updateAt + "]";
 	}
-	
 	
 }

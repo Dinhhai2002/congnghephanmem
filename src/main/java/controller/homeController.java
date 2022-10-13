@@ -37,7 +37,9 @@ public class homeController extends HttpServlet {
 		ProductDao productDao = new ProductDao();
 		//List<Product> list = dao.pagingProduct(index);
 		List<Category> listC = categoryDao.getAllCategory();
-		List<Product> list = productDao.findAll();
+
+		List<Product> list = productDao.getTop20Product();
+
 		/*set data to jsp*/
 		//req.setAttribute("tag", index);
 		//req.setAttribute("endPage", endPage);

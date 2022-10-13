@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="/fontawesome/css/all.min.css">
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css'
 	rel='stylesheet'>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -426,6 +427,7 @@
         </div>
       <jsp:include page="footer.jsp"></jsp:include>
             </div>
+            <script src="<c:url value="/js/product.js"/>"></script>
 </body>
 
 </html>

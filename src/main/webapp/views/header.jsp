@@ -8,7 +8,7 @@
                         <nav class="navbar flexible-box hide-on-mb-tb">
                             <ul class="navbar__list flexible-box">
                                 <li class="navbar__item">
-                                    <a href="" class="navbar__item-link">
+                                    <a href="shop-manager" class="navbar__item-link">
                                         Kênh Người Bán
                                     </a>
                                 </li>

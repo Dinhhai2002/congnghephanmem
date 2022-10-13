@@ -23,8 +23,10 @@
 </head>
 
 <body>
+	<div class="app">
+        
 	<jsp:include page="header.jsp"></jsp:include>
-	<div class="container">
+		<div class="container">
             <div class="grid wide">
             <div class="row sm-gutter body-content">
                 
@@ -84,7 +86,7 @@
                        
                     </div>
                     <div style="text-align:center;" class="home-product-shipping">
-                         <img src="<c:url value="/img/null.png"/>" alt="">
+                        <img src="../assets/img/null.png" alt="">
                         <p>Chưa có đơn hàng</p>
                     </div>
                         
@@ -125,10 +127,11 @@
       
     
     </div>
+    </div>
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
 	
 </body>
 
 </html>
-</html>
+

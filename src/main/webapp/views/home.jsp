@@ -81,7 +81,7 @@
                         <ul class="row no-gutters top-sales-list">
                         <c:forEach items="${listCC}" var="o">
                             <li class="col l-2 lo-2 m-3 c-4 top-sales-item">
-                                <a href="/Shopee/product?index=1" class="top-sales-item-link">
+                                <a href="/Shopee/category?cid=${o.cId}" class="top-sales-item-link">
                                     <div style="margin-right:4px;"class="top-sales-item-link__container">
                                         <div class="top-sales-item-link__img">
                                             <div style="background: center / contain no-repeat url(<c:url value="${o.cImage}"/>) " class="top-sales-item-link__img-bgc1"></div>
