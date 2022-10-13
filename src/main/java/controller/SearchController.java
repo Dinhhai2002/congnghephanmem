@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.CategoryDao;
-import dao.DAO;
+import dao.ProductDao;
 import entity.Category;
 import entity.Product;
 
@@ -24,11 +24,11 @@ public class SearchController extends HttpServlet {
 		resp.setCharacterEncoding("UTF-8");
 		req.setCharacterEncoding("UTF-8");
 		String txtS=req.getParameter("txtS");
-		DAO dao =new DAO();
-		CategoryDao categoryDao = new CategoryDao();
 		
-		List<Product> list=dao.SearchProduct(txtS);
-		List<Category> listC = categoryDao.findAll();
+		CategoryDao categoryDao = new CategoryDao();
+		ProductDao productDao=new ProductDao();
+		List<Product> list=productDao.SearchProduct(txtS);
+		List<Category> listC = categoryDao.getAllCategory();
 		/*set data to jsp*/
 	    req.setAttribute("listP", list);
 	    req.setAttribute("listCC", listC);

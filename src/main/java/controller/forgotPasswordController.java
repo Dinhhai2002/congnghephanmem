@@ -19,8 +19,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.DAO;
-import entity.user;
+import dao.UserDao;
+import entity.User;
 
 @WebServlet(urlPatterns="/forgotPasswordEmail")
 
@@ -38,8 +38,8 @@ public class forgotPasswordController extends HttpServlet {
 		HttpSession mySession = request.getSession();
 		
 		if(email!=null && !email.equals("") && username!=null && !username.equals("")) {
-			DAO dao=new DAO();
-			user a=dao.CheckAccountforgotPassword(username, email);
+			UserDao userDao = new UserDao();
+			User a=userDao.CheckAccountforgotPassword(username, email);
 			if(a!=null)
 			{
 				// sending otp

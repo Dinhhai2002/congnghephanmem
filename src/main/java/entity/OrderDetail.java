@@ -5,7 +5,7 @@ import java.util.Date;
 public class OrderDetail {
 	private int id;
 	private Order order;//order id
-	private Product1 product; //product id
+	private Product product; //product id
 	private int count;
 	private float totalPrice;
 	private Date createAt;
@@ -13,7 +13,7 @@ public class OrderDetail {
 		super();
 	}
 	
-	public OrderDetail(Order order, Product1 product, int count, float totalPrice) {
+	public OrderDetail(Order order, Product product, int count, float totalPrice) {
 		super();
 		this.order = order;
 		this.product = product;
@@ -21,7 +21,7 @@ public class OrderDetail {
 		this.totalPrice = totalPrice;
 	}
 
-	public OrderDetail(int id, Order order, Product1 product, int count, float totalPrice, Date createAt) {
+	public OrderDetail(int id, Order order, Product product, int count, float totalPrice, Date createAt) {
 		super();
 		this.id = id;
 		this.order = order;
@@ -42,10 +42,10 @@ public class OrderDetail {
 	public void setOrder(Order order) {
 		this.order = order;
 	}
-	public Product1 getProduct() {
+	public Product getProduct() {
 		return product;
 	}
-	public void setProduct(Product1 product) {
+	public void setProduct(Product product) {
 		this.product = product;
 	}
 	public int getCount() {

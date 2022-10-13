@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.DAO;
+import dao.UserDao;
+
 
 @WebServlet(urlPatterns="/ValidateOtpUpdateAccount")
 public class validateOtpUpdateAccount extends HttpServlet {
@@ -34,9 +35,9 @@ public class validateOtpUpdateAccount extends HttpServlet {
 		RequestDispatcher dispatcher=null;
 		if (value==otp) 
 		{
-			DAO dao=new DAO();
-			dao.UpdateAccount(id, username, fullname, email, address, phoneNumber);
-			session.setAttribute("acc", dao.CheckAccountUpdate(username, fullname, email, address, phoneNumber));
+			UserDao userDao=new UserDao();
+			userDao.UpdateAccount(id, username, fullname, email, address, phoneNumber);
+			session.setAttribute("acc", userDao.CheckAccountUpdate(username, fullname, email, address, phoneNumber));
 			request.setAttribute("mess", "Cập nhật thành công");
 				request.setAttribute("status", "success");
 			  response.sendRedirect("/Shopee/myAccount");

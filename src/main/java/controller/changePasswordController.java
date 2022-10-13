@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.DAO;
-import entity.user;
+import dao.UserDao;
+import entity.User;
 
 @WebServlet(urlPatterns="/changePassword")
 public class changePasswordController extends HttpServlet {
@@ -28,11 +28,11 @@ public class changePasswordController extends HttpServlet {
 		String oldPass=req.getParameter("oldPass");
 		String pass=req.getParameter("pass");
 		String repass=req.getParameter("repass");
-		DAO dao=new DAO();
-		user a=dao.checkpasswordAccount(id, oldPass);
+		UserDao userDao = new UserDao();
+		User a=userDao.checkpasswordAccount(id, oldPass);
 		if(pass!=null &&pass.equals(repass) && a!=null) {
-			dao.UpdatePassWordAccount(id, pass);
-			mySession.setAttribute("acc",dao.checkpasswordAccount(id, pass) );
+			userDao.UpdatePassWordAccount(id, pass);
+			mySession.setAttribute("acc",userDao.checkpasswordAccount(id, pass) );
 			req.setAttribute("mess", "Cập nhật thành công");
 			resp.sendRedirect("/Shopee/changePassword");
 		}

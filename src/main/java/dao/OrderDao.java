@@ -11,7 +11,7 @@ import entity.Cart;
 import entity.CartItem;
 import entity.Order;
 import entity.OrderStatus;
-import entity.Product1;
+import entity.Product;
 import entity.Shop;
 import entity.User;
 
@@ -206,7 +206,7 @@ public class OrderDao {
 			CartDao cartDao = new CartDao();
 			//Cart cart = cartDao.findOneUserAndShop(user, shop);
 			Cart cart = cartDao.findOne(1);
-			Product1 product = productDao.findOne(1);
+			Product product = productDao.findOne(1);
 			CartItem cartItem = new CartItem();
 			cartItem.setId(1);
 			cartItem.setCart(cart);

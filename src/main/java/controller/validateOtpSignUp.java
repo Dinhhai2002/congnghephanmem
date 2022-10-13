@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.DAO;
+import dao.UserDao;
+
+
 
 @WebServlet(urlPatterns="/ValidateOtpSignup")
 public class validateOtpSignUp extends HttpServlet {
@@ -39,8 +41,8 @@ public class validateOtpSignUp extends HttpServlet {
 		
 		if (value==otp) 
 		{
-			DAO dao=new DAO();
-			dao.SignUp(username, fullname,email,address,pass,phoneNumber);
+			UserDao userDao=new UserDao();
+			userDao.SignUp(username, fullname,email,address,pass,phoneNumber);
 				request.setAttribute("status", "success");
 			  response.sendRedirect("/Shopee/login");
 			
