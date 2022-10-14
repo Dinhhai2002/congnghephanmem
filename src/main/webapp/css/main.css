@@ -1737,6 +1737,9 @@ input[type="checkbox"]:checked + label:before {
   font-weight: 200;
   text-align: right;
 }
+.category-list__item-link-highlight {
+  color: var(--primary) !important;
+}
 
 /* footer */
 .footer {

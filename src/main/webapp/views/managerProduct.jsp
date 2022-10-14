@@ -27,17 +27,17 @@
 <link href="<c:url value="/css/base.css"/>" rel="stylesheet"
 	type="text/css" />
 <link href="<c:url value="/css/main.css"/>" rel="stylesheet"
-	type="text/css" /> 
-	<link href="<c:url value="/css/grid.css"/>" rel="stylesheet"
 	type="text/css" />
-	<link href="<c:url value="/css/responsive.css"/>" rel="stylesheet"
+<link href="<c:url value="/css/grid.css"/>" rel="stylesheet"
+	type="text/css" />
+<link href="<c:url value="/css/responsive.css"/>" rel="stylesheet"
 	type="text/css" />
 <link href="<c:url value="/css/ManagerProduct.css"/>" rel="stylesheet"
 	type="text/css" />
-
 <body>
-	 <div class="app">
-		<jsp:include page="header.jsp"></jsp:include>
+
+	<div class="app">
+	<jsp:include page="header.jsp"></jsp:include>
         
         <div class="container">
             <div class="grid wide">
@@ -49,20 +49,67 @@
                     <div class="col l-12 lo-12 m-12 c-12">
                        
                         <div class="table-wrapper">
-                             <div class="table-title">
+                            <div class="table-title">
+                               
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <h2 class="table-title-header" >
+                                        <a href="#"class="table-title-header-title" >
+                                            Thông tin của shop
+                                        </a>
+                                       
+                                    </div>
+                                   
+                                    
+                                </div>
+                            </div> 
+                            <table class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                       
+                                       
+                                        <th>Tên Shop</th>
+                                        <th>hình ảnh</th>
+                                        <th>Tổng số sản phẩm</th>
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                        <tr style="margin:8px 0;">
+                                            
+                                            
+                                            <td>Shop bán quần áo</td>
+                                            <td>
+                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnAMhxybe3Dj4npaJLC5bmTXxLah9b-owEoQ&usqp=CAU">
+                                            </td>
+                                            <td>90</td>
+                                            
+                                        </tr>
+                                        
+                                        
+                                   
+                                </tbody>
+                            </table>
+                           
+                             <div class="table-title">
+                               
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <a href="#"class="table-title-header" >
                                             Quản lý sản phẩm
-                                        </h2>
+                                        </a>
+                                        <a href="#" class="table-title-header"
+                                            data-toggle="modal"> 
+                                            <span>Đơn hàng</span></a>
+                                        <a href="#" class="table-title-header"
+                                            data-toggle="modal"> 
+                                            <span>Chỉnh sửa thông tin shop</span></a>
                                     </div>
                                     <div class="col-sm-6 btn-add">
                                         <a href="#addEmployeeModal" class="btn btn-info"
                                             data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Thêm sản phẩm mới</span></a>
                                                 
-                                                <a href="#addEmployeeModal" class="btn btn-info"
-                                            data-toggle="modal"><i class="material-icons">&#xE147;</i> 
-                                            <span>Đơn hàng</span></a>
+                                                
                         
                                     </div>
                                     
@@ -74,9 +121,9 @@
                                        
                                        
                                         <th>Tên sản phẩm</th>
-                                        <th>Hình ảnh</th>
+                                        <th>hình ảnh</th>
                                         <th>Giá</th>
-                                        <th>Tình trạng đơn hàng</th>
+                                        <th>Thao tác</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -114,11 +161,12 @@
                             </div>
                 
                             <div style="text-align:center;" class="home-product-shipping">
-                                <img src="<c:url value="/img/null.png"/>" alt="">
+                                <img src="../assets/img/null.png" alt="">
                                 <p>Chưa có đơn hàng</p>
                             </div>  
                        
                     </div>
+                    
                     
                         
                     </div>
@@ -186,8 +234,7 @@
 	
 	
 	
-	
-	
+
 	<script src="<c:url value="/js/managerProduct.js"/>"></script>
 	<script>
 		

@@ -19,7 +19,7 @@
 	type="text/css" />
 	<link href="<c:url value="/css/responsive.css"/>" rel="stylesheet"
 	type="text/css" />
-<link href="<c:url value="/css/storeProduct.css"/>" rel="stylesheet"
+<link href="<c:url value="/css/shipper.css"/>" rel="stylesheet"
 	type="text/css" />
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -98,15 +98,15 @@ rel='stylesheet'>
                     <div class="col l-2 lo-2 hide-on-mb-tb">
                         <div class="category-list">
                             <h2 class="category-list__title">
-                                <a href="#" class="category-list__title-link">
+                                <a href="" class="category-list__title-link">
                                     <i class="category-list__title-icon fas fa-bars"></i>
                                     <span>Tất cả danh mục</span>
                                 </a>
                             </h2>
                             <ul class="category-list__list">
-                                
+                                <!-- category-list__item-link-highlight -->
                                 <li class="category-list__item ">
-                                    <a href="#" class="category-list__item-link category-list__item-link-highlight">
+                                    <a href="#" class="category-list__item-link category-list__item-link-highlight ">
                                         <i class="category-list__item-icon fas fa-caret-right"></i>
                                         Tất cả
                                     </a>
@@ -174,6 +174,7 @@ rel='stylesheet'>
                                         <th>hình ảnh</th>
                                         <th>Giá</th>
                                         <th>Tình trạng đơn hàng</th>
+                                        <th>Xác nhận</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -189,6 +190,7 @@ rel='stylesheet'>
                                             <td>
                                                Đã giao hàng
                                             </td>
+                                            <td class="submit"><a href="">Nhận đơn</a></td>
                                         </tr>
                                         <tr>
                                             
@@ -223,12 +225,12 @@ rel='stylesheet'>
                        
                     </div>
                     <div style="text-align:center;" class="home-product-shipping">
-                        <img src="<c:url value="/img/null.png"/>" alt="">
+                        <img src="../assets/img/null.png" alt="">
                         <p>Chưa có đơn hàng</p>
                     </div>
                         
                     </div>
-                     <div class="col l-10 lo-10 m-12 c-12 ">
+                    <div class="col l-10 lo-10 m-12 c-12">
                        
                         <div class="table-wrapper">
                             <!-- <div class="table-title">
@@ -248,6 +250,7 @@ rel='stylesheet'>
                                         <th>hình ảnh</th>
                                         <th>Giá</th>
                                         <th>Tình trạng đơn hàng</th>
+                                        <th>Xác nhận</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -263,6 +266,7 @@ rel='stylesheet'>
                                             <td>
                                                Đã giao hàng
                                             </td>
+                                            <td class="submit"><a href="">Nhận đơn</a></td>
                                         </tr>
                                         <tr>
                                             
@@ -297,118 +301,53 @@ rel='stylesheet'>
                        
                     </div>
                     <div style="text-align:center;" class="home-product-shipping">
-                        <img src="<c:url value="/img/null.png"/>" alt="">
+                        <img src="../assets/img/null.png" alt="">
                         <p>Chưa có đơn hàng</p>
                     </div>
                         
                     </div>
-                     <div class="col l-10 lo-10 m-12 c-12 ">
+                    <div class="col l-10 lo-10 m-12 c-12">
                        
-                        <div class="table-wrapper">
-                            <!-- <div class="table-title">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <h2>Manage <b>Product</b></h2>
-                                    </div>
+                        
+                    <div style="text-align:center;" class="home-product-shipping">
+                        <img src="./assets/img/null.png" alt="">
+                        <p>Chưa có đơn hàng</p>
+                    </div>
+                        
+                    </div>
+                    <div class="col l-10 lo-10 m-12 c-12">
+                       
+                        
+                        <div style="text-align:center;" class="home-product-shipping">
+                            <img src="./assets/img/null.png" alt="">
+                            <p>Chưa có đơn hàng</p>
+                        </div>
+                            
+                        </div>
+                        <div class="col l-10 lo-10 m-12 c-12">
+                       
+                        
+                            <div style="text-align:center;" class="home-product-shipping">
+                                <img src="./assets/img/null.png" alt="">
+                                <p>Chưa có đơn hàng</p>
+                            </div>
+                                
+                            </div>
+                            <div class="col l-10 lo-10 m-12 c-12">
+                       
+                        
+                                <div style="text-align:center;" class="home-product-shipping">
+                                    <img src="./assets/img/null.png" alt="">
+                                    <p>Chưa có đơn hàng</p>
+                                </div>
                                     
                                 </div>
-                            </div> -->
-                            <table class="table table-striped table-hover">
-                                <thead>
-                                    <tr>
-                                       
-                                       
-                                        <th>Tên sản phẩm</th>
-                                        <th>hình ảnh</th>
-                                        <th>Giá</th>
-                                        <th>Tình trạng đơn hàng</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <c:forEach items="${listP}" var="o">
-                                        <tr style="margin:8px 0;">
-                                            
-                                            
-                                            <td>Giày adidas</td>
-                                            <td>
-                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnAMhxybe3Dj4npaJLC5bmTXxLah9b-owEoQ&usqp=CAU">
-                                            </td>
-                                            <td>900 $</td>
-                                            <td>
-                                               Đã giao hàng
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            
-                                           
-                                            <td>Giày adidas</td>
-                                            <td>
-                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnAMhxybe3Dj4npaJLC5bmTXxLah9b-owEoQ&usqp=CAU">
-                                            </td>
-                                            <td>900 $</td>
-                                            <td>
-                                                Đang giao hàng
-                                            </td>
-                                        </tr>
-                                        
-                                    </c:forEach>
-                                </tbody>
-                            </table>
-                            <div class="clearfix">
-                               
-                                <ul class="pagination">
-                                    <li class="page-item disabled"><a href="#">Previous</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">4</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                                </ul>
-                            </div>
-                
-                           
-                       
-                    </div>
-                    <div style="text-align:center;" class="home-product-shipping">
-                        <img src="<c:url value="/img/null.png"/>" alt="">
-                        <p>Chưa có đơn hàng</p>
-                    </div>
-                        
-                    </div>
-                     <div class="col l-10 lo-10 m-12 c-12 ">
-                       
-                       
-                    <div style="text-align:center;" class="home-product-shipping">
-                        <img src="<c:url value="/img/null.png"/>" alt="">
-                        <p>Chưa có đơn hàng</p>
-                    </div>
-                        
-                    </div>
-                     <div class="col l-10 lo-10 m-12 c-12 ">
-                       
-                       
-                    <div style="text-align:center;" class="home-product-shipping">
-                        <img src="<c:url value="/img/null.png"/>" alt="">
-                        <p>Chưa có đơn hàng</p>
-                    </div>
-                        
-                    </div>
-                     <div class="col l-10 lo-10 m-12 c-12 ">
-                       
-                       
-                    <div style="text-align:center;" class="home-product-shipping">
-                        <img src="<c:url value="/img/null.png"/>" alt="">
-                        <p>Chưa có đơn hàng</p>
-                    </div>
-                        
-                    </div>
                 </div>
             </div>
         </div>
         <jsp:include page="footer.jsp"></jsp:include>
     </div>
- 
-    <script src="<c:url value="/js/Shipper.js"/>"></script>
+   
+     <script src="<c:url value="/js/Shipper.js"/>"></script>
 </body>
 </html>

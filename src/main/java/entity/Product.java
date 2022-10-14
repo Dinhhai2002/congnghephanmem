@@ -1,8 +1,6 @@
 package entity;
 
-import java.math.BigDecimal;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
+
 import java.util.Date;
 
 public class Product {
@@ -20,7 +18,7 @@ public class Product {
 		super();
 	}
 	public Product(int pId, String pName, float pPrice, String pImage, String pDescription, int pQuantity,
-			Category category, Shop shop, Date createAt) {
+			Category category, Shop shop, Date createAt, Date updateAt) {
 		super();
 		this.pId = pId;
 		this.pName = pName;
@@ -31,6 +29,7 @@ public class Product {
 		this.category = category;
 		this.shop = shop;
 		this.createAt = createAt;
+		this.updateAt = updateAt;
 	}
 	public int getpId() {
 		return pId;
@@ -83,21 +82,20 @@ public class Product {
 	public Date getCreateAt() {
 		return createAt;
 	}
-	@Override
-	public String toString() {
-		return "Product [pId=" + pId + ", pName=" + pName + ", pPrice=" + pPrice + ", pImage=" + pImage
-				+ ", pDescription=" + pDescription + ", pQuantity=" + pQuantity + ", category=" + category + ", shop="
-				+ shop + ", createAt=" + createAt + "]";
+	public void setCreateAt(Date createAt) {
+		this.createAt = createAt;
 	}
 	public Date getUpdateAt() {
 		return updateAt;
 	}
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
-	}
 	public void setUpdateAt(Date updateAt) {
 		this.updateAt = updateAt;
 	}
-	
+	@Override
+	public String toString() {
+		return "Product [pId=" + pId + ", pName=" + pName + ", pPrice=" + pPrice + ", pImage=" + pImage
+				+ ", pDescription=" + pDescription + ", pQuantity=" + pQuantity + ", category=" + category + ", shop="
+				+ shop + ", createAt=" + createAt + ", updateAt=" + updateAt + "]";
+	}
 	
 }

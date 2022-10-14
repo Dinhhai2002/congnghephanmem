@@ -185,8 +185,8 @@
                             </h2>
                             <ul class="category-list__list">
                                 <c:forEach items="${listCC}" var="o">
-                                <li class="category-list__item ${tag==o.cId?"active":""}">
-                                    <a href="category?cid=${o.cId}" class="category-list__item-link category-list__item-link-highlight">
+                                <li class="category-list__item ">
+                                    <a href="category?cid=${o.cId} " class="category-list__item-link ${tag==o.cId?"category-list__item-link-highlight":""} ">
                                         <i class="category-list__item-icon fas fa-caret-right"></i>
                                         ${o.cName}
                                     </a>

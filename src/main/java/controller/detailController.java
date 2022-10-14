@@ -23,13 +23,22 @@ public class detailController extends HttpServlet{
 		resp.setCharacterEncoding("UTF-8");
 		req.setCharacterEncoding("UTF-8");
 		String pid=req.getParameter("pId");
+		
 		String action = req.getParameter("action");
 		String quantity = req.getParameter("quantity");
 		int x  = Integer.parseInt(quantity);
 		ProductDao productDao = new ProductDao();
 		CategoryDao cateDao = new CategoryDao();
-		List<Category> listC = cateDao.getAllCategory();
-		Product pro = productDao.findOne(Integer.parseInt(pid));	
+
+		
+		Product pro = productDao.findOne(Integer.parseInt(pid));
+		String cateId=String.valueOf(pro.getCategory().getcId());
+		List<Product> list=productDao.getTop5Product(cateId);
+		
+		
+
+			
+
 		if(action.equals("add")){ 
 		    x += 1;
 		}
@@ -37,8 +46,8 @@ public class detailController extends HttpServlet{
 			x -= 1;
 		}	
 		req.setAttribute("p",pro);
-	    req.setAttribute("listCC", listC);
 	    req.setAttribute("quantity",x);
+	    req.setAttribute("listP", list);
 	    
 	    RequestDispatcher rq=req.getRequestDispatcher("/views/detail.jsp");
 		rq.forward(req, resp);

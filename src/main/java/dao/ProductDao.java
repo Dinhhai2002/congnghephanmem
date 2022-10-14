@@ -13,7 +13,9 @@ import entity.Product;
 import entity.Shop;
 import utils.Constant;
 
+
 public class ProductDao {
+
 	Connection conn = null;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
@@ -292,6 +294,37 @@ public class ProductDao {
 		}
 		return products;
 	}
+	public List<Product> getTop5Product(String cateId) {
+		List<Product> products = new ArrayList<>();
+		String query = "select top 5 * from product where cateId=?";
+
+		try {
+			conn = new connect().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, cateId);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				CategoryDao categoryDao = new CategoryDao();
+				ShopDao shopDao = new ShopDao();
+				Category category = categoryDao.findOne(rs.getInt("cateId"));
+				Shop shop = shopDao.findOne(rs.getInt("shopId"));
+
+				Product product = new Product();
+				product.setpId(rs.getInt("pId"));
+				product.setpName(rs.getString("pName"));
+				product.setpPrice(rs.getInt("pPrice"));
+				product.setpImage(rs.getString("pImage"));
+				product.setpDescription(rs.getString("pDescription"));
+				product.setpQuantity(rs.getInt("pQuantity"));
+				product.setCategory(category);
+				product.setShop(shop);
+				// product.setCreateAt(rs.getDate("createAt"));
+				products.add(product);
+			}
+		} catch (Exception e) {
+		}
+		return products;
+	}
 
 	public List<Product> getNext10Product(int amount) {
 		List<Product> products = new ArrayList<>();
@@ -356,3 +389,4 @@ public class ProductDao {
 		return products;
 	}
 }
+
