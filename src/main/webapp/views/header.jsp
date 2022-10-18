@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script type="text/javascript">
+window.onpageshow = function(evt) {
+	// If persisted then it is in the page cache, force a reload of the page.
+	if (evt.persisted) {
+	    document.body.style.display = "none";
+	    location.reload();
+	}};</script>
  <header class="header">
             <div class="grid wide">
                 <div class="row sm-gutter">
@@ -200,6 +207,9 @@
                                     <c:set var="count"
                                    	value="${count + 1}"/>
                                     </c:forEach>
+                                     <c:if test="${count==0}">
+                                     <c:set var="count" value=""/>
+                                     </c:if>
                                     <div class="header-with-search__cart-number">${count}</div>
 
                                     <!-- No cart: header-with-search__cart-empty -->
