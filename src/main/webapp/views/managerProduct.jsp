@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="/taglib.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,7 +50,7 @@
                        
                         <div class="table-wrapper">
                             <div class="table-title">
-                               
+                               <h3 style="font-size: 30px; color: red;">${mess}</h3>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <a href="#"class="table-title-header-title" >
@@ -134,7 +134,13 @@
                                             <td>${o.pName}</td>
                                             <c:url value="/image?fname=${o.pImage}" var="imgUrl"></c:url>
                                             <td>
-                                                <img src="${imgUrl}">
+                                            <c:if test="${fn:contains(o.pImage, 'https')}">
+												<img src="${o.pImage}" alt=" ${o.pName}">
+											</c:if>
+											<c:if test="${fn:contains(o.pImage, 'product')}">
+												<img src="${imgUrl}">
+											</c:if>
+                                                
                                             </td>
                                             <td>${o.pPrice} $</td>
                                             <td><a href="editP?id=${o.pId}" class="edit"
