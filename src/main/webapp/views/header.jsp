@@ -169,15 +169,15 @@
                                     <i class='bx bx-chevron-left' ></i>
                                 </a>
                             </div>
-                            <form action="search" method="Get"class="header-with-search__search-section">
+                            <form action="javascript:void(0)" method="Get"class="header-with-search__search-section">
                                 <div class="searchbar">
                                     <div class="searchbar__main">
-                                        <div action="" class="searchbar-input">
+                                        <div class="searchbar-input">
                                             <div class="searchbar-input__icon-on-mb-tb hide-on-pc">
                                                
                                                 <i class='searchbar-input__icon-on-mb-tb-icon bx bx-search' ></i>
                                             </div>
-                                            <input value="${txtSearch}" name="txtS" type="text" class="searchbar-input__input"
+                                            <input oninput="searchByName(this)" value="${txtSearch}" name="txtS" type="text" class="searchbar-input__input"
                                                 placeholder="Nhập từ khóa tìm kiếm">
                                             
                                         </div>
@@ -192,14 +192,19 @@
                                 
                             </form>
                             <div class="header-with-search__cart-wrap">
-                                <div class="header-with-search__cart-btn hide-on-mb-tb">
+                             <a href="${pageContext.request.contextPath}/member/cart">   <div class="header-with-search__cart-btn hide-on-mb-tb">
                                     
-                                    <i class='header-with-search__cart-icon bx bx-cart-alt' ></i>
-                                    <div class="header-with-search__cart-number">7</div>
+                           <i class='header-with-search__cart-icon bx bx-cart-alt' ></i>
+                           <c:set var="count" value="${0}"/>
+                                <c:forEach items="${sessionScope.cart}" var="map">
+                                    <c:set var="count"
+                                   	value="${count + 1}"/>
+                                    </c:forEach>
+                                    <div class="header-with-search__cart-number">${count}</div>
 
                                     <!-- No cart: header-with-search__cart-empty -->
                                    
-                                </div>
+                                </div></a>
                                 <div class="header-with-search__cart-filter-btn hide-on-pc">
                                    
                                     <i class='header-with-search__cart-filter-btn-icon bx bx-filter-alt' ></i>

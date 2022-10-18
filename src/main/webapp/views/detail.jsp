@@ -10,6 +10,7 @@
 
 <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css'
 	rel='stylesheet'>
+	<script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 
 	<link href="<c:url value="/css/base.css"/>" rel="stylesheet"
 	type="text/css" />
@@ -40,6 +41,7 @@
                 <div class="row sm-gutter body-content">
                     <aside class="col m-6 c-6 bottom border-right">
                         <article class="gallery-wrap">
+                        	<input type="hidden" id="PID" value="${p.pId}">
                             <img class="gallery-wrap-img" src="${p.pImage }"
                                 alt="${p.pName}">
 
@@ -68,18 +70,20 @@
                             <hr>
                             <dl class="param param-inline">
                                         <dt>Quantity:</dt>
-                                        <div class="model_quantity_number">         									
-                                        <a class="model_quantity_number_remove" 
-                                        href="detail?pId=${p.pId}&quantity=${quantity}&action=sub"><i
-                                                class='bx bx-minus'></i></a>
+                                        <div class="model_quantity_number">  
+                                               									
+                                        <button type="button" id="cart-qty-minus" name="cart-qty-minus" ><i
+                                                class='bx bx-minus'></i></button>
                                                 
-                                            <p class="model_quantity_number_quan">${quantity}</p>
-                                            <a class="model_quantity_number_add" 
-                                            href="detail?pId=${p.pId}&quantity=${quantity}&action=add"><i
-                                                class='bx bx-plus'></i></a>
+                                            <p class="cart-qty">1</p>
+                                           <!--  <p id="cart-qty" name="cart-qty" >  1  </p> -->
+                                            
+                                            
+                                            <button type="button" id="cart-qty-plus" name ="cart-qty-plus"><i
+                                                class='bx bx-plus'></i></button>
                                             
                                         </div>
-                                    </dl>
+                             </dl>
                                     <!-- item-property .// -->
                               
                                 <!-- col.// -->
@@ -90,11 +94,10 @@
                             <div class="btn-footer">
                                 <a href="#" class="submit">
                                     Buy now </a>
-                                     <a  
-                                    href="/Shopee/member/cart-add?pId=${p.pId}&quantity=${quantity}"
+                                     <button  onclick="replace()" type="button" 
                                     class="submit"> <i
                                     class="fas fa-shopping-cart"></i> Add to cart
-                                </a>
+                                </button>
                             </div>
                         </article>
                         <!-- card-body.// -->
@@ -238,8 +241,13 @@
         </div>
          </div>
 	<jsp:include page="footer.jsp"></jsp:include> 
+</div>
+
 		<script src="<c:url value="/js/home.js"/>"></script>
 	<%--  <script src="<c:url value="/js/detail.js"/>"></script> --%>
-	</div>
+	
+
+	
+
 </body>
 </html>

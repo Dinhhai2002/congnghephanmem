@@ -164,7 +164,7 @@
                              <c:forEach items="${listP}" var="o"> 
                    
                             <div class="col l-2-4 lo-3 m-4 c-6 search-item-result__item">
-                                <a href="/Shopee/detail?pId=${o.pId}&quantity=1&action=" class="search-item-result__item-link">
+                                <a href="/Shopee/detail?pId=${o.pId}" class="search-item-result__item-link">
                                     <div class="search-item-result__item-bgc">
                                         
                                         <div class="search-item-result__item-tag-left">
@@ -281,7 +281,7 @@
                              
                         </div>
                         <ul class="pagination hide-on-mb">
-                           <a href="/Shopee/product?index=1"class="pagination_btn">Xem tất cả</a>
+                           <a href="/Shopee/product?index=0&page=1"class="pagination_btn">Xem tất cả</a>
                         </ul>
                     </div>
                 </div>

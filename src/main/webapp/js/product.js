@@ -1,6 +1,7 @@
 /**
  * 
  */
+
  
 //filter price
 (function() {
@@ -59,6 +60,7 @@
     new SortProduct().run();
 })();
  
+
 //search item with ajax
 
 function searchByName(param) {
@@ -82,38 +84,63 @@ function searchByName(param) {
 //lazy loading more content with scroll - infinity scrolling
 document.addEventListener("DOMContentLoaded", () => {
 	let options = {
-	root: null,
-	rootMargins: "0px",
-	threshold: 0.05
+		root: null,
+		rootMargins: "0px",
+		threshold: 0.05
 	};
 	const observer = new IntersectionObserver(handleIntersect, options);
 	observer.observe(document.querySelector("footer"));
 });
 
-function handleIntersect(entries){
-	if(entries[0].isIntersecting){
-		console.warn("something is intersecting with the viewport");
-		loadMore();
-	}
+function handleIntersect(entries) {
+	entries.forEach((entry) => {
+		if (entry.isIntersecting) {
+			console.warn("something is intersecting with the viewport");
+			loadMore();
+		}
+	});
 }
 
 //loadmore with ajax
 function loadMore() {
-	var amount = document.getElementsByClassName("col l-2-4 lo-3 m-4 c-6").length;
-	$.ajax({
-		url: "/Shopee/load",
-		type: "get",
-		data: {
-			amount: amount
-		},
-		success: function(data) {
-			var row = document.getElementById("content")
-			row.innerHTML += data;
-		},
-		error: function(xhr) {
+	let maxContent = 15;
+	let current = document.getElementById("currentPage").innerHTML;
+	let currentP = parseInt(current);
+	let currentCate = document.getElementById("currentCate").innerHTML;
+	let amount = document.getElementsByClassName("col l-2-4 lo-3 m-4 c-6").length;
+	let amountP = (currentP - 1) * maxContent + amount;
+	if (currentCate=="0" && (amountP < maxContent * currentP)) {
+		$.ajax({
+			url: "/Shopee/load",
+			type: "get",
+			data: {
+				amount: amountP
+			},
+			success: function(data) {
+				var row = document.getElementById("content");
+				row.innerHTML += data;
+			},
+			error: function(xhr) {
 
-		}
-	});
+			}
+		});
+	}else if(currentCate!="0" && (amountP < maxContent * currentP)){
+		$.ajax({
+			url: "/Shopee/loadPC",
+			type: "get",
+			data: {
+				cid: currentCate,
+				amount: amountP
+			},
+			success: function(data) {
+				var row = document.getElementById("content");
+				row.innerHTML += data;
+			},
+			error: function(xhr) {
+
+			}
+		});
+	}
 }
 
 /*var cId = 1;
