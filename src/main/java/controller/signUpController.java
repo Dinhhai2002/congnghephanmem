@@ -19,6 +19,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import dao.UserDao;
 import entity.User;
 
@@ -114,7 +116,7 @@ public class signUpController extends HttpServlet {
 				mySession.setAttribute("email",email);
 				mySession.setAttribute("username",username);
 				mySession.setAttribute("fullname", fullname);
-				mySession.setAttribute("password", pass);
+				mySession.setAttribute("password", BCrypt.hashpw(pass, BCrypt.gensalt(12)));
 				mySession.setAttribute("phoneNumber", phoneNumber);
 				mySession.setAttribute("address", address);
 				response.sendRedirect("/Shopee/ValidateOtpSignup");

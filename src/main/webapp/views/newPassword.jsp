@@ -24,6 +24,12 @@
 	background-color: #dee2e6;
 	border: #dee2e6
 }
+.form-control:focus {
+  border-color: red !important;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(252 74 26 /60%)!important;
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(252 74 26 /60%)!important;
+}
 .bg-info{
 	background-image: linear-gradient(0,#fe6432,#f6412d) !important;
 }

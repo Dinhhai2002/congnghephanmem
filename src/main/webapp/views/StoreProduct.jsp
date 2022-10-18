@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopee</title>
+    <title>trang đơn mua</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
     integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -32,6 +32,12 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
 <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css'
 rel='stylesheet'>
+ <style type="text/css">
+  .footer-logo-background{
+  /* background: url("<c:url value="/img/bg-icon.png"/>"); */
+  background: url("${pageContext.request.contextPath}/img/bg-icon.png");
+  }
+  </style>
 </head>
 <body>
     <div class="app">
@@ -223,12 +229,12 @@ rel='stylesheet'>
                        
                     </div>
                     <div style="text-align:center;" class="home-product-shipping">
-                        <img src="<c:url value="/img/null.png"/>" alt="">
+                        <img src="../assets/img/null.png" alt="">
                         <p>Chưa có đơn hàng</p>
                     </div>
                         
                     </div>
-                     <div class="col l-10 lo-10 m-12 c-12 ">
+                    <div class="col l-10 lo-10 m-12 c-12 ">
                        
                         <div class="table-wrapper">
                             <!-- <div class="table-title">
@@ -297,12 +303,12 @@ rel='stylesheet'>
                        
                     </div>
                     <div style="text-align:center;" class="home-product-shipping">
-                        <img src="<c:url value="/img/null.png"/>" alt="">
+                        <img src="../assets/img/null.png" alt="">
                         <p>Chưa có đơn hàng</p>
                     </div>
                         
                     </div>
-                     <div class="col l-10 lo-10 m-12 c-12 ">
+                    <div class="col l-10 lo-10 m-12 c-12 ">
                        
                         <div class="table-wrapper">
                             <!-- <div class="table-title">
@@ -371,44 +377,45 @@ rel='stylesheet'>
                        
                     </div>
                     <div style="text-align:center;" class="home-product-shipping">
-                        <img src="<c:url value="/img/null.png"/>" alt="">
+                        <img src="../assets/img/null.png" alt="">
                         <p>Chưa có đơn hàng</p>
                     </div>
                         
                     </div>
-                     <div class="col l-10 lo-10 m-12 c-12 ">
+                    <div class="col l-10 lo-10 m-12 c-12">
                        
-                       
-                    <div style="text-align:center;" class="home-product-shipping">
-                        <img src="<c:url value="/img/null.png"/>" alt="">
-                        <p>Chưa có đơn hàng</p>
-                    </div>
                         
-                    </div>
-                     <div class="col l-10 lo-10 m-12 c-12 ">
+                        <div style="text-align:center;" class="home-product-shipping">
+                            <img src="./assets/img/null.png" alt="">
+                            <p>Chưa có đơn hàng</p>
+                        </div>
+                            
+                        </div>
+                        <div class="col l-10 lo-10 m-12 c-12">
                        
-                       
-                    <div style="text-align:center;" class="home-product-shipping">
-                        <img src="<c:url value="/img/null.png"/>" alt="">
-                        <p>Chưa có đơn hàng</p>
-                    </div>
                         
-                    </div>
-                     <div class="col l-10 lo-10 m-12 c-12 ">
-                       
-                       
-                    <div style="text-align:center;" class="home-product-shipping">
-                        <img src="<c:url value="/img/null.png"/>" alt="">
-                        <p>Chưa có đơn hàng</p>
-                    </div>
-                        
-                    </div>
+                            <div style="text-align:center;" class="home-product-shipping">
+                                <img src="./assets/img/null.png" alt="">
+                                <p>Chưa có đơn hàng</p>
+                            </div>
+                                
+                            </div>
+                    <div class="col l-10 lo-10 m-12 c-12">
+                
+                
+                        <div style="text-align:center;" class="home-product-shipping">
+                            <img src="./assets/img/null.png" alt="">
+                            <p>Chưa có đơn hàng</p>
+                        </div>
+                            
+                        </div>
                 </div>
             </div>
         </div>
+    
         <jsp:include page="footer.jsp"></jsp:include>
     </div>
- 
+ <script src="<c:url value="/js/home.js"/>"></script>
     <script src="<c:url value="/js/Shipper.js"/>"></script>
 </body>
 </html>

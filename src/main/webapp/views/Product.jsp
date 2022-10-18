@@ -38,102 +38,42 @@
             <div class="grid wide">
           
                 <!-- Body -->
-                <div class="shop-category-on-mb-tb hide-on-pc">
-                    <h3 class="img-carousel__items-title">
-                        Danh Mục
-                    </h3>
-                    <ul class="row no-gutters shop-category-on-mb-tb-list">
-                        <li class="col m-3 c-4 shop-category-on-mb-tb-item">
-                            <a href="" class="shop-category-on-mb-tb-item-link">
-                                <div class="shop-category-on-mb-tb-item-wrap">
-                                    <div class="shop-category-on-mb-tb-item-img1"></div>
-                                </div>
-                                <p class="shop-category-on-mb-tb-item-text">
-                                    Máy Tính Bàn
-                                </p>
+             <div class="row no-gutters hide-on-pc">
+                    <div class="col l-12 c-12 m-12 ofs-carousel">
+                        <div class="ofs-carousel__header">
+                            <a href="#" class="ofs-carousel__title-shop">
+                                Danh mục sản phẩm
                             </a>
-                            <a href="" class="shop-category-on-mb-tb-item-link">
-                                <div class="shop-category-on-mb-tb-item-wrap">
-                                    <div class="shop-category-on-mb-tb-item-img6"></div>
-                                </div>
-                                <p class="shop-category-on-mb-tb-item-text">
-                                    Màn Hình
-                                </p>
+                            <a href="/Shopee/product?index=1" class="ofs-carousel__title">
+                                <span>Xem tất cả</span>
+                                <i class="fas fa-chevron-right"></i>
                             </a>
-                        </li>
-                        <li class="col m-3 c-4 shop-category-on-mb-tb-item">
-                            <a href="" class="shop-category-on-mb-tb-item-link">
-                                <div class="shop-category-on-mb-tb-item-wrap">
-                                    <div class="shop-category-on-mb-tb-item-img2"></div>
-                                </div>
-                                <p class="shop-category-on-mb-tb-item-text">
-                                    Linh Kiện Máy Tính
-                                </p>
-                            </a>
-                            <a href="" class="shop-category-on-mb-tb-item-link">
-                                <div class="shop-category-on-mb-tb-item-wrap">
-                                    <div class="shop-category-on-mb-tb-item-img7"></div>
-                                </div>
-                                <p class="shop-category-on-mb-tb-item-text">
-                                    Thiết Bị Lưu Trữ
-                                </p>
-                            </a>
-                        </li>
-                        <li class="col m-3 c-4 shop-category-on-mb-tb-item">
-                            <a href="" class="shop-category-on-mb-tb-item-link">
-                                <div class="shop-category-on-mb-tb-item-wrap">
-                                    <div class="shop-category-on-mb-tb-item-img3"></div>
-                                </div>
-                                <p class="shop-category-on-mb-tb-item-text">
-                                    Thiết Bị Mạng
-                                </p>
-                            </a>
-                            <a href="" class="shop-category-on-mb-tb-item-link">
-                                <div class="shop-category-on-mb-tb-item-wrap">
-                                    <div class="shop-category-on-mb-tb-item-img8"></div>
-                                </div>
-                                <p class="shop-category-on-mb-tb-item-text">
-                                    Máy In & Máy Scan
-                                </p>
-                            </a>
-                        </li>
-                        <li class="col m-3 c-4 shop-category-on-mb-tb-item">
-                            <a href="" class="shop-category-on-mb-tb-item-link">
-                                <div class="shop-category-on-mb-tb-item-wrap">
-                                    <div class="shop-category-on-mb-tb-item-img4"></div>
-                                </div>
-                                <p class="shop-category-on-mb-tb-item-text">
-                                    Phụ Kiện Máy Tính
-                                </p>
-                            </a>
-                            <a href="" class="shop-category-on-mb-tb-item-link">
-                                <div class="shop-category-on-mb-tb-item-wrap">
-                                    <div class="shop-category-on-mb-tb-item-img9"></div>
-                                </div>
-                                <p class="shop-category-on-mb-tb-item-text">
-                                    Laptop
-                                </p>
-                            </a>
-                        </li>
-                        <li class="col m-3 c-4 shop-category-on-mb-tb-item">
-                            <a href="" class="shop-category-on-mb-tb-item-link">
-                                <div class="shop-category-on-mb-tb-item-wrap">
-                                    <div class="shop-category-on-mb-tb-item-img5"></div>
-                                </div>
-                                <p class="shop-category-on-mb-tb-item-text">
-                                    Khác
-                                </p>
-                            </a>
-                            <a href="" class="shop-category-on-mb-tb-item-link">
-                                <div class="shop-category-on-mb-tb-item-wrap">
-                                    <div class="shop-category-on-mb-tb-item-img10"></div>
-                                </div>
-                                <p class="shop-category-on-mb-tb-item-text">
-                                    Gaming
-                                </p>
-                            </a>
-                        </li>
-                    </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="top-sales-wrap hide-on-pc">
+                    <div class="top-sales">
+                        <ul class="row no-gutters top-sales-list">
+                        <c:forEach items="${listCC}" var="o">
+                            <li class="col l-2 lo-2 m-3 c-4 top-sales-item">
+                                <a href="/Shopee/category?cid=${o.cId}" class="top-sales-item-link">
+                                    <div style="margin-right:4px;"class="top-sales-item-link__container">
+                                        <div class="top-sales-item-link__img">
+                                            <div style="background: center / contain no-repeat url(<c:url value="${o.cImage}"/>) " class="top-sales-item-link__img-bgc1"></div>
+                                        </div>
+                                        <p class="top-sales-item-link__text">
+                                            ${o.cName}
+                                        </p>
+                                        
+                                    </div>
+                                </a>
+                            </li>
+                            </c:forEach>
+                        </ul>
+                    </div>
+                    <span class="ofs-carousel__arrow-next hide-on-mb-tb">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
                 </div>
                 <div class="row sm-gutter body-content">
                     <div class="col m-12 c-12 search-item-result-on-mb-tb hide-on-pc">
@@ -219,22 +159,26 @@
                                         <button class="btn">
                                             Bán Chạy
                                         </button>
-                                        <div class="sort-bar-by-options__price">
-                                            <span>Giá</span>
-                                            <i class="sort-bart-by-options__icon fas fa-chevron-down"></i>
+                                       <select class="sort-bar-by-options__price" id="select">
+                                            
                                             <div class="sort-bar-by-options__price-list">
-                                                <a href="" class="sort-bar-by-options__price-item">
-                                                    <p class="sort-bar-by-options__price-text">
+                                                <option value="Default"  class="sort-bar-by-options__price-item">
+                                                   
+                                                        Giá:mặc định
+                                                   
+                                                </option>
+                                                <option value="LowToHigh"  class="sort-bar-by-options__price-item">
+                                                   
                                                         Giá: Thấp đến cao
-                                                    </p>
-                                                </a>
-                                                <a href="" class="sort-bar-by-options__price-item">
-                                                    <p class="sort-bar-by-options__price-text">
+                                                    
+                                                </option>
+                                                <option value="HighToLow"  class="sort-bar-by-options__price-item">
+                                                    
                                                         Giá: Cao đến thấp
-                                                    </p>
-                                                </a>
+                                                    
+                                                </option>
                                             </div>
-                                        </div>
+                                        </select>
                                     </div>
                                     <div class="sort-bar-mini-page-controller">
                                         <p class="sort-bar-mini-page-controller__state">
@@ -427,6 +371,7 @@
         </div>
       <jsp:include page="footer.jsp"></jsp:include>
             </div>
+            	<script src="<c:url value="/js/home.js"/>"></script>
             <script src="<c:url value="/js/product.js"/>"></script>
 </body>
 

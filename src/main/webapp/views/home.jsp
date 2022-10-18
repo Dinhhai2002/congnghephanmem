@@ -107,7 +107,7 @@
                 <!-- Body -->
                 <div class="row sm-gutter body-content">
         
-                    <div class="col  m-12 c-12">
+                    <div class="col l-12 lo-12 m-12 c-12">
                         <div class="row sm-gutter">
                             <div class="col l-12 lo-12 hide-on-mb-tb">
                                 <div class="sort-bar">
@@ -124,22 +124,26 @@
                                         <button class="btn">
                                             Bán Chạy
                                         </button>
-                                        <div class="sort-bar-by-options__price">
-                                            <span>Giá</span>
-                                            <i class="sort-bart-by-options__icon fas fa-chevron-down"></i>
+                                        <select class="sort-bar-by-options__price" id="select">
+                                            
                                             <div class="sort-bar-by-options__price-list">
-                                                <a href="" class="sort-bar-by-options__price-item">
-                                                    <p class="sort-bar-by-options__price-text">
+                                                <option value="Default"  class="sort-bar-by-options__price-item">
+                                                   
+                                                        Giá:mặc định
+                                                   
+                                                </option>
+                                                <option value="LowToHigh"  class="sort-bar-by-options__price-item">
+                                                   
                                                         Giá: Thấp đến cao
-                                                    </p>
-                                                </a>
-                                                <a href="" class="sort-bar-by-options__price-item">
-                                                    <p class="sort-bar-by-options__price-text">
+                                                    
+                                                </option>
+                                                <option value="HighToLow"  class="sort-bar-by-options__price-item">
+                                                    
                                                         Giá: Cao đến thấp
-                                                    </p>
-                                                </a>
+                                                    
+                                                </option>
                                             </div>
-                                        </div>
+                                        </select>
                                     </div>
                                     <div class="sort-bar-mini-page-controller">
                                         <p class="sort-bar-mini-page-controller__state">
@@ -277,7 +281,7 @@
                              
                         </div>
                         <ul class="pagination hide-on-mb">
-                           <a href="/Shopee/product?index=1"class="pagination_btn">Xem tất cả</a>
+                           <a href="/Shopee/product?index=0&page=1"class="pagination_btn">Xem tất cả</a>
                         </ul>
                     </div>
                 </div>
@@ -286,7 +290,8 @@
 		<jsp:include page="footer.jsp"></jsp:include>
 
 	</div>
-	
+	<script src="<c:url value="/js/home.js"/>"></script>
+	 <script src="<c:url value="/js/product.js"/>"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
             <script>
                 var swiper = new Swiper(".mySwiper", {

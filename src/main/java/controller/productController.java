@@ -22,23 +22,38 @@ public class productController extends HttpServlet {
 		resp.setContentType("text/html");
 		resp.setCharacterEncoding("UTF-8");
 		req.setCharacterEncoding("UTF-8");
-		String pIndex = req.getParameter("index");
-		int index = Integer.parseInt(pIndex);
+		String cIndex = req.getParameter("index");
+		int page = Integer.parseInt(req.getParameter("page"));
 		
 		ProductDao productDao=new ProductDao();
 		CategoryDao cateDao=new CategoryDao();
-		int count = productDao.getTotalProduct();
+		
 		int pageSize = productDao.pageSize;
-		int endPage = count/pageSize;
-		if(count%pageSize>0) {
-			endPage++;
-		}
-		List<Product> list = productDao.pagingProduct(index);
+		
 		List<Category> listC = cateDao.getAllCategory();
 		/*set data to jsp*/
-		req.setAttribute("tag", index);
-		req.setAttribute("endPage", endPage);
-	    req.setAttribute("listP", list);
+		if("0".equals(cIndex)) {
+			int count = productDao.getTotalProduct();
+			int endPage = count/pageSize;
+			if(count%pageSize>0) {
+				endPage++;
+			}
+			List<Product> listP = productDao.pagingProduct(page);
+			req.setAttribute("endPage", endPage);
+			req.setAttribute("listP", listP);
+		}
+		else {
+			int count = productDao.getTotalProductByCid(cIndex);
+			int endPage = count/pageSize;
+			if(count%pageSize>0) {
+				endPage++;
+			}
+			List<Product> listPC = productDao.pagingProductByCid(cIndex, page);
+			req.setAttribute("endPage", endPage);
+			req.setAttribute("listP", listPC);
+		}
+		req.setAttribute("cid", cIndex);
+		req.setAttribute("tag", page);	    
 	    req.setAttribute("listCC", listC);
 //        req.setAttribute("p", last);
 		RequestDispatcher rq=req.getRequestDispatcher("/views/Product.jsp");

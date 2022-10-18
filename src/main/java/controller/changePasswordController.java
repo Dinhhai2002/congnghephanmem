@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import dao.UserDao;
 import entity.User;
 
@@ -29,10 +31,10 @@ public class changePasswordController extends HttpServlet {
 		String pass=req.getParameter("pass");
 		String repass=req.getParameter("repass");
 		UserDao userDao = new UserDao();
-		User a=userDao.checkpasswordAccount(id, oldPass);
-		if(pass!=null &&pass.equals(repass) && a!=null) {
-			userDao.UpdatePassWordAccount(id, pass);
-			mySession.setAttribute("acc",userDao.checkpasswordAccount(id, pass) );
+		User a=(User) mySession.getAttribute("acc");
+		if(pass!=null &&pass.equals(repass) && BCrypt.checkpw(oldPass, a.getuPassword())==true) {
+			userDao.UpdatePassWordAccount(id, BCrypt.hashpw(pass, BCrypt.gensalt(12)));
+			mySession.setAttribute("acc",userDao.CheckAccount(a.getuName()) );
 			req.setAttribute("mess", "Cập nhật thành công");
 			resp.sendRedirect("/Shopee/changePassword");
 		}
