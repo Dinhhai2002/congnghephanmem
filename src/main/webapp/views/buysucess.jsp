@@ -41,7 +41,7 @@
 		
 		</div>
 		<jsp:include page="footer.jsp"></jsp:include>
-
+		<script src="<c:url value="/js/home.js"/>"></script>
 	
 </body>
 </html>

@@ -17,6 +17,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import dao.CartItemDao;
 import dao.UserDao;
 import entity.CartItem;
@@ -58,14 +60,13 @@ public class loginController extends HttpServlet {
 
 		CartItemDao cartItemDao = new CartItemDao();
 		UserDao userDao = new UserDao();
-
-		User a = userDao.Login(username, pass);
+		
+		
 		try {
+			User a = userDao.CheckAccount(username);
+			String uPass=a.getuPassword();
 			if (username != null && pass != null) {
-				if (a == null) {
-					req.setAttribute("mess", "Bạn đã nhập sai mật khẩu hoặc tên người dùng");
-					req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
-				} else {
+				if ((a!=null && BCrypt.checkpw(pass, a.getuPassword())==true )||(a!=null && pass.equals(uPass))) {
 					HttpSession session=req.getSession();
 					session.setAttribute("acc", a);
 					List<CartItem> listCartItem = cartItemDao.findAllByuId(a.getuId());
@@ -90,14 +91,21 @@ public class loginController extends HttpServlet {
 					resp.addCookie(p);
 					resp.sendRedirect("/Shopee/home?index=1");
 					System.out.print("success");
+					
+				} else {
+					req.setAttribute("mess", "Bạn đã nhập sai mật khẩu hoặc tên người dùng");
+					req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
+					
 				}
+				
 			} else {
 				req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
 
 			}
 		}
 		catch(Exception e){
-			
+			req.setAttribute("mess", "Bạn đã nhập sai mật khẩu hoặc tên người dùng");
+			req.getRequestDispatcher("/views/login.jsp").forward(req, resp);
 		}
 		out.close();
 	}

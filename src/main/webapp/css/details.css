@@ -41,7 +41,6 @@ img {
     word-wrap: break-word;
     background-clip: border-box;
     border-radius: 0.25rem;
-    line-height: 28px;
 }
 .model_quantity_number{
     display: flex;
@@ -74,4 +73,32 @@ img {
     color:#fff;
     font-size: 16px;
     border:1px solid var(--primary);
+}
+
+.sort-bar__label{
+    font-size: 20px;
+    font-weight: 500;
+    color:var(--primary);
+}
+.bottom{
+    margin-bottom: 20px;
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+/* mobile */
+@media (max-width: 740px)
+{
+  .bottom{
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .btn-footer{
+    display: flex;
+    flex-direction: column;
+
+  }
+  .btn-footer a{
+    text-align: center;
+    width: 100%;
+  }
 }

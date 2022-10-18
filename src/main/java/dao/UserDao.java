@@ -67,6 +67,7 @@ public class UserDao {
         }
         return null;
    }
+ 
     
     public void SignUp(String user,String fullname,String email,String Address,String password,String phoneNumber) {
       	 String query = "insert into [user] values(?,?,?,?,?,?,null,1,0,null,getdate())";
@@ -117,24 +118,40 @@ public class UserDao {
           return null;
      }
     public void UpdateAccount(String uId,String user,String fullname,String email,String Address,String phoneNumber) {
-     	 String query = "update [user]\r\n" + 
-     	 		"set uName=?,uFullName=?,uEmail=?,uAddress=?,uPhone=?\r\n" + 
-     	 		"where uId=?";
-          try {
-              conn = new connect().getConnection();
-              ps = conn.prepareStatement(query);
-              ps.setString(1, user);
-              ps.setString(2, fullname);
-              ps.setString(3, email);
-              ps.setString(4, Address);
-              ps.setString(5, phoneNumber);
-              ps.setString(6,uId);
-              ps.executeUpdate();
-              
-          } catch (Exception e) {
-          }
-          
-     }
+    	 String query = "update [user]\r\n" + 
+    	 		"set uName=?,uFullName=?,uEmail=?,uAddress=?,uPhone=?\r\n" + 
+    	 		"where uId=?";
+         try {
+             conn = new connect().getConnection();
+             ps = conn.prepareStatement(query);
+             ps.setString(1, user);
+             ps.setString(2, fullname);
+             ps.setString(3, email);
+             ps.setString(4, Address);
+             ps.setString(5, phoneNumber);
+             ps.setString(6,uId);
+             ps.executeUpdate();
+             
+         } catch (Exception e) {
+         }
+         
+    }
+
+    public void UpdateAccountManager(int uId) {
+    	 String query = "update [user]\r\n" + 
+    	 		"set idRole=3\r\n" + 
+    	 		"where uId=?";
+         try {
+             conn = new connect().getConnection();
+             ps = conn.prepareStatement(query);
+             ps.setInt(1, uId);
+             
+             ps.executeUpdate();
+             
+         } catch (Exception e) {
+         }
+         
+    }
    public void UpdatePassWordAccount(String id,String pass) {
     	 String query = "update [user]\r\n" + 
     	 		"set uPassword=?\r\n" + 

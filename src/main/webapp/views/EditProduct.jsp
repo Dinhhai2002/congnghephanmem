@@ -29,6 +29,14 @@
 	type="text/css" />
 <link href="<c:url value="/css/editProduct.css"/>" rel="stylesheet"
 	type="text/css" />
+	
+	<style type="text/css">
+  .footer-logo-background{
+  /* background: url("<c:url value="/img/bg-icon.png"/>"); */
+  background: url("${pageContext.request.contextPath}/img/bg-icon.png");
+  }
+  </style>
+	</head>
 <body>
 	<div class="app">
 		<jsp:include page="header.jsp"></jsp:include>
@@ -94,8 +102,10 @@
 			</div>
 
 		</div>
+		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
-	<jsp:include page="footer.jsp"></jsp:include>
-	</div>
+	
+
+	<script src="<c:url value="/js/home.js"/>"></script>
 </body>
 </html>

@@ -19,6 +19,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import dao.CategoryDao;
 import dao.ProductDao;
 import dao.ShopDao;
+import dao.UserDao;
 import entity.Category;
 import entity.Product;
 import entity.Shop;
@@ -30,6 +31,7 @@ public class ProductAddController extends HttpServlet{
 	ProductDao productDao = new ProductDao();
 	CategoryDao cateDao = new CategoryDao();
 	ShopDao shopDao = new ShopDao();
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Product product = new Product();
@@ -70,6 +72,7 @@ public class ProductAddController extends HttpServlet{
 			HttpSession session = req.getSession();
 			User a = (User) session.getAttribute("acc");
 			int id = a.getuId();
+			
 			int shopId = shopDao.getShopIdByuId(id);
 			shop = shopDao.findOne(shopId); 
 			product.setShop(shop);

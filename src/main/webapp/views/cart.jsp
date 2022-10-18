@@ -19,7 +19,12 @@
 
 <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css'
 	rel='stylesheet'>
-
+<style type="text/css">
+  .footer-logo-background{
+  /* background: url("<c:url value="/img/bg-icon.png"/>"); */
+  background: url("${pageContext.request.contextPath}/img/bg-icon.png");
+  }
+  </style>
 </head>
 
 <body>
@@ -130,7 +135,7 @@
     </div>
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
-	
+		<script src="<c:url value="/js/home.js"/>"></script>
 </body>
 
 </html>

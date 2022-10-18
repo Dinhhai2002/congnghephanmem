@@ -7,11 +7,25 @@
                     <div class="col l-12 m-12 c-12">
                         <nav class="navbar flexible-box hide-on-mb-tb">
                             <ul class="navbar__list flexible-box">
+                  			<c:if test="${sessionScope.acc!=null}">
+                            <c:if test="${sessionScope.acc.idRole==3}">
                                 <li class="navbar__item">
                                     <a href="shop-manager" class="navbar__item-link">
                                         Kênh Người Bán
                                     </a>
                                 </li>
+                               
+                                </c:if>
+                                
+                                <c:if test="${sessionScope.acc.idRole!=3}">
+                                <li class="navbar__item">
+                                    <a href="addShop" class="navbar__item-link">
+                                        Kênh Người Bán
+                                    </a>
+                                </li>
+                                
+                                </c:if>
+                                </c:if>
                                 <!-- <li class="navbar__item">
                             <a href="" class="navbar__item-link">
                                 Trở Thành Người Bán Shopee
@@ -141,7 +155,16 @@
                                         </g>
                                     </svg>
                                 </a>
-                                <a href="" class="header-with-search__link-on-mb-tb hide-on-pc">
+                                <div id="mySidepanel" class="sidepanel">
+                                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                                    <a href="#">Tài khoản cá nhân</a>
+                                    <a href="#">Đổi mật khẩu</a>
+                                    <a href="#">Đăng xuất</a>
+                                   
+                                  </div>
+                                  
+                                  <button class="openbtn" onclick="openNav()">☰ </button>  
+                                <a href="" class=" hide-on-pc">
                                
                                     <i class='bx bx-chevron-left' ></i>
                                 </a>

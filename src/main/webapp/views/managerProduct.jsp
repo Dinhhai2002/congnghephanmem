@@ -34,6 +34,14 @@
 	type="text/css" />
 <link href="<c:url value="/css/ManagerProduct.css"/>" rel="stylesheet"
 	type="text/css" />
+	
+	<style type="text/css">
+  .footer-logo-background{
+  /* background: url("<c:url value="/img/bg-icon.png"/>"); */
+  background: url("${pageContext.request.contextPath}/img/bg-icon.png");
+  }
+  </style>
+	</head>
 <body>
 
 	<div class="app">
@@ -52,44 +60,29 @@
                             <div class="table-title">
                                
                                 <div class="row">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-6-shop">
                                         <a href="#"class="table-title-header-title" >
                                             Thông tin của shop
                                         </a>
+                                        <div class="table-content">
+                                            <div class="table-content-img">
+                                                <img src="./assets/img/null.png" alt="">
+                                            </div>
+                                            <div class="table-content-container">
+                                                <h3 class="table-content-container-name">
+                                                    Shop niềm vui
+                                                </h3>
+                                                <p class="table-content-container-description">
+                                                    Thật là tuyệt vời
+                                                </p>
+                                            </div>
+                                        </div>
                                        
                                     </div>
                                    
                                     
                                 </div>
                             </div> 
-                            <table class="table table-striped table-hover">
-                                <thead>
-                                    <tr>
-                                       
-                                       
-                                        <th>Tên Shop</th>
-                                        <th>hình ảnh</th>
-                                        <th>Tổng số sản phẩm</th>
-                                        
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    
-                                        <tr style="margin:8px 0;">
-                                            
-                                            
-                                            <td>Shop bán quần áo</td>
-                                            <td>
-                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnAMhxybe3Dj4npaJLC5bmTXxLah9b-owEoQ&usqp=CAU">
-                                            </td>
-                                            <td>90</td>
-                                            
-                                        </tr>
-                                        
-                                        
-                                   
-                                </tbody>
-                            </table>
                            
                              <div class="table-title">
                                
@@ -236,8 +229,7 @@
 	
 
 	<script src="<c:url value="/js/managerProduct.js"/>"></script>
-	<script>
-		
-	</script>
+	<script src="<c:url value="/js/home.js"/>"></script>
+	
 </body>
 </html>
