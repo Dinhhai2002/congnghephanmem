@@ -277,7 +277,7 @@
                              
                         </div>
                         <ul class="pagination hide-on-mb">
-                           <a href="/Shopee/product?index=1"class="pagination_btn">Xem tất cả</a>
+                           <a href="/Shopee/product?index=0&page=1"class="pagination_btn">Xem tất cả</a>
                         </ul>
                     </div>
                 </div>
