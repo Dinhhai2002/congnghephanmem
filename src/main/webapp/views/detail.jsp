@@ -27,10 +27,9 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-
-
 </head>
 <body>
+
 	
 	<div class="app">
         <jsp:include page="header.jsp"></jsp:include>
@@ -239,7 +238,7 @@
         </div>
          </div>
 	<jsp:include page="footer.jsp"></jsp:include> 
-	<script src="<c:url value="/js/detail.js"/>"></script>
 	
+	<script src="<c:url value="/js/detail.js"/>"></script>
 </body>
 </html>
