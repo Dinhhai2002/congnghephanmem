@@ -1,23 +1,32 @@
 /**
  * 
  */
+ 
+function createFaction() {
+  var num = 1
+  document.querySelector('.cart-qty').innerHTML = num;
+}
+$("#cart-qty-plus").click(function(){
+    num = parseInt($(".cart-qty").text());
+    $(".cart-qty").text(num+1);
+})
 
-function add()
-{
-   	this.number=Number.parseInt(document.querySelector('.model_quantity_number_quan').innerHTML)
-   	this.number++;
-    document.querySelector('.model_quantity_number_quan').innerHTML=this.number;
-}
-function remove(){
-    this.number=Number.parseInt(document.querySelector('.model_quantity_number_quan').innerHTML)
-    if(number>0)
-    {
-		this.number--;
-        document.querySelector('.model_quantity_number_quan').innerHTML=this.number;
-    }
-    else{
-        alert("Không thực hiện được thao tác")
-    }
-}
-document.querySelector('.model_quantity_number_add').addEventListener("click",add)
-document.querySelector('.model_quantity_number_remove').addEventListener("click",remove)
+
+$("#cart-qty-minus").click(function(){
+    num = parseInt($(".cart-qty").text());
+    if(num==1){
+	return false
+	}
+    $(".cart-qty").text(num-1);
+})
+function fun(){  
+   document.querySelector('.cart-qty').reset();
+ }   
+function replace(){
+			num = parseInt($(".cart-qty").text());
+			var pId = $('#PID').val();
+			var x = '/Shopee/member/cart-add?pId='+pId;
+			x=x+'&quantity='+num;
+            location.href = x;
+            fun();            
+        }
