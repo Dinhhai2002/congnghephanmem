@@ -169,14 +169,19 @@
                                 
                             </form>
                             <div class="header-with-search__cart-wrap">
-                                <div class="header-with-search__cart-btn hide-on-mb-tb">
+                             <a href="${pageContext.request.contextPath}/member/cart">   <div class="header-with-search__cart-btn hide-on-mb-tb">
                                     
-                                    <i class='header-with-search__cart-icon bx bx-cart-alt' ></i>
-                                    <div class="header-with-search__cart-number">7</div>
+                           <i class='header-with-search__cart-icon bx bx-cart-alt' ></i>
+                           <c:set var="count" value="${0}"/>
+                                <c:forEach items="${sessionScope.cart}" var="map">
+                                    <c:set var="count"
+                                   	value="${count + 1}"/>
+                                    </c:forEach>
+                                    <div class="header-with-search__cart-number">${count}</div>
 
                                     <!-- No cart: header-with-search__cart-empty -->
                                    
-                                </div>
+                                </div></a>
                                 <div class="header-with-search__cart-filter-btn hide-on-pc">
                                    
                                     <i class='header-with-search__cart-filter-btn-icon bx bx-filter-alt' ></i>
