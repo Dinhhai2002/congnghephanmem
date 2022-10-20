@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	let options = {
 		root: null,
 		rootMargins: "0px",
-		threshold: 0.05
+		threshold: 0.01
 	};
 	const observer = new IntersectionObserver(handleIntersect, options);
 	observer.observe(document.querySelector("footer"));
@@ -103,10 +103,14 @@ function handleIntersect(entries) {
 
 //loadmore with ajax
 function loadMore() {
-	let maxContent = 15;
-	let current = document.getElementById("currentPage").innerHTML;
-	let currentP = parseInt(current);
-	let currentCate = document.getElementById("currentCate").innerHTML;
+	let maxContent = 35;
+	let queryString = window.location.search;
+	let urlParams = new URLSearchParams(queryString);
+	let page = urlParams.get('page');
+	let currentCate = urlParams.get('index');
+	//let current = document.getElementById("currentPage").innerHTML;
+	let currentP = parseInt(page);
+	//let currentCate = document.getElementById("currentCate").innerHTML;
 	let amount = document.getElementsByClassName("col l-2-4 lo-3 m-4 c-6").length;
 	let amountP = (currentP - 1) * maxContent + amount;
 	if (currentCate=="0" && (amountP < maxContent * currentP)) {
