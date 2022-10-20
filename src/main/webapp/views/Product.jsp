@@ -1,136 +1,140 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
-    <%@ include file="/taglib.jsp" %>
+	pageEncoding="UTF-8"%>
+<%@ include file="/taglib.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopee</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="<c:url value="/css/base.css"/>" rel="stylesheet"
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shopee</title>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+	integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="<c:url value="/css/base.css"/>" rel="stylesheet"
 	type="text/css" />
 <link href="<c:url value="/css/main.css"/>" rel="stylesheet"
 	type="text/css" />
-	<link href="<c:url value="/css/grid.css"/>" rel="stylesheet"
+<link href="<c:url value="/css/grid.css"/>" rel="stylesheet"
 	type="text/css" />
-	<link href="<c:url value="/css/responsive.css"/>" rel="stylesheet"
+<link href="<c:url value="/css/responsive.css"/>" rel="stylesheet"
 	type="text/css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="/fontawesome/css/all.min.css">
-    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css'
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link
+	href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+	integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="/fontawesome/css/all.min.css">
+<link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css'
 	rel='stylesheet'>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<style type="text/css">
-  .footer-logo-background{
-  /* background: url("<c:url value="/img/bg-icon.png"/>"); */
-  background: url("${pageContext.request.contextPath}/img/bg-icon.png");
-  }
-  </style>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
-    <div class="app">
+	<div class="app">
 		<jsp:include page="header.jsp"></jsp:include>
-        <div class="container">
-            <div class="grid wide">
-          
-                <!-- Body -->
-             <div class="row no-gutters hide-on-pc">
-                    <div class="col l-12 c-12 m-12 ofs-carousel">
-                        <div class="ofs-carousel__header">
-                            <a href="#" class="ofs-carousel__title-shop">
-                                Danh mục sản phẩm
-                            </a>
-                            <a href="/Shopee/product?index=1" class="ofs-carousel__title">
-                                <span>Xem tất cả</span>
-                                <i class="fas fa-chevron-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="top-sales-wrap hide-on-pc">
-                    <div class="top-sales">
-                        <ul class="row no-gutters top-sales-list">
-                        <c:forEach items="${listCC}" var="o">
-                            <li class="col l-2 lo-2 m-3 c-4 top-sales-item">
-                                <a href="/Shopee/category?cid=${o.cId}" class="top-sales-item-link">
-                                    <div style="margin-right:4px;"class="top-sales-item-link__container">
-                                        <div class="top-sales-item-link__img">
-                                            <div style="background: center / contain no-repeat url(<c:url value="${o.cImage}"/>) " class="top-sales-item-link__img-bgc1"></div>
-                                        </div>
-                                        <p class="top-sales-item-link__text">
-                                            ${o.cName}
-                                        </p>
-                                        
-                                    </div>
-                                </a>
-                            </li>
-                            </c:forEach>
-                        </ul>
-                    </div>
-                    <span class="ofs-carousel__arrow-next hide-on-mb-tb">
-                        <i class="fas fa-chevron-right"></i>
-                    </span>
-                </div>
-                <div class="row sm-gutter body-content">
-                    <div class="col m-12 c-12 search-item-result-on-mb-tb hide-on-pc">
-                        <ul class="row no-gutters search-item-result-on-mb-tb-list">
-                            <li class="col m-3 c-3 search-item-result-on-mb-tb-item">
-                                <a href="" class="search-item-result-on-mb-tb-link border-primary color-primary">
-                                    <span class="search-item-result-on-mb-tb-text">
-                                        Phổ Biến
-                                    </span>
-                                    <span class="separate"></span>
-                                </a>
-                            </li>
-                            <li class="col m-3 c-3 search-item-result-on-mb-tb-item">
-                                <a href="" class="search-item-result-on-mb-tb-link">
-                                    <span class="search-item-result-on-mb-tb-text">
-                                        Mới Nhất
-                                        <span class="separate"></span>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="col m-3 c-3 search-item-result-on-mb-tb-item">
-                                <a href="" class="search-item-result-on-mb-tb-link">
-                                    <span class="search-item-result-on-mb-tb-text">
-                                        Bán Chạy
-                                        <span class="separate"></span>
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="col c-3 m-3 search-item-result-on-mb-tb-item">
-                                <a href="" class="search-item-result-on-mb-tb-link">
-                                    <span class="search-item-result-on-mb-tb-text">
-                                        Giá
-                                    </span>
-                                    <div class="search-item-result-on-mb-tb-icon">
-                                        <i class="fas fa-chevron-up"></i>
-                                        <i class="fas fa-chevron-down"></i>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col l-2 lo-2 hide-on-mb-tb">
-                        <div class="category-list">
-                            <h2 class="category-list__title">
-                                <a href="/Shopee/product?index=0&page=1" class="category-list__title-link">
-                                    <i class="category-list__title-icon fas fa-bars"></i>
-                                    <span>Tất cả danh mục</span>
-                                </a>
-                            </h2>
-                            <ul class="category-list__list">
+		<div class="container">
+			<div class="grid wide">
+
+				<!-- Body -->
+				<div class="shop-category-on-mb-tb hide-on-pc">
+					<div class="col m-12 c-12 search-item-result-on-mb-tb hide-on-pc">
+						<ul class="row no-gutters search-item-result-on-mb-tb-list">
+							<li class="col m-3 c-3 search-item-result-on-mb-tb-item">
+								<!-- border-primary color-primary --> <a href="#"
+								class="search-item-result-on-mb-tb-link category-list__item-link-highlight ">
+									<span class="search-item-result-on-mb-tb-text"> Tất cả </span>
+									<span class="separate"></span>
+							</a>
+							</li>
+							<li class="col m-3 c-3 search-item-result-on-mb-tb-item"><a
+								href="#" class="search-item-result-on-mb-tb-link "> <span
+									class="search-item-result-on-mb-tb-text"> chờ xác nhận <span
+										class="separate"></span>
+								</span>
+							</a></li>
+							<li class="col m-3 c-3 search-item-result-on-mb-tb-item"><a
+								href="#" class="search-item-result-on-mb-tb-link"> <span
+									class="search-item-result-on-mb-tb-text"> Chờ lấy hàng <span
+										class="separate"></span>
+								</span>
+							</a></li>
+							<li class="col m-3 c-3 search-item-result-on-mb-tb-item"><a
+								href="#" class="search-item-result-on-mb-tb-link"> <span
+									class="search-item-result-on-mb-tb-text"> Đã giao <span
+										class="separate"></span>
+								</span>
+							</a></li>
+							<li class="col m-3 c-3 search-item-result-on-mb-tb-item"><a
+								href="#" class="search-item-result-on-mb-tb-link"> <span
+									class="search-item-result-on-mb-tb-text"> Đang giao <span
+										class="separate"></span>
+								</span>
+							</a></li>
+							<li class="col m-3 c-3 search-item-result-on-mb-tb-item"><a
+								href="#" class="search-item-result-on-mb-tb-link"> <span
+									class="search-item-result-on-mb-tb-text"> Đã hủy <span
+										class="separate"></span>
+								</span>
+							</a></li>
+
+						</ul>
+					</div>
+				</div>
+				<div class="row sm-gutter body-content">
+					<div class="col m-12 c-12 search-item-result-on-mb-tb hide-on-pc">
+						<ul class="row no-gutters search-item-result-on-mb-tb-list">
+							<li class="col m-3 c-3 search-item-result-on-mb-tb-item"><a
+								href=""
+								class="search-item-result-on-mb-tb-link border-primary color-primary">
+									<span class="search-item-result-on-mb-tb-text"> Phổ Biến
+								</span> <span class="separate"></span>
+							</a></li>
+							<li class="col m-3 c-3 search-item-result-on-mb-tb-item"><a
+								href="" class="search-item-result-on-mb-tb-link"> <span
+									class="search-item-result-on-mb-tb-text"> Mới Nhất <span
+										class="separate"></span>
+								</span>
+							</a></li>
+							<li class="col m-3 c-3 search-item-result-on-mb-tb-item"><a
+								href="" class="search-item-result-on-mb-tb-link"> <span
+									class="search-item-result-on-mb-tb-text"> Bán Chạy <span
+										class="separate"></span>
+								</span>
+							</a></li>
+							<li class="col c-3 m-3 search-item-result-on-mb-tb-item">
+							<select class="sort-bar-by-options__price" id="select">
+
+											<div class="sort-bar-by-options__price-list">
+												<option value="Default"
+													class="sort-bar-by-options__price-item">Giá:mặc
+													định</option>
+												<option value="LowToHigh"
+													class="sort-bar-by-options__price-item">Giá: Thấp
+													đến cao</option>
+												<option value="HighToLow"
+													class="sort-bar-by-options__price-item">Giá: Cao
+													đến thấp</option>
+											</div>
+										</select>
+							</li>
+						</ul>
+					</div>
+					<div class="col l-2 lo-2 hide-on-mb-tb">
+						<div class="category-list">
+							<h2 class="category-list__title">
+								<a href="" class="category-list__title-link"> <i
+									class="category-list__title-icon fas fa-bars"></i> <span>Tất
+										cả danh mục</span>
+								</a>
+							</h2>
+							<ul class="category-list__list">
 								<c:forEach items="${listCC}" var="o">
 									<li class="category-list__item "><a
 										href="product?index=${o.cId}&page=1"
@@ -144,71 +148,61 @@
 
 
 							</ul>
-                        </div>
+						</div>
 
-      
 
-                    </div>
-                    <div class="col l-10 lo-10 m-12 c-12">
-                        <div class="row sm-gutter">
-                            <div class="col l-12 lo-12 hide-on-mb-tb">
-                                <div class="sort-bar">
-                                    <span class="sort-bar__label">
-                                        Sắp xếp theo
-                                    </span>
-                                    <div class="sort-bar-by-options">
-                                        <button class="btn btn--primary">
-                                            Phổ Biến
-                                        </button>
-                                        <button class="btn">
-                                            Mới Nhất
-                                        </button>
-                                        <button class="btn">
-                                            Bán Chạy
-                                        </button>
-                                       <select class="sort-bar-by-options__price" id="select">
-                                            
-                                            <div class="sort-bar-by-options__price-list">
-                                                <option value="Default"  class="sort-bar-by-options__price-item">
-                                                   
-                                                        Giá:mặc định
-                                                   
-                                                </option>
-                                                <option value="LowToHigh"  class="sort-bar-by-options__price-item">
-                                                   
-                                                        Giá: Thấp đến cao
-                                                    
-                                                </option>
-                                                <option value="HighToLow"  class="sort-bar-by-options__price-item">
-                                                    
-                                                        Giá: Cao đến thấp
-                                                    
-                                                </option>
-                                            </div>
-                                        </select>
-                                    </div>
-                                    <div class="sort-bar-mini-page-controller">
-                                        <p class="sort-bar-mini-page-controller__state">
-                                            <span>1</span>/100
-                                        </p>
-                                        <button class="btn sort-bar-mini-page-controller__icon-disabled">
-                                            <i class="sort-bar-mini-page-controller__icon fas fa-angle-left"></i>
-                                        </button>
-                                        <button class="btn">
-                                            <i class="sort-bar-mini-page-controller__icon fas fa-angle-right"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="content" class="row sm-gutter search-item-result__items">
+
+					</div>
+					<div class="col l-10 lo-10 m-12 c-12">
+						<div class="row sm-gutter">
+							<div class="col l-12 lo-12 hide-on-mb-tb">
+								<div class="sort-bar">
+									<span class="sort-bar__label"> Sắp xếp theo </span>
+									<div class="sort-bar-by-options">
+										<button class="btn btn--primary">Phổ Biến</button>
+										<button class="btn">Mới Nhất</button>
+										<button class="btn">Bán Chạy</button>
+										<select class="sort-bar-by-options__price" id="select">
+
+											<div class="sort-bar-by-options__price-list">
+												<option value="Default"
+													class="sort-bar-by-options__price-item">Giá:mặc
+													định</option>
+												<option value="LowToHigh"
+													class="sort-bar-by-options__price-item">Giá: Thấp
+													đến cao</option>
+												<option value="HighToLow"
+													class="sort-bar-by-options__price-item">Giá: Cao
+													đến thấp</option>
+											</div>
+										</select>
+									</div>
+									<div class="sort-bar-mini-page-controller">
+										<p class="sort-bar-mini-page-controller__state">
+											<span>1</span>/100
+										</p>
+										<button
+											class="btn sort-bar-mini-page-controller__icon-disabled">
+											<i
+												class="sort-bar-mini-page-controller__icon fas fa-angle-left"></i>
+										</button>
+										<button class="btn">
+											<i
+												class="sort-bar-mini-page-controller__icon fas fa-angle-right"></i>
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="content" class="row sm-gutter search-item-result__items">
 
 							<c:forEach items="${listP}" var="o">
 
-								<div class="col l-2-4 lo-3 m-4 c-6 search-item-result__item" data-price="">
+								<div class="col l-2-4 lo-3 m-4 c-6 search-item-result__item">
 									<a href="/Shopee/detail?pId=${o.pId}&quantity=1&action="
 										class="search-item-result__item-link">
-										<div class="search-item-result__item-bgc" >
+										<div class="search-item-result__item-bgc">
+
 											<div class="search-item-result__item-tag-left">
 												<div class="mall-tag hide-tag">
 													<span>Mall</span>
@@ -227,13 +221,13 @@
 											</div>
 											<c:url value="/image?fname=${o.pImage}" var="imgUrl"></c:url>
 											<div class="search-item-result__item-overlay">
-											<c:if test="${fn:contains(o.pImage, 'https')}">
-												<img src="${o.pImage}" alt=" ${o.pName}">
-											</c:if>
-											<c:if test="${fn:contains(o.pImage, 'product')}">
-												<img src="${imgUrl}" alt=" ${o.pName}">
-											</c:if>
-											
+												<c:if test="${fn:contains(o.pImage, 'https')}">
+													<img src="${o.pImage}" alt=" ${o.pName}">
+												</c:if>
+												<c:if test="${fn:contains(o.pImage, 'product')}">
+													<img src="${imgUrl}" alt=" ${o.pName}">
+												</c:if>
+
 											</div>
 										</div>
 										<div class="search-item-result__item-body">
@@ -265,7 +259,7 @@
 											</div>
 											<div class="search-item-result__item-price-wrap">
 												<span class="search-item-result__item-price">
-													₫${o.pPrice*1.2} </span>
+													₫${o.pPrice *1.2} </span>
 												<div class="search-item-result__item-price-saleoff">
 													<span> ₫${o.pPrice} </span>
 													<svg height="12" viewBox="0 0 20 12" width="20"
@@ -334,20 +328,19 @@
 
 
 							<!-- search-item-50 -->
-						<p id="currentPage" hidden="hidden">${tag}</p>
-						<p id="currentCate" hidden="hidden">${cid}</p>
 						</div>
-                       <ul class="pagination hide-on-mb">
+						<ul class="pagination hide-on-mb">
 							<c:if test="${tag > 1}">
 								<li class="pagination-item"><a
-									href="product?index=${cid}&page=${tag-1}" class="pagination-item-link">
-										<i style="font-size: 2.5rem;"
+									href="product?index=${cid}&page=${tag-1}"
+									class="pagination-item-link"> <i style="font-size: 2.5rem;"
 										class='pagination-item-icon bx bx-chevron-left'></i>
 								</a></li>
 							</c:if>
 							<c:if test="${endPage < 10}">
 								<c:forEach begin="1" end="${endPage}" var="i">
-									<li class="pagination-item"><a href="product?index=${cid}&page=${i}"
+									<li class="pagination-item"><a
+										href="product?index=${cid}&page=${i}"
 										class="pagination-item-link ${tag == i?"bgc-highlight":""}">${i}</a></li>
 								</c:forEach>
 							</c:if>
@@ -355,51 +348,60 @@
 							<c:if test="${endPage >= 10}">
 								<c:if test="${tag <= 4}">
 									<c:forEach begin="1" end="5" var="i">
-										<li class="pagination-item"><a href="product?index=${cid}&page=${i}"
+										<li class="pagination-item"><a
+											href="product?index=${cid}&page=${i}"
 											class="pagination-item-link ${tag == i?"bgc-highlight":""}">${i}</a></li>
 									</c:forEach>
 									<li class="pagination-item"><span
 										class="pagination-item-link">...</span></li>
 									<c:forEach begin="${endPage}" end="${endPage}" var="i">
-										<li class="pagination-item"><a href="product?index=${cid}&page=${i}"
+										<li class="pagination-item"><a
+											href="product?index=${cid}&page=${i}"
 											class="pagination-item-link ${tag == i?"bgc-highlight":""}">${i}</a></li>
 									</c:forEach>
 								</c:if>
 								<c:if test="${tag > 4 && tag < endPage - 4}">
 
-									<li class="pagination-item"><a href="product?index=${cid}&page=1"
+									<li class="pagination-item"><a
+										href="product?index=${cid}&page=1"
 										class="pagination-item-link ${tag == 1?"bgc-highlight":""}">1</a></li>
 
 									<li class="pagination-item"><span
 										class="pagination-item-link">...</span></li>
 									<c:forEach begin="${tag - 1}" end="${tag + 2}" var="i">
-										<li class="pagination-item"><a href="product?index=${cid}&page=${i}"
+										<li class="pagination-item"><a
+											href="product?index=${cid}&page=${i}"
 											class="pagination-item-link ${tag == i?"bgc-highlight":""}">${i}</a></li>
 									</c:forEach>
 									<li class="pagination-item"><span
 										class="pagination-item-link">...</span></li>
 									<c:forEach begin="${endPage}" end="${endPage}" var="i">
-										<li class="pagination-item"><a href="product?index=${cid}&page=${i}"
+										<li class="pagination-item"><a
+											href="product?index=${cid}&page=${i}"
 											class="pagination-item-link ${tag == i?"bgc-highlight":""}">${i}</a></li>
 									</c:forEach>
 								</c:if>
 								<c:if test="${tag == endPage - 4}">
-									<li class="pagination-item"><a href="product?index=${cid}&page=1"
+									<li class="pagination-item"><a
+										href="product?index=${cid}&page=1"
 										class="pagination-item-link ${tag == 1?"bgc-highlight":""}">1</a></li>
 									<li class="pagination-item"><span
 										class="pagination-item-link">...</span></li>
 									<c:forEach begin="${tag - 2}" end="${endPage}" var="i">
-										<li class="pagination-item"><a href="product?index=${cid}&page=${i}"
+										<li class="pagination-item"><a
+											href="product?index=${cid}&page=${i}"
 											class="pagination-item-link ${tag == i?"bgc-highlight":""}">${i}</a></li>
 									</c:forEach>
 								</c:if>
 								<c:if test="${tag > endPage - 4}">
-									<li class="pagination-item"><a href="product?index=${cid}&page=1"
+									<li class="pagination-item"><a
+										href="product?index=${cid}&page=1"
 										class="pagination-item-link ${tag == 1?"bgc-highlight":""}">1</a></li>
-										<li class="pagination-item"><span
+									<li class="pagination-item"><span
 										class="pagination-item-link">...</span></li>
 									<c:forEach begin="${endPage - 5}" end="${endPage}" var="i">
-										<li class="pagination-item"><a href="product?index=${cid}&page=${i}"
+										<li class="pagination-item"><a
+											href="product?index=${cid}&page=${i}"
 											class="pagination-item-link ${tag == i?"bgc-highlight":""}">${i}</a></li>
 									</c:forEach>
 								</c:if>
@@ -408,21 +410,19 @@
 
 							<c:if test="${tag < endPage}">
 								<li class="pagination-item"><a
-									href="product?index=${cid}&page=${tag+1}" class="pagination-item-link">
-										<i style="font-size: 2.5rem;"
+									href="product?index=${cid}&page=${tag+1}"
+									class="pagination-item-link"> <i style="font-size: 2.5rem;"
 										class='pagination-item-icon bx bx-chevron-right'></i>
 								</a></li>
 							</c:if>
 						</ul>
-                    </div>
-                </div>
-        </div>
-        </div>
-      <jsp:include page="footer.jsp"></jsp:include>
-            </div>
-            <script src="<c:url value="/js/product.js"/>"></script>
-            	<script src="<c:url value="/js/home.js"/>"></script>
-            
+					</div>
+				</div>
+			</div>
+		</div>
+		<jsp:include page="footer.jsp"></jsp:include>
+	</div>
+	<script src="<c:url value="/js/product.js"/>"></script>
 </body>
 
 </html>

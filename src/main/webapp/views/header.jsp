@@ -153,7 +153,7 @@ window.onpageshow = function(evt) {
                         <!-- Header with search -->
                         <div class="header-with-search">
                             <div class="header-with-search__logo">
-                                <a href="/Shopee/home?index=1" class="header-with-search__link hide-on-mb-tb">
+                                <a href="/Shopee/home" class="header-with-search__link hide-on-mb-tb">
                                     <svg viewBox="0 0 192 65" class="header-with-search__logo-img">
                                         <g fill-rule="evenodd">
                                             <path fill="#fff"

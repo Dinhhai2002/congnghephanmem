@@ -173,7 +173,8 @@ public class ProductDao {
 		return 0;
 	}
 
-	public int pageSize = 15;
+	public int pageSize = 35;
+	public int beginProduct = 15;
 
 	public List<Product> pagingProduct(int index) {
 		List<Product> products = new ArrayList<>();
@@ -183,7 +184,7 @@ public class ProductDao {
 			conn = new connect().getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setInt(1, (index - 1) * pageSize);
-			ps.setInt(2, pageSize-10);
+			ps.setInt(2, beginProduct);
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				CategoryDao categoryDao = new CategoryDao();
@@ -217,7 +218,7 @@ public class ProductDao {
 			ps = conn.prepareStatement(query);
 			ps.setString(1, cid);
 			ps.setInt(2, (index - 1) * pageSize);
-			ps.setInt(3, pageSize-10);
+			ps.setInt(3, beginProduct);
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				CategoryDao categoryDao = new CategoryDao();
@@ -376,7 +377,7 @@ public class ProductDao {
 		return products;
 	}
 
-	public List<Product> getNext5Product(int amount) {
+	public List<Product> getLoadNextProduct(int amount) {
 		List<Product> products = new ArrayList<>();
 		String query = "select * from product\r\n" + "order by pId\r\n" + "offset ? rows fetch next 5 rows only;";
 
@@ -408,7 +409,7 @@ public class ProductDao {
 		return products;
 	}
 	
-	public List<Product> getNext5ProductByCategory(String cateId, int amount) {
+	public List<Product> getLoadNextProductByCategory(String cateId, int amount) {
 		List<Product> products = new ArrayList<>();
 		String query = "select * from product where cateId = ? order by pId offset ? rows fetch next 5 rows only";
 

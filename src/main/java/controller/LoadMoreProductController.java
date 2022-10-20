@@ -25,7 +25,7 @@ public class LoadMoreProductController extends HttpServlet{
 		String index = req.getParameter("amount");
 		int amount = Integer.parseInt(index);
 		
-		List<Product> listP = productDao.getNext5Product(amount);
+		List<Product> listP = productDao.getLoadNextProduct(amount);
 		PrintWriter out = resp.getWriter();
 		for(Product o: listP) {
 			if(o.getpImage().contains("https")) {
