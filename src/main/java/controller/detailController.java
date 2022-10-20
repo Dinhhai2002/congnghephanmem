@@ -24,6 +24,7 @@ public class detailController extends HttpServlet{
 		req.setCharacterEncoding("UTF-8");
 		String pid=req.getParameter("pId");
 		
+		
 		//String quantity = req.getParameter("quantity");
 		//int x  = Integer.parseInt(quantity);
 		ProductDao productDao = new ProductDao();

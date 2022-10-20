@@ -18,6 +18,7 @@ public class logoutController extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		HttpSession session=req.getSession();
 		session.removeAttribute("acc");
+		session.removeAttribute("cart");
 		req.getRequestDispatcher("/home?index=1").forward(req, resp);
 	}
 	@Override

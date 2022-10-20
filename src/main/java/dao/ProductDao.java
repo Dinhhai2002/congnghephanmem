@@ -20,6 +20,20 @@ public class ProductDao {
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 
+	public void updateQuantity(Product product) {
+		String query = " update product set pQuantity=? where pId = ?";
+		try {
+			conn = new connect().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, product.getpQuantity());
+			ps.setInt(2, product.getpId());
+			ps.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
 	public List<Product> findAll() {
 		List<Product> products = new ArrayList<Product>();
 		String sql = "SELECT * FROM dbo.product";
@@ -294,7 +308,6 @@ public class ProductDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	public void editUpdateProduct(Product newProduct) {
