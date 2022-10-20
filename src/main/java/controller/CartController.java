@@ -23,25 +23,14 @@ public class CartController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setContentType("text/html");
-		resp.setCharacterEncoding("UTF-8");
-		req.setCharacterEncoding("UTF-8");
-		
 		HttpSession httpSession = req.getSession();
 		Object obj = httpSession.getAttribute("acc");
-
-		if (obj == null) {
-			
-			resp.sendRedirect(req.getContextPath() + "/login");
-			
-			
+		if (obj == null) {	
+			resp.sendRedirect(req.getContextPath() + "/login");	
 		}else {
-			
 			RequestDispatcher rq=req.getRequestDispatcher("/views/cart.jsp");
 			rq.forward(req, resp);
-		}
-
-		
+		}		
 	}
 
 	@SuppressWarnings("unchecked")

@@ -55,6 +55,7 @@ public class PayController extends HttpServlet {
 		String address = req.getParameter("address");
 		ShopDao shopDao = new  ShopDao();
 		OrderDao orderDao = new OrderDao();
+		ProductDao productDao = new ProductDao();
 		OrderDetailDao orderDetailDao = new OrderDetailDao();
 		CartItemDao cartItemDao = new CartItemDao();
 		CartDao cartDao = new CartDao();
@@ -103,6 +104,9 @@ public class PayController extends HttpServlet {
 								,cartItemSelected.getTotalPrice());
 						
 						orderDetailDao.create(orderDetail);
+						Product product = new Product(cartItemSelected.getProduct().getpId(),cartItemSelected.getProduct().getpQuantity()
+								-cartItemSelected.getCount());
+						productDao.updateQuantity(product);
 					}
 				}				
 			}

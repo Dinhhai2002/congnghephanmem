@@ -57,7 +57,7 @@
                             </p>
                             <!-- price-detail-wrap .// -->
                             <dl >
-                                <dt>Description</dt>
+                                <dt>Mô tả</dt>
                                 <dd>
                                     <p class="item-property">${p.pDescription}</p>
                                 </dd>
@@ -66,20 +66,22 @@
 
                             <hr>
                             <dl class="param param-inline">
-                                        <dt>Quantity:</dt>
+                                        <dt>Số lượng:</dt>
                                         <div class="model_quantity_number">  
                                                									
                                         <button type="button" id="cart-qty-minus" name="cart-qty-minus" ><i
                                                 class='bx bx-minus'></i></button>
                                                 
                                             <p class="cart-qty">1</p>
-                                           <!--  <p id="cart-qty" name="cart-qty" >  1  </p> -->
-                                            
-                                            
+                                           
+                                           <!--  <p id="cart-qty" name="cart-qty" >  1  </p> -->                              
                                             <button type="button" id="cart-qty-plus" name ="cart-qty-plus"><i
                                                 class='bx bx-plus'></i></button>
+                                                <input type="hidden" id="QUAN" value="${p.pQuantity}">
+                                                <p style="font-size:12px;" id="test">${p.pQuantity} sản phẩm có sẵn</p>                                                                                              
                                             
                                         </div>
+                                        <p style="display:none;color:red;font-size:12px" id="noti"></p>
                              </dl>
                                     <!-- item-property .// -->
                               
@@ -89,12 +91,12 @@
                             <!-- row.// -->
                             <hr>
                             <div class="btn-footer">
-                                <a href="#" class="submit">
-                                    Buy now </a>
-                                     <button  onclick="replace()" type="button" 
+                                     <button  id="addproductcart" type="button" 
                                     class="submit"> <i
-                                    class="fas fa-shopping-cart"></i> Add to cart
+                                    class="fas fa-shopping-cart"></i> Thêm hàng vào giỏ
                                 </button>
+                                <a onclick="replace()" class="submit">
+                                    Mua ngay </a>
                             </div>
                         </article>
                         <!-- card-body.// -->

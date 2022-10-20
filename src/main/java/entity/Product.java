@@ -17,6 +17,15 @@ public class Product {
 	public Product() {
 		super();
 	}
+	
+	
+	public Product(int pId, int pQuantity) {
+		super();
+		this.pId = pId;
+		this.pQuantity = pQuantity;
+	}
+
+
 	public Product(int pId, String pName, float pPrice, String pImage, String pDescription, int pQuantity,
 			Category category, Shop shop, Date createAt, Date updateAt) {
 		super();
