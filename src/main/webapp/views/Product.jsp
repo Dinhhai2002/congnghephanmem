@@ -344,8 +344,9 @@
 
 
 							<!-- search-item-50 -->
-						<p id="currentPage" hidden="hidden">${tag}</p>
-						<p id="currentCate" hidden="hidden">${cid}</p>
+				<!--	<p id="currentPage" hidden="hidden">${tag}</p>
+						<p id="currentCate" hidden="hidden">${cid}</p>  -->
+						
 						</div>
 						<ul class="pagination hide-on-mb">
 							<c:if test="${tag > 1}">
@@ -377,7 +378,7 @@
 								</c:if>
 								<c:if test="${tag > 4 && tag < endPage - 4}">
 
-									<li class="pagination-item"><a href="product?index=${cid}&page=${i}"
+									<li class="pagination-item"><a href="product?index=${cid}&page=1"
 										class="pagination-item-link ${tag == 1?"bgc-highlight":""}">1</a></li>
 
 									<li class="pagination-item"><span
@@ -394,7 +395,7 @@
 									</c:forEach>
 								</c:if>
 								<c:if test="${tag == endPage - 4}">
-									<li class="pagination-item"><a href="product?index=${cid}&page=${i}"
+									<li class="pagination-item"><a href="product?index=${cid}&page=1"
 										class="pagination-item-link ${tag == 1?"bgc-highlight":""}">1</a></li>
 									<li class="pagination-item"><span
 										class="pagination-item-link">...</span></li>
@@ -404,7 +405,7 @@
 									</c:forEach>
 								</c:if>
 								<c:if test="${tag > endPage - 4}">
-									<li class="pagination-item"><a href="product?index=${cid}&page=${i}"
+									<li class="pagination-item"><a href="product?index=${cid}&page=1"
 										class="pagination-item-link ${tag == 1?"bgc-highlight":""}">1</a></li>
 									<li class="pagination-item"><span
 										class="pagination-item-link">...</span></li>
