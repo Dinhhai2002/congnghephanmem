@@ -34,101 +34,39 @@
             <div class="grid wide">
        
 
-                <div class="shop-category-on-mb-tb hide-on-pc">
+               <div class="shop-category-on-mb-tb hide-on-pc">
                     <h3 class="img-carousel__items-title">
                         Danh Mục
                     </h3>
                     <ul class="row no-gutters shop-category-on-mb-tb-list">
                         <li class="col m-3 c-4 shop-category-on-mb-tb-item">
                             <a href="" class="shop-category-on-mb-tb-item-link">
-                                <div class="shop-category-on-mb-tb-item-wrap">
-                                    <div class="shop-category-on-mb-tb-item-img1"></div>
-                                </div>
+                               
                                 <p class="shop-category-on-mb-tb-item-text">
-                                    Máy Tính Bàn
+                                    Tài khoản cá nhân
                                 </p>
                             </a>
-                            <a href="" class="shop-category-on-mb-tb-item-link">
-                                <div class="shop-category-on-mb-tb-item-wrap">
-                                    <div class="shop-category-on-mb-tb-item-img6"></div>
-                                </div>
-                                <p class="shop-category-on-mb-tb-item-text">
-                                    Màn Hình
-                                </p>
-                            </a>
+                           
                         </li>
                         <li class="col m-3 c-4 shop-category-on-mb-tb-item">
                             <a href="" class="shop-category-on-mb-tb-item-link">
-                                <div class="shop-category-on-mb-tb-item-wrap">
-                                    <div class="shop-category-on-mb-tb-item-img2"></div>
-                                </div>
+                               
                                 <p class="shop-category-on-mb-tb-item-text">
-                                    Linh Kiện Máy Tính
+                                    Đổi mật khẩu
                                 </p>
                             </a>
-                            <a href="" class="shop-category-on-mb-tb-item-link">
-                                <div class="shop-category-on-mb-tb-item-wrap">
-                                    <div class="shop-category-on-mb-tb-item-img7"></div>
-                                </div>
-                                <p class="shop-category-on-mb-tb-item-text">
-                                    Thiết Bị Lưu Trữ
-                                </p>
-                            </a>
+                           
                         </li>
                         <li class="col m-3 c-4 shop-category-on-mb-tb-item">
                             <a href="" class="shop-category-on-mb-tb-item-link">
-                                <div class="shop-category-on-mb-tb-item-wrap">
-                                    <div class="shop-category-on-mb-tb-item-img3"></div>
-                                </div>
+                               
                                 <p class="shop-category-on-mb-tb-item-text">
-                                    Thiết Bị Mạng
+                                    Đơn mua
                                 </p>
                             </a>
-                            <a href="" class="shop-category-on-mb-tb-item-link">
-                                <div class="shop-category-on-mb-tb-item-wrap">
-                                    <div class="shop-category-on-mb-tb-item-img8"></div>
-                                </div>
-                                <p class="shop-category-on-mb-tb-item-text">
-                                    Máy In & Máy Scan
-                                </p>
-                            </a>
+                           
                         </li>
-                        <li class="col m-3 c-4 shop-category-on-mb-tb-item">
-                            <a href="" class="shop-category-on-mb-tb-item-link">
-                                <div class="shop-category-on-mb-tb-item-wrap">
-                                    <div class="shop-category-on-mb-tb-item-img4"></div>
-                                </div>
-                                <p class="shop-category-on-mb-tb-item-text">
-                                    Phụ Kiện Máy Tính
-                                </p>
-                            </a>
-                            <a href="" class="shop-category-on-mb-tb-item-link">
-                                <div class="shop-category-on-mb-tb-item-wrap">
-                                    <div class="shop-category-on-mb-tb-item-img9"></div>
-                                </div>
-                                <p class="shop-category-on-mb-tb-item-text">
-                                    Laptop
-                                </p>
-                            </a>
-                        </li>
-                        <li class="col m-3 c-4 shop-category-on-mb-tb-item">
-                            <a href="" class="shop-category-on-mb-tb-item-link">
-                                <div class="shop-category-on-mb-tb-item-wrap">
-                                    <div class="shop-category-on-mb-tb-item-img5"></div>
-                                </div>
-                                <p class="shop-category-on-mb-tb-item-text">
-                                    Khác
-                                </p>
-                            </a>
-                            <a href="" class="shop-category-on-mb-tb-item-link">
-                                <div class="shop-category-on-mb-tb-item-wrap">
-                                    <div class="shop-category-on-mb-tb-item-img10"></div>
-                                </div>
-                                <p class="shop-category-on-mb-tb-item-text">
-                                    Gaming
-                                </p>
-                            </a>
-                        </li>
+                        
                     </ul>
                 </div>
 
@@ -200,7 +138,7 @@
                     <div class="col l-10 lo-10 m-12 c-12">
                         
                         <div class="row sm-gutter search-item-result__items">
-                            <div class="col l-12 lo-12 hide-on-mb-tb">
+                            <div class="col l-12 lo-12 ">
                              <form action="changePassword" method="post" class="content_fa">
                                     <div class="content_header">
                                         <span class="content_header_title">
@@ -215,14 +153,14 @@
                                             <input name="id" value="${sessionScope.acc.uId}" type="text" hidden />
                                             <div class="content_content_form_mess">
                                             
-                                                <input id="oldPass" name="oldPass" class="content_content_form_input" type="password" placeholder=""/>
+                                                <input id="oldPass" name="oldPass" class="content_content_form_input_pass" type="password" placeholder=""/>
                                                 <small></small>
                                             </div>
                                         </div>
                                         <div class="content_content_form">
                                             <p class="content_content_form_text">mật khẩu mới</p>
                                             <div class="content_content_form_mess">
-                                                <input id="pass" name="pass" class="content_content_form_input" type="password" placeholder="" pattern="[A-Za-z0-9]{5,}" title="không đúng"/>
+                                                <input id="pass" name="pass" class="content_content_form_input_pass" type="password" placeholder="" pattern="[A-Za-z0-9]{5,}" title="không đúng"/>
                                                 <small></small>
                                             </div>
                                             
@@ -230,7 +168,7 @@
                                         <div class="content_content_form">
                                             <p class="content_content_form_text">Xác nhận mật khẩu</p>
                                             <div class="content_content_form_mess">
-                                                <input id="repass" name="repass" class="content_content_form_input" type="password" placeholder=""/>
+                                                <input id="repass" name="repass" class="content_content_form_input_pass" type="password" placeholder=""/>
                                                 <small></small>
                                             </div>
                                             
@@ -255,6 +193,7 @@
         </div>
         <jsp:include page="footer.jsp"></jsp:include>
         </div>
+        	<script src="<c:url value="/js/home.js"/>"></script>
          <script src="<c:url value="./js/changePasswordAccount.js"/>"></script>
 </body>
 </html>

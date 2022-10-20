@@ -19,6 +19,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import dao.CategoryDao;
 import dao.ProductDao;
 import dao.ShopDao;
+import dao.UserDao;
 import entity.Category;
 import entity.Product;
 import entity.Shop;
@@ -73,6 +74,7 @@ public class ProductAddController extends HttpServlet {
 					}
 				}
 			}
+
 			if(dem!=0)
 			{
 				HttpSession session = req.getSession();
@@ -100,7 +102,7 @@ public class ProductAddController extends HttpServlet {
 				resp.sendRedirect("shop-manager");
 			}
 			
-			
+
 		} catch (FileUploadException e) {
 			e.printStackTrace();
 		} catch (Exception e) {

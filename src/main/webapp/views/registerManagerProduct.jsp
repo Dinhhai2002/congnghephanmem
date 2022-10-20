@@ -23,6 +23,13 @@
 <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css'
 	rel='stylesheet'>
 <title>Đăng kí thành người bán</title>
+
+ <style type="text/css">
+  .footer-logo-background{
+  /* background: url("<c:url value="/img/bg-icon.png"/>"); */
+  background: url("${pageContext.request.contextPath}/img/bg-icon.png");
+  }
+  </style>
 </head>
 <body>
 	<div class="app">
@@ -34,75 +41,65 @@
 						bán sản phẩm </span>
 					<!-- <span class="content_header_description">Quản lý thông tin hồ sơ để bảo mật tài khoản</span> -->
 				</div>
-				<div class="content_content">
+				<h3 style="color:red;font-size:30px;">${mess}</h3>
+				<form action="addShop" method="post" class="content_content" enctype="multipart/form-data">
 					<div class="content_content_form">
 						<p class="content_content_form_text">Tên Shop</p>
-						<input class="content_content_form_input" type="text"
-							placeholder="" />
+	
+                            <div class="content_content_form_mess">
+                                <input id="name"name="shopName"class="content_content_form_input_pass"type="text" placeholder=""/>
+                                <small></small>
+                            </div>
 					</div>
 					<div class="content_content_form">
 						<p class="content_content_form_text">Ảnh đại diện</p>
 						<div class="content_content_form_img">
-							<c:if test="${empty sessionScope.acc.uImage}">
-								<img style="width: 150px; height: 150px; object-fit: contain;"
-									class="img-responsive"
-									src="<c:url value="/img/anhdaidiennull.jpg"/>"
-									alt="${sessionScope.acc.uName }">
-							</c:if>
-							<c:if test="${not empty sessionScope.acc.uImage}">
-								<img style="width: 150px; height: 150px; object-fit: contain;"
-									class="img-responsive"
-									src="<c:url value="${sessionScope.acc.uImage}"/>"
-									alt="${sessionScope.acc.uName }">
-							</c:if>
-							<input type="file" name="icon" value="${category.icon }" />
+							
+						
+							
+							<input type="file" name="image"  />
 
 						</div>
 
 					</div>
+					
 					<div class="content_content_form">
-						<p class="content_content_form_text">Số điện thoại</p>
-						<input class="content_content_form_input" type="text"
-							placeholder="" />
+						<p class="content_content_form_text">Mô tả</p>
+						
+                            <div class="content_content_form_mess">
+                                <input id="description"name="description"class="content_content_form_input_pass"type="text" placeholder=""/>
+                                <small></small>
+                            </div>
 					</div>
 					<div class="content_content_form">
-						<p class="content_content_form_text">Email</p>
-						<input class="content_content_form_input" type="text"
-							placeholder="" />
-					</div>
-					<div class="content_content_form">
-						<p class="content_content_form_text">Địa chỉ</p>
-						<input class="content_content_form_input" type="text"
-							placeholder="" />
+						<p  class="content_content_form_text">Địa chỉ</p>
+						
+                            <div class="content_content_form_mess">
+                                <input id="address"name="address"class="content_content_form_input_pass"type="text" placeholder=""/>
+                                <small></small>
+                            </div>
+                            
 					</div>
 
-					<div class="dropdown">
-						<span class="dropdown_item">Chọn mặt hàng bán</span>
-						<div class="dropdown-select">
-							<span class="dropdown-value">VietNam</span> <span> <svg
-									xmlns="http://www.w3.org/2000/svg"
-									style="width: 20px; height: 20px" fill="none"
-									viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round"
-										stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                      </svg>
-							</span>
+					<div class="content_content_form">
+							<label class="content_content_form_text">Danh mục sản phẩm</label> 
+							<select  name="category"
+								class="content_content_form_input_pass" aria-label="Default select example">
+								<c:forEach items="${listC}" var="o">
+									<option value="${o.cId}">${o.cName}</option>
+								</c:forEach>
+							</select>
 						</div>
-						<div class="dropdown-list">
-							<div class="dropdown-item">American</div>
-							<div class="dropdown-item">Canada</div>
-							<div class="dropdown-item">Australia</div>
-						</div>
-					</div>
 
 					<div class="content_content_btn">
-						<button>Đăng kí</button>
+						<button type="submit">Đăng kí</button>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
+	<script src="<c:url value="/js/registerManager.js"/>"></script>
 
 </body>
 </html>

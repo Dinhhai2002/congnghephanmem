@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import dao.UserDao;
 
 
@@ -33,8 +35,8 @@ public class newPasswordController extends HttpServlet {
 		if (newPassword != null && confPassword != null && newPassword.equals(confPassword)) {
 				
 			UserDao userDao = new UserDao();
-			userDao.updatePassword(newPassword,username,email);
-			userDao.updatePasswordSMS(newPassword, username, phoneNumber);
+			userDao.updatePassword(BCrypt.hashpw(newPassword, BCrypt.gensalt(12)),username,email);
+			userDao.updatePasswordSMS(BCrypt.hashpw(newPassword, BCrypt.gensalt(12)), username, phoneNumber);
 			request.setAttribute("status", "resetSuccess");
 			response.sendRedirect("/Shopee/login");
 			

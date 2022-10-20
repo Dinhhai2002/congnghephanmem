@@ -285,6 +285,11 @@
     word-wrap: break-word;
     overflow: hidden;
   }
+   .openbtn{
+        width: 100%;
+        display:block;
+        background:transparent;
+    }
 }
 
 /* PC */
@@ -312,6 +317,19 @@
 
 /* small mobile - 360px */
 @media (max-width: 22.5em) {
+	 .bottom{
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .btn-footer{
+    display: flex;
+    flex-direction: column;
+
+  }
+  .btn-footer a{
+    text-align: center;
+    width: 100%;
+  }
   .sale-off-tag {
     font-size: 0.8rem;
   }

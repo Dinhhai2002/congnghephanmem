@@ -344,9 +344,6 @@
 
 
 							<!-- search-item-50 -->
-				<!--	<p id="currentPage" hidden="hidden">${tag}</p>
-						<p id="currentCate" hidden="hidden">${cid}</p>  -->
-						
 						</div>
 						<ul class="pagination hide-on-mb">
 							<c:if test="${tag > 1}">

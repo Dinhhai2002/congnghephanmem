@@ -66,12 +66,7 @@
 					</div>
 				</div>
 				<div class="authForm__social">
-					<a href="#" class="btn btn__social social__icon-fb"> 
-					<i
-						class='authForm__social-icon bx bxl-facebook-circle'></i>
-						 <span>
-							Đăng nhập Facebook </span>
-					</a> <a
+					 <a
 						href="https://accounts.google.com/o/oauth2/auth?scope=email%20profile%20openid&redirect_uri=http://localhost:8080/Shopee/logingoogle&response_type=code
                         &client_id=965552027153-4qmaigfiko3ajcldouedsj1h9kts562i.apps.googleusercontent.com&approval_prompt=force"
 						class="btn btn__social social__icon-gg"> 

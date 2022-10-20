@@ -1,17 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<script type="text/javascript">
+window.onpageshow = function(evt) {
+	// If persisted then it is in the page cache, force a reload of the page.
+	if (evt.persisted) {
+	    document.body.style.display = "none";
+	    location.reload();
+	}};</script>
  <header class="header">
             <div class="grid wide">
                 <div class="row sm-gutter">
                     <div class="col l-12 m-12 c-12">
                         <nav class="navbar flexible-box hide-on-mb-tb">
                             <ul class="navbar__list flexible-box">
+                  			<c:if test="${sessionScope.acc!=null}">
+                            <c:if test="${sessionScope.acc.idRole==3}">
                                 <li class="navbar__item">
                                     <a href="shop-manager" class="navbar__item-link">
                                         Kênh Người Bán
                                     </a>
                                 </li>
+                               
+                                </c:if>
+                                
+                                <c:if test="${sessionScope.acc.idRole!=3}">
+                                <li class="navbar__item">
+                                    <a href="addShop" class="navbar__item-link">
+                                        Kênh Người Bán
+                                    </a>
+                                </li>
+                                
+                                </c:if>
+                                </c:if>
                                 <!-- <li class="navbar__item">
                             <a href="" class="navbar__item-link">
                                 Trở Thành Người Bán Shopee
@@ -141,7 +162,16 @@
                                         </g>
                                     </svg>
                                 </a>
-                                <a href="" class="header-with-search__link-on-mb-tb hide-on-pc">
+                                <div id="mySidepanel" class="sidepanel">
+                                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                                    <a href="#">Tài khoản cá nhân</a>
+                                    <a href="#">Đổi mật khẩu</a>
+                                    <a href="#">Đăng xuất</a>
+                                   
+                                  </div>
+                                  
+                                  <button class="openbtn" onclick="openNav()">☰ </button>  
+                                <a href="" class=" hide-on-pc">
                                
                                     <i class='bx bx-chevron-left' ></i>
                                 </a>
@@ -169,14 +199,22 @@
                                 
                             </form>
                             <div class="header-with-search__cart-wrap">
-                                <div class="header-with-search__cart-btn hide-on-mb-tb">
+                             <a href="${pageContext.request.contextPath}/member/cart">   <div class="header-with-search__cart-btn hide-on-mb-tb">
                                     
-                                    <i class='header-with-search__cart-icon bx bx-cart-alt' ></i>
-                                    <div class="header-with-search__cart-number">7</div>
+                           <i class='header-with-search__cart-icon bx bx-cart-alt' ></i>
+                           <c:set var="count" value="${0}"/>
+                                <c:forEach items="${sessionScope.cart}" var="map">
+                                    <c:set var="count"
+                                   	value="${count + 1}"/>
+                                    </c:forEach>
+                                     <c:if test="${count==0}">
+                                     <c:set var="count" value=""/>
+                                     </c:if>
+                                    <div class="header-with-search__cart-number">${count}</div>
 
                                     <!-- No cart: header-with-search__cart-empty -->
                                    
-                                </div>
+                                </div></a>
                                 <div class="header-with-search__cart-filter-btn hide-on-pc">
                                    
                                     <i class='header-with-search__cart-filter-btn-icon bx bx-filter-alt' ></i>

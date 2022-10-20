@@ -2,22 +2,35 @@
  * 
  */
 
-function add()
-{
-   	this.number=Number.parseInt(document.querySelector('.model_quantity_number_quan').innerHTML)
-   	this.number++;
-    document.querySelector('.model_quantity_number_quan').innerHTML=this.number;
+function createFaction() {
+	var num = 1
+	document.querySelector('.cart-qty').innerHTML = num;
 }
-function remove(){
-    this.number=Number.parseInt(document.querySelector('.model_quantity_number_quan').innerHTML)
-    if(number>0)
-    {
-		this.number--;
-        document.querySelector('.model_quantity_number_quan').innerHTML=this.number;
-    }
-    else{
-        alert("Không thực hiện được thao tác")
-    }
+$("#cart-qty-plus").click(function() {
+	num = parseInt($(".cart-qty").text());
+	$(".cart-qty").text(num + 1);
+})
+
+
+$("#cart-qty-minus").click(function() {
+	num = parseInt($(".cart-qty").text());
+	if (num == 1) {
+		return false
+	}
+	$(".cart-qty").text(num - 1);
+})
+function replace() {
+	num = parseInt($(".cart-qty").text());
+	var pId = $('#PID').val();
+	var x = '/Shopee/member/cart-add?pId=' + pId;
+	x = x + '&quantity=' + num;
+	location.href = x;
 }
-document.querySelector('.model_quantity_number_add').addEventListener("click",add)
-document.querySelector('.model_quantity_number_remove').addEventListener("click",remove)
+$(document).ready(function($) {
+
+   //Use this inside your document ready jQuery 
+   $(window).on('popstate', function() {
+      location.reload(true);
+   });
+
+});
