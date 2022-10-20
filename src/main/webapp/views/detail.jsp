@@ -25,7 +25,15 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+<style type="text/css">
+  .footer-logo-background{
+  /* background: url("<c:url value="/img/bg-icon.png"/>"); */
+  background: url("${pageContext.request.contextPath}/img/bg-icon.png");
+  }
+  body{
+  margin:0;
+  }
+  </style>
 
 </head>
 <body>
@@ -36,7 +44,7 @@
         <div  class="container">
             <div class="grid wide">
                 <div class="row sm-gutter body-content">
-                    <aside class="col m-6 c-6 border-right">
+                    <aside class="col m-6 c-6 bottom border-right">
                         <article class="gallery-wrap">
                         	<input type="hidden" id="PID" value="${p.pId}">
                             <img class="gallery-wrap-img" src="${p.pImage }"
@@ -45,7 +53,7 @@
                         </article>
                         <!-- gallery-wrap .end// -->
                     </aside>
-                    <aside style="margin-bottom: 20px;"class="col m-6 c-6">
+                    <aside style="margin-bottom: 20px;"class="col m-6 c-6 bottom">
                         <article class="card-body ">
                             <h3 class="title ">${p.pName}</h3>
 
@@ -115,7 +123,7 @@
                              <c:forEach items="${listP}" var="o"> 
                             <!-- search-item-1 -->
                             <div class="col l-2-4 lo-3 m-4 c-6 search-item-result__item">
-                                <a href="" class="search-item-result__item-link">
+                                <a href="/Shopee/detail?pId=${o.pId}&quantity=1&action=" class="search-item-result__item-link">
                                     <div class="search-item-result__item-bgc">
                                       
                                         <div class="search-item-result__item-tag-left">
@@ -237,8 +245,10 @@
             </div>
         </div>
          </div>
-	<jsp:include page="footer.jsp"></jsp:include> 
-	
+        	<jsp:include page="footer.jsp"></jsp:include> 
+        
+         </div>
+	<script src="<c:url value="/js/home.js"/>"></script>
 	<script src="<c:url value="/js/detail.js"/>"></script>
 </body>
 </html>

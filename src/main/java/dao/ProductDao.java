@@ -344,9 +344,9 @@ public class ProductDao {
 		}
 		return products;
 	}
-	public List<Product> getTop5Product(String cateId) {
+	public List<Product> getTop10Product(String cateId) {
 		List<Product> products = new ArrayList<>();
-		String query = "select top 5 * from product where cateId=?";
+		String query = "select top 10 * from product where cateId=?";
 
 		try {
 			conn = new connect().getConnection();

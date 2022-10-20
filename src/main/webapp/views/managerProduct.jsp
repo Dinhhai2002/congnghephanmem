@@ -190,9 +190,19 @@
 						</div>
 						<div class="form-group form-group-col">
                             
-                            <img class="img-responsive" width="100px" src="./assets/img/avatar_user.jpeg"
-                            alt="">
-                            <label style="margin-top:10px">Ảnh sản phẩm</label> <input type="file" name="image" />
+                            <label for="idImage">
+                                chọn thêm hình ảnh
+                            </label>
+                            <select name="image" id="idImage">
+                                
+                                  <option value="file">Thêm bằng file</option>
+                                  <option value="link">Thêm bằng url</option>
+                               
+                            </select>
+                            <!-- <label style="margin-top:10px">Ảnh đại diện</label> -->
+                            <input  id="text"name="name" type="text" class="form-control" required/>
+								
+                                <input  type="file" id="file" name="image"   /> 
                             </div>
                            
 						<div class="form-group">

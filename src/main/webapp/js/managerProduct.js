@@ -1,6 +1,25 @@
 /**
  * 
  */
+
+let selectImage=document.getElementById('idImage');
+const text=document.getElementById('text');
+const file=document.getElementById('file');
+
+selectImage.onchange=displayvaluechange;
+function displayvaluechange(){
+    if(this.value=="link")
+    {
+        text.style.display="block";
+        file.style.display="none";
+    }
+    if(this.value=="file")
+    {
+        file.style.display="block";
+        text.style.display="none";
+    }
+    
+}
 $(document).ready(function () {
     // Activate tooltip
     $('[data-toggle="tooltip"]').tooltip();

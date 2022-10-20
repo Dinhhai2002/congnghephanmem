@@ -32,7 +32,7 @@ public class detailController extends HttpServlet{
 		
 		Product pro = productDao.findOne(Integer.parseInt(pid));
 		String cateId=String.valueOf(pro.getCategory().getcId());
-		List<Product> list=productDao.getTop5Product(cateId);
+		List<Product> list=productDao.getTop10Product(cateId);
 	
 		req.setAttribute("p",pro);
 	    //req.setAttribute("quantity",x);

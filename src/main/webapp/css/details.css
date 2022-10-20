@@ -1,104 +1,117 @@
 .gallery-wrap {
-    height: 100%;
-    margin: auto !important;
-    display: flex;
-    align-items: center;
-    width: 100%;
-}
-.gallery-wrap-img {
-    object-fit: contain;
-    width: 100%;
-    height: 280px;
-}
-img {
-    vertical-align: middle;
-    border-style: none;
-}
-.card-body {
-    -webkit-box-flex: 1;
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
-    padding: 1.25rem;
-    font-size:20px;
-    margin-left: 8px;
-}
-.title{
-    margin-bottom: 4px;
-}
-.col{
-    margin-bottom: 5px;
-}
-.item-property{
-    position: relative;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-clip: border-box;
-    border-radius: 0.25rem;
-}
-.model_quantity_number{
-    display: flex;
-    width: 50%;
-    justify-content:center;
-    align-items:center;
-    margin: 16px 4px;
-}
-.model_quantity_number_remove,.model_quantity_number_quan
-,.model_quantity_number_add{
-    padding:4px;
-    margin:0 4px;
-    
-}
-.model_quantity_number_remove,
-.model_quantity_number_add{
-    border:1px solid #ccc;
-    color:#000;
-}
-.btn-footer{
-    display:flex;
-    align-items:center;
-}
-.submit {
-    margin:4px 8px;
-    display: block;
-    text-decoration: none;
-    padding:10px;
-    background-color: var(--primary);
-    color:#fff;
-    font-size: 16px;
-    border:1px solid var(--primary);
+	height: 100%;
+	margin: auto !important;
+	display: flex;
+	align-items: center;
+	width: 100%;
 }
 
-.sort-bar__label{
-    font-size: 20px;
-    font-weight: 500;
-    color:var(--primary);
+.gallery-wrap-img {
+	object-fit: contain;
+	width: 100%;
+	height: 280px;
 }
-.bottom{
-    margin-bottom: 20px;
-    box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+
+img {
+	vertical-align: middle;
+	border-style: none;
+}
+
+.card-body {
+	-webkit-box-flex: 1;
+	-ms-flex: 1 1 auto;
+	flex: 1 1 auto;
+	padding: 1.25rem;
+	font-size: 20px;
+	margin-left: 8px;
+}
+
+.title {
+	margin-bottom: 4px;
+	word-wrap: break-word;
+	line-height: 20px;
+}
+
+.col {
+	margin-bottom: 5px;
+}
+
+.item-property {
+	position: relative;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	min-width: 0;
+	word-wrap: break-word;
+	background-clip: border-box;
+	border-radius: 0.25rem;
+	line-height: 22px;
+}
+
+.model_quantity_number {
+	display: flex;
+	width: 50%;
+	justify-content: space-around;
+	align-items: center;
+	margin: 16px 4px;
+}
+
+.model_quantity_number_remove, .model_quantity_number_quan,
+	.model_quantity_number_add {
+	padding: 4px;
+	margin: 0 4px;
+}
+
+.model_quantity_number_remove, .model_quantity_number_add {
+	border: 1px solid #ccc;
+	color: #000;
+}
+
+.btn-footer {
+	display: flex;
+	align-items: center;
+}
+
+.submit {
+	margin: 4px 8px;
+	display: block;
+	text-decoration: none;
+	padding: 10px;
+	background-color: var(--primary);
+	color: #fff;
+	font-size: 16px;
+	border: 1px solid var(--primary);
+}
+
+.sort-bar__label {
+	font-size: 20px;
+	font-weight: 500;
+	color: var(- -primary);
+}
+
+.bottom {
+	margin-bottom: 20px;
+	box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px
+		4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
+		rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
 }
 
 /* mobile */
-@media (max-width: 740px)
-{
-  .bottom{
-    flex: 0 0 100%;
-    max-width: 100%;
-  }
-  .btn-footer{
-    display: flex;
-    flex-direction: column;
-
-  }
-  .btn-footer a{
-    text-align: center;
-    width: 100%;
-  }
+@media ( max-width : 740px) {
+	.bottom {
+		flex: 0 0 100%;
+		max-width: 100%;
+	}
+	.btn-footer {
+		display: flex;
+		flex-direction: column;
+	}
+	.btn-footer a, .btn-footer button {
+		text-align: center;
+		width: 100%;
+	}
 }

@@ -1062,7 +1062,9 @@
 }
 
 .top-sales-list.row {
-  flex-wrap: nowrap;
+	max-height: 400px;
+    flex-wrap: wrap;
+    overflow-y: scroll;
 }
 
 .top-sales-list {

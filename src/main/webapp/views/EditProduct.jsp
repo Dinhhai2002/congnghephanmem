@@ -62,10 +62,23 @@
 												class="form-control" required />
 										</div>
 										<div class="form-group form-group-col">
-											<c:url value="/image?fname=${product.pImage}" var="imgUrl"></c:url>
-											<img class="img-responsive" width="100px" src="${imgUrl}"
-												alt=""> <label style="margin-top: 10px">Ảnh sản phẩm</label> <input type="file" name="image" />
-										</div>
+                                        <c:url value="/image?fname=${product.pImage}" var="imgUrl"></c:url>
+                                        <img class="img-responsive" width="100px" src="${imgUrl}"
+                                            alt=""> 
+                                            <label for="idImage">
+                                                chọn sửa hình ảnh
+                                            </label>
+                                            <select name="image" id="idImage">
+                                                
+                                                  <option value="file">Thêm bằng file</option>
+                                                  <option value="link">Thêm bằng url</option>
+                                               
+                                            </select>
+                                            <!-- <label style="margin-top:10px">Ảnh đại diện</label> -->
+                                            <input   id="text"name="name" type="text" class="form-control" required/>
+                                                
+                                                <input  type="file" id="file" name="image"   /> 
+                                    </div>
 
 										<div class="form-group">
 											<label>Giá sản phẩm</label> <input value="${product.pPrice}" name="price" type="text"
@@ -105,7 +118,7 @@
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
 	
-
+	<script src="<c:url value="/js/managerProduct.js"/>"></script>
 	<script src="<c:url value="/js/home.js"/>"></script>
 </body>
 </html>

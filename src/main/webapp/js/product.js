@@ -1,10 +1,5 @@
-/**
- * 
- */
 
- 
-//filter price
-(function() {
+ function fillterproduct() {
 	
     let field = document.querySelector('.search-item-result__items');
     let li = Array.from(field.children);
@@ -16,13 +11,18 @@
         let ar = [];
         for(let i of li){
             const last = i.querySelector(".search-item-result__item-price");
-            const x = last.textContent.trim();
-            console.log(x);
-            const y = Number(x.substring(1));
+            if(last!=null)
+            	{
+            	 console.log(last);
+                 const x = last.textContent.trim();
+                 console.log(x);
+                 const y = Number(x.substring(1));
+                
+                 console.log(y);
+                 i.setAttribute("data-price", y);
+                 ar.push(i);
+            	}
            
-            console.log(y);
-            i.setAttribute("data-price", y);
-            ar.push(i);
         }
         this.run = ()=>{
             addevent();
@@ -37,30 +37,47 @@
                 field.append(...ar);	
             }
             if (this.value === 'LowToHigh') {
-                SortElem(field, li, true)
+                function SortElem1(field,li){
+                    let  dm, sortli;
+                    
+                    sortli = li.sort((a, b)=>{
+                        const ax = a.getAttribute('data-price');
+                        const bx = b.getAttribute('data-price');
+                         return ax-bx;
+                    });
+                     while (field.firstChild) {field.removeChild(field.firstChild);}
+                     field.append(...sortli);	
+                }
+                 new SortElem1(field, li);
+                // SortElem(field, li, true)
             }
             if (this.value === 'HighToLow') {
-                SortElem(field, li, false)
+                function SortElem2(field,li){
+                    let  dm, sortli;
+                    
+                    sortli = li.sort((a, b)=>{
+                        const ax = a.getAttribute('data-price');
+                        const bx = b.getAttribute('data-price');
+                         return bx-ax;
+                    });
+                     while (field.firstChild) {field.removeChild(field.firstChild);}
+                     field.append(...sortli);	
+                }
+                 new SortElem2(field, li);
+                // SortElem(field, li, false)
             }
         }
-        function SortElem(field,li, asc){
-            let  dm, sortli;
-            dm = asc ? 1 : -1;
-            sortli = li.sort((a, b)=>{
-                const ax = a.getAttribute('data-price');
-                const bx = b.getAttribute('data-price');
-                return ax > bx ? (1*dm) : (-1*dm);
-            });
-             while (field.firstChild) {field.removeChild(field.firstChild);}
-             field.append(...sortli);	
-        }
+        
     }
 
     
     new SortProduct().run();
-})();
- 
-
+};
+(function()
+		{
+			 fillterproduct();
+		})();
+		
 //search item with ajax
 
 function searchByName(param) {
@@ -119,9 +136,10 @@ function loadMore() {
 			success: function(data) {
 				var row = document.getElementById("content");
 				row.innerHTML += data;
+				fillterproduct();
 			},
 			error: function(xhr) {
-
+				
 			}
 		});
 	}else if(currentCate!="0" && (amountP < maxContent * currentP)){
@@ -135,13 +153,16 @@ function loadMore() {
 			success: function(data) {
 				var row = document.getElementById("content");
 				row.innerHTML += data;
+				fillterproduct();
 			},
 			error: function(xhr) {
-
+				
 			}
 		});
 	}
 }
+
+
 
 /*var cId = 1;
 //category with ajax

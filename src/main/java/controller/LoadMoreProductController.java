@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DecimalFormat;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -28,7 +29,7 @@ public class LoadMoreProductController extends HttpServlet{
 		PrintWriter out = resp.getWriter();
 		for(Product o: listP) {
 			if(o.getpImage().contains("https")) {
-				out.println("<div class=\"col l-2-4 lo-3 m-4 c-6 search-item-result__item\">\r\n"
+				out.println("<div class=\"col l-2-4 lo-3 m-4 c-6 search-item-result__item\" data-price=\"\">\r\n"
 					+ "									<a href=\"/Shopee/detail?pId="+o.getpId()+"&quantity=1&action=\"\r\n"
 					+ "										class=\"search-item-result__item-link\">\r\n"
 					+ "										<div class=\"search-item-result__item-bgc\">\r\n"
@@ -82,7 +83,7 @@ public class LoadMoreProductController extends HttpServlet{
 					+ "											</div>\r\n"
 					+ "											<div class=\"search-item-result__item-price-wrap\">\r\n"
 					+ "												<span class=\"search-item-result__item-price\">\r\n"
-					+ "													₫"+o.getpPrice()+5000+" </span>\r\n"
+					+ "													₫"+o.getpPrice()*1.2+" </span>\r\n"
 					+ "												<div class=\"search-item-result__item-price-saleoff\">\r\n"
 					+ "													<span> ₫"+o.getpPrice()+" </span>\r\n"
 					+ "													<svg height=\"12\" viewBox=\"0 0 20 12\" width=\"20\"\r\n"
@@ -140,7 +141,7 @@ public class LoadMoreProductController extends HttpServlet{
 					+ "									</a>\r\n"
 					+ "								</div>");
 			}else {
-				out.println("<div class=\"col l-2-4 lo-3 m-4 c-6 search-item-result__item\">\r\n"
+				out.println("<div class=\"col l-2-4 lo-3 m-4 c-6 search-item-result__item\" data-price=\"\" >\r\n"
 						+ "									<a href=\"/Shopee/detail?pId="+o.getpId()+"&quantity=1&action=\"\r\n"
 						+ "										class=\"search-item-result__item-link\">\r\n"
 						+ "										<div class=\"search-item-result__item-bgc\">\r\n"
@@ -194,7 +195,7 @@ public class LoadMoreProductController extends HttpServlet{
 						+ "											</div>\r\n"
 						+ "											<div class=\"search-item-result__item-price-wrap\">\r\n"
 						+ "												<span class=\"search-item-result__item-price\">\r\n"
-						+ "													₫"+o.getpPrice()+5000+" </span>\r\n"
+						+ "													₫"+o.getpPrice()*1.2+" </span>\r\n"
 						+ "												<div class=\"search-item-result__item-price-saleoff\">\r\n"
 						+ "													<span> ₫"+o.getpPrice()+" </span>\r\n"
 						+ "													<svg height=\"12\" viewBox=\"0 0 20 12\" width=\"20\"\r\n"
