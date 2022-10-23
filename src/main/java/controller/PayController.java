@@ -59,7 +59,7 @@ public class PayController extends HttpServlet {
 		OrderDetailDao orderDetailDao = new OrderDetailDao();
 		CartItemDao cartItemDao = new CartItemDao();
 		CartDao cartDao = new CartDao();
-		OrderStatus orderStatus = new OrderStatus(1);
+		
 		
 		
 		
@@ -73,7 +73,7 @@ public class PayController extends HttpServlet {
 				order.setuName(name);
 				order.setuPhone(phone);
 				order.setuAddress(address);
-				order.setStatus(orderStatus);
+				order.setPaidBefore(false);
 
 				int shopId = cartItem.get(key).getCart().getShop().getShopId();
 				System.out.println(orderCheck.containsKey(shopId));
@@ -100,8 +100,10 @@ public class PayController extends HttpServlet {
 					CartItem cartItemSelected = new CartItem();
 					cartItemSelected = cartItemDao.findCartItemSelected(key1, key);
 					if(cartItemSelected!=null) {
+						
+						OrderStatus orderStatus = new OrderStatus(1);
 						OrderDetail orderDetail = new OrderDetail(order,cartItemSelected.getProduct(),cartItemSelected.getCount()
-								,cartItemSelected.getTotalPrice());
+								,cartItemSelected.getTotalPrice(),orderStatus);
 						
 						orderDetailDao.create(orderDetail);
 						Product product = new Product(cartItemSelected.getProduct().getpId(),cartItemSelected.getProduct().getpQuantity()
