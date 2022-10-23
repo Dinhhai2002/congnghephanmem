@@ -24,7 +24,7 @@ public class OrderDao {
     
     //dung
 	public	void create(Order order) {
-		String sql = "INSERT INTO [order](uId, shopId, uName, uPhone, uAddress, status, amountFromUser, createAt) "
+		String sql = "INSERT INTO [order](uId, shopId, uName, uPhone, uAddress, isPaidBefore, amountFromUser, createAt) "
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?, DEFAULT)";
 		try {
 		conn = new connect().getConnection();
@@ -34,7 +34,7 @@ public class OrderDao {
 		ps.setString(3, order.getuName());
 		ps.setString(4, order.getuPhone());
 		ps.setString(5, order.getuAddress());
-		ps.setInt(6, order.getStatus().getIdStatus());
+		ps.setBoolean(6, order.isPaidBefore());
 		ps.setFloat(7, order.getAmountFromUser());
 		ps.executeUpdate();
 		} catch (Exception e) {
@@ -44,7 +44,7 @@ public class OrderDao {
 
 	public void update(Order order) {
 		String sql = "UPDATE [order] SET uId = ?, shopId = ?, uName = ?, uPhone = ?, uAddress = ? "
-				+ ", status = ?, amountFromUser=?, createAt=DEFAULT WHERE orderId = ?";
+				+ ", isPaidBefore = ?, amountFromUser=?, createAt=DEFAULT WHERE orderId = ?";
 				try {
 					conn = new connect().getConnection();
 					PreparedStatement ps = conn.prepareStatement(sql);
@@ -54,7 +54,7 @@ public class OrderDao {
 					ps.setString(3, order.getuName());
 					ps.setString(4, order.getuPhone());
 					ps.setString(5, order.getuAddress());
-					ps.setInt(6, order.getStatus().getIdStatus());
+					ps.setBoolean(6, order.isPaidBefore());
 					ps.setFloat(7, order.getAmountFromUser());
 					ps.setInt(8, order.getOrderId());
 				ps.executeUpdate();
@@ -65,10 +65,8 @@ public class OrderDao {
 	}
 
 	public void delete() {
-		String sql = "DELETE FROM cart WHERE EXISTS(\r\n"
-				+ "	Select * From cart \r\n"
-				+ "	left join cartItems on cart.cartId = cartItems.cartId\r\n"
-				+ "	where cartItems.cartId is null)";
+		String sql = "DELETE FROM [order] WHERE EXISTS(Select * From [order] left join orderdetail on [order].orderId = orderdetail.orderId\r\n"
+				+ "	where orderdetail.orderId is null)";
 		try {
 		conn = new connect().getConnection();
 		PreparedStatement ps = conn.prepareStatement(sql);
@@ -89,11 +87,9 @@ public class OrderDao {
 		while (rs.next()) {	
 			UserDao userDao = new UserDao();
 			ShopDao shopDao = new ShopDao();
-			OrderStatusDao orderStatusDao = new OrderStatusDao();
 			User user = userDao.get(rs.getInt("uId"));
 			Shop shop = shopDao.findOne(rs.getInt("shopId"));
-			OrderStatus orderStatus = orderStatusDao.findOne(rs.getInt("status"));
-			
+	
 			Order order = new Order();
 			order.setOrderId(rs.getInt("orderId"));
 			order.setUser(user);
@@ -101,7 +97,7 @@ public class OrderDao {
 			order.setuName(rs.getString("uName"));
 			order.setuPhone(rs.getString("uPhone"));
 			order.setuAddress(rs.getString("uAddress"));
-			order.setStatus(orderStatus);
+			order.setPaidBefore(rs.getBoolean("isPaidBefore"));
 			order.setAmountFromUser(rs.getFloat("amountFromUser"));
 			order.setCreateAt(rs.getDate("createAt"));
 			return order;
@@ -110,27 +106,38 @@ public class OrderDao {
 		return null;
 	}
 
-	public List<Cart> findAll() {
-		List<Cart> carts = new ArrayList<Cart>();
-		String sql = "SELECT * FROM Cart";
+	//Lấy tất cả đơn hàng của user hiện có
+	public List<Order> findAllByuid(User user) {
+		List<Order> orders = new ArrayList<Order>();
+		String sql = "  Select orderdetail.productId, [order].status From [order] \r\n"
+				+ "	inner join orderdetail on [order].orderId=orderdetail.orderId\r\n"
+				+ "	where [order].uId=?";
 		try {
 		conn = new connect().getConnection();
 		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1,user.getuId());
+		
 		ResultSet rs = ps.executeQuery();
 		while (rs.next()) {
-		UserDao userDao = new UserDao();
-		ShopDao shopDao = new ShopDao();
-		User user = userDao.get(rs.getInt("uId"));
-		Shop shops = shopDao.findOne(rs.getInt("shopId"));
+			UserDao userDao = new UserDao();
+			ShopDao shopDao = new ShopDao();
+			user = userDao.get(rs.getInt("uId"));
+			Shop shop = shopDao.findOne(rs.getInt("shopId"));
 		
-		Cart cart = new Cart();
-		cart.setCartId(rs.getInt("cartId"));
-		cart.setUser(user);
-		cart.setShop(shops);
-		carts.add(cart);
+		Order order = new Order();
+		order.setOrderId(rs.getInt("orderId"));
+		order.setUser(user);
+		order.setShop(shop);
+		order.setuName(rs.getString("uName"));
+		order.setuPhone(rs.getString("uPhone"));
+		order.setuAddress(rs.getString("uAddress"));
+		order.setPaidBefore(rs.getBoolean("isPaidBefore"));
+		order.setAmountFromUser(rs.getFloat("amountFromUser"));
+		order.setCreateAt(rs.getDate("createAt"));
+		orders.add(order);
 		}} catch (Exception e) {
 		e.printStackTrace();}
-		return carts;
+		return orders;
 	}
 
 	public List<Cart> search(String keyword) {
@@ -150,8 +157,6 @@ public class OrderDao {
 			ShopDao shopDao = new ShopDao();
 			User user = userDao.get(rs.getInt("uId"));
 			Shop shop = shopDao.findOne(rs.getInt("shopId"));
-			OrderStatusDao orderStatusDao = new OrderStatusDao();
-			OrderStatus orderStatus = orderStatusDao.findOne(rs.getInt("status"));
 			Order order = new Order();
 			order.setOrderId(rs.getInt("orderId"));
 			order.setUser(user);
@@ -159,7 +164,7 @@ public class OrderDao {
 			order.setuName(rs.getString("uName"));
 			order.setuPhone(rs.getString("uPhone"));
 			order.setuAddress(rs.getString("uAddress"));
-			order.setStatus(orderStatus);
+			order.setPaidBefore(rs.getBoolean("isPaidBefore"));
 			order.setAmountFromUser(rs.getFloat("amountFromUser"));
 			order.setCreateAt(rs.getDate("createAt"));
 			return order;
@@ -177,9 +182,6 @@ public class OrderDao {
 		ps.setInt(2, shop.getShopId());
 		ResultSet rs = ps.executeQuery();
 		while (rs.next()) {	
-			OrderStatusDao orderStatusDao = new OrderStatusDao();
-			OrderStatus orderStatus = orderStatusDao.findOne(rs.getInt("status"));
-			
 			Order order = new Order();
 			order.setOrderId(rs.getInt("orderId"));
 			order.setUser(user);
@@ -187,7 +189,7 @@ public class OrderDao {
 			order.setuName(rs.getString("uName"));
 			order.setuPhone(rs.getString("uPhone"));
 			order.setuAddress(rs.getString("uAddress"));
-			order.setStatus(orderStatus);
+			order.setPaidBefore(rs.getBoolean("isPaidBefore"));
 			order.setAmountFromUser(rs.getFloat("amountFromUser"));
 			order.setCreateAt(rs.getDate("createAt"));
 			return order;
@@ -214,10 +216,10 @@ public class OrderDao {
 			cartItem.setCount(3);
 			cartItem.setTotalPrice(product.getpPrice()*3);
 			Order order = new Order();
-			order = orderDao.findOneUserAndShop(user, shop);
+			//List<Order> listO = orderDao.findAll();
 			//order.setAmountFromUser(0);
 			//orderDao.update(order);
-			System.out.println(order.toString());
+			//System.out.println(listO.toString());
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

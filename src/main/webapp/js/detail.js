@@ -22,7 +22,7 @@ $("#cart-qty-plus").click(function() {
 
 
 $("#cart-qty-minus").click(function() {
-	num = parseInt($(".cart-qty").text()); s
+	num = parseInt($(".cart-qty").text());
 	if (num == 1) {
 		return false
 	}
@@ -35,7 +35,7 @@ function replace() {
 	var action = "buynow";
 	var x = '/Shopee/member/cart-add?pId=' + pId;
 	x = x + '&quantity=' + num;
-	x = x + '&action='+action;
+	x = x + '&action=' + action;
 	location.href = x;
 }
 $(document).ready(function($) {
@@ -60,12 +60,14 @@ $(document).ready(function() {
 				action: "addtocart"
 			},
 			success: function(data) {
-				if(data == 'true' ){
-               alert('đã thêm hàng vào giỏ');
-            } else {
-               var x = '/Shopee/login';
-				location.href = x;
-            };
+				if (data == 'true') {
+					alert('đã thêm hàng vào giỏ');
+				} else if (data = "overquantity") {
+					alert('Không thể thêm số lượng đã chọn vào giỏ hàng vì sẽ vượt quá giới hạn mua hàng của bạn.');
+				} else {
+					var x = '/Shopee/login';
+					location.href = x;
+				};
 			},
 
 
