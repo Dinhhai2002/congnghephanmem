@@ -41,7 +41,6 @@ public class OrderPurchase extends HttpServlet {
 			rq.forward(req, resp);
 		} else {
 			action = action.replaceAll("\\s\\s+", " ").trim();
-			System.out.print(action);
 			if (action.equals("Tất cả")) {
 				List<OrderDetail> listO = orderDetailDao.findAllByuid(acc);
 				displayHTML(listO, resp);
