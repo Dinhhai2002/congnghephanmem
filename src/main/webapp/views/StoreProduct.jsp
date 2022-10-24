@@ -145,7 +145,7 @@
 					<div class="col l-10 lo-10 m-12 c-12 active">
 						<input type='text'>
 						<div class="table-wrapper">
-							<table class="table table-striped table-hover">
+							<table id="myTable" class="table table-striped table-hover">
 								<thead>
 									<tr>
 										<th>Tên sản phẩm</th>
@@ -153,7 +153,9 @@
 										<th>Giá</th>
 										<th>Tình trạng đơn hàng</th>
 									</tr>
+
 								</thead>
+
 								<tbody>
 									<c:forEach items="${listO}" var="o">
 										<tr style="margin: 8px 0;">
@@ -162,6 +164,15 @@
 												style="width: 90px; height: 90px;"></td>
 											<td>${o.totalPrice}</td>
 											<td>${o.status.nameStatus}</td>
+											 <c:set var = "s" value = "${o.status.idStatus}"/>
+											<c:choose>
+												<c:when test="${s==1 or s==2 or s==3}">
+													<td><button>Hủy đơn</button></td>													
+												</c:when>
+												<c:when test="${s==4 or s==5}">
+													<td><button>Mua lại</button></td>													
+												</c:when>
+											</c:choose>
 										</tr>
 									</c:forEach>
 								</tbody>
@@ -170,18 +181,21 @@
 
 
 
-						<c:if test="${listO==null}">
-							<div style="text-align: center;" class="home-product-shipping">
-								<img
-									src="https://icons.veryicon.com/png/o/miscellaneous/contribution/empty-box-1.png"
-									alt="" style="width: 90px; height: 90px;">
-								<p>Chưa có đơn hàng</p>
-							</div>
-						</c:if>
+						<c:choose>
+							<c:when test="${empty listO}">
+								<div style="text-align: center;" class="home-product-shipping">
+									<img
+										src="https://icons.veryicon.com/png/o/miscellaneous/contribution/empty-box-1.png"
+										alt="" style="width: 90px; height: 90px;">
+									<p>Chưa có đơn hàng</p>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div style="text-align: center;" class="home-product-shipping">
 
-						<div style="text-align: center;" class="home-product-shipping">
-
-						</div>
+								</div>
+							</c:otherwise>
+						</c:choose>
 
 					</div>
 				</div>
