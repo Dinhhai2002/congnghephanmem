@@ -17,7 +17,6 @@ public class ShopDao {
     ResultSet rs = null;
     
  public Shop findOne(int id) {
-        //dung
 	 String sql = "SELECT * FROM shop WHERE shopId = ? ";
 		try {
 		conn = new connect().getConnection();

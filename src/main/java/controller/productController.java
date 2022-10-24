@@ -53,7 +53,7 @@ public class productController extends HttpServlet {
 			req.setAttribute("listP", listPC);
 		}
 		req.setAttribute("cid", cIndex);
-		req.setAttribute("tag", page);	    
+		req.setAttribute("tag", page);
 	    req.setAttribute("listCC", listC);
 //        req.setAttribute("p", last);
 		RequestDispatcher rq=req.getRequestDispatcher("/views/Product.jsp");

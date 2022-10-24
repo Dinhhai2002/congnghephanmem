@@ -1,83 +1,78 @@
+function fillterproduct() {
 
- function fillterproduct() {
-	
-    let field = document.querySelector('.search-item-result__items');
-    let li = Array.from(field.children);
+	let field = document.querySelector('.search-item-result__items');
+	let li = Array.from(field.children);
 
-  
+	function SortProduct() {
+		let select = document.getElementById('select');
+		let ar = [];
+		for (let i of li) {
+			const last = i.querySelector(".search-item-result__item-price");
+			if (last != null) {
+				console.log(last);
+				const x = last.textContent.trim();
+				console.log(x);
+				const y = Number(x.substring(1));
 
-    function SortProduct() {
-        let select = document.getElementById('select');
-        let ar = [];
-        for(let i of li){
-            const last = i.querySelector(".search-item-result__item-price");
-            if(last!=null)
-            	{
-            	 console.log(last);
-                 const x = last.textContent.trim();
-                 console.log(x);
-                 const y = Number(x.substring(1));
-                
-                 console.log(y);
-                 i.setAttribute("data-price", y);
-                 ar.push(i);
-            	}
-           
-        }
-        this.run = ()=>{
-            addevent();
-        }
-        function addevent(){
-            select.onchange = sortingValue;
-        }
-        function sortingValue(){
-        
-            if (this.value === 'Default') {
-                while (field.firstChild) {field.removeChild(field.firstChild);}
-                field.append(...ar);	
-            }
-            if (this.value === 'LowToHigh') {
-                function SortElem1(field,li){
-                    let  dm, sortli;
-                    
-                    sortli = li.sort((a, b)=>{
-                        const ax = a.getAttribute('data-price');
-                        const bx = b.getAttribute('data-price');
-                         return ax-bx;
-                    });
-                     while (field.firstChild) {field.removeChild(field.firstChild);}
-                     field.append(...sortli);	
-                }
-                 new SortElem1(field, li);
-                // SortElem(field, li, true)
-            }
-            if (this.value === 'HighToLow') {
-                function SortElem2(field,li){
-                    let  dm, sortli;
-                    
-                    sortli = li.sort((a, b)=>{
-                        const ax = a.getAttribute('data-price');
-                        const bx = b.getAttribute('data-price');
-                         return bx-ax;
-                    });
-                     while (field.firstChild) {field.removeChild(field.firstChild);}
-                     field.append(...sortli);	
-                }
-                 new SortElem2(field, li);
-                // SortElem(field, li, false)
-            }
-        }
-        
-    }
+				console.log(y);
+				i.setAttribute("data-price", y);
+				ar.push(i);
+			}
 
-    
-    new SortProduct().run();
+		}
+		this.run = () => {
+			addevent();
+		}
+		function addevent() {
+			select.onchange = sortingValue;
+		}
+		function sortingValue() {
+
+			if (this.value === 'Default') {
+				while (field.firstChild) { field.removeChild(field.firstChild); }
+				field.append(...ar);
+			}
+			if (this.value === 'LowToHigh') {
+				function SortElem1(field, li) {
+					let dm, sortli;
+
+					sortli = li.sort((a, b) => {
+						const ax = a.getAttribute('data-price');
+						const bx = b.getAttribute('data-price');
+						return ax - bx;
+					});
+					while (field.firstChild) { field.removeChild(field.firstChild); }
+					field.append(...sortli);
+				}
+				new SortElem1(field, li);
+				// SortElem(field, li, true)
+			}
+			if (this.value === 'HighToLow') {
+				function SortElem2(field, li) {
+					let dm, sortli;
+
+					sortli = li.sort((a, b) => {
+						const ax = a.getAttribute('data-price');
+						const bx = b.getAttribute('data-price');
+						return bx - ax;
+					});
+					while (field.firstChild) { field.removeChild(field.firstChild); }
+					field.append(...sortli);
+				}
+				new SortElem2(field, li);
+				// SortElem(field, li, false)
+			}
+		}
+
+	}
+
+
+	new SortProduct().run();
 };
-(function()
-		{
-			 fillterproduct();
-		})();
-		
+(function() {
+	fillterproduct();
+})();
+
 //search item with ajax
 
 function searchByName(param) {
@@ -114,6 +109,7 @@ function handleIntersect(entries) {
 		if (entry.isIntersecting) {
 			console.warn("something is intersecting with the viewport");
 			loadMore();
+			fillterproduct();
 		}
 	});
 }
@@ -130,7 +126,7 @@ function loadMore() {
 	//let currentCate = document.getElementById("currentCate").innerHTML;
 	let amount = document.getElementsByClassName("col l-2-4 lo-3 m-4 c-6").length;
 	let amountP = (currentP - 1) * maxContent + amount;
-	if (currentCate=="0" && (amountP < maxContent * currentP)) {
+	if (currentCate == "0" && (amountP < maxContent * currentP)) {
 		$.ajax({
 			url: "/Shopee/load",
 			type: "get",
@@ -143,10 +139,10 @@ function loadMore() {
 				fillterproduct();
 			},
 			error: function(xhr) {
-				
+
 			}
 		});
-	}else if(currentCate!="0" && (amountP < maxContent * currentP)){
+	} else if (currentCate != "0" && (amountP < maxContent * currentP)) {
 		$.ajax({
 			url: "/Shopee/loadPC",
 			type: "get",
@@ -160,7 +156,7 @@ function loadMore() {
 				fillterproduct();
 			},
 			error: function(xhr) {
-				
+
 			}
 		});
 	}
