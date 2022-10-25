@@ -40,6 +40,8 @@
   /* background: url("<c:url value="/img/bg-icon.png"/>"); */
   background: url("${pageContext.request.contextPath}/img/bg-icon.png");
   }
+  body{
+  margin:0;}
   </style>
 	</head>
 <body>
@@ -66,14 +68,20 @@
                                         </a>
                                         <div class="table-content">
                                             <div class="table-content-img">
-                                                <img src="./assets/img/null.png" alt="">
+                                                <c:url value="/image?fname=${shop.shopImage}" var="imgUrl"></c:url>
+                                        		<c:if test="${fn:contains(shop.shopImage, 'https')}">
+													<img src="${shop.shopImage}" alt=" ${shop.shopName}">
+												</c:if>
+												<c:if test="${fn:contains(shop.shopImage, 'product')}">
+													<img src="${imgUrl}" alt=" ${shop.shopImage}">
+												</c:if>
                                             </div>
                                             <div class="table-content-container">
                                                 <h3 class="table-content-container-name">
-                                                    Shop niềm vui
+                                                    ${shop.shopName}
                                                 </h3>
                                                 <p class="table-content-container-description">
-                                                    Thật là tuyệt vời
+                                                    ${shop.shopDecription}
                                                 </p>
                                             </div>
                                         </div>
@@ -108,6 +116,69 @@
                                     
                                 </div>
                             </div> 
+                            <div class="clearfix">
+                            
+                                <ul class="pagination">
+                                <c:if test="${tag > 1}">
+								<li class="page-item disabled"><a href="shop-manager?index=${tag-1}">Previous</a></li>
+							</c:if>
+							<c:if test="${endPage < 10}">
+								<c:forEach begin="1" end="${endPage}" var="i">
+									<li class="page-item ${tag == i?"active":""}"><a href="shop-manager?index=${i}" class="page-link">${i}</a></li>
+								</c:forEach>
+							</c:if>
+
+							<c:if test="${endPage >= 10}">
+								<c:if test="${tag <= 4}">
+									<c:forEach begin="1" end="5" var="i">
+										<li class="page-item ${tag == i?"active":""}"><a href="shop-manager?index=${i}" class="page-link ${tag == i?"active":""}">${i}</a></li>
+									</c:forEach>
+									<li class="page-item"><span
+										class="page-link">...</span></li>
+									<c:forEach begin="${endPage}" end="${endPage}" var="i">
+										<li class="page-item ${tag == i?"active":""}"><a href="shop-manager?index=${i}" class="page-link ${tag == i?"active":""}">${i}</a></li>
+									</c:forEach>
+								</c:if>
+								<c:if test="${tag > 4 && tag < endPage - 4}">
+
+									<li class="page-item ${tag == i?"active":""}"><a href="shop-manager?index=1" class="page-link ${tag == i?"active":""}">1</a></li>
+
+									<li class="page-item"><span
+										class="page-link">...</span></li>
+									<c:forEach begin="${tag - 1}" end="${tag + 2}" var="i">
+										<li class="page-item ${tag == i?"active":""}"><a href="shop-manager?index=${i}" class="page-link ${tag == i?"active":""}">${i}</a></li>
+									</c:forEach>
+									<li class="page-item"><span
+										class="page-link">...</span></li>
+									<c:forEach begin="${endPage}" end="${endPage}" var="i">
+										<li class="page-item ${tag == i?"active":""}"><a href="shop-manager?index=${i}" class="page-link ${tag == i?"active":""}">${i}</a></li>
+									</c:forEach>
+								</c:if>
+								<c:if test="${tag == endPage - 4}">
+									<li class="page-item ${tag == i?"active":""}"><a href="shop-manager?index=1" class="page-link ${tag == i?"active":""}">1</a></li>
+									<li class="page-item"><span
+										class="page-link">...</span></li>
+									<c:forEach begin="${tag - 2}" end="${endPage}" var="i">
+										<li class="page-item"><a href="shop-manager?index=${i}" class="page-link ${tag == i?"active":""}">${i}</a></li>
+									</c:forEach>
+								</c:if>
+								<c:if test="${tag > endPage - 4}">
+									<li class="page-item ${tag == i?"active":""}"><a href="shop-manager?index=1" class="page-link ${tag == i?"active":""}">1</a></li>
+									<li class="page-item"><span
+										class="page-link">...</span></li>
+									<c:forEach begin="${endPage - 5}" end="${endPage}" var="i">
+										<li class="page-item ${tag == i?"active":""}"><a href="shop-manager?index=${i}" class="page-link">${i}</a></li>
+									</c:forEach>
+								</c:if>
+							</c:if>
+
+
+							<c:if test="${tag < endPage}">
+								<li class="page-item"><a href="shop-manager?index=${tag+1}" class="page-link">Next</a></li>
+							</c:if>
+                                    
+                                </ul>
+                            </div>
                             <table class="table table-striped table-hover">
                                 <thead>
                                     <tr>
@@ -146,18 +217,7 @@
                                     </c:forEach>
                                 </tbody>
                             </table>
-                            <div class="clearfix">
-                               
-                                <ul class="pagination">
-                                    <li class="page-item disabled"><a href="#">Previous</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">1</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">2</a></li>
-                                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">4</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">5</a></li>
-                                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
-                                </ul>
-                            </div>
+                            
                 
                             <div style="text-align:center;" class="home-product-shipping">
                                 <img src="../assets/img/null.png" alt="">
@@ -188,21 +248,22 @@
 							<label>Tên sản phẩm</label> <input name="name" type="text"
 								class="form-control" required/>
 						</div>
+						
 						<div class="form-group form-group-col">
                             
                             <label for="idImage">
-                                chọn thêm hình ảnh
+                                Chọn thêm hình ảnh
                             </label>
-                            <select name="image" id="idImage">
+                            <select name="selectImage" id="idImage">
                                 
                                   <option value="file">Thêm bằng file</option>
                                   <option value="link">Thêm bằng url</option>
                                
                             </select>
                             <!-- <label style="margin-top:10px">Ảnh đại diện</label> -->
-                            <input  id="text"name="name" type="text" class="form-control" required/>
+                            <input  id="text" name="image1" type="text" class="form-control" />
 								
-                                <input  type="file" id="file" name="image"   /> 
+                                <input  type="file" id="file" name="image"   />
                             </div>
                            
 						<div class="form-group">
@@ -229,8 +290,8 @@
 					</div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-dismiss="modal"
-                            value="Cancel"> <input type="submit" class="btn btn-info"
-                            value="Save">
+                            value="Cancel"/> <input type="submit" class="btn btn-info"
+                            value="Save"/>
                     </div>
 				</form>
 			</div>

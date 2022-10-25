@@ -56,9 +56,8 @@ public class myAccountController extends HttpServlet {
 		UserDao userDao = new UserDao();
 		User checkPhoneNumber=userDao.CheckPhoneNumber(phoneNumber);
 		User checkEmail=userDao.CheckEmail(email);
-		int numberAccountUpdate=userDao.numberAccountUpdate(username);
 		User a=userDao.CheckAccountUpdate(username, fullName, email, address, phoneNumber);
-		if((!username.equals(usernameSession) && numberAccountUpdate==0)||(username.equals(usernameSession) && numberAccountUpdate==1) )
+		if(username.equals(usernameSession) )
 		{
 			if((a==null && phoneNumber.equals(phoneNumberSession) && emailSession.equals(email))||(a==null && !phoneNumber.equals(phoneNumberSession) && checkPhoneNumber==null && emailSession.equals(email)) )
 			{
@@ -115,6 +114,10 @@ public class myAccountController extends HttpServlet {
 				mySession.setAttribute("address", address);
 				resp.sendRedirect("/Shopee/ValidateOtpUpdateAccount");
 				//request.setAttribute("status", "success");
+			}
+			else if(a!=null) {
+				req.setAttribute("mess", "Email đã tồn tại hoặc thông tin chỉnh sửa không phù hợp");
+				req.getRequestDispatcher("/views/MyAccount.jsp").forward(req, resp);
 			}
 	
 		}
