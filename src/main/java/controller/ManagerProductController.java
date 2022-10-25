@@ -16,6 +16,7 @@ import dao.ProductDao;
 import dao.ShopDao;
 import entity.Category;
 import entity.Product;
+import entity.Shop;
 import entity.User;
 
 @WebServlet(urlPatterns = {"/shop-manager"})
@@ -30,12 +31,27 @@ public class ManagerProductController extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		HttpSession session = req.getSession();
 		User a = (User) session.getAttribute("acc");
-		
+		String index = req.getParameter("index");
+		if(index==null) {
+			index="1";
+		}
+		int page = Integer.parseInt(index);
+		int pageSize = productDao.pageSize;
+			
 		int uId = a.getuId();
 		int shopId = shopDao.getShopIdByuId(uId);
-		List<Product> list = productDao.getProductByShopId(shopId);
+		int count = productDao.getTotalProductByShopId(shopId);
+		int endPage = count/pageSize;
+		if(count%pageSize > 0) {
+			endPage++;
+		}
+		Shop shop = shopDao.findOne(shopId);
+		List<Product> list = productDao.pagingProductByShopId(shopId, page);
 		List<Category> listC = cateDao.getAllCategory();
 		
+		req.setAttribute("endPage", endPage);
+		req.setAttribute("tag", page);
+		req.setAttribute("shop", shop);
 		req.setAttribute("listP", list);
 		req.setAttribute("listC", listC);
 		RequestDispatcher rq = req.getRequestDispatcher("/views/managerProduct.jsp");

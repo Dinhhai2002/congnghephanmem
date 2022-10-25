@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="/taglib.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -184,9 +184,16 @@
                                                 GIẢM
                                             </div>
                                         </div>
-                                        <div class="search-item-result__item-overlay">
-                                            <img src="${o.pImage }" alt=" ${o.pName}">
-                                        </div>
+                                        <c:url value="/image?fname=${o.pImage}" var="imgUrl"></c:url>
+											<div class="search-item-result__item-overlay">
+												<c:if test="${fn:contains(o.pImage, 'https')}">
+													<img src="${o.pImage}" alt=" ${o.pName}">
+												</c:if>
+												<c:if test="${fn:contains(o.pImage, 'product')}">
+													<img src="${imgUrl}" alt=" ${o.pName}">
+												</c:if>
+
+											</div>
                                     </div>
                                     <div class="search-item-result__item-body">
                                         <div class="search-item-result__item-group">
@@ -280,7 +287,7 @@
                             
                              
                         </div>
-                        <ul class="pagination hide-on-mb">
+                        <ul class="pagination ">
                            <a href="/Shopee/product?index=0&page=1"class="pagination_btn">Xem tất cả</a>
                         </ul>
                     </div>
