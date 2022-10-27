@@ -9,25 +9,14 @@ public class Order {
 	private String uName;
 	private String uPhone;
 	private String uAddress;
-	private OrderStatus status;
+	private boolean isPaidBefore; 
+	//private OrderStatus status;
 	private float amountFromUser;
 	private Date createAt;
 	public Order() {
 		super();
 	}
-	public Order(User user, Shop shop, String uName, String uPhone, String uAddress, OrderStatus status,
-			float amountFromUser, Date createAt) {
-		super();
-		this.user = user;
-		this.shop = shop;
-		this.uName = uName;
-		this.uPhone = uPhone;
-		this.uAddress = uAddress;
-		this.status = status;
-		this.amountFromUser = amountFromUser;
-		this.createAt = createAt;
-	}
-	public Order(int orderId, User user, Shop shop, String uName, String uPhone, String uAddress, OrderStatus status,
+	public Order(int orderId, User user, Shop shop, String uName, String uPhone, String uAddress, boolean isPaidBefore,
 			float amountFromUser, Date createAt) {
 		super();
 		this.orderId = orderId;
@@ -36,7 +25,7 @@ public class Order {
 		this.uName = uName;
 		this.uPhone = uPhone;
 		this.uAddress = uAddress;
-		this.status = status;
+		this.isPaidBefore = isPaidBefore;
 		this.amountFromUser = amountFromUser;
 		this.createAt = createAt;
 	}
@@ -76,11 +65,11 @@ public class Order {
 	public void setuAddress(String uAddress) {
 		this.uAddress = uAddress;
 	}
-	public OrderStatus getStatus() {
-		return status;
+	public boolean isPaidBefore() {
+		return isPaidBefore;
 	}
-	public void setStatus(OrderStatus status) {
-		this.status = status;
+	public void setPaidBefore(boolean isPaidBefore) {
+		this.isPaidBefore = isPaidBefore;
 	}
 	public float getAmountFromUser() {
 		return amountFromUser;
@@ -96,11 +85,9 @@ public class Order {
 	}
 	@Override
 	public String toString() {
-		return "Order [orderId=" + orderId + ", user=" + user.getuId() + ", shop=" + shop.getShopId() + ", uName=" + uName + ", uPhone="
-				+ uPhone + ", uAddress=" + uAddress + ", status=" + status.getIdStatus() + ", amountFromUser=" + amountFromUser
-				+ ", createAt=" + createAt + "]";
+		return "Order [orderId=" + orderId + ", user=" + user + ", shop=" + shop + ", uName=" + uName + ", uPhone="
+				+ uPhone + ", uAddress=" + uAddress + ", isPaidBefore=" + isPaidBefore + ", amountFromUser="
+				+ amountFromUser + ", createAt=" + createAt + "]";
 	}
-	
-	
 	
 }

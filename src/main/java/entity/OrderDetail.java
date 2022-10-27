@@ -8,26 +8,30 @@ public class OrderDetail {
 	private Product product; //product id
 	private int count;
 	private float totalPrice;
+	private OrderStatus status;
 	private Date createAt;
 	public OrderDetail() {
 		super();
 	}
 	
-	public OrderDetail(Order order, Product product, int count, float totalPrice) {
+	public OrderDetail(Order order, Product product, int count, float totalPrice, OrderStatus status) {
 		super();
 		this.order = order;
 		this.product = product;
 		this.count = count;
 		this.totalPrice = totalPrice;
+		this.status = status;
 	}
 
-	public OrderDetail(int id, Order order, Product product, int count, float totalPrice, Date createAt) {
+	public OrderDetail(int id, Order order, Product product, int count, float totalPrice, OrderStatus status,
+			Date createAt) {
 		super();
 		this.id = id;
 		this.order = order;
 		this.product = product;
 		this.count = count;
 		this.totalPrice = totalPrice;
+		this.status = status;
 		this.createAt = createAt;
 	}
 	public int getId() {
@@ -60,6 +64,12 @@ public class OrderDetail {
 	public void setTotalPrice(float totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+	public OrderStatus getStatus() {
+		return status;
+	}
+	public void setStatus(OrderStatus status) {
+		this.status = status;
+	}
 	public Date getCreateAt() {
 		return createAt;
 	}
@@ -69,8 +79,7 @@ public class OrderDetail {
 	@Override
 	public String toString() {
 		return "OrderDetail [id=" + id + ", order=" + order + ", product=" + product + ", count=" + count
-				+ ", totalPrice=" + totalPrice + ", createAt=" + createAt + "]";
+				+ ", totalPrice=" + totalPrice + ", status=" + status + ", createAt=" + createAt + "]";
 	}
-	
 	
 }

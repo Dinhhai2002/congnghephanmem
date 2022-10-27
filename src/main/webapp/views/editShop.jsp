@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/taglib.jsp"%>
+<%@ include file="/taglib.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,29 +54,32 @@
 									<div class="modal-body">
 										<h3 style="color: red;">${mess}</h3>
 										<div class="form-group">
-											<label>Tên Shop</label> <input name="nameshop" type="text"
+											<input value="${shop.shopId}" name="id" hidden="" />
+										</div>
+										<div class="form-group">
+											<label>Tên Shop</label> <input value="${shop.shopName}" name="name" type="text"
 												class="form-control" required>
 
 										</div>
 										<div class="form-group">
 											<label>Mô tả</label>
-											<textarea name="description" class="form-control"></textarea>
+											<textarea name="description" class="form-control">${shop.shopDecription}</textarea>
 
 										</div>
 										<div class="form-group">
 											<label>Địa chỉ shop</label>
-											<textarea name="address" class="form-control"></textarea>
+											<textarea name="address" class="form-control">${shop.shopAddress}</textarea>
 
 										</div>
 
 										<div class="form-group form-group-col">
-											<c:url value="/image?fname=${category.icon }" var="imgUrl"></c:url>
-											<c:if test="${fn:contains(product.pImage, 'https')}">
-												<img src="${product.pImage}" alt=" ${product.pName}">
-											</c:if>
-											<c:if test="${fn:contains(product.pImage, 'product')}">
-												<img src="${imgUrl}" alt=" ${product.pName}">
-											</c:if>
+											<c:url value="/image?fname=${shop.shopImage}" var="imgUrl"></c:url>
+                                        		<c:if test="${fn:contains(shop.shopImage, 'https')}">
+													<img src="${shop.shopImage}" alt=" ${shop.shopName}">
+												</c:if>
+												<c:if test="${fn:contains(shop.shopImage, 'product')}">
+													<img src="${imgUrl}" alt=" ${shop.shopImage}">
+												</c:if>
 											<label for="idImage">
                                                 Chọn phương thức thêm hình ảnh
                                             </label>

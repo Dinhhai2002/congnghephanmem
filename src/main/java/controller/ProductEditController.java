@@ -47,8 +47,6 @@ public class ProductEditController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-
 		Product product = new Product();
 		Category category = new Category();
 		Shop shop = new Shop();

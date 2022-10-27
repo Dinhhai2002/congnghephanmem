@@ -17,7 +17,7 @@ window.onpageshow = function(evt) {
                   			<c:if test="${sessionScope.acc!=null}">
                             <c:if test="${sessionScope.acc.idRole==3}">
                                 <li class="navbar__item">
-                                    <a href="shop-manager" class="navbar__item-link">
+                                    <a href="/Shopee/shop-manager" class="navbar__item-link">
                                         Kênh Người Bán
                                     </a>
                                 </li>
@@ -135,7 +135,7 @@ window.onpageshow = function(evt) {
                                                 </a>
                                             </li>
                                             <li class="navbarItem__user-item">
-                                                <a href="" class="navbarItem__user-link">
+                                                <a href="/Shopee/member/purchase" class="navbarItem__user-link">
                                                     Đơn Mua
                                                 </a>
                                             </li>

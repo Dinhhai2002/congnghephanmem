@@ -90,38 +90,47 @@ public class CartAddController extends HttpServlet{
 				//kiểm tra coi đã có product trong cartitem hay chưa
 				CartItem existed = new CartItem();
 				existed = cartItemDao.findOnecartIdAndproductId(cartItem);
-				//Nếu chưa tạo một cái mới
 				if(existed==null) {
 					cartItemDao.create(cartItem);
 				}else {
 					//Nếu rồi update lại 
+					int quantity = Integer.parseInt(count)+ existed.getCount();
+					if(quantity> existed.getProduct().getpQuantity()){
+						resp.getWriter().write("overquantity");
+						return;
+					}
 					cartItem.setId(existed.getId());
-					cartItem.setCount(existed.getCount()+Integer.parseInt(count));
+					cartItem.setCount(quantity);
 					cartItem.setTotalPrice(existed.getTotalPrice()+cartItem.getTotalPrice());
 					cartItemDao.update(cartItem);
 				}
-			
 				
-				//Kiểm tra session
-				//nếu null tạo một map chứa product
-				if(obj ==null) {
-					Map<Integer, CartItem> map = new HashMap<Integer, CartItem>();
-					map.put(cartItem.getProduct().getpId(), cartItem);
-					httpSession.setAttribute("cart", map);
-				}else {
-					Map<Integer, CartItem> map = extracted(obj);
-					CartItem existedCartItem = map.get(Integer.valueOf(pId));
-					//Kiểm tra trong session có product này ko
-					if(existedCartItem == null) {
-						cartItem = cartItemDao.findOneByProductId(product.getpId());
-						map.put(product.getpId(), cartItem); 
-					} else {
-						existedCartItem.setCount(existedCartItem.getCount() + Integer.parseInt(count));
-					}		
-					httpSession.setAttribute("cart", map);
-		 		}
-		
-	}
+				
+					//Nếu chưa tạo một cái mới
+					
+				
+					
+					//Kiểm tra session
+					//nếu null tạo một map chứa product
+					if(obj ==null) {
+						Map<Integer, CartItem> map = new HashMap<Integer, CartItem>();
+						map.put(cartItem.getProduct().getpId(), cartItem);
+						httpSession.setAttribute("cart", map);
+					}else {
+						Map<Integer, CartItem> map = extracted(obj);
+						CartItem existedCartItem = map.get(Integer.valueOf(pId));
+						//Kiểm tra trong session có product này ko
+						if(existedCartItem == null) {
+							cartItem = cartItemDao.findOneByProductId(product.getpId());
+							map.put(product.getpId(), cartItem); 
+						} else {
+							existedCartItem.setCount(existedCartItem.getCount() + Integer.parseInt(count));
+						}		
+						httpSession.setAttribute("cart", map);
+			 		}
+				}
+				
+	
 	
 	@SuppressWarnings("unchecked")
 	private Map<Integer, CartItem> extracted(Object obj)

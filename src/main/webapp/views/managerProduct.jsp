@@ -70,16 +70,16 @@
                                         		<c:if test="${fn:contains(shop.shopImage, 'https')}">
 													<img src="${shop.shopImage}" alt=" ${shop.shopName}">
 												</c:if>
-												<c:if test="${fn:contains(product.pImage, 'product')}">
-													<img src="${imgUrl}" alt=" ${product.pName}">
+												<c:if test="${fn:contains(shop.shopImage, 'product')}">
+													<img src="${imgUrl}" alt=" ${shop.shopImage}">
 												</c:if>
                                             </div>
                                             <div class="table-content-container">
                                                 <h3 class="table-content-container-name">
-                                                    Shop niềm vui
+                                                    ${shop.shopName}
                                                 </h3>
                                                 <p class="table-content-container-description">
-                                                    Thật là tuyệt vời
+                                                    ${shop.shopDecription}
                                                 </p>
                                             </div>
                                         </div>
@@ -100,7 +100,7 @@
                                         <a href="#" class="table-title-header"
                                             data-toggle="modal"> 
                                             <span>Đơn hàng</span></a>
-                                        <a href="#" class="table-title-header"
+                                        <a href="editShop?sid=${shop.shopId}" class="table-title-header"
                                             data-toggle="modal"> 
                                             <span>Chỉnh sửa thông tin shop</span></a>
                                     </div>
@@ -167,39 +167,39 @@
 							<c:if test="${endPage >= 10}">
 								<c:if test="${tag <= 4}">
 									<c:forEach begin="1" end="5" var="i">
-										<li class="page-item"><a href="shop-manager?index=${i}" class="page-link ${tag == i?"active":""}">${i}</a></li>
+										<li class="page-item ${tag == i?"active":""}"><a href="shop-manager?index=${i}" class="page-link">${i}</a></li>
 									</c:forEach>
 									<li class="page-item"><span
 										class="page-link">...</span></li>
 									<c:forEach begin="${endPage}" end="${endPage}" var="i">
-										<li class="page-item"><a href="shop-manager?index=${i}" class="page-link ${tag == i?"active":""}">${i}</a></li>
+										<li class="page-item ${tag == i?"active":""}"><a href="shop-manager?index=${i}" class="page-link">${i}</a></li>
 									</c:forEach>
 								</c:if>
 								<c:if test="${tag > 4 && tag < endPage - 4}">
 
-									<li class="page-item"><a href="shop-manager?index=1" class="page-link ${tag == i?"active":""}">1</a></li>
+									<li class="page-item ${tag == i?"active":""}"><a href="shop-manager?index=1" class="page-link">1</a></li>
 
 									<li class="page-item"><span
 										class="page-link">...</span></li>
 									<c:forEach begin="${tag - 1}" end="${tag + 2}" var="i">
-										<li class="page-item"><a href="shop-manager?index=${i}" class="page-link ${tag == i?"active":""}">${i}</a></li>
+										<li class="page-item ${tag == i?"active":""}"><a href="shop-manager?index=${i}" class="page-link">${i}</a></li>
 									</c:forEach>
 									<li class="page-item"><span
 										class="page-link">...</span></li>
 									<c:forEach begin="${endPage}" end="${endPage}" var="i">
-										<li class="page-item"><a href="shop-manager?index=${i}" class="page-link ${tag == i?"active":""}">${i}</a></li>
+										<li class="page-item ${tag == i?"active":""}"><a href="shop-manager?index=${i}" class="page-link">${i}</a></li>
 									</c:forEach>
 								</c:if>
 								<c:if test="${tag == endPage - 4}">
-									<li class="page-item"><a href="shop-manager?index=1" class="page-link ${tag == i?"active":""}">1</a></li>
+									<li class="page-item ${tag == i?"active":""}"><a href="shop-manager?index=1" class="page-link">1</a></li>
 									<li class="page-item"><span
 										class="page-link">...</span></li>
 									<c:forEach begin="${tag - 2}" end="${endPage}" var="i">
-										<li class="page-item"><a href="shop-manager?index=${i}" class="page-link ${tag == i?"active":""}">${i}</a></li>
+										<li class="page-item ${tag == i?"active":""}"><a href="shop-manager?index=${i}" class="page-link">${i}</a></li>
 									</c:forEach>
 								</c:if>
 								<c:if test="${tag > endPage - 4}">
-									<li class="page-item"><a href="shop-manager?index=1" class="page-link ${tag == i?"active":""}">1</a></li>
+									<li class="page-item ${tag == i?"active":""}"><a href="shop-manager?index=1" class="page-link">1</a></li>
 									<li class="page-item"><span
 										class="page-link">...</span></li>
 									<c:forEach begin="${endPage - 5}" end="${endPage}" var="i">
