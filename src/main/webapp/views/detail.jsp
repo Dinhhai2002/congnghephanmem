@@ -243,6 +243,37 @@
                         </div>
                        
                 </div>
+                 <div class="col m-12 c-12">
+                 
+                    <form name="Myform" method="post"class="row sm-gutter comment">
+                    <input name="usernamecomment" value="${sessionScope.acc.uName}" hidden/>
+                        <h3 class="comment-header">Bình luận</h3>
+                        <textarea class="comment-content"name="content" id="" cols="30" rows="10"></textarea>
+                        <button type="submit">Đăng</button>
+                    </form>
+                    <div class="row sm-gutter comment-detail">
+                        <div class="comment-detail-header">
+                            <h3>Các đánh giá đã có</h3>
+                        </div>
+                        <div class="comment-detail-display">
+
+                        <c:forEach items="${listComment}" var="o">
+                        
+                        <div class="comment-detail-content">
+                            <img src="<c:url value="/img/anhdaidiennull.jpg"/>" alt="">
+                            <div class="comment-detail-content-user">
+                                <h3>${o.user.getuName()}</h3>
+                                <p>${o.content}</p>
+                            </div>
+                            
+                        </div>
+                      </c:forEach>
+                    </div>
+                        
+                       
+                        
+                    </div>
+                </div>
                        
             </div>
         </div>

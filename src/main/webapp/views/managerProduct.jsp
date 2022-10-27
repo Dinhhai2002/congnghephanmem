@@ -40,6 +40,8 @@
   /* background: url("<c:url value="/img/bg-icon.png"/>"); */
   background: url("${pageContext.request.contextPath}/img/bg-icon.png");
   }
+  body{
+  margin:0;}
   </style>
 	</head>
 <body>
@@ -114,6 +116,69 @@
                                     
                                 </div>
                             </div> 
+                            <div class="clearfix">
+                            
+                                <ul class="pagination">
+                                <c:if test="${tag > 1}">
+								<li class="page-item disabled"><a href="shop-manager?index=${tag-1}">Previous</a></li>
+							</c:if>
+							<c:if test="${endPage < 10}">
+								<c:forEach begin="1" end="${endPage}" var="i">
+									<li class="page-item ${tag == i?"active":""}"><a href="shop-manager?index=${i}" class="page-link">${i}</a></li>
+								</c:forEach>
+							</c:if>
+
+							<c:if test="${endPage >= 10}">
+								<c:if test="${tag <= 4}">
+									<c:forEach begin="1" end="5" var="i">
+										<li class="page-item ${tag == i?"active":""}"><a href="shop-manager?index=${i}" class="page-link ${tag == i?"active":""}">${i}</a></li>
+									</c:forEach>
+									<li class="page-item"><span
+										class="page-link">...</span></li>
+									<c:forEach begin="${endPage}" end="${endPage}" var="i">
+										<li class="page-item ${tag == i?"active":""}"><a href="shop-manager?index=${i}" class="page-link ${tag == i?"active":""}">${i}</a></li>
+									</c:forEach>
+								</c:if>
+								<c:if test="${tag > 4 && tag < endPage - 4}">
+
+									<li class="page-item ${tag == i?"active":""}"><a href="shop-manager?index=1" class="page-link ${tag == i?"active":""}">1</a></li>
+
+									<li class="page-item"><span
+										class="page-link">...</span></li>
+									<c:forEach begin="${tag - 1}" end="${tag + 2}" var="i">
+										<li class="page-item ${tag == i?"active":""}"><a href="shop-manager?index=${i}" class="page-link ${tag == i?"active":""}">${i}</a></li>
+									</c:forEach>
+									<li class="page-item"><span
+										class="page-link">...</span></li>
+									<c:forEach begin="${endPage}" end="${endPage}" var="i">
+										<li class="page-item ${tag == i?"active":""}"><a href="shop-manager?index=${i}" class="page-link ${tag == i?"active":""}">${i}</a></li>
+									</c:forEach>
+								</c:if>
+								<c:if test="${tag == endPage - 4}">
+									<li class="page-item ${tag == i?"active":""}"><a href="shop-manager?index=1" class="page-link ${tag == i?"active":""}">1</a></li>
+									<li class="page-item"><span
+										class="page-link">...</span></li>
+									<c:forEach begin="${tag - 2}" end="${endPage}" var="i">
+										<li class="page-item"><a href="shop-manager?index=${i}" class="page-link ${tag == i?"active":""}">${i}</a></li>
+									</c:forEach>
+								</c:if>
+								<c:if test="${tag > endPage - 4}">
+									<li class="page-item ${tag == i?"active":""}"><a href="shop-manager?index=1" class="page-link ${tag == i?"active":""}">1</a></li>
+									<li class="page-item"><span
+										class="page-link">...</span></li>
+									<c:forEach begin="${endPage - 5}" end="${endPage}" var="i">
+										<li class="page-item ${tag == i?"active":""}"><a href="shop-manager?index=${i}" class="page-link">${i}</a></li>
+									</c:forEach>
+								</c:if>
+							</c:if>
+
+
+							<c:if test="${tag < endPage}">
+								<li class="page-item"><a href="shop-manager?index=${tag+1}" class="page-link">Next</a></li>
+							</c:if>
+                                    
+                                </ul>
+                            </div>
                             <table class="table table-striped table-hover">
                                 <thead>
                                     <tr>

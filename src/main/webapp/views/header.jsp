@@ -164,9 +164,16 @@ window.onpageshow = function(evt) {
                                 </a>
                                 <div id="mySidepanel" class="sidepanel">
                                     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-                                    <a href="#">Tài khoản cá nhân</a>
-                                    <a href="#">Đổi mật khẩu</a>
-                                    <a href="#">Đăng xuất</a>
+                                     <c:if test="${sessionScope.acc==null}">
+                                     <a href="/Shopee/register">Đăng ký</a>
+                                     <a href="/Shopee/login">Đăng nhập</a>
+                                     </c:if>
+                                     <c:if test="${sessionScope.acc!=null}">
+                                    <a href="/Shopee/myAccount">Tài khoản cá nhân</a>
+                                    <a href="/Shopee/member/purchase">Đơn mua</a>
+                                    <a href="/Shopee/home">Trang chủ</a>
+                                    <a href="/Shopee/logout">Đăng xuất</a>
+                                    </c:if>
                                    
                                   </div>
                                   
