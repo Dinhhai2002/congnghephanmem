@@ -1,97 +1,117 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="/taglib.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Chỉnh sửa danh mục</title>
+<title>Chỉnh sửa thông tin cửa hàng</title>
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-	
 <link
 	href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap&subset=vietnamese"
 	rel="stylesheet">
 <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css'
 	rel='stylesheet'>
-    <link href="<c:url value="/css/base.css"/>" rel="stylesheet"
+
+<link href="<c:url value="/css/base.css"/>" rel="stylesheet"
 	type="text/css" />
 <link href="<c:url value="/css/main.css"/>" rel="stylesheet"
-	type="text/css" /> 
-	<link href="<c:url value="/css/grid.css"/>" rel="stylesheet"
 	type="text/css" />
-	<link href="<c:url value="/css/responsive.css"/>" rel="stylesheet"
+<link href="<c:url value="/css/grid.css"/>" rel="stylesheet"
+	type="text/css" />
+<link href="<c:url value="/css/responsive.css"/>" rel="stylesheet"
 	type="text/css" />
 <link href="<c:url value="/css/editProduct.css"/>" rel="stylesheet"
 	type="text/css" />
 <style type="text/css">
-  .footer-logo-background{
-  /* background: url("<c:url value="/img/bg-icon.png"/>"); */
-  background: url("${pageContext.request.contextPath}/img/bg-icon.png");
-  }
-  </style>
+.footer-logo-background {
+	/* background: url("<c:url value="/img/bg-icon.png"/>"); */
+	background: url("${pageContext.request.contextPath}/img/bg-icon.png");
+}
+</style>
 </head>
-
 <body>
 	<div class="app">
-	<jsp:include page="header.jsp"></jsp:include>
-	<div class="container">
-        <div class="grid wide">
-            <div class="row no-gutters">
-                <div class="col l-12 lo-12 ">
-					<div class="modal-dialog">
-                        <div class="modal-content">
-                             <form>
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Chỉnh sửa thông tin shop</h4>
-                                    
-                                </div>
-                                <div class="modal-body">
-                                    <h3 style="color:red;">${mess}</h3>
-                                    <div class="form-group">
-                                        <label>Tên Shop</label> 
-                                        <input name="nameshop"type="text" class="form-control" required>
-                                            
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Mô tả</label> 
-                                        <input name="description"type="text" class="form-control" required>
-                                            
-                                    </div>
-                                    
-                                   
-                                    <div class="form-group form-group-col">
-                                    <c:url value="/image?fname=${category.icon }" var="imgUrl"></c:url>
-                                    <img class="img-responsive" width="100px" src="./assets/img/avatar_user.jpeg"
-                                    alt="">
-                                    <label style="margin-top:10px">Ảnh đại diện shop</label> <input type="file" name="icon"
-                                    value="${category.icon }" />
-                                    </div>
-                                    
+		<jsp:include page="header.jsp"></jsp:include>
+		<div class="container">
+			<div class="grid wide">
+				<div class="row no-gutters">
+					<div class="col l-12 lo-12 ">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<form action="editShop" method="post" enctype="multipart/form-data">
+									<div class="modal-header">
+										<h4 class="modal-title">Chỉnh sửa thông tin shop</h4>
 
-                                </div>
-                                <div class="modal-footer">
-                                    <input type="button" class="btn btn-default" data-dismiss="modal"
-                                        value="Cancel"> <input type="submit" class="btn btn-info"
-                                        value="Save">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+									</div>
+									<div class="modal-body">
+										<h3 style="color: red;">${mess}</h3>
+										<div class="form-group">
+											<input value="${shop.shopId}" name="id" hidden="" />
+										</div>
+										<div class="form-group">
+											<label>Tên Shop</label> <input value="${shop.shopName}" name="name" type="text"
+												class="form-control" required>
+
+										</div>
+										<div class="form-group">
+											<label>Mô tả</label>
+											<textarea name="description" class="form-control">${shop.shopDecription}</textarea>
+
+										</div>
+										<div class="form-group">
+											<label>Địa chỉ shop</label>
+											<textarea name="address" class="form-control">${shop.shopAddress}</textarea>
+
+										</div>
+
+										<div class="form-group form-group-col">
+											<c:url value="/image?fname=${shop.shopImage}" var="imgUrl"></c:url>
+                                        		<c:if test="${fn:contains(shop.shopImage, 'https')}">
+													<img src="${shop.shopImage}" alt=" ${shop.shopName}">
+												</c:if>
+												<c:if test="${fn:contains(shop.shopImage, 'product')}">
+													<img src="${imgUrl}" alt=" ${shop.shopImage}">
+												</c:if>
+											<label for="idImage">
+                                                Chọn phương thức thêm hình ảnh
+                                            </label>
+                                            <select name="selectImage" id="idImage">
+                                                
+                                                  <option value="file">Thêm bằng file</option>
+                                                  <option value="link">Thêm bằng url</option>
+                                               
+                                            </select>
+                                            <!-- <label style="margin-top:10px">Ảnh đại diện</label> -->
+                                            <input id="text" name="image1" type="text" class="form-control"/>
+                                                
+                                            <input type="file" id="file" name="image" /> 
+										</div>
+
+
+									</div>
+									<div class="modal-footer">
+										<a href="/Shopee/shop-manager" type="button"
+											class="btn btn-default" data-dismiss="modal">Cancel</a> <input
+											type="submit" class="btn btn-info" value="Save">
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-        </div>
-			
+
 		</div>
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
-	
 
-		<script src="<c:url value="/js/home.js"/>"></script>
+	<script src="<c:url value="/js/managerProduct.js"/>"></script>
+	<script src="<c:url value="/js/home.js"/>"></script>
 </body>
 </html>

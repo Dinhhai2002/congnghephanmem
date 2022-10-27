@@ -35,7 +35,7 @@ function loadMore() {
 			exits: amount-1
 		},
 		success: function(data) {
-			alert(data)
+			
 			$("table tbody").append(data);
 		},
 		error: function(xhr) {

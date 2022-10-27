@@ -12,11 +12,15 @@ function displayvaluechange(){
     {
         text.style.display="block";
         file.style.display="none";
+        file.name="image1";
+        text.name="image";
     }
     if(this.value=="file")
     {
         file.style.display="block";
         text.style.display="none";
+        text.name="image1";
+        file.name="image";
     }
     
 }

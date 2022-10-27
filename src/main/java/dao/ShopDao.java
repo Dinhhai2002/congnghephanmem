@@ -1,14 +1,15 @@
 package dao;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import connect.connect;
 import entity.Category;
-import entity.Product;
 import entity.Shop;
 import entity.User;
+import utils.Constant;
 
 public class ShopDao {
 
@@ -17,7 +18,6 @@ public class ShopDao {
     ResultSet rs = null;
     
  public Shop findOne(int id) {
-        //dung
 	 String sql = "SELECT * FROM shop WHERE shopId = ? ";
 		try {
 		conn = new connect().getConnection();
@@ -111,5 +111,42 @@ public class ShopDao {
 			e.printStackTrace();
 		}
 
+	}
+ 
+ public void updateShop(Shop shop) {
+		String query = "update shop set [shopName]=?, [shopImage]=?, [shopDecription]=?, [shopAddress]=?, [updateAt]=GETDATE() \r\n"
+				+ "where [shopId] = ?";
+		try {
+			conn = new connect().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, shop.getShopName());
+			//ps.setInt(2, shop.geteWallet());
+			ps.setString(2, shop.getShopImage());
+			ps.setString(3, shop.getShopDecription());
+			ps.setString(4, shop.getShopAddress());
+			ps.setInt(5, shop.getShopId());
+			ps.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void editUpdateShop(Shop newShop) {
+		Shop oldShop = findOne(newShop.getShopId());
+		oldShop.setShopName(newShop.getShopName());
+		//oldShop.seteWallet(newShop.geteWallet());
+		oldShop.setShopDecription(newShop.getShopDecription());
+		oldShop.setShopAddress(newShop.getShopAddress());
+		oldShop.setCategory(newShop.getCategory());
+		if (newShop.getShopImage() != null) {
+			String fileName = oldShop.getShopImage();
+			File file = new File(Constant.dir + "/shop/" + fileName);
+			if (file.exists()) {
+				file.delete();
+			}
+			oldShop.setShopImage(newShop.getShopImage());
+		}
+		updateShop(oldShop);
 	}
 }

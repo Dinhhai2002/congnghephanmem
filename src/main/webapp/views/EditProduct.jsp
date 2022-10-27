@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="/taglib.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,21 +63,25 @@
 										</div>
 										<div class="form-group form-group-col">
                                         <c:url value="/image?fname=${product.pImage}" var="imgUrl"></c:url>
-                                        <img class="img-responsive" width="100px" src="${imgUrl}"
-                                            alt=""> 
+                                        <c:if test="${fn:contains(product.pImage, 'https')}">
+													<img src="${product.pImage}" alt=" ${product.pName}">
+												</c:if>
+												<c:if test="${fn:contains(product.pImage, 'product')}">
+													<img src="${imgUrl}" alt=" ${product.pName}">
+												</c:if>
                                             <label for="idImage">
-                                                chọn sửa hình ảnh
+                                                Chọn sửa hình ảnh
                                             </label>
-                                            <select name="image" id="idImage">
+                                            <select name="selectImage" id="idImage">
                                                 
                                                   <option value="file">Thêm bằng file</option>
                                                   <option value="link">Thêm bằng url</option>
                                                
                                             </select>
                                             <!-- <label style="margin-top:10px">Ảnh đại diện</label> -->
-                                            <input   id="text"name="name" type="text" class="form-control" required/>
+                                            <input id="text" name="image1" type="text" class="form-control"/>
                                                 
-                                                <input  type="file" id="file" name="image"   /> 
+                                            <input type="file" id="file" name="image" /> 
                                     </div>
 
 										<div class="form-group">

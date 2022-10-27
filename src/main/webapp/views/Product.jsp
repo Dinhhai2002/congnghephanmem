@@ -82,20 +82,7 @@
 								</span>
 							</a></li>
 							<li class="col c-3 m-3 search-item-result-on-mb-tb-item">
-							<select class="sort-bar-by-options__price" id="select">
-
-											<div class="sort-bar-by-options__price-list">
-												<option value="Default"
-													class="sort-bar-by-options__price-item">Giá:mặc
-													định</option>
-												<option value="LowToHigh"
-													class="sort-bar-by-options__price-item">Giá: Thấp
-													đến cao</option>
-												<option value="HighToLow"
-													class="sort-bar-by-options__price-item">Giá: Cao
-													đến thấp</option>
-											</div>
-										</select>
+							
 							</li>
 						</ul>
 					</div>
