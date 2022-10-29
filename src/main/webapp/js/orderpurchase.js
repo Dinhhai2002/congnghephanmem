@@ -2,6 +2,13 @@
  * 
  */
 
+
+function editStatus(btn) {
+	let x = btn.value;
+	let text = btn.textContent;
+}
+
+
 function myFunction(e) {
 	if (document.querySelector('.category-list__list a.category-list__item-link-highlight') !== null) {
 		document.querySelector('.category-list__list a.category-list__item-link-highlight').classList.remove('category-list__item-link-highlight');
@@ -11,16 +18,15 @@ function myFunction(e) {
 
 
 var scrollLimit = 500;  // Amount after which ajax() call initializes
-var limit       = 3;    // item count
-var offset      = 6;    // offset
+var limit = 3;    // item count
+var offset = 6;    // offset
 $(window).on('scroll', function() {
-    scrollPosition = $(this).scrollTop()+550;
-    if (scrollPosition >= scrollLimit)
-    {   
-		           // loadContent method in which ajax() call is defined
-        scrollLimit = scrollLimit + 500;
-        loadMore();
-    }
+	scrollPosition = $(this).scrollTop() + 550;
+	if (scrollPosition >= scrollLimit) {
+		// loadContent method in which ajax() call is defined
+		scrollLimit = scrollLimit + 500;
+		loadMore();
+	}
 });
 
 
@@ -31,11 +37,10 @@ function loadMore() {
 		url: "/Shopee/member/loadorder", //send to Controller
 		type: "get", //send it through get method
 		data: {
-			action : text,
-			exits: amount-1
+			action: text,
+			exits: amount - 1
 		},
 		success: function(data) {
-			alert(data)
 			$("table tbody").append(data);
 		},
 		error: function(xhr) {
@@ -46,7 +51,7 @@ function loadMore() {
 
 var text;
 function purchase(e) {
-	scrollLimit=500
+	scrollLimit = 500
 	text = e.textContent;
 	text = text.trim();
 	var html = ""; //declare this
@@ -64,6 +69,7 @@ function purchase(e) {
 							<p>Chưa có đơn hàng</p>`
 			} else {
 				for (var i = 0; i < result.length; i++) {
+					console.log(result[i])
 					var s = result[i].status.idStatus;
 					html += `<tr style="margin: 8px 0;">`
 					html += `<td>${result[i].product.pName}</td>`
@@ -71,10 +77,10 @@ function purchase(e) {
 					html += `<td>${result[i].totalPrice}</td>`
 					html += `<td>${result[i].status.nameStatus}</td>`
 					if (s == 1 || s == 2 || s == 3) {
-						html += `<td><button>Hủy đơn</button></td>`
+						html += `<td><button id="orderStatus" onclick="editStatus(this)" value="${result[i].id}">Hủy đơn</button></td>`
 					}
 					if (s == 4 || s == 5) {
-						html += `<td><button>Mua lại</button></td>`
+						html += `<td><button id="orderStatus" onclick="editStatus(this)" value="${result[i].id}">Mua lại</button></td>`
 					}
 
 					html += `</tr>`

@@ -89,7 +89,7 @@ public class loginController extends HttpServlet {
 					
 					resp.addCookie(u);
 					resp.addCookie(p);
-					resp.sendRedirect("/Shopee/home?index=1");
+					resp.sendRedirect("/Shopee/home");
 					System.out.print("success");
 					
 				} else {

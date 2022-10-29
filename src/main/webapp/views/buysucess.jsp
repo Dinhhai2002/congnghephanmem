@@ -32,7 +32,7 @@
 	<div class="app">
 		<jsp:include page="header.jsp"></jsp:include>
 		<div style="text-align:center; margin-bottom:10%; font-weight:bold" >
-	<p style="text-transform: uppercase; text-align:center;font-size:35px; margin-bottom: 10px"> Mua hàng thành công ! </p><br>
+	<p style="text-transform: uppercase; text-align:center;font-size:35px; margin-bottom: 10px">"${Result}"</p><br>
 	
 	
 	<a href="/Shopee/home?index=1" style=" background:#FE980F; padding: 10px 20px;color:white; font-weight:bold; border-radius:10px">Quay lại trang chủ</a>
