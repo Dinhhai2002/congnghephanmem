@@ -73,3 +73,31 @@ $(document).ready(function() {
 	});
 });
 
+
+//rate details product
+
+//var xhttp;
+//var username=document.Myform.usernamecomment.value;
+//var content=document.Myform.content.value;
+//var url="detail?content="+content;
+//	if(window.XMLHttpRequest)
+//		{
+//			xhttp=new XMLHttpRequest();
+//		}
+//	else{
+//		xhttp=new ActiveXObject("Microsoft.XMLHTTP");
+//	}
+//	
+//	xhttp.onreadystatechange=function()
+//	{
+//		if(xhttp.readyState)
+//			{
+//				var data=xhttp.responseText;
+//				document.querySelector(".comment-detail-display").innerHTML=data;
+//			}
+//		
+//	}
+//	xhttp.open("POST",url,true);
+//	xhttp.send();
+
+

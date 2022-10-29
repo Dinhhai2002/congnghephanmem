@@ -40,7 +40,7 @@
                     </h3>
                     <ul class="row no-gutters shop-category-on-mb-tb-list">
                         <li class="col m-3 c-4 shop-category-on-mb-tb-item">
-                            <a href="" class="shop-category-on-mb-tb-item-link">
+                            <a href="/Shopee/myAccount" class="shop-category-on-mb-tb-item-link">
                                
                                 <p class="shop-category-on-mb-tb-item-text">
                                     Tài khoản cá nhân
@@ -48,7 +48,8 @@
                             </a>
                            
                         </li>
-                        <li class="col m-3 c-4 shop-category-on-mb-tb-item">
+                        <c:if test="${empty sessionScope.acc.uPassword}">
+                        <li hidden class="col m-3 c-4 shop-category-on-mb-tb-item">
                             <a href="" class="shop-category-on-mb-tb-item-link">
                                
                                 <p class="shop-category-on-mb-tb-item-text">
@@ -57,8 +58,20 @@
                             </a>
                            
                         </li>
+                        </c:if>
+                        <c:if test="${not empty sessionScope.acc.uPassword}">
+                        <li  class="col m-3 c-4 shop-category-on-mb-tb-item">
+                            <a href="/Shopee/changePassword" class="shop-category-on-mb-tb-item-link">
+                               
+                                <p class="shop-category-on-mb-tb-item-text">
+                                    Đổi mật khẩu
+                                </p>
+                            </a>
+                           
+                        </li>
+                        </c:if>
                         <li class="col m-3 c-4 shop-category-on-mb-tb-item">
-                            <a href="" class="shop-category-on-mb-tb-item-link">
+                            <a href="/Shopee/member/purchase" class="shop-category-on-mb-tb-item-link">
                                
                                 <p class="shop-category-on-mb-tb-item-text">
                                     Đơn mua
@@ -66,7 +79,6 @@
                             </a>
                            
                         </li>
-                        
                     </ul>
                 </div>
 
@@ -83,24 +95,30 @@
                             </h2>
                             <ul class="category-list__list">
                                 
-                                <li class="category-list__item ">
-                                    <a href="/Shopee/myAccount" class="category-list__item-link category-list__item-link-highlight">
-                                        <i class="category-list__item-icon fas fa-caret-right"></i>
-                                        Tài khoản cá nhân
-                                    </a>
-                                </li>
-                                <li class="category-list__item ">
-                                    <a href="/Shopee/changePassword" class="category-list__item-link category-list__item-link-highlight active">
-                                        <i class="category-list__item-icon fas fa-caret-right"></i>
-                                        Đổi mật khẩu
-                                    </a>
-                                </li>
-                                <li class="category-list__item ">
-                                    <a href="#" class="category-list__item-link category-list__item-link-highlight">
-                                        <i class="category-list__item-icon fas fa-caret-right"></i>
-                                        Đơn mua
-                                    </a>
-                                </li>
+                               <li class="category-list__item "><a href="/Shopee/myAccount"
+									class="category-list__item-link category-list__item-link-highlight active">
+										<i class="category-list__item-icon fas fa-caret-right"></i>
+										Tài khoản cá nhân
+								</a></li>
+								<c:if test="${empty sessionScope.acc.uPassword}">
+								<li hidden class="category-list__item "><a href="/Shopee/changePassword"
+									class="category-list__item-link  ">
+										<i class="category-list__item-icon fas fa-caret-right"></i>
+										Đổi mật khẩu
+								</a></li>
+								</c:if>
+								<c:if test="${not empty sessionScope.acc.uPassword}">
+								<li class="category-list__item "><a href="/Shopee/changePassword"
+									class="category-list__item-link  ">
+										<i class="category-list__item-icon fas fa-caret-right"></i>
+										Đổi mật khẩu
+								</a></li>
+								</c:if>
+								<li class="category-list__item "><a href="/Shopee/member/purchase"
+									class="category-list__item-link ">
+										<i class="category-list__item-icon fas fa-caret-right"></i>
+										Đơn mua
+								</a></li>
                             
                                
                                 <!-- <li class="category-list__item">

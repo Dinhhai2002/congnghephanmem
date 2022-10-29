@@ -37,10 +37,12 @@ public class ProductAddController extends HttpServlet {
 		Product product = new Product();
 		Category category = new Category();
 		Shop shop = new Shop();
-		int dem=0;
+		int dem = 0;
+		final int MAX_FILE_SIZE = 1024 * 1024 * 40; // 40MB
 		DiskFileItemFactory diskFileItemFactory = new DiskFileItemFactory();
 		ServletFileUpload servletFileUpload = new ServletFileUpload(diskFileItemFactory);
 		servletFileUpload.setHeaderEncoding("utf-8");
+		servletFileUpload.setFileSizeMax(MAX_FILE_SIZE);
 		try {
 			resp.setContentType("text/html");
 			resp.setCharacterEncoding("UTF-8");
@@ -62,35 +64,37 @@ public class ProductAddController extends HttpServlet {
 					product.setCategory(category);
 				} else if (item.getFieldName().equals("image")) {
 					if (item.getSize() > 0) {
-						String originalFileName = item.getName();
-						int index = originalFileName.lastIndexOf(".");
-						String ext = originalFileName.substring(index + 1);
-						String fileName = System.currentTimeMillis() + "." + ext;
-						File file = new File(Constant.dir + "/product/" + fileName);
-						item.write(file);
-						product.setpImage("product/" + fileName);
-					}else {
+						String imageName = item.getString("utf-8");
+						if (imageName.contains("http")) {
+							product.setpImage(imageName);
+						} else {
+							String originalFileName = item.getName();
+							int index = originalFileName.lastIndexOf(".");
+							String ext = originalFileName.substring(index + 1);
+							String fileName = System.currentTimeMillis() + "." + ext;
+							File file = new File(Constant.dir + "/product/" + fileName);
+							item.write(file);
+							product.setpImage("product/" + fileName);
+						}
+					} else {
 						dem++;
 					}
 				}
 			}
-
-			if(dem!=0)
-			{
+			if (dem != 0) {
 				HttpSession session = req.getSession();
 				User a = (User) session.getAttribute("acc");
-				
+
 				int uId = a.getuId();
 				int shopId = shopDao.getShopIdByuId(uId);
 				List<Product> list = productDao.getProductByShopId(shopId);
 				List<Category> listC = cateDao.getAllCategory();
-				
 				req.setAttribute("listP", list);
 				req.setAttribute("listC", listC);
 				req.setAttribute("mess", "Thêm không thành công! Vui lòng thêm hình ảnh sản phẩm");
 				req.getRequestDispatcher("/views/managerProduct.jsp").forward(req, resp);
 			}
-			
+
 			else {
 				HttpSession session = req.getSession();
 				User a = (User) session.getAttribute("acc");
@@ -101,7 +105,6 @@ public class ProductAddController extends HttpServlet {
 				productDao.insertProduct(product);
 				resp.sendRedirect("shop-manager");
 			}
-			
 
 		} catch (FileUploadException e) {
 			e.printStackTrace();

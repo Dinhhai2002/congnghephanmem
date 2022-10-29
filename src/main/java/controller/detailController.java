@@ -9,38 +9,55 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.CategoryDao;
+import dao.CommentDao;
 import dao.ProductDao;
 import entity.Category;
 import entity.Product;
+import entity.User;
+import entity.evaluate;
 
 @WebServlet(urlPatterns="/detail")
 public class detailController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setContentType("text/html");
-		resp.setCharacterEncoding("UTF-8");
-		req.setCharacterEncoding("UTF-8");
-		String pid=req.getParameter("pId");
-		
-		
-		//String quantity = req.getParameter("quantity");
-		//int x  = Integer.parseInt(quantity);
-		ProductDao productDao = new ProductDao();
-		CategoryDao cateDao = new CategoryDao();
+		try {
+			resp.setContentType("text/html");
+			resp.setCharacterEncoding("UTF-8");
+			req.setCharacterEncoding("UTF-8");
+			String pid=req.getParameter("pId");
+			
+			
+			
+			//String quantity = req.getParameter("quantity");
+			//int x  = Integer.parseInt(quantity);
+			ProductDao productDao = new ProductDao();
+			CategoryDao cateDao = new CategoryDao();
 
+			CommentDao commentDao=new CommentDao();
+			
+			Product pro = productDao.findOne(Integer.parseInt(pid));
+			
+			
+			List<evaluate> listcomment=commentDao.getAllComment(Integer.parseInt(pid));
+			
+			
+			String cateId=String.valueOf(pro.getCategory().getcId());
+			List<Product> list=productDao.getTop10Product(cateId);
+			req.setAttribute("listComment", listcomment);
+			req.setAttribute("p",pro);
+		    //req.setAttribute("quantity",x);
+		    req.setAttribute("listP", list);
+		    
+		    RequestDispatcher rq=req.getRequestDispatcher("/views/detail.jsp");
+			rq.forward(req, resp);
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+		}
 		
-		Product pro = productDao.findOne(Integer.parseInt(pid));
-		String cateId=String.valueOf(pro.getCategory().getcId());
-		List<Product> list=productDao.getTop10Product(cateId);
-	
-		req.setAttribute("p",pro);
-	    //req.setAttribute("quantity",x);
-	    req.setAttribute("listP", list);
-	    
-	    RequestDispatcher rq=req.getRequestDispatcher("/views/detail.jsp");
-		rq.forward(req, resp);
 	    //resp.sendRedirect(req.getContextPath() + "/detail");
 		
 	
@@ -89,9 +106,39 @@ public class detailController extends HttpServlet{
 	    req.setAttribute("listCC", listC);
 		resp.sendRedirect(req.getContextPath()+"/detail");*/
 	}
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doPost(req, resp);
+		resp.setContentType("text/html");
+		resp.setCharacterEncoding("UTF-8");
+		req.setCharacterEncoding("UTF-8");
+		String pid=req.getParameter("pId");
+		
+		
+		
+		//String quantity = req.getParameter("quantity");
+		//int x  = Integer.parseInt(quantity);
+		ProductDao productDao = new ProductDao();
+		CategoryDao cateDao = new CategoryDao();
+
+		CommentDao commentDao=new CommentDao();
+		
+		Product pro = productDao.findOne(Integer.parseInt(pid));
+		String content=req.getParameter("content");
+		HttpSession session = req.getSession();
+		User a = (User) session.getAttribute("acc");
+		if(a!=null)
+		{
+			evaluate evaluate=new evaluate();
+			evaluate.setContent(content);
+			evaluate.setProduct(pro);
+			evaluate.setUser(a);
+			commentDao.insertComment(evaluate);
+		}
+		
+		List<evaluate> listcomment=commentDao.getAllComment(Integer.parseInt(pid));
+		req.setAttribute("listComment", listcomment);
+		resp.sendRedirect("detail?pId="+pid);
 	}
+	
 }

@@ -25,8 +25,8 @@ import entity.Shop;
 import entity.User;
 import utils.Constant;
 
-@WebServlet(urlPatterns = {"/editP"})
-public class ProductEditController extends HttpServlet{
+@WebServlet(urlPatterns = { "/editP" })
+public class ProductEditController extends HttpServlet {
 	ProductDao productDao = new ProductDao();
 	CategoryDao cateDao = new CategoryDao();
 	ShopDao shopDao = new ShopDao();
@@ -39,7 +39,7 @@ public class ProductEditController extends HttpServlet{
 		int id = Integer.parseInt(req.getParameter("id"));
 		Product p = productDao.findOne(id);
 		List<Category> listC = cateDao.getAllCategory();
-		
+
 		req.setAttribute("product", p);
 		req.setAttribute("listC", listC);
 		req.getRequestDispatcher("/views/EditProduct.jsp").forward(req, resp);
@@ -47,10 +47,6 @@ public class ProductEditController extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setContentType("text/html");
-		resp.setCharacterEncoding("UTF-8");
-		req.setCharacterEncoding("UTF-8");
-		
 		Product product = new Product();
 		Category category = new Category();
 		Shop shop = new Shop();
@@ -58,43 +54,51 @@ public class ProductEditController extends HttpServlet{
 		ServletFileUpload servletFileUpload = new ServletFileUpload(diskFileItemFactory);
 		servletFileUpload.setHeaderEncoding("utf-8");
 		try {
+			resp.setContentType("text/html");
+			resp.setCharacterEncoding("UTF-8");
+			req.setCharacterEncoding("UTF-8");
 			List<FileItem> items = servletFileUpload.parseRequest(req);
 			for (FileItem item : items) {
 				if (item.getFieldName().equals("id")) {
 					product.setpId(Integer.parseInt(item.getString("utf-8")));
-				}else if (item.getFieldName().equals("name")) {
+				} else if (item.getFieldName().equals("name")) {
 					product.setpName(item.getString("utf-8"));
-				}  else if (item.getFieldName().equals("price")) {
+				} else if (item.getFieldName().equals("price")) {
 					String price = item.getString("utf-8");
 					float pPrice = Float.parseFloat(price);
 					product.setpPrice(pPrice);
-				}else if (item.getFieldName().equals("description")) {
+				} else if (item.getFieldName().equals("description")) {
 					product.setpDescription(item.getString("utf-8"));
-				}else if (item.getFieldName().equals("quantity")) {
+				} else if (item.getFieldName().equals("quantity")) {
 					product.setpQuantity(Integer.parseInt(item.getString("utf-8")));
-				}else if (item.getFieldName().equals("category")) {
+				} else if (item.getFieldName().equals("category")) {
 					category = cateDao.findOne(Integer.parseInt(item.getString("utf-8")));
-					product.setCategory(category); 
-				}else if (item.getFieldName().equals("image")) {
-					if(item.getSize() > 0) {
-						String originalFileName = item.getName();
-						int index = originalFileName.lastIndexOf(".");
-						String ext = originalFileName.substring(index + 1);
-						String fileName = System.currentTimeMillis() + "." + ext;
-						File file = new File(Constant.dir + "/product/" + fileName);
-						item.write(file);
-						product.setpImage("product/" + fileName);
-					}else {
+					product.setCategory(category);
+				} else if (item.getFieldName().equals("image")) {
+					if (item.getSize() > 0) {
+						String imageName = item.getString("utf-8");
+						if (imageName.contains("http")) {
+							product.setpImage(imageName);
+						} else {
+							String originalFileName = item.getName();
+							int index = originalFileName.lastIndexOf(".");
+							String ext = originalFileName.substring(index + 1);
+							String fileName = System.currentTimeMillis() + "." + ext;
+							File file = new File(Constant.dir + "/product/" + fileName);
+							item.write(file);
+							product.setpImage("product/" + fileName);
+						}
+					} else {
 						product.setpImage(null);
 					}
-					
+
 				}
 			}
 			HttpSession session = req.getSession();
 			User a = (User) session.getAttribute("acc");
 			int id = a.getuId();
 			int shopId = shopDao.getShopIdByuId(id);
-			shop = shopDao.findOne(shopId); 
+			shop = shopDao.findOne(shopId);
 			product.setShop(shop);
 			productDao.editUpdateProduct(product);
 			resp.sendRedirect("shop-manager");
@@ -103,7 +107,7 @@ public class ProductEditController extends HttpServlet{
 			int id = Integer.parseInt(req.getParameter("id"));
 			Product p = productDao.findOne(id);
 			List<Category> listC = cateDao.getAllCategory();
-			
+
 			req.setAttribute("product", p);
 			req.setAttribute("listC", listC);
 			req.setAttribute("mess", "Chỉnh sửa không thành công");
@@ -113,12 +117,12 @@ public class ProductEditController extends HttpServlet{
 			int id = Integer.parseInt(req.getParameter("id"));
 			Product p = productDao.findOne(id);
 			List<Category> listC = cateDao.getAllCategory();
-			
+
 			req.setAttribute("product", p);
 			req.setAttribute("listC", listC);
 			req.setAttribute("mess", "Chỉnh sửa không thành công");
 			req.getRequestDispatcher("/views/EditProduct.jsp").forward(req, resp);
 		}
 	}
-	
+
 }

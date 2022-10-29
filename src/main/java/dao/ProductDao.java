@@ -186,6 +186,22 @@ public class ProductDao {
 		}
 		return 0;
 	}
+	
+	public int getTotalProductByShopId(int shopId) {
+		String query = "select count(*) from product where shopId = ?";
+		try {
+			conn = new connect().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, shopId);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return 0;
+	}
 
 	public int pageSize = 35;
 	public int beginProduct = 15;
@@ -233,6 +249,40 @@ public class ProductDao {
 			ps.setString(1, cid);
 			ps.setInt(2, (index - 1) * pageSize);
 			ps.setInt(3, beginProduct);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				CategoryDao categoryDao = new CategoryDao();
+				ShopDao shopDao = new ShopDao();
+				Category category = categoryDao.findOne(rs.getInt("cateId"));
+				Shop shop = shopDao.findOne(rs.getInt("shopId"));
+
+				Product product = new Product();
+				product.setpId(rs.getInt("pId"));
+				product.setpName(rs.getString("pName"));
+				product.setpPrice(rs.getInt("pPrice"));
+				product.setpImage(rs.getString("pImage"));
+				product.setpDescription(rs.getString("pDescription"));
+				product.setpQuantity(rs.getInt("pQuantity"));
+				product.setCategory(category);
+				product.setShop(shop);
+				// product.setCreateAt(rs.getDate("createAt"));
+				products.add(product);
+			}
+		} catch (Exception e) {
+		}
+		return products;
+	}
+	
+	public List<Product> pagingProductByShopId(int shopId, int index) {
+		List<Product> products = new ArrayList<>();
+		String query = "select * from product where shopId = ? order by pId offset ? rows fetch next ? rows only";
+
+		try {
+			conn = new connect().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, shopId);
+			ps.setInt(2, (index - 1) * pageSize);
+			ps.setInt(3, pageSize);
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				CategoryDao categoryDao = new CategoryDao();
@@ -327,7 +377,54 @@ public class ProductDao {
 		}
 		updateProduct(oldProduct);
 	}
+	public int getTotalProductByShopId(int shopId) {
+		String query = "select count(*) from product where shopId = ?";
+		try {
+			conn = new connect().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, shopId);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return 0;
+	}
+	public List<Product> pagingProductByShopId(int shopId, int index) {
+		List<Product> products = new ArrayList<>();
+		String query = "select * from product where shopId = ? order by pId offset ? rows fetch next ? rows only";
 
+		try {
+			conn = new connect().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, shopId);
+			ps.setInt(2, (index - 1) * pageSize);
+			ps.setInt(3, pageSize);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				CategoryDao categoryDao = new CategoryDao();
+				ShopDao shopDao = new ShopDao();
+				Category category = categoryDao.findOne(rs.getInt("cateId"));
+				Shop shop = shopDao.findOne(rs.getInt("shopId"));
+
+				Product product = new Product();
+				product.setpId(rs.getInt("pId"));
+				product.setpName(rs.getString("pName"));
+				product.setpPrice(rs.getInt("pPrice"));
+				product.setpImage(rs.getString("pImage"));
+				product.setpDescription(rs.getString("pDescription"));
+				product.setpQuantity(rs.getInt("pQuantity"));
+				product.setCategory(category);
+				product.setShop(shop);
+				// product.setCreateAt(rs.getDate("createAt"));
+				products.add(product);
+			}
+		} catch (Exception e) {
+		}
+		return products;
+	}
 	public List<Product> getTop20Product() {
 		List<Product> products = new ArrayList<>();
 		String query = "select top 20 * from product";

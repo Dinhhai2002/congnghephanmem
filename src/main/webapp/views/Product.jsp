@@ -46,43 +46,16 @@
 				<div class="shop-category-on-mb-tb hide-on-pc">
 					<div class="col m-12 c-12 search-item-result-on-mb-tb hide-on-pc">
 						<ul class="row no-gutters search-item-result-on-mb-tb-list">
+						<c:forEach items="${listCC}" var="o">
+										
 							<li class="col m-3 c-3 search-item-result-on-mb-tb-item">
-								<!-- border-primary color-primary --> <a href="#"
-								class="search-item-result-on-mb-tb-link category-list__item-link-highlight ">
-									<span class="search-item-result-on-mb-tb-text"> Tất cả </span>
+								<!-- border-primary color-primary --> <a href="product?index=${o.cId}&page=1"
+								class="search-item-result-on-mb-tb-link ${cid==o.cId?"category-list__item-link-highlight":""}  ">
+									<span class="search-item-result-on-mb-tb-text"> ${o.cName} </span>
 									<span class="separate"></span>
 							</a>
 							</li>
-							<li class="col m-3 c-3 search-item-result-on-mb-tb-item"><a
-								href="#" class="search-item-result-on-mb-tb-link "> <span
-									class="search-item-result-on-mb-tb-text"> chờ xác nhận <span
-										class="separate"></span>
-								</span>
-							</a></li>
-							<li class="col m-3 c-3 search-item-result-on-mb-tb-item"><a
-								href="#" class="search-item-result-on-mb-tb-link"> <span
-									class="search-item-result-on-mb-tb-text"> Chờ lấy hàng <span
-										class="separate"></span>
-								</span>
-							</a></li>
-							<li class="col m-3 c-3 search-item-result-on-mb-tb-item"><a
-								href="#" class="search-item-result-on-mb-tb-link"> <span
-									class="search-item-result-on-mb-tb-text"> Đã giao <span
-										class="separate"></span>
-								</span>
-							</a></li>
-							<li class="col m-3 c-3 search-item-result-on-mb-tb-item"><a
-								href="#" class="search-item-result-on-mb-tb-link"> <span
-									class="search-item-result-on-mb-tb-text"> Đang giao <span
-										class="separate"></span>
-								</span>
-							</a></li>
-							<li class="col m-3 c-3 search-item-result-on-mb-tb-item"><a
-								href="#" class="search-item-result-on-mb-tb-link"> <span
-									class="search-item-result-on-mb-tb-text"> Đã hủy <span
-										class="separate"></span>
-								</span>
-							</a></li>
+							</c:forEach>
 
 						</ul>
 					</div>
@@ -109,20 +82,7 @@
 								</span>
 							</a></li>
 							<li class="col c-3 m-3 search-item-result-on-mb-tb-item">
-							<select class="sort-bar-by-options__price" id="select">
-
-											<div class="sort-bar-by-options__price-list">
-												<option value="Default"
-													class="sort-bar-by-options__price-item">Giá:mặc
-													định</option>
-												<option value="LowToHigh"
-													class="sort-bar-by-options__price-item">Giá: Thấp
-													đến cao</option>
-												<option value="HighToLow"
-													class="sort-bar-by-options__price-item">Giá: Cao
-													đến thấp</option>
-											</div>
-										</select>
+							
 							</li>
 						</ul>
 					</div>
@@ -422,6 +382,7 @@
 		</div>
 		<jsp:include page="footer.jsp"></jsp:include>
 	</div>
+	<script src="<c:url value="/js/home.js"/>"></script>
 	<script src="<c:url value="/js/product.js"/>"></script>
 </body>
 
