@@ -77,10 +77,10 @@ public class LoadOrderAjax extends HttpServlet {
 			String html="";
 			int s = x.getStatus().getIdStatus();
 			if (s == 1 || s == 2 || s == 3) {
-				html += "<td><button>Hủy đơn</button></td>";
+				html += "<td><button id=\"orderStatus\" onclick=\"editStatus(this)\">Hủy đơn</button></td>";
 			}
 			if (s == 4 || s == 5) {
-				html += "<td><button>Mua lại</button></td>";
+				html += "<td><button id=\"orderStatus\" onclick=\"editStatus(this)\">Mua lại</button></td>";
 			}
 			out.println("<tr style=\"margin: 8px 0;\">\n"
 					+   "<td>"+x.getProduct().getpName()+"</td>"

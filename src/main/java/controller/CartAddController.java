@@ -38,13 +38,13 @@ public class CartAddController extends HttpServlet{
 			resp.sendRedirect(req.getContextPath() + "/login");	
 		}else {
 			String action = req.getParameter("action");
-			if(action.equals("addtocart")) {
-				addToCart(req,resp);
-				resp.getWriter().write("true");
-			}else {
+			if(action==null){
 				addToCart(req,resp);
 				RequestDispatcher rq=req.getRequestDispatcher("/views/cart.jsp");
 				rq.forward(req, resp);		
+			}else {
+				addToCart(req,resp);
+				resp.getWriter().write("true");
 			}
 		}
 	}

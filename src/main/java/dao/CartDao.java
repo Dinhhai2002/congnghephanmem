@@ -115,6 +115,22 @@ public class CartDao {
 		e.printStackTrace();}
 		return carts;
 	}
+	
+	public List<Integer> findAllIdCart() {
+		int id;
+		List<Integer> carts = new ArrayList<Integer>();
+		String sql = "SELECT * FROM Cart";
+		try {
+		conn = new connect().getConnection();
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next()) {
+		id = rs.getInt("cartId");
+		carts.add(id);
+		}} catch (Exception e) {
+		e.printStackTrace();}
+		return carts;
+	}
 
 	public List<Cart> search(String keyword) {
 		// TODO Auto-generated method stub

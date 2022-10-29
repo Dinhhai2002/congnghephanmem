@@ -43,11 +43,11 @@
                         	<h5>Thông tin địa chỉ giao hàng</h5>
                             <span>Họ và tên:</span>
           
-                            <input type="text" placeholder="${acc.uFullName}" id="username" name="name">
+                            <input type="text" value="${acc.uFullName}" id="username" name="name">
                             <span>Số điện thoại</span>
-                            <input type="number" placeholder="${acc.uPhone}" id="phone" name="phone">
+                            <input type="text" value="${acc.uPhone}" id="phone" name="phone">
                              <span>Tỉnh/ Thành phố, Quận/Huyện, Phường/Xã</span>
-                            <input type="text" placeholder="${acc.uAddress}" id="address" name="address" >
+                            <input type="text" value="${acc.uAddress}" id="address" name="address" >
                          <!--    <div class="row">
                                 <div class="col-4"><span>Expiry date:</span>
                                     <input placeholder="YY/MM">

@@ -124,12 +124,12 @@
 								</a></li>
 								<li class="category-list__item"><a href="#"
 									onclick="purchase(this)" class="category-list__item-link">
-										<i class="category-list__item-icon fas fa-caret-right"></i>Đã
+										<i class="category-list__item-icon fas fa-caret-right"></i>Đang
 										giao
 								</a></li>
 								<li class="category-list__item"><a href="#"
 									onclick="purchase(this)" class="category-list__item-link">
-										<i class="category-list__item-icon fas fa-caret-right"></i>Đang
+										<i class="category-list__item-icon fas fa-caret-right"></i>Đã
 										giao
 								</a></li>
 								<li class="category-list__item"><a href="#"
@@ -167,10 +167,10 @@
 											 <c:set var = "s" value = "${o.status.idStatus}"/>
 											<c:choose>
 												<c:when test="${s==1 or s==2 or s==3}">
-													<td><button>Hủy đơn</button></td>													
+													<td><button id="orderStatus" onclick="editStatus(this)" value="${o.id}">Hủy đơn</button></td>													
 												</c:when>
 												<c:when test="${s==4 or s==5}">
-													<td><button>Mua lại</button></td>													
+													<td><button id="orderStatus" onclick="editStatus(this)" value="${o.product.pId}">Mua lại</button></td>													
 												</c:when>
 											</c:choose>
 										</tr>
