@@ -2,12 +2,33 @@
  * 
  */
 
-
 function editStatus(btn) {
-	let x = btn.value;
-	let text = btn.textContent;
+	let id = btn.value;
+	let statusName = btn.textContent;
+	if (statusName === "Mua lại") {
+		var x = '/Shopee/member/cart-add?pId=' + id;
+		x = x + '&quantity='+1;
+		location.href = x;
+	}else{
+		
+		$.ajax({
+		url: "/Shopee/member/statusorder", //send to Controller
+		type: "get", //send it through get method
+		data: {
+			id: id,
+			statusName: statusName
+		},
+		success: function(data) {
+			
+			$(btn).closest('tr').replaceWith(data);
+		},
+		error: function(xhr) {
+			//Do Something to handle error
+		}
+	});
+	}
+	
 }
-
 
 function myFunction(e) {
 	if (document.querySelector('.category-list__list a.category-list__item-link-highlight') !== null) {
@@ -76,11 +97,15 @@ function purchase(e) {
 					html += `<td><img src="${result[i].product.pImage}" style="width:90px; height:90px;"></td>`
 					html += `<td>${result[i].totalPrice}</td>`
 					html += `<td>${result[i].status.nameStatus}</td>`
-					if (s == 1 || s == 2 || s == 3) {
+					if (s == 1 || s == 2) {
+						html += `<td><button id="orderStatus" onclick="editStatus(this)" value="${result[i].id}">Hủy đơn</button></td>`
+					}
+					if (s == 3) {
+						html += `<td><button id="orderStatus" onclick="editStatus(this)" value="${result[i].id}">Đã nhận được hàng</button></td>`
 						html += `<td><button id="orderStatus" onclick="editStatus(this)" value="${result[i].id}">Hủy đơn</button></td>`
 					}
 					if (s == 4 || s == 5) {
-						html += `<td><button id="orderStatus" onclick="editStatus(this)" value="${result[i].id}">Mua lại</button></td>`
+						html += `<td><button id="orderStatus" onclick="editStatus(this)" value="${result[i].product.pId}">Mua lại</button></td>`
 					}
 
 					html += `</tr>`

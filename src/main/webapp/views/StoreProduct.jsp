@@ -166,11 +166,15 @@
 											<td>${o.status.nameStatus}</td>
 											 <c:set var = "s" value = "${o.status.idStatus}"/>
 											<c:choose>
-												<c:when test="${s==1 or s==2 or s==3}">
+												<c:when test="${s==1 or s==2}">
+													<td><button id="orderStatus" onclick="editStatus(this)" value="${o.id}">Hủy đơn</button></td>													
+												</c:when>
+												<c:when test="${s==3}">
+													<td><button id="orderStatus" onclick="editStatus(this)" value="${o.id}">Đã nhận được hàng</button></td>	
 													<td><button id="orderStatus" onclick="editStatus(this)" value="${o.id}">Hủy đơn</button></td>													
 												</c:when>
 												<c:when test="${s==4 or s==5}">
-													<td><button id="orderStatus" onclick="editStatus(this)" value="${o.product.pId}">Mua lại</button></td>													
+													<td><button id="orderStatus" onclick="editStatus(this)" value="${o.product.pId}">Mua lại</button></td>																										
 												</c:when>
 											</c:choose>
 										</tr>
