@@ -44,7 +44,6 @@ public class OrderDetailDao {
 		try {
 			conn = new connect().getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
-
 			ps.setInt(1, orderDetail.getOrder().getOrderId());
 			ps.setInt(2, orderDetail.getProduct().getpId());
 			ps.setInt(3, orderDetail.getCount());
@@ -73,7 +72,6 @@ public class OrderDetailDao {
 				Order order = orderDao.findOne(rs.getInt("orderId"));
 				Product product = productDao.findOne(rs.getInt("productId"));
 				OrderStatus orderStatus = orderStatusDao.findOne(rs.getInt("status"));
-
 				OrderDetail orderDetail = new OrderDetail();
 				orderDetail.setId(id);
 				orderDetail.setOrder(order);
@@ -245,6 +243,21 @@ public class OrderDetailDao {
 		}
 		return orderDetails;
 	}
+	//update status
+	public void update(int id, int idStatus) {
+		String sql = "UPDATE [orderdetail] SET [status] = ? "
+				+ ", createAt=DEFAULT WHERE id = ?";
+		try {
+			conn = new connect().getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, idStatus);
+			ps.setInt(2, id);
+			ps.executeUpdate();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	public static void main(String[] args) {
 		try {
@@ -252,10 +265,10 @@ public class OrderDetailDao {
 			UserDao userDao = new UserDao();
 			User user = userDao.get(3);
 			
-			
+			List<OrderDetail> listO = orderDetailDao.findAllByuid(user);
 			OrderDetail orderDetail = new OrderDetail();
 			
-			List<OrderDetail> listO = orderDetailDao.findNext3OrderByStatus(user, 1, 3);
+			//List<OrderDetail> listO = orderDetailDao.findNext3OrderByStatus(user, 1, 3);
 			//order.setAmountFromUser(0);
 			//orderDao.update(order);
 			System.out.println(listO.toString());

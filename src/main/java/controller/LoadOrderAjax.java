@@ -67,16 +67,18 @@ public class LoadOrderAjax extends HttpServlet {
 				List<OrderDetail> listO = orderDetailDao.findNext3OrderByStatus(acc, 5, iamount );
 				displayHTML(listO, resp);
 			}
-
-		}
-		
+		}	
 	}
 	private void displayHTML(List<OrderDetail> listO, HttpServletResponse resp) throws ServletException, IOException {
 		PrintWriter out = resp.getWriter();
 		for (OrderDetail x : listO) {
 			String html="";
 			int s = x.getStatus().getIdStatus();
-			if (s == 1 || s == 2 || s == 3) {
+			if (s == 1 || s == 2) {
+				html += "<td><button id=\"orderStatus\" onclick=\"editStatus(this)\">Hủy đơn</button></td>";
+			}
+			if (s == 3) {
+				html += "<td><button id=\"orderStatus\" onclick=\"editStatus(this)\">Đã nhận được hàng</button></td>";
 				html += "<td><button id=\"orderStatus\" onclick=\"editStatus(this)\">Hủy đơn</button></td>";
 			}
 			if (s == 4 || s == 5) {
