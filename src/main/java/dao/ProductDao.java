@@ -377,7 +377,7 @@ public class ProductDao {
 		}
 		updateProduct(oldProduct);
 	}
-
+	
 	public List<Product> getTop20Product() {
 		List<Product> products = new ArrayList<>();
 		String query = "select top 20 * from product";
