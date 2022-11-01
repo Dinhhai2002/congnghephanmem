@@ -12,13 +12,12 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 <link href="<c:url value="/css/base.css"/>" rel="stylesheet"
 	type="text/css" />
-<link href="<c:url value="/css/main.css"/>" rel="stylesheet"
+<link href="<c:url value="/css/main.css"/>" rel="stylesheet" 
 	type="text/css" />
 <link href="<c:url value="/css/grid.css"/>" rel="stylesheet"
 	type="text/css" />
 <link href="<c:url value="/css/responsive.css"/>" rel="stylesheet"
 	type="text/css" />
-
 
 <link
 	href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap&subset=vietnamese"

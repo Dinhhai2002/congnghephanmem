@@ -217,6 +217,7 @@
                                     </c:forEach>
                                 </tbody>
                             </table>
+<<<<<<< HEAD
                             <div class="clearfix">
                             
                                 <ul class="pagination">
@@ -280,6 +281,9 @@
                                     
                                 </ul>
                             </div>
+=======
+                            
+>>>>>>> refs/remotes/origin/master
                 
                             <div style="text-align:center;" class="home-product-shipping">
                                 <img src="../assets/img/null.png" alt="">
