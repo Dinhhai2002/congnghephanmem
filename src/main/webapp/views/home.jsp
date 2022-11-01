@@ -12,13 +12,12 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 <link href="<c:url value="/css/base.css"/>" rel="stylesheet"
 	type="text/css" />
-<link href="<c:url value="/css/main.css"/>" rel="stylesheet"
+<link href="<c:url value="/css/main.css"/>" rel="stylesheet" 
 	type="text/css" />
 <link href="<c:url value="/css/grid.css"/>" rel="stylesheet"
 	type="text/css" />
 <link href="<c:url value="/css/responsive.css"/>" rel="stylesheet"
 	type="text/css" />
-
 
 <link
 	href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap&subset=vietnamese"
@@ -138,7 +137,7 @@
 				</div>
 
 
-<<<<<<< HEAD
+
 
 
 				<!-- Body -->
@@ -187,48 +186,6 @@
 						</div>
 						<div class="row sm-gutter search-item-result__items">
 
-							<c:forEach items="${listP}" var="o">
-
-								<div class="col l-2-4 lo-3 m-4 c-6 search-item-result__item">
-									<a href="/Shopee/detail?pId=${o.pId}"
-										class="search-item-result__item-link">
-										<div class="search-item-result__item-bgc">
-
-											<div class="search-item-result__item-tag-left">
-												<div class="mall-tag hide-tag">
-													<span>Mall</span>
-												</div>
-												<div class="order-processing-tag-wrap hide-tag">
-													<div class="order-processing-tag"></div>
-												</div>
-												<div class="favourite-tag">
-													<span>Yêu Thích</span>
-												</div>
-											</div>
-											<div class="search-item-result__item-discount">
-												<div class="search-item-result__item-discount-text">
-													<span>12%</span> GIẢM
-												</div>
-											</div>
-											<c:url value="/image?fname=${o.pImage}" var="imgUrl"></c:url>
-											<div class="search-item-result__item-overlay">
-												<c:if test="${fn:contains(o.pImage, 'https')}">
-													<img src="${o.pImage}" alt=" ${o.pName}">
-												</c:if>
-												<c:if test="${fn:contains(o.pImage, 'product')}">
-													<img src="${imgUrl}" alt=" ${o.pName}">
-												</c:if>
-
-											</div>
-										</div>
-										<div class="search-item-result__item-body">
-											<div class="search-item-result__item-group">
-												<h3 class="search-item-result__item-title">${o.pName}</h3>
-												<div class="search-item-result__item-sale-off">
-													<div class="search-item-result__item-sale-off-ticket">
-														<svg class="search-item-result__item-sale-off-ticket-icon"
-															viewBox="-0.5 -0.5 4 16">
-=======
                              <c:forEach items="${listP}" var="o"> 
                    
                             <div class="col l-2-4 lo-3 m-4 c-6 search-item-result__item">
@@ -272,7 +229,6 @@
                                                 <div class="search-item-result__item-sale-off-ticket">
                                                     <svg class="search-item-result__item-sale-off-ticket-icon"
                                                         viewBox="-0.5 -0.5 4 16">
->>>>>>> refs/remotes/origin/master
                                                         <path
 																d="M4 0h-3q-1 0 -1 1a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3v0.333a1.2 1.5 0 0 1 0 3q0 1 1 1h3"
 																stroke-width="1" transform="" stroke="currentColor"
@@ -331,41 +287,6 @@
 															cy="10" fill="#047565" r="1"></circle>
                                                     </g>
                                                 </svg>
-<<<<<<< HEAD
-												</div>
-											</div>
-											<div class="search-item-result__item-react">
-												<div class="search-item-result__item-like">
-													<i class="search-item-result__item-like-icon far fa-heart"></i>
-													<!-- <i class="search-item-result__item-like-icon fas fa-heart"></i> -->
-												</div>
-												<div class="search-item-result__item-rated">
-													<div class="search-item-result__item-icon">
-														<i class="fas fa-star"></i> <i class="fas fa-star"></i> <i
-															class="fas fa-star"></i> <i class="fas fa-star"></i> <i
-															class="fas fa-star"></i>
-													</div>
-													<span>Đã bán 5</span>
-												</div>
-											</div>
-											<p class="search-item-result__item-location">TP. Hồ Chí
-												Minh</p>
-										</div>
-									</a>
-								</div>
-							</c:forEach>
-
-
-
-
-						</div>
-						<ul class="pagination hide-on-mb">
-							<a href="/Shopee/product?index=0&page=1" class="pagination_btn">Xem
-								tất cả</a>
-						</ul>
-					</div>
-				</div>
-=======
                                             </div>
                                         </div>
                                         <div class="search-item-result__item-react">
@@ -401,7 +322,6 @@
                         </ul>
                     </div>
                 </div>
->>>>>>> refs/remotes/origin/master
 			</div>
 		</div>
 		<jsp:include page="footer.jsp"></jsp:include>
