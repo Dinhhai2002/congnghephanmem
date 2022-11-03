@@ -90,7 +90,7 @@ public class PayController extends HttpServlet {
 		}
 		int iamount = (int) amount;
 		System.out.print(amount);
-		orderId += "shop"+2;
+		orderId += "shop"+12112;
 		//Date date = new Date(System.currentTimeMillis());
 		if (payment.equals("online")) {
 			MomoModel jsonRequest = new MomoModel();
