@@ -31,7 +31,6 @@ public class UserDao {
 		user.setuPassword(rs.getString("uPassword"));
 		user.setuPhone(rs.getString("uPhone"));
 		user.setIdRole(rs.getInt("idRole"));
-		user.seteWallet(rs.getInt("eWallet"));
 		user.setuImage(rs.getString("uImage"));
 		user.setCreateAt(rs.getDate("createAt"));
 		return user;
@@ -58,9 +57,8 @@ public class UserDao {
                         rs.getString(7),
                         rs.getInt(8),
                         rs.getInt(9),
-                        rs.getInt(10),
-                        rs.getString(11),
-                       rs.getDate(12));
+                        rs.getString(10),
+                       rs.getDate(11));
 
             }
         } catch (Exception e) {
@@ -108,10 +106,8 @@ public class UserDao {
                           rs.getString(7),
                           rs.getInt(8),
                           rs.getInt(9),
-                          rs.getInt(10),
-                          rs.getString(11),
-                         rs.getDate(12)
-                         );
+                          rs.getString(10),
+                         rs.getDate(11));
               }
           } catch (Exception e) {
           }
@@ -217,9 +213,8 @@ public class UserDao {
                         rs.getString(7),
                         rs.getInt(8),
                         rs.getInt(9),
-                        rs.getInt(10),
-                        rs.getString(11),
-                       rs.getDate(12) );
+                        rs.getString(10),
+                       rs.getDate(11));
             }
         } catch (Exception e) {
         }
@@ -236,7 +231,7 @@ public class UserDao {
                   rs = ps.executeQuery();
                   while (rs.next()) {
                 	  return new User(rs.getInt(1),
-                			  rs.getString(2),
+                              rs.getString(2),
                               rs.getString(3),
                               rs.getString(4),
                               rs.getString(5),
@@ -244,9 +239,8 @@ public class UserDao {
                               rs.getString(7),
                               rs.getInt(8),
                               rs.getInt(9),
-                              rs.getInt(10),
-                              rs.getString(11),
-                             rs.getDate(12) );
+                              rs.getString(10),
+                             rs.getDate(11));
 
                   }
               } catch (Exception e) {
@@ -274,9 +268,8 @@ public class UserDao {
                             rs.getString(7),
                             rs.getInt(8),
                             rs.getInt(9),
-                            rs.getInt(10),
-                            rs.getString(11),
-                           rs.getDate(12));
+                            rs.getString(10),
+                           rs.getDate(11));
 
                 }
             } catch (Exception e) {
@@ -303,9 +296,8 @@ public class UserDao {
                             rs.getString(7),
                             rs.getInt(8),
                             rs.getInt(9),
-                            rs.getInt(10),
-                            rs.getString(11),
-                           rs.getDate(12));
+                            rs.getString(10),
+                           rs.getDate(11));
                 }
             } catch (Exception e) {
             }
@@ -329,9 +321,8 @@ public class UserDao {
                             rs.getString(7),
                             rs.getInt(8),
                             rs.getInt(9),
-                            rs.getInt(10),
-                            rs.getString(11),
-                           rs.getDate(12));
+                            rs.getString(10),
+                           rs.getDate(11));
                 }
             } catch (Exception e) {
             }
@@ -356,9 +347,8 @@ public class UserDao {
                             rs.getString(7),
                             rs.getInt(8),
                             rs.getInt(9),
-                            rs.getInt(10),
-                            rs.getString(11),
-                           rs.getDate(12));
+                            rs.getString(10),
+                           rs.getDate(11));
                 }
             } catch (Exception e) {
             }

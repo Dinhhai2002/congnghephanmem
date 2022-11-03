@@ -7,7 +7,6 @@ public class Shop {
 	private String shopName;
 	private User user;
 	private Category category;
-	private int eWallet;
 	private String shopImage;
 	private String shopDecription;
 	private String shopAddress;
@@ -17,14 +16,13 @@ public class Shop {
 	public Shop() {
 		super();
 	}
-	public Shop(int shopId, String shopName, User user, Category category, int eWallet, String shopImage,
-			String shopDecription, String shopAddress, Date createAt, boolean isActive, boolean isDelete) {
+	public Shop(int shopId, String shopName, User user, Category category, String shopImage, String shopDecription,
+			String shopAddress, Date createAt, boolean isActive, boolean isDelete) {
 		super();
 		this.shopId = shopId;
 		this.shopName = shopName;
 		this.user = user;
 		this.category = category;
-		this.eWallet = eWallet;
 		this.shopImage = shopImage;
 		this.shopDecription = shopDecription;
 		this.shopAddress = shopAddress;
@@ -55,12 +53,6 @@ public class Shop {
 	}
 	public void setCategory(Category category) {
 		this.category = category;
-	}
-	public int geteWallet() {
-		return eWallet;
-	}
-	public void seteWallet(int eWallet) {
-		this.eWallet = eWallet;
 	}
 	public String getShopImage() {
 		return shopImage;
@@ -101,9 +93,8 @@ public class Shop {
 	@Override
 	public String toString() {
 		return "Shop [shopId=" + shopId + ", shopName=" + shopName + ", user=" + user + ", category=" + category
-				+ ", eWallet=" + eWallet + ", shopImage=" + shopImage + ", shopDecription=" + shopDecription
-				+ ", shopAddress=" + shopAddress + ", createAt=" + createAt + ", isActive=" + isActive + ", isDelete="
-				+ isDelete + "]";
+				+ ", shopImage=" + shopImage + ", shopDecription=" + shopDecription + ", shopAddress=" + shopAddress
+				+ ", createAt=" + createAt + ", isActive=" + isActive + ", isDelete=" + isDelete + "]";
 	}
 	
 	

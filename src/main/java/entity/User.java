@@ -10,7 +10,6 @@ public class User {
 	private String uAddress;
 	private String uPassword;
 	private String uPhone;
-	private int eWallet;
 	private int idRole;
 	private int isAccountGoogle;
 	private String uImage;
@@ -19,7 +18,7 @@ public class User {
 		super();
 	}
 	public User(int uId, String uName, String uFullName, String uEmail, String uAddress, String uPassword,
-			String uPhone, int eWallet, int idRole, int isAccountGoogle, String uImage, Date createAt) {
+			String uPhone, int idRole, int isAccountGoogle, String uImage, Date createAt) {
 		super();
 		this.uId = uId;
 		this.uName = uName;
@@ -28,7 +27,6 @@ public class User {
 		this.uAddress = uAddress;
 		this.uPassword = uPassword;
 		this.uPhone = uPhone;
-		this.eWallet = eWallet;
 		this.idRole = idRole;
 		this.isAccountGoogle = isAccountGoogle;
 		this.uImage = uImage;
@@ -76,12 +74,6 @@ public class User {
 	public void setuPhone(String uPhone) {
 		this.uPhone = uPhone;
 	}
-	public int geteWallet() {
-		return eWallet;
-	}
-	public void seteWallet(int eWallet) {
-		this.eWallet = eWallet;
-	}
 	public int getIdRole() {
 		return idRole;
 	}
@@ -109,7 +101,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [uId=" + uId + ", uName=" + uName + ", uFullName=" + uFullName + ", uEmail=" + uEmail
-				+ ", uAddress=" + uAddress + ", uPassword=" + uPassword + ", uPhone=" + uPhone + ", eWallet=" + eWallet
+				+ ", uAddress=" + uAddress + ", uPassword=" + uPassword + ", uPhone=" + uPhone
 				+ ", idRole=" + idRole + ", isAccountGoogle=" + isAccountGoogle + ", uImage=" + uImage + ", createAt="
 				+ createAt + "]";
 	}
