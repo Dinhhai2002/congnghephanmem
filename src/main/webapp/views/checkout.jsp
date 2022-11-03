@@ -38,7 +38,7 @@
                                 <img src="https://img.icons8.com/color/48/000000/maestro.png"/>
                             </div>
                         </div>
-                       <form action="/Shopee/member/pay" method="get">
+                       <form action="/Shopee/member/pay" method="post">
                        
                         	<h5>Thông tin địa chỉ giao hàng</h5>
                             <span>Họ và tên:</span>

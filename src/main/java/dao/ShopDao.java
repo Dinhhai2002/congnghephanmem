@@ -35,7 +35,6 @@ public class ShopDao {
 		shop.setShopName(rs.getString("shopName"));
 		shop.setUser(user);
 		shop.setCategory(category);
-		shop.seteWallet(rs.getInt("eWallet"));
 		shop.setShopImage(rs.getString("shopImage"));
 		shop.setShopDecription(rs.getString("shopDecription"));
 		shop.setShopAddress(rs.getString("shopAddress"));
@@ -66,7 +65,6 @@ public class ShopDao {
 		shop.setShopName(rs.getString("shopName"));
 		shop.setUser(user);
 		shop.setCategory(category);
-		shop.seteWallet(rs.getInt("eWallet"));
 		shop.setShopImage(rs.getString("shopImage"));
 		shop.setShopDecription(rs.getString("shopDecription"));
 		shop.setShopAddress(rs.getString("shopAddress"));
@@ -95,7 +93,7 @@ public class ShopDao {
 		return -1;
 	}
  public void insertShop(Shop shop) {
-		String query = "insert into shop values(?,?,?,null,?,?,?,getdate(),null,1,0)";
+		String query = "insert into shop values(?,?,?,?,?,?,DEFAULT,null,1,0)";
 		try {
 			conn = new connect().getConnection();
 			ps = conn.prepareStatement(query);
@@ -120,13 +118,11 @@ public class ShopDao {
 			conn = new connect().getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setString(1, shop.getShopName());
-			//ps.setInt(2, shop.geteWallet());
 			ps.setString(2, shop.getShopImage());
 			ps.setString(3, shop.getShopDecription());
 			ps.setString(4, shop.getShopAddress());
 			ps.setInt(5, shop.getShopId());
 			ps.executeUpdate();
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -135,7 +131,6 @@ public class ShopDao {
 	public void editUpdateShop(Shop newShop) {
 		Shop oldShop = findOne(newShop.getShopId());
 		oldShop.setShopName(newShop.getShopName());
-		//oldShop.seteWallet(newShop.geteWallet());
 		oldShop.setShopDecription(newShop.getShopDecription());
 		oldShop.setShopAddress(newShop.getShopAddress());
 		oldShop.setCategory(newShop.getCategory());
