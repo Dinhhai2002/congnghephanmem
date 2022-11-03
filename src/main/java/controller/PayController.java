@@ -80,6 +80,7 @@ public class PayController extends HttpServlet {
 				order.setAmountFromUser(orderCheck.get(shopId).getAmountFromUser()
 						+ cartItem.get(key).getCount() * cartItem.get(key).getProduct().getpPrice());
 				orderCheck.replace(shopId, order);
+				
 			} else {
 				order.setShop(cartItem.get(key).getCart().getShop());
 				order.setAmountFromUser(cartItem.get(key).getCount() * cartItem.get(key).getProduct().getpPrice());
@@ -88,11 +89,38 @@ public class PayController extends HttpServlet {
 			amount += cartItem.get(key).getTotalPrice();
 			
 		}
-		int iamount = (int) amount;
 		System.out.print(amount);
-		orderId += "shop"+12112;
+		int iamount = (int) amount;
+		orderId += "aa"+orderDao.findIdOrder();
 		//Date date = new Date(System.currentTimeMillis());
 		if (payment.equals("online")) {
+			
+			Set<Integer> set1 = orderCheck.keySet();
+			for (Integer key1 : set1) {
+				orderDao.create(orderCheck.get(key1));
+				Order order = new Order();
+				order = orderDao.findOneNew();
+				for (Integer key : set) {
+					CartItem cartItemSelected = new CartItem();
+					cartItemSelected = cartItemDao.findCartItemSelected(key1, key);
+					if (cartItemSelected != null) {
+						OrderStatus orderStatus = new OrderStatus(1);
+						OrderDetail orderDetail = new OrderDetail(order, cartItemSelected.getProduct(),
+								cartItemSelected.getCount(), cartItemSelected.getTotalPrice(), orderStatus);
+						orderDetailDao.create(orderDetail);
+						Product product = new Product(cartItemSelected.getProduct().getpId(),
+								cartItemSelected.getProduct().getpQuantity() - cartItemSelected.getCount());
+						productDao.updateQuantity(product);
+					}
+				}
+			}
+			for (Integer key : set) {
+				cartItemDao.delete(key);
+				cartDao.delete();
+			}
+			cartItem.clear();
+			httpSession.setAttribute("cart", cartItem);
+			
 			MomoModel jsonRequest = new MomoModel();
 			jsonRequest.setPartnerCode(Constant.IDMOMO);
 			jsonRequest.setOrderId(orderId);
@@ -133,6 +161,7 @@ public class PayController extends HttpServlet {
 				e.printStackTrace();
 			}
 			if (res != null) {
+				
 				resp.sendRedirect(res.payUrl);
 			} else {
 				req.setAttribute("Result", "Đặt hàng thất bại");
@@ -141,6 +170,8 @@ public class PayController extends HttpServlet {
 			}
 
 		} else {
+			
+			
 			Set<Integer> set1 = orderCheck.keySet();
 			for (Integer key1 : set1) {
 				orderDao.create(orderCheck.get(key1));
