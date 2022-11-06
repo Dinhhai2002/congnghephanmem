@@ -24,6 +24,7 @@ import dao.CartItemDao;
 import dao.OrderDao;
 import dao.OrderDetailDao;
 import dao.ProductDao;
+import dao.UserDao;
 import entity.CartItem;
 import entity.Order;
 import entity.OrderDetail;
@@ -60,6 +61,7 @@ public class PayController extends HttpServlet {
 		OrderDetailDao orderDetailDao = new OrderDetailDao();
 		CartItemDao cartItemDao = new CartItemDao();
 		CartDao cartDao = new CartDao();
+		UserDao userDao = new UserDao();
 
 		Map<Integer, Order> orderCheck = new HashMap<Integer, Order>();
 		Set<Integer> set = cartItem.keySet();
@@ -73,6 +75,8 @@ public class PayController extends HttpServlet {
 			order.setuPhone(phone);
 			order.setuAddress(address);
 			order.setPaidBefore(false);
+			order.setDelivery(userDao.getshipper(4));
+			order.setAmountToShipper(10000);
 			
 			int shopId = cartItem.get(key).getCart().getShop().getShopId();
 			if (orderCheck.containsKey(shopId) == true) {
@@ -90,13 +94,18 @@ public class PayController extends HttpServlet {
 			
 		}
 		System.out.print(amount);
-		int iamount = (int) amount;
-		orderId += "aa"+orderDao.findIdOrder();
+		int iamount = (int) amount+10000;
+		orderId += "aaa"+orderDao.findIdOrder();
 		//Date date = new Date(System.currentTimeMillis());
 		if (payment.equals("online")) {
 			
 			Set<Integer> set1 = orderCheck.keySet();
 			for (Integer key1 : set1) {
+				float x= orderCheck.get(key1).getAmountFromUser()+10000;
+				orderCheck.get(key1).setAmountFromUser(x);//--Tiền user trả 
+				orderCheck.get(key1).setAmountFromShop((float) ((x)*0.005));//Tiền shop trả cho hệ thống
+				orderCheck.get(key1).setAmountToShop(x-(float) ((x)*0.005));//Tiền Shop được nhận
+				orderCheck.get(key1).setPaidBefore(true);
 				orderDao.create(orderCheck.get(key1));
 				Order order = new Order();
 				order = orderDao.findOneNew();
@@ -106,7 +115,7 @@ public class PayController extends HttpServlet {
 					if (cartItemSelected != null) {
 						OrderStatus orderStatus = new OrderStatus(1);
 						OrderDetail orderDetail = new OrderDetail(order, cartItemSelected.getProduct(),
-								cartItemSelected.getCount(), cartItemSelected.getTotalPrice(), orderStatus);
+								cartItemSelected.getCount(),10000, cartItemSelected.getTotalPrice(), orderStatus);
 						orderDetailDao.create(orderDetail);
 						Product product = new Product(cartItemSelected.getProduct().getpId(),
 								cartItemSelected.getProduct().getpQuantity() - cartItemSelected.getCount());
@@ -174,6 +183,11 @@ public class PayController extends HttpServlet {
 			
 			Set<Integer> set1 = orderCheck.keySet();
 			for (Integer key1 : set1) {
+				float x= orderCheck.get(key1).getAmountFromUser()+10000;
+				orderCheck.get(key1).setAmountFromUser(x);//--Tiền user trả 
+				orderCheck.get(key1).setAmountFromShop((float) ((x)*0.005));//Tiền shop trả cho hệ thống
+				orderCheck.get(key1).setAmountToShop(x-(float) ((x)*0.005));//Tiền Shop được nhận
+				
 				orderDao.create(orderCheck.get(key1));
 				Order order = new Order();
 				order = orderDao.findOneNew();
@@ -183,7 +197,7 @@ public class PayController extends HttpServlet {
 					if (cartItemSelected != null) {
 						OrderStatus orderStatus = new OrderStatus(1);
 						OrderDetail orderDetail = new OrderDetail(order, cartItemSelected.getProduct(),
-								cartItemSelected.getCount(), cartItemSelected.getTotalPrice(), orderStatus);
+								cartItemSelected.getCount(),10000, cartItemSelected.getTotalPrice(), orderStatus);
 						orderDetailDao.create(orderDetail);
 						Product product = new Product(cartItemSelected.getProduct().getpId(),
 								cartItemSelected.getProduct().getpQuantity() - cartItemSelected.getCount());
@@ -205,6 +219,10 @@ public class PayController extends HttpServlet {
 	@SuppressWarnings("unchecked")
 	private Map<Integer, CartItem> extracted(Object obj) {
 		return (Map<Integer, CartItem>) obj;
+	}
+	public static void main(String[] args) {
+		UserDao userDao = new UserDao();
+		System.out.print(userDao.getshipper(4));
 	}
 
 }

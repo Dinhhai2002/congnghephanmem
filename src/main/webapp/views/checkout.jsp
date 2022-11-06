@@ -98,15 +98,15 @@
 											<c:set var="total"
 											value="${total + map.value.product.pPrice * map.value.count }"/>
 											</c:forEach>
-                            <div class="col text-right">$ ${total}</div>
+                            <div class="col text-right"> ${total} vnđ</div>
                         </div>
                         <div class="row lower">
                             <div class="col text-left">Phí vận chuyển</div>
-                            <div class="col text-right">Miễn phí</div>
+                            <div class="col text-right">10000 vnđ</div>
                         </div>
                         <div class="row lower">
                             <div class="col text-left"><b>Tổng số tiền</b></div>
-                            <div class="col text-right"><b>${total}</b></div>
+                            <div class="col text-right"><b>${total + 10000} vnđ</b></div>
                         </div>
                        
                         <div class="row lower">

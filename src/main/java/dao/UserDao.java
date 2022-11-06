@@ -38,6 +38,33 @@ public class UserDao {
 		e.printStackTrace();}
 		return null;
     }
+ 
+ 
+ 
+ public User getshipper(int id) {
+	 String sql = "SELECT * FROM [user] WHERE idRole = ? ";
+		try {
+		conn = new connect().getConnection();
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, id);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next()) {
+		User user = new User();
+		user.setuId(rs.getInt("uId"));
+		user.setuName(rs.getString("uName"));
+		user.setuFullName(rs.getString("uFullName"));
+		user.setuEmail(rs.getString("uEmail"));
+		user.setuAddress(rs.getString("uAddress"));
+		user.setuPassword(rs.getString("uPassword"));
+		user.setuPhone(rs.getString("uPhone"));
+		user.setIdRole(rs.getInt("idRole"));
+		user.setuImage(rs.getString("uImage"));
+		user.setCreateAt(rs.getDate("createAt"));
+		return user;
+		}} catch (Exception e) {
+		e.printStackTrace();}
+		return null;
+ }
  public User Login(String user,String pass) {
    	 String query = "select * from [user] where [uName]=? and [uPassword]=?";
         try {

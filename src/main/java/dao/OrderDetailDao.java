@@ -22,16 +22,17 @@ public class OrderDetailDao {
 	ResultSet rs = null;
 
 	public void create(OrderDetail orderDetail) {
-		String sql = "INSERT INTO [orderdetail](orderId, productId,[count],[totalPrice],[status],createAt)\r\n"
-				+ "				VALUES (?, ?, ?, ?, ?, DEFAULT)";
+		String sql = "INSERT INTO [orderdetail](orderId, productId,[count],shipPrice, [totalPrice],[status],createAt)\r\n"
+				+ "				VALUES (?, ?, ?, ?, ?, ?, DEFAULT)";
 		try {
 			conn = new connect().getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, orderDetail.getOrder().getOrderId());
 			ps.setInt(2, orderDetail.getProduct().getpId());
 			ps.setInt(3, orderDetail.getCount());
-			ps.setFloat(4, orderDetail.getTotalPrice());
-			ps.setInt(5, orderDetail.getStatus().getIdStatus());
+			ps.setFloat(4, orderDetail.getShipPrice());
+			ps.setFloat(5, orderDetail.getTotalPrice());
+			ps.setInt(6, orderDetail.getStatus().getIdStatus());
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -39,7 +40,7 @@ public class OrderDetailDao {
 	}
 
 	public void update(OrderDetail orderDetail) {
-		String sql = "UPDATE [orderdetail] SET orderId = ?, productId = ?, [count] = ?, [totalPrice] = ?, [status] = ? "
+		String sql = "UPDATE [orderdetail] SET orderId = ?, productId = ?, [count] = ?, shipPrice=?, [totalPrice] = ?, [status] = ? "
 				+ ", createAt=DEFAULT WHERE id = ?";
 		try {
 			conn = new connect().getConnection();
@@ -47,9 +48,10 @@ public class OrderDetailDao {
 			ps.setInt(1, orderDetail.getOrder().getOrderId());
 			ps.setInt(2, orderDetail.getProduct().getpId());
 			ps.setInt(3, orderDetail.getCount());
-			ps.setFloat(4, orderDetail.getTotalPrice());
-			ps.setInt(5, orderDetail.getStatus().getIdStatus());
-			ps.setInt(6, orderDetail.getId());
+			ps.setFloat(4, orderDetail.getShipPrice());
+			ps.setFloat(5, orderDetail.getTotalPrice());
+			ps.setInt(6, orderDetail.getStatus().getIdStatus());
+			ps.setInt(7, orderDetail.getId());
 			ps.executeUpdate();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -77,6 +79,7 @@ public class OrderDetailDao {
 				orderDetail.setOrder(order);
 				orderDetail.setProduct(product);
 				orderDetail.setCount(rs.getInt("count"));
+				orderDetail.setCount(rs.getInt("shipPrice"));
 				orderDetail.setTotalPrice(rs.getInt("totalPrice"));
 				orderDetail.setStatus(orderStatus);
 				orderDetail.setCreateAt(rs.getDate("createAt"));
@@ -123,6 +126,7 @@ public class OrderDetailDao {
 				orderDetail.setOrder(order);
 				orderDetail.setProduct(product);
 				orderDetail.setCount(rs.getInt("count"));
+				orderDetail.setCount(rs.getInt("shipPrice"));
 				orderDetail.setTotalPrice(rs.getInt("totalPrice"));
 				orderDetail.setStatus(orderStatus);
 				orderDetail.setCreateAt(rs.getDate("createAt"));
@@ -159,6 +163,7 @@ public class OrderDetailDao {
 				orderDetail.setOrder(order);
 				orderDetail.setProduct(product);
 				orderDetail.setCount(rs.getInt("count"));
+				orderDetail.setCount(rs.getInt("shipPrice"));
 				orderDetail.setTotalPrice(rs.getInt("totalPrice"));
 				orderDetail.setStatus(orderStatus);
 				orderDetail.setCreateAt(rs.getDate("createAt"));
@@ -195,6 +200,7 @@ public class OrderDetailDao {
 				orderDetail.setOrder(order);
 				orderDetail.setProduct(product);
 				orderDetail.setCount(rs.getInt("count"));
+				orderDetail.setCount(rs.getInt("shipPrice"));
 				orderDetail.setTotalPrice(rs.getInt("totalPrice"));
 				orderDetail.setStatus(orderStatus);
 				orderDetail.setCreateAt(rs.getDate("createAt"));
@@ -233,6 +239,7 @@ public class OrderDetailDao {
 				orderDetail.setOrder(order);
 				orderDetail.setProduct(product);
 				orderDetail.setCount(rs.getInt("count"));
+				orderDetail.setCount(rs.getInt("shipPrice"));
 				orderDetail.setTotalPrice(rs.getInt("totalPrice"));
 				orderDetail.setStatus(orderStatus);
 				orderDetail.setCreateAt(rs.getDate("createAt"));
