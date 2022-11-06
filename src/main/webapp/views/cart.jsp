@@ -113,15 +113,14 @@
                                     value="${total + map.value.product.pPrice * map.value.count }"/>
                                     </c:forEach>
                                 <strong> 
-                                 ${total}$</strong></li>
+                                 ${total}vnđ</strong></li>
                             <li class="list-item"><strong
-                                class="text-muted">Phí vận chuyển</strong><strong>Free
-                                    ship</strong></li>
-                            <li class="list-item"><strong
-                                class="text-muted">VAT</strong><strong>10 $</strong></li>
+                                class="text-muted">Phí vận chuyển</strong><strong>10000 vnđ</strong></li>
+                           <!--  <li class="list-item"><strong
+                                class="text-muted">VAT</strong><strong>10 $</strong></li> -->
                             <li class="list-item list-item-total"><strong
                                 class="text-muted">Tổng thanh toán</strong>
-                                <h5 class="font-weight-bold">110 $</h5></li>
+                                <h5 class="font-weight-bold">${total + 10000}vnđ</h5></li>
                         </ul>
                         <a href="/Shopee/member/checkout"
                            class="btn_buy">Mua hàng</a>

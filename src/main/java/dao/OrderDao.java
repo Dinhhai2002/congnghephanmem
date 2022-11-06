@@ -23,29 +23,31 @@ public class OrderDao {
 
 	// dung
 	public void create(Order order) {
-		String sql = "INSERT INTO [order](uId, shopId, uName, uPhone, uAddress, isPaidBefore, amountFromUser, amountFromShop,amountToShop,amountToShipper, createAt) "
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?,?, ?,?, DEFAULT)";
+		String sql = "INSERT INTO [order](uId, shopId, uName,deliveryId, uPhone, uAddress, isPaidBefore, amountFromUser, amountFromShop,amountToShop,amountToShipper, createAt) "
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?,?, ?,?,?, DEFAULT)";
 		try {
 			conn = new connect().getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, order.getUser().getuId());
 			ps.setInt(2, order.getShop().getShopId());
 			ps.setString(3, order.getuName());
-			ps.setString(4, order.getuPhone());
-			ps.setString(5, order.getuAddress());
-			ps.setBoolean(6, order.isPaidBefore());
-			ps.setFloat(7, order.getAmountFromUser());
-			ps.setFloat(8, order.getAmountFromShop());
-			ps.setFloat(9, order.getAmountToShop());
-			ps.setFloat(10, order.getAmountToShipper());
+			ps.setInt(4, order.getDelivery().getuId());
+			ps.setString(5, order.getuPhone());
+			ps.setString(6, order.getuAddress());
+			ps.setBoolean(7, order.isPaidBefore());
+			ps.setFloat(8, order.getAmountFromUser());
+			ps.setFloat(9, order.getAmountFromShop());
+			ps.setFloat(10, order.getAmountToShop());
+			ps.setFloat(11, order.getAmountToShipper());
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+	
 
 	public void update(Order order) {
-		String sql = "UPDATE [order] SET uId = ?, shopId = ?, uName = ?, uPhone = ?, uAddress = ? "
+		String sql = "UPDATE [order] SET uId = ?, shopId = ?, uName = ?,delivery=?, uPhone = ?, uAddress = ? "
 				+ ", isPaidBefore = ?, amountFromUser=?,amountFromShop=?,amountToShop=?, amountToShipper=?, createAt=DEFAULT WHERE orderId = ?";
 		try {
 			conn = new connect().getConnection();
@@ -54,14 +56,15 @@ public class OrderDao {
 			ps.setInt(1, order.getUser().getuId());
 			ps.setInt(2, order.getShop().getShopId());
 			ps.setString(3, order.getuName());
-			ps.setString(4, order.getuPhone());
-			ps.setString(5, order.getuAddress());
-			ps.setBoolean(6, order.isPaidBefore());
-			ps.setFloat(7, order.getAmountFromUser());
-			ps.setFloat(8, order.getAmountFromShop());
-			ps.setFloat(9, order.getAmountToShop());
-			ps.setFloat(10, order.getAmountToShipper());
-			ps.setInt(11, order.getOrderId());
+			ps.setInt(4, order.getDelivery().getuId());
+			ps.setString(5, order.getuPhone());
+			ps.setString(6, order.getuAddress());
+			ps.setBoolean(7, order.isPaidBefore());
+			ps.setFloat(8, order.getAmountFromUser());
+			ps.setFloat(9, order.getAmountFromShop());
+			ps.setFloat(10, order.getAmountToShop());
+			ps.setFloat(11, order.getAmountToShipper());
+			ps.setInt(12, order.getOrderId());
 			ps.executeUpdate();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -93,6 +96,7 @@ public class OrderDao {
 				UserDao userDao = new UserDao();
 				ShopDao shopDao = new ShopDao();
 				User user = userDao.get(rs.getInt("uId"));
+				User shipper = userDao.get(rs.getInt("deliveryId"));
 				Shop shop = shopDao.findOne(rs.getInt("shopId"));
 
 				Order order = new Order();
@@ -100,6 +104,7 @@ public class OrderDao {
 				order.setUser(user);
 				order.setShop(shop);
 				order.setuName(rs.getString("uName"));
+				order.setDelivery(shipper);
 				order.setuPhone(rs.getString("uPhone"));
 				order.setuAddress(rs.getString("uAddress"));
 				order.setPaidBefore(rs.getBoolean("isPaidBefore"));
@@ -170,12 +175,14 @@ public class OrderDao {
 				UserDao userDao = new UserDao();
 				ShopDao shopDao = new ShopDao();
 				User user = userDao.get(rs.getInt("uId"));
+				User shipper = userDao.get(rs.getInt("deliveryId"));
 				Shop shop = shopDao.findOne(rs.getInt("shopId"));
 				Order order = new Order();
 				order.setOrderId(rs.getInt("orderId"));
 				order.setUser(user);
 				order.setShop(shop);
 				order.setuName(rs.getString("uName"));
+				order.setDelivery(shipper);
 				order.setuPhone(rs.getString("uPhone"));
 				order.setuAddress(rs.getString("uAddress"));
 				order.setPaidBefore(rs.getBoolean("isPaidBefore"));
@@ -202,11 +209,14 @@ public class OrderDao {
 			ps.setInt(2, shop.getShopId());
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
+				UserDao userDao = new UserDao();
+				User shipper = userDao.get(rs.getInt("deliveryId"));
 				Order order = new Order();
 				order.setOrderId(rs.getInt("orderId"));
 				order.setUser(user);
 				order.setShop(shop);
 				order.setuName(rs.getString("uName"));
+				order.setDelivery(shipper);
 				order.setuPhone(rs.getString("uPhone"));
 				order.setuAddress(rs.getString("uAddress"));
 				order.setPaidBefore(rs.getBoolean("isPaidBefore"));

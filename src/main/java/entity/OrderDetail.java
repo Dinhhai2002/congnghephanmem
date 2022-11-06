@@ -7,32 +7,35 @@ public class OrderDetail {
 	private Order order;//order id
 	private Product product; //product id
 	private int count;
+	private float shipPrice;
 	private float totalPrice;
 	private OrderStatus status;
 	private Date createAt;
 	public OrderDetail() {
 		super();
 	}
-	
-	public OrderDetail(Order order, Product product, int count, float totalPrice, OrderStatus status) {
-		super();
-		this.order = order;
-		this.product = product;
-		this.count = count;
-		this.totalPrice = totalPrice;
-		this.status = status;
-	}
-
-	public OrderDetail(int id, Order order, Product product, int count, float totalPrice, OrderStatus status,
-			Date createAt) {
+	public OrderDetail(int id, Order order, Product product, int count, float shipPrice, float totalPrice,
+			OrderStatus status, Date createAt) {
 		super();
 		this.id = id;
 		this.order = order;
 		this.product = product;
 		this.count = count;
+		this.shipPrice = shipPrice;
 		this.totalPrice = totalPrice;
 		this.status = status;
 		this.createAt = createAt;
+	}
+	
+	
+	public OrderDetail(Order order, Product product, int count, float shipPrice, float totalPrice, OrderStatus status) {
+		super();
+		this.order = order;
+		this.product = product;
+		this.count = count;
+		this.shipPrice = shipPrice;
+		this.totalPrice = totalPrice;
+		this.status = status;
 	}
 	public int getId() {
 		return id;
@@ -58,6 +61,12 @@ public class OrderDetail {
 	public void setCount(int count) {
 		this.count = count;
 	}
+	public float getShipPrice() {
+		return shipPrice;
+	}
+	public void setShipPrice(float shipPrice) {
+		this.shipPrice = shipPrice;
+	}
 	public float getTotalPrice() {
 		return totalPrice;
 	}
@@ -78,8 +87,11 @@ public class OrderDetail {
 	}
 	@Override
 	public String toString() {
-		return "OrderDetail [id=" + id + ", order=" + order.getOrderId() + ", product=" + product.getpId() + ", count=" + count
-				+ ", totalPrice=" + totalPrice + ", status=" + status + ", createAt=" + createAt + "]";
+		return "OrderDetail [id=" + id + ", order=" + order + ", product=" + product + ", count=" + count
+				+ ", shipPrice=" + shipPrice + ", totalPrice=" + totalPrice + ", status=" + status + ", createAt="
+				+ createAt + "]";
 	}
+	
+	
 	
 }

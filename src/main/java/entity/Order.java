@@ -7,6 +7,7 @@ public class Order {
 	private User user;
 	private Shop shop;
 	private String uName;
+	private User delivery;
 	private String uPhone;
 	private String uAddress;
 	private boolean isPaidBefore; 
@@ -18,20 +19,15 @@ public class Order {
 	public Order() {
 		super();
 	}
-	@Override
-	public String toString() {
-		return "Order [orderId=" + orderId + ", user=" + user + ", shop=" + shop + ", uName=" + uName + ", uPhone="
-				+ uPhone + ", uAddress=" + uAddress + ", isPaidBefore=" + isPaidBefore + ", amountFromUser="
-				+ amountFromUser + ", amountFromShop=" + amountFromShop + ", amountToShop=" + amountToShop
-				+ ", amountToShipper=" + amountToShipper + ", createAt=" + createAt + "]";
-	}
-	public Order(int orderId, User user, Shop shop, String uName, String uPhone, String uAddress, boolean isPaidBefore,
-			float amountFromUser, float amountFromShop, float amountToShop, float amountToShipper, Date createAt) {
+	public Order(int orderId, User user, Shop shop, String uName, User delivery, String uPhone, String uAddress,
+			boolean isPaidBefore, float amountFromUser, float amountFromShop, float amountToShop, float amountToShipper,
+			Date createAt) {
 		super();
 		this.orderId = orderId;
 		this.user = user;
 		this.shop = shop;
 		this.uName = uName;
+		this.delivery = delivery;
 		this.uPhone = uPhone;
 		this.uAddress = uAddress;
 		this.isPaidBefore = isPaidBefore;
@@ -41,6 +37,7 @@ public class Order {
 		this.amountToShipper = amountToShipper;
 		this.createAt = createAt;
 	}
+	
 	public int getOrderId() {
 		return orderId;
 	}
@@ -64,6 +61,12 @@ public class Order {
 	}
 	public void setuName(String uName) {
 		this.uName = uName;
+	}
+	public User getDelivery() {
+		return delivery;
+	}
+	public void setDelivery(User delivery) {
+		this.delivery = delivery;
 	}
 	public String getuPhone() {
 		return uPhone;
@@ -113,5 +116,13 @@ public class Order {
 	public void setCreateAt(Date createAt) {
 		this.createAt = createAt;
 	}
+	@Override
+	public String toString() {
+		return "Order [orderId=" + orderId + ", user=" + user + ", shop=" + shop + ", uName=" + uName + ", delivery="
+				+ delivery + ", uPhone=" + uPhone + ", uAddress=" + uAddress + ", isPaidBefore=" + isPaidBefore
+				+ ", amountFromUser=" + amountFromUser + ", amountFromShop=" + amountFromShop + ", amountToShop="
+				+ amountToShop + ", amountToShipper=" + amountToShipper + ", createAt=" + createAt + "]";
+	}
+	
 	
 }
