@@ -96,20 +96,20 @@
                             <ul class="category-list__list">
                                 
                                <li class="category-list__item "><a href="/Shopee/myAccount"
-									class="category-list__item-link category-list__item-link-highlight active">
+									class="category-list__item-link  active">
 										<i class="category-list__item-icon fas fa-caret-right"></i>
 										Tài khoản cá nhân
 								</a></li>
 								<c:if test="${empty sessionScope.acc.uPassword}">
 								<li hidden class="category-list__item "><a href="/Shopee/changePassword"
-									class="category-list__item-link  ">
+									class="category-list__item-link category-list__item-link-highlight ">
 										<i class="category-list__item-icon fas fa-caret-right"></i>
 										Đổi mật khẩu
 								</a></li>
 								</c:if>
 								<c:if test="${not empty sessionScope.acc.uPassword}">
 								<li class="category-list__item "><a href="/Shopee/changePassword"
-									class="category-list__item-link  ">
+									class="category-list__item-link category-list__item-link-highlight ">
 										<i class="category-list__item-icon fas fa-caret-right"></i>
 										Đổi mật khẩu
 								</a></li>
@@ -121,31 +121,7 @@
 								</a></li>
                             
                                
-                                <!-- <li class="category-list__item">
-                                    <a href="" class="category-list__item-link">
-                                        Máy In, Máy Scan & Máy Chiếu
-                                    </a>
-                                </li>
-                                <li class="category-list__item">
-                                    <a href="" class="category-list__item-link">
-                                        Phụ Kiện Máy Tính
-                                    </a>
-                                </li>
-                                <li class="category-list__item">
-                                    <a href="" class="category-list__item-link">
-                                        Laptop
-                                    </a>
-                                </li>
-                                <li class="category-list__item">
-                                    <a href="" class="category-list__item-link">
-                                        Khác
-                                    </a>
-                                </li>
-                                <li class="category-list__item">
-                                    <a href="" class="category-list__item-link">
-                                        Gaming
-                                    </a>
-                                </li> -->
+                                
 
                             
                             </ul>

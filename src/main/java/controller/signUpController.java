@@ -58,7 +58,7 @@ public class signUpController extends HttpServlet {
 			User checkPhoneNumber=userDao.CheckPhoneNumber(phoneNumber);
 			int NumberAccount=userDao.numberAccount(username, email);
 	    	User checkAccountGoogle=userDao.CheckAccountforgotPassword(username, email);
-			if(NumberAccount==1 && checkAccountGoogle.getIsAccountGoogle()==0)
+			if(checkemail!=null  && checkemail.getIsAccountGoogle()==0)
 			{
 				request.setAttribute("mess", "email này đã tồn tại");
 				request.getRequestDispatcher("/views/register.jsp").forward(request, response);
