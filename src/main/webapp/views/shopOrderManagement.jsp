@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trang đơn mua</title>
+<title>Quản lý đơn đặt hàng</title>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
 	integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
@@ -69,13 +69,13 @@
 							</a></li>
 							<li class="col m-3 c-3 search-item-result-on-mb-tb-item"><a
 								href="#" class="search-item-result-on-mb-tb-link"> <span
-									class="search-item-result-on-mb-tb-text"> Chờ lấy hàng <span
+									class="search-item-result-on-mb-tb-text"> Chờ shipper nhận đơn <span
 										class="separate"></span>
 								</span>
 							</a></li>
 							<li class="col m-3 c-3 search-item-result-on-mb-tb-item"><a
 								href="#" class="search-item-result-on-mb-tb-link"> <span
-									class="search-item-result-on-mb-tb-text"> Đã giao <span
+									class="search-item-result-on-mb-tb-text"> Chờ lấy hàng <span
 										class="separate"></span>
 								</span>
 							</a></li>
@@ -87,7 +87,13 @@
 							</a></li>
 							<li class="col m-3 c-3 search-item-result-on-mb-tb-item"><a
 								href="#" class="search-item-result-on-mb-tb-link"> <span
-									class="search-item-result-on-mb-tb-text"> Đã hủy <span
+									class="search-item-result-on-mb-tb-text"> Đã giao <span
+										class="separate"></span>
+								</span>
+							</a></li>
+							<li class="col m-3 c-3 search-item-result-on-mb-tb-item"><a
+								href="#" class="search-item-result-on-mb-tb-link"> <span
+									class="search-item-result-on-mb-tb-text"> Đã từ chối <span
 										class="separate"></span>
 								</span>
 							</a></li>
@@ -120,6 +126,11 @@
 								<li class="category-list__item"><a href="#"
 									onclick="purchase(this)" class="category-list__item-link">
 										<i class="category-list__item-icon fas fa-caret-right"></i>Chờ
+										shipper nhận đơn
+								</a></li>
+								<li class="category-list__item"><a href="#"
+									onclick="purchase(this)" class="category-list__item-link">
+										<i class="category-list__item-icon fas fa-caret-right"></i>Chờ
 										lấy hàng
 								</a></li>
 								<li class="category-list__item"><a href="#"
@@ -134,8 +145,12 @@
 								</a></li>
 								<li class="category-list__item"><a href="#"
 									onclick="purchase(this)" class="category-list__item-link">
+										<i class="category-list__item-icon fas fa-caret-right"></i>Khách trả hàng
+								</a></li>
+								<li class="category-list__item"><a href="#"
+									onclick="purchase(this)" class="category-list__item-link">
 										<i class="category-list__item-icon fas fa-caret-right"></i>Đã
-										hủy
+										từ chối
 								</a></li>
 							</ul>
 						</div>
@@ -143,11 +158,11 @@
 
 
 					<div class="col l-10 lo-10 m-12 c-12 active">
-						<input type='text'>
 						<div class="table-wrapper">
 							<table id="myTable" class="table table-striped table-hover">
 								<thead>
 									<tr>
+										<th>Người đặt</th>
 										<th>Tên sản phẩm</th>
 										<th>Hình ảnh</th>
 										<th>Giá</th>
@@ -159,26 +174,21 @@
 								<tbody>
 									<c:forEach items="${listO}" var="o">
 										<tr style="margin: 8px 0;">
+											<td>${o.order.user.uName}</td>
 											<td>${o.product.pName}</td>
 											<td><img src="${o.product.pImage}"
 												style="width: 90px; height: 90px;"></td>
 											<td>${o.totalPrice}</td>
+											<td>${o.status.nameStatus}</td>
 											<c:set var = "s" value = "${o.status.idStatus}"/>
 											<c:choose>
-											<c:when test="${s!=1 and s!=7}">
-												<td>${o.status.nameStatus}</td>
-											</c:when>
-												<c:when test="${s==1 or s==7}">
-													<td>Chờ xác nhận</td>
-													<td><button id="orderStatus" onclick="editStatus(this)" value="${o.id}">Hủy đơn</button></td>													
+												<c:when test="${s==1}">
+													<td><button id="orderStatus" onclick="editStatus(this)" value="${o.id}">Chốt đơn</button></td>
+													<td><button id="orderStatus" onclick="editStatus(this)" value="${o.id}">Từ chối</button></td>													
 												</c:when>
-												<c:when test="${s==3}">
-													<td><button id="orderStatus" onclick="editStatus(this)" value="${o.id}">Đã nhận được hàng</button></td>	
-													<td><button id="orderStatus" onclick="editStatus(this)" value="${o.id}">Hủy đơn</button></td>													
-												</c:when>
-												<c:when test="${s==4 or s==5}">
-													<td><button id="orderStatus" onclick="editStatus(this)" value="${o.product.pId}">Mua lại</button></td>																										
-												</c:when>
+												<c:when test="${s==8}">
+													<td><button id="orderStatus" onclick="editStatus(this)" value="${o.id}">Xác nhận shipper lấy hàng</button></td>									
+												</c:when>									
 											</c:choose>
 										</tr>
 									</c:forEach>
@@ -213,6 +223,6 @@
 	</div>
 	<script src="<c:url value="/js/home.js"/>"></script>
 	<script src="<c:url value="/js/Shipper.js"/>"></script>
-	<script src="<c:url value="/js/orderpurchase.js"/>"></script>
+	<script src="<c:url value="/js/shopOrderManagement.js"/>"></script>
 </body>
 </html>

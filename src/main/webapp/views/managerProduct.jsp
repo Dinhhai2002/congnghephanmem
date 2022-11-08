@@ -99,7 +99,7 @@
                                         <a href="#"class="table-title-header" >
                                             Quản lý sản phẩm
                                         </a>
-                                        <a href="#" class="table-title-header"
+                                        <a href="shop-manager/order" class="table-title-header"
                                             data-toggle="modal"> 
                                             <span>Đơn hàng</span></a>
                                         <a href="editShop?sid=${shop.shopId}" class="table-title-header"

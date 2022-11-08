@@ -23,22 +23,22 @@ public class OrderDao {
 
 	// dung
 	public void create(Order order) {
-		String sql = "INSERT INTO [order](uId, shopId, uName,deliveryId, uPhone, uAddress, isPaidBefore, amountFromUser, amountFromShop,amountToShop,amountToShipper, createAt) "
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?,?, ?,?,?, DEFAULT)";
+		String sql = "INSERT INTO [order](uId, shopId, uName, uPhone, uAddress, isPaidBefore, amountFromUser, amountFromShop,amountToShop,amountToShipper, createAt) "
+				+ "VALUES (?, ?, ?, ?, ?, ?,?, ?,?,?, DEFAULT)";
 		try {
 			conn = new connect().getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setInt(1, order.getUser().getuId());
 			ps.setInt(2, order.getShop().getShopId());
 			ps.setString(3, order.getuName());
-			ps.setInt(4, order.getDelivery().getuId());
-			ps.setString(5, order.getuPhone());
-			ps.setString(6, order.getuAddress());
-			ps.setBoolean(7, order.isPaidBefore());
-			ps.setFloat(8, order.getAmountFromUser());
-			ps.setFloat(9, order.getAmountFromShop());
-			ps.setFloat(10, order.getAmountToShop());
-			ps.setFloat(11, order.getAmountToShipper());
+			
+			ps.setString(4, order.getuPhone());
+			ps.setString(5, order.getuAddress());
+			ps.setBoolean(6, order.isPaidBefore());
+			ps.setFloat(7, order.getAmountFromUser());
+			ps.setFloat(8, order.getAmountFromShop());
+			ps.setFloat(9, order.getAmountToShop());
+			ps.setFloat(10, order.getAmountToShipper());
 			ps.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

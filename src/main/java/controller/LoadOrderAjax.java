@@ -33,18 +33,20 @@ public class LoadOrderAjax extends HttpServlet {
 		User acc = (User) user;
 		int iamount = Integer.parseInt(amount);
 		if (action == null) {
-			List<OrderDetail> listO = orderDetailDao.findNext3Order(acc, iamount);
+			List<OrderDetail> listO = orderDetailDao.findNext3OrderOfUser(acc, iamount);
 			displayHTML(listO, resp);
 		} else {
 			action = action.replaceAll("\\s\\s+", " ").trim();
 			
 			if (action.equals("Tất cả")) {
-				List<OrderDetail> listO = orderDetailDao.findNext3Order(acc, iamount);
+				List<OrderDetail> listO = orderDetailDao.findNext3OrderOfUser(acc, iamount);
 				displayHTML(listO, resp);
 			}
 
 			if (action.equals("Chờ xác nhận")) {
-				List<OrderDetail> listO = orderDetailDao.findNext3OrderByStatus(acc, 1, iamount );
+				List<OrderDetail> listO = orderDetailDao.findNext3OrderByStatus(acc, 1, iamount);
+				List<OrderDetail> list = orderDetailDao.findNext3OrderByStatus(acc, 7, iamount);
+				listO.addAll(list);
 				displayHTML(listO, resp);
 			}
 
@@ -74,21 +76,23 @@ public class LoadOrderAjax extends HttpServlet {
 		for (OrderDetail x : listO) {
 			String html="";
 			int s = x.getStatus().getIdStatus();
-			if (s == 1 || s == 2) {
+			if (s == 1 || s==7) {
+				html += "<td>Chờ xác nhận</td>";
 				html += "<td><button id=\"orderStatus\" onclick=\"editStatus(this)\">Hủy đơn</button></td>";
-			}
-			if (s == 3) {
+			}else if (s == 3) {
+				html += "<td>"+x.getStatus().getNameStatus()+"</td>";
 				html += "<td><button id=\"orderStatus\" onclick=\"editStatus(this)\">Đã nhận được hàng</button></td>";
 				html += "<td><button id=\"orderStatus\" onclick=\"editStatus(this)\">Hủy đơn</button></td>";
-			}
-			if (s == 4 || s == 5) {
+			}else if (s == 4 || s == 5) {
+				html += "<td>"+x.getStatus().getNameStatus()+"</td>";
 				html += "<td><button id=\"orderStatus\" onclick=\"editStatus(this)\">Mua lại</button></td>";
+			}else {
+				html += "<td>"+x.getStatus().getNameStatus()+"</td>";
 			}
 			out.println("<tr style=\"margin: 8px 0;\">\n"
 					+   "<td>"+x.getProduct().getpName()+"</td>"
 					+   "<td><img style=\"width:90px; height:90px;\" src=\""+x.getProduct().getpImage()+"\"></td>"
 					+   "<td>"+x.getTotalPrice()+"</td>"
-					+   "<td>"+x.getStatus().getNameStatus()+"</td>"
 					+   html
 					+   "</tr>" 
 					);
