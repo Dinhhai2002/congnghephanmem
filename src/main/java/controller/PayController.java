@@ -75,7 +75,7 @@ public class PayController extends HttpServlet {
 			order.setuPhone(phone);
 			order.setuAddress(address);
 			order.setPaidBefore(false);
-			order.setDelivery(userDao.getshipper(4));
+			
 			order.setAmountToShipper(10000);
 			
 			int shopId = cartItem.get(key).getCart().getShop().getShopId();

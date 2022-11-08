@@ -96,16 +96,19 @@ function purchase(e) {
 					html += `<td>${result[i].product.pName}</td>`
 					html += `<td><img src="${result[i].product.pImage}" style="width:90px; height:90px;"></td>`
 					html += `<td>${result[i].totalPrice}</td>`
-					html += `<td>${result[i].status.nameStatus}</td>`
-					if (s == 1 || s == 2) {
+					
+					if (s == 1 || s == 7) {
+						html += `<td>Chờ xác nhận</td>`
 						html += `<td><button id="orderStatus" onclick="editStatus(this)" value="${result[i].id}">Hủy đơn</button></td>`
-					}
-					if (s == 3) {
+					}else if (s == 3) {
+						html += `<td>${result[i].status.nameStatus}</td>`
 						html += `<td><button id="orderStatus" onclick="editStatus(this)" value="${result[i].id}">Đã nhận được hàng</button></td>`
 						html += `<td><button id="orderStatus" onclick="editStatus(this)" value="${result[i].id}">Hủy đơn</button></td>`
-					}
-					if (s == 4 || s == 5) {
+					}else if (s == 4 || s == 5) {
+						html += `<td>${result[i].status.nameStatus}</td>`
 						html += `<td><button id="orderStatus" onclick="editStatus(this)" value="${result[i].product.pId}">Mua lại</button></td>`
+					}else {
+						html += `<td>${result[i].status.nameStatus}</td>`
 					}
 
 					html += `</tr>`
