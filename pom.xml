@@ -41,8 +41,22 @@
 		</dependency>
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.10.2</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.10.2</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
-			<version>2.9.7</version>
+			<version>2.10.2</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/javax.servlet/jsp-api -->
 		<!-- https://mvnrepository.com/artifact/javax.servlet/jsp-api -->
@@ -65,6 +79,12 @@
 			<version>${mssql-version}</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-simple</artifactId>
+			<version>1.7.32</version>
+		</dependency>
 		<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
 		<dependency>
 			<groupId>javax.mail</groupId>
@@ -77,6 +97,7 @@
 			<artifactId>twilio</artifactId>
 			<version>8.25.1</version>
 		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
 		<dependency>
 			<groupId>commons-logging</groupId>
@@ -127,7 +148,6 @@
 			<version>1.4</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/tangrammer/java-net-http-client -->
-		
 
 
 	</dependencies>

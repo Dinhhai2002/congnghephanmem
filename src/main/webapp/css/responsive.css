@@ -220,6 +220,11 @@
   .ofs-carousel__header {
     padding: 13px 10px;
   }
+   .openbtn{
+        width: 100%;
+        display:block;
+        background:transparent;
+    }
 }
 
 /* Mobile */
