@@ -202,7 +202,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="footer-area">
+			<div id="moreP2" class="footer-area">
 				<p class="footer-area-text">© 2021 Shopee. Tất cả các quyền được
 					bảo lưu.</p>
 				<div class="footer-area-wrap">

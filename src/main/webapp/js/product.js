@@ -75,7 +75,7 @@ function fillterproduct() {
 
 //search item with ajax
 
-function searchByName(param) {
+/*function searchByName(param) {
 	var txtS = param.value;
 	$.ajax({
 		url: "/Shopee/search",
@@ -91,7 +91,7 @@ function searchByName(param) {
 
 		}
 	});
-}
+}*/
 
 //lazy loading more content with scroll - infinity scrolling
 document.addEventListener("DOMContentLoaded", () => {
@@ -101,7 +101,8 @@ document.addEventListener("DOMContentLoaded", () => {
 		threshold: 0.01
 	};
 	const observer = new IntersectionObserver(handleIntersect, options);
-	observer.observe(document.querySelector("footer"));
+	observer.observe(document.querySelector("#moreP1"));
+	observer.observe(document.querySelector("#moreP2"));
 });
 
 function handleIntersect(entries) {
@@ -109,7 +110,7 @@ function handleIntersect(entries) {
 		if (entry.isIntersecting) {
 			console.warn("something is intersecting with the viewport");
 			loadMore();
-			fillterproduct();
+			//fillterproduct();
 		}
 	});
 }
@@ -121,12 +122,33 @@ function loadMore() {
 	let urlParams = new URLSearchParams(queryString);
 	let page = urlParams.get('page');
 	let currentCate = urlParams.get('index');
-	//let current = document.getElementById("currentPage").innerHTML;
+	let txtS = urlParams.get('txtS');
+	if(!page){
+		page="1";
+	}
 	let currentP = parseInt(page);
 	//let currentCate = document.getElementById("currentCate").innerHTML;
 	let amount = document.getElementsByClassName("col l-2-4 lo-3 m-4 c-6").length;
 	let amountP = (currentP - 1) * maxContent + amount;
-	if (currentCate == "0" && (amountP < maxContent * currentP)) {
+	if(txtS){
+		if(amountP < maxContent * currentP){
+			$.ajax({
+			url: "/Shopee/loadPS",
+			type: "get",
+			data: {
+				txtS: txtS,
+				amount: amountP
+			},
+			success: function(data) {
+				var row = document.getElementById("content");
+				row.innerHTML += data;
+			},
+			error: function(xhr) {
+				alert("Lỗi")
+			}
+			});
+		}
+	}else if (currentCate == "0" && (amountP < maxContent * currentP)) {
 		$.ajax({
 			url: "/Shopee/load",
 			type: "get",
@@ -136,7 +158,6 @@ function loadMore() {
 			success: function(data) {
 				var row = document.getElementById("content");
 				row.innerHTML += data;
-				fillterproduct();
 			},
 			error: function(xhr) {
 
@@ -153,7 +174,6 @@ function loadMore() {
 			success: function(data) {
 				var row = document.getElementById("content");
 				row.innerHTML += data;
-				fillterproduct();
 			},
 			error: function(xhr) {
 

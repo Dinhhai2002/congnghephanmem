@@ -328,7 +328,7 @@
 
 	</div>
 	<script src="<c:url value="/js/home.js"/>"></script>
-	<script src="<c:url value="/js/product.js"/>"></script>
+	
 	<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 	<script>
 		var swiper = new Swiper(".mySwiper", {

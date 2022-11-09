@@ -17,16 +17,15 @@ import entity.Product;
 
 @WebServlet(urlPatterns="/product")
 public class productController extends HttpServlet {
+	ProductDao productDao=new ProductDao();
+	CategoryDao cateDao=new CategoryDao();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html");
 		resp.setCharacterEncoding("UTF-8");
 		req.setCharacterEncoding("UTF-8");
 		String cIndex = req.getParameter("index");
-		int page = Integer.parseInt(req.getParameter("page"));
-		
-		ProductDao productDao=new ProductDao();
-		CategoryDao cateDao=new CategoryDao();
+		int page = Integer.parseInt(req.getParameter("page"));	
 		
 		int pageSize = productDao.pageSize;
 		
@@ -52,6 +51,7 @@ public class productController extends HttpServlet {
 			req.setAttribute("endPage", endPage);
 			req.setAttribute("listP", listPC);
 		}
+		req.setAttribute("isSearch", 0);
 		req.setAttribute("cid", cIndex);
 		req.setAttribute("tag", page);
 	    req.setAttribute("listCC", listC);

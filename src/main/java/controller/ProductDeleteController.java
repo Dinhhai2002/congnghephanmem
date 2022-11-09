@@ -14,7 +14,7 @@ import dao.ProductDao;
 public class ProductDeleteController extends HttpServlet{
 	ProductDao productDao = new ProductDao();
 	
-	
+	/*
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html");
@@ -24,5 +24,18 @@ public class ProductDeleteController extends HttpServlet{
 		productDao.deleteProduct(pId);
 		resp.sendRedirect("shop-manager");
 	}
+	*/
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/html");
+		resp.setCharacterEncoding("UTF-8");
+		req.setCharacterEncoding("UTF-8");
+		int pId = Integer.parseInt(req.getParameter("id"));
+		productDao.deleteProduct(pId);
+		resp.sendRedirect("shop-manager");
+	}
+	
+	
 	
 }
