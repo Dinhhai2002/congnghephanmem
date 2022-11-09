@@ -25,10 +25,13 @@ function displayvaluechange(){
     
 }
 
-function replace(param) {
-	console.log(param);
-	document.getElementById('deleteId').setAttribute('value', param)
-	$("#deleteEmployeeModal").modal('show');
+function deleteModal(param) {
+	document.getElementById('deleteId').setAttribute('value', param);
+	$("#deleteProductModal").modal('show');
+}
+
+function returnValue(){
+	document.getElementById('deleteId').setAttribute('value', 0);
 }
 
 $(document).ready(function () {

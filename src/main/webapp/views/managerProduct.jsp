@@ -107,7 +107,7 @@
                                             <span>Chỉnh sửa thông tin shop</span></a>
                                     </div>
                                     <div class="col-sm-6 btn-add">
-                                        <a href="#addEmployeeModal" class="btn btn-info"
+                                        <a href="#addProductModal" class="btn btn-info"
                                             data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Thêm sản phẩm mới</span></a>
                                                 
                                                 
@@ -209,7 +209,7 @@
                                             <td>${o.pPrice} $</td>
                                             <td><a href="editP?id=${o.pId}" class="edit"
                                                 data-toggle="modal"><i class='bx bxs-pencil'></i></a> 
-                                                <a onclick="replace(${o.pId})" class="delete" data-toggle="modal"><i class='bx bx-trash'></i></a>
+                                                <a onclick="deleteModal(${o.pId})" class="delete" data-toggle="modal"><i class='bx bx-trash'></i></a>
                                             </td>
                                         </tr>
                                         
@@ -230,7 +230,7 @@
         </div>
 	
 	<!-- Edit Modal HTML -->
-	<div id="addEmployeeModal" class="modal fade">
+	<div id="addProductModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form action="addP" method="post" enctype="multipart/form-data">
@@ -294,7 +294,7 @@
 		</div>
 	</div>
 	<!-- Delete Modal HTML -->
-	<div id="deleteEmployeeModal" class="modal fade">
+	<div id="deleteProductModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form action="deleteP" method="post">
@@ -305,13 +305,13 @@
 					</div>
 					<input id="deleteId" value="0" name="id" hidden="" />
 					<div class="modal-body">
-						<p>Are you sure you want to delete these Records?</p>
+						<p>Bạn có chắc muốn xóa sản phẩm này?</p>
 						<p class="text-warning">
-							<small>This action cannot be undone.</small>
+							<small>Hành động này không thể hoàn tác</small>
 						</p>
 					</div>
 					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal"
+						<input onclick="returnValue()" type="button" class="btn btn-default" data-dismiss="modal"
 							value="Cancel"> <input type="submit"
 							class="btn btn-danger" value="Delete">
 					</div>
