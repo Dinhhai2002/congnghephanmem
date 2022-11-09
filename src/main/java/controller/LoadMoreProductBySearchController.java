@@ -2,7 +2,6 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.DecimalFormat;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -14,18 +13,20 @@ import javax.servlet.http.HttpServletResponse;
 import dao.ProductDao;
 import entity.Product;
 
-@WebServlet(urlPatterns = {"/load"})
-public class LoadMoreProductController extends HttpServlet{
+@WebServlet(urlPatterns = {"/loadPS"})
+public class LoadMoreProductBySearchController extends HttpServlet {
 	ProductDao productDao = new ProductDao();
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html");
 		resp.setCharacterEncoding("UTF-8");
 		req.setCharacterEncoding("UTF-8");
+		String txtS = req.getParameter("txtS");
 		String index = req.getParameter("amount");
 		int amount = Integer.parseInt(index);
 		String imgUrl = "";
-		List<Product> listP = productDao.getLoadNextProduct(amount);
+		List<Product> listP = productDao.getLoadNextSearchProduct(txtS, amount);
 		PrintWriter out = resp.getWriter();
 		for(Product o: listP) {
 			if(o.getpImage().contains("https")) {
@@ -144,7 +145,7 @@ public class LoadMoreProductController extends HttpServlet{
 					+ "										</div>\r\n"
 					+ "									</a>\r\n"
 					+ "								</div>");
+			
 		}
 	}
-
 }

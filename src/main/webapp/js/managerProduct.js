@@ -24,6 +24,13 @@ function displayvaluechange(){
     }
     
 }
+
+function replace(param) {
+	console.log(param);
+	document.getElementById('deleteId').setAttribute('value', param)
+	$("#deleteEmployeeModal").modal('show');
+}
+
 $(document).ready(function () {
     // Activate tooltip
     $('[data-toggle="tooltip"]').tooltip();

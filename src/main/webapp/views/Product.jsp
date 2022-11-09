@@ -64,9 +64,9 @@
 					<div class="col m-12 c-12 search-item-result-on-mb-tb hide-on-pc">
 						<ul class="row no-gutters search-item-result-on-mb-tb-list">
 							<li class="col m-3 c-3 search-item-result-on-mb-tb-item"><a
-								href=""
+								href="product?index=0&page=1"
 								class="search-item-result-on-mb-tb-link border-primary color-primary">
-									<span class="search-item-result-on-mb-tb-text"> Phổ Biến
+									<span class="search-item-result-on-mb-tb-text"> Tất cả sản phẩm
 								</span> <span class="separate"></span>
 							</a></li>
 							<li class="col m-3 c-3 search-item-result-on-mb-tb-item"><a
@@ -119,7 +119,7 @@
 								<div class="sort-bar">
 									<span class="sort-bar__label"> Sắp xếp theo </span>
 									<div class="sort-bar-by-options">
-										<button class="btn btn--primary">Phổ Biến</button>
+										<button class="btn btn--primary">Tất cả sản phẩm</button>
 										<button class="btn">Mới Nhất</button>
 										<button class="btn">Bán Chạy</button>
 										<select class="sort-bar-by-options__price" id="select">
@@ -154,6 +154,9 @@
 								</div>
 							</div>
 						</div>
+						<c:if test="${empty listP}">
+						<h1 style="text-align: center;">Không tìm thấy kết quả cho <span style="font-style: italic;">${txtS}</span></h1>
+						</c:if>
 						<div id="content" class="row sm-gutter search-item-result__items">
 
 							<c:forEach items="${listP}" var="o">
@@ -289,10 +292,16 @@
 
 							<!-- search-item-50 -->
 						</div>
-						<ul class="pagination hide-on-mb">
+						<c:if test="${isSearch == 1}">
+						<c:set var = "productUrl" value = "searchproduct?txtS=${txtS}&page="/>
+						</c:if>
+						<c:if test="${isSearch == 0}">
+						<c:set var = "productUrl" value = "product?index=${cid}&page="/>
+						</c:if>
+						<ul id="moreP1" class="pagination hide-on-mb">
 							<c:if test="${tag > 1}">
 								<li class="pagination-item"><a
-									href="product?index=${cid}&page=${tag-1}"
+									href="${productUrl}${tag-1}"
 									class="pagination-item-link"> <i style="font-size: 2.5rem;"
 										class='pagination-item-icon bx bx-chevron-left'></i>
 								</a></li>
@@ -300,7 +309,7 @@
 							<c:if test="${endPage < 10}">
 								<c:forEach begin="1" end="${endPage}" var="i">
 									<li class="pagination-item"><a
-										href="product?index=${cid}&page=${i}"
+										href="${productUrl}${i}"
 										class="pagination-item-link ${tag == i?"bgc-highlight":""}">${i}</a></li>
 								</c:forEach>
 							</c:if>
@@ -309,59 +318,59 @@
 								<c:if test="${tag <= 4}">
 									<c:forEach begin="1" end="5" var="i">
 										<li class="pagination-item"><a
-											href="product?index=${cid}&page=${i}"
+											href="${productUrl}${i}"
 											class="pagination-item-link ${tag == i?"bgc-highlight":""}">${i}</a></li>
 									</c:forEach>
 									<li class="pagination-item"><span
 										class="pagination-item-link">...</span></li>
 									<c:forEach begin="${endPage}" end="${endPage}" var="i">
 										<li class="pagination-item"><a
-											href="product?index=${cid}&page=${i}"
+											href="${productUrl}${i}"
 											class="pagination-item-link ${tag == i?"bgc-highlight":""}">${i}</a></li>
 									</c:forEach>
 								</c:if>
 								<c:if test="${tag > 4 && tag < endPage - 4}">
 
 									<li class="pagination-item"><a
-										href="product?index=${cid}&page=1"
+										href="${productUrl}1"
 										class="pagination-item-link ${tag == 1?"bgc-highlight":""}">1</a></li>
 
 									<li class="pagination-item"><span
 										class="pagination-item-link">...</span></li>
 									<c:forEach begin="${tag - 1}" end="${tag + 2}" var="i">
 										<li class="pagination-item"><a
-											href="product?index=${cid}&page=${i}"
+											href="${productUrl}${i}"
 											class="pagination-item-link ${tag == i?"bgc-highlight":""}">${i}</a></li>
 									</c:forEach>
 									<li class="pagination-item"><span
 										class="pagination-item-link">...</span></li>
 									<c:forEach begin="${endPage}" end="${endPage}" var="i">
 										<li class="pagination-item"><a
-											href="product?index=${cid}&page=${i}"
+											href="${productUrl}${i}"
 											class="pagination-item-link ${tag == i?"bgc-highlight":""}">${i}</a></li>
 									</c:forEach>
 								</c:if>
 								<c:if test="${tag == endPage - 4}">
 									<li class="pagination-item"><a
-										href="product?index=${cid}&page=1"
+										href="${productUrl}1"
 										class="pagination-item-link ${tag == 1?"bgc-highlight":""}">1</a></li>
 									<li class="pagination-item"><span
 										class="pagination-item-link">...</span></li>
 									<c:forEach begin="${tag - 2}" end="${endPage}" var="i">
 										<li class="pagination-item"><a
-											href="product?index=${cid}&page=${i}"
+											href="${productUrl}${i}"
 											class="pagination-item-link ${tag == i?"bgc-highlight":""}">${i}</a></li>
 									</c:forEach>
 								</c:if>
 								<c:if test="${tag > endPage - 4}">
 									<li class="pagination-item"><a
-										href="product?index=${cid}&page=1"
+										href="${productUrl}1"
 										class="pagination-item-link ${tag == 1?"bgc-highlight":""}">1</a></li>
 									<li class="pagination-item"><span
 										class="pagination-item-link">...</span></li>
 									<c:forEach begin="${endPage - 5}" end="${endPage}" var="i">
 										<li class="pagination-item"><a
-											href="product?index=${cid}&page=${i}"
+											href="${productUrl}${i}"
 											class="pagination-item-link ${tag == i?"bgc-highlight":""}">${i}</a></li>
 									</c:forEach>
 								</c:if>
@@ -370,7 +379,7 @@
 
 							<c:if test="${tag < endPage}">
 								<li class="pagination-item"><a
-									href="product?index=${cid}&page=${tag+1}"
+									href="${productUrl}${tag+1}"
 									class="pagination-item-link"> <i style="font-size: 2.5rem;"
 										class='pagination-item-icon bx bx-chevron-right'></i>
 								</a></li>

@@ -93,14 +93,32 @@ public class ProductDao {
 		}
 		return products;
 	}
-
-	public List<Product> SearchProduct(String txtS) {
-		List<Product> products = new ArrayList<>();
-		String query = "select * from product where pName like ?";
+	
+	public int getTotalSearchProduct(String txtS) {
+		String query = "select count(*) from product where pName like ?";
 		try {
 			conn = new connect().getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setString(1, "%" + txtS + "%");
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return 0;
+	}
+
+	public List<Product> SearchProductWithPaging(String txtS, int index) {
+		List<Product> products = new ArrayList<>();
+		String query = "select * from product where pName like ? order by pId offset ? rows fetch next ? rows only";
+		try {
+			conn = new connect().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, "%" + txtS + "%");
+			ps.setInt(2, (index - 1) * pageSize);
+			ps.setInt(3, beginProduct);
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				CategoryDao categoryDao = new CategoryDao();
@@ -416,6 +434,39 @@ public class ProductDao {
 			conn = new connect().getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setString(1, cateId);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				CategoryDao categoryDao = new CategoryDao();
+				ShopDao shopDao = new ShopDao();
+				Category category = categoryDao.findOne(rs.getInt("cateId"));
+				Shop shop = shopDao.findOne(rs.getInt("shopId"));
+
+				Product product = new Product();
+				product.setpId(rs.getInt("pId"));
+				product.setpName(rs.getString("pName"));
+				product.setpPrice(rs.getInt("pPrice"));
+				product.setpImage(rs.getString("pImage"));
+				product.setpDescription(rs.getString("pDescription"));
+				product.setpQuantity(rs.getInt("pQuantity"));
+				product.setCategory(category);
+				product.setShop(shop);
+				// product.setCreateAt(rs.getDate("createAt"));
+				products.add(product);
+			}
+		} catch (Exception e) {
+		}
+		return products;
+	}
+	
+	public List<Product> getLoadNextSearchProduct(String txtS, int amount) {
+		List<Product> products = new ArrayList<>();
+		String query = "select * from product where pName like ? order by pId offset ? rows fetch next 5 rows only";
+
+		try {
+			conn = new connect().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, "%" + txtS + "%");
+			ps.setInt(2, amount);
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				CategoryDao categoryDao = new CategoryDao();
