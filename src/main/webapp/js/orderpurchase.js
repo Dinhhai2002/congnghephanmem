@@ -100,16 +100,37 @@ function purchase(e) {
 					if (s == 1 || s == 7) {
 						html += `<td>Chờ xác nhận</td>`
 						html += `<td><button id="orderStatus" onclick="editStatus(this)" value="${result[i].id}">Hủy đơn</button></td>`
-					}else if (s == 3) {
+					}else if (s == 4) {
 						html += `<td>${result[i].status.nameStatus}</td>`
 						html += `<td><button id="orderStatus" onclick="editStatus(this)" value="${result[i].id}">Đã nhận được hàng</button></td>`
-						html += `<td><button id="orderStatus" onclick="editStatus(this)" value="${result[i].id}">Hủy đơn</button></td>`
-					}else if (s == 4 || s == 5) {
+					}else if (s == 9 || s == 5) {
 						html += `<td>${result[i].status.nameStatus}</td>`
 						html += `<td><button id="orderStatus" onclick="editStatus(this)" value="${result[i].product.pId}">Mua lại</button></td>`
 					}else {
 						html += `<td>${result[i].status.nameStatus}</td>`
 					}
+					
+					html += `<td>`
+                    html +=  `<h3 class="detail">Xem`
+                    html +=  `<ul class="navbarItem__user-list-detail">`
+                    html +=  `<li class="navbarItem__user-item">`
+                    html +=  `<a href="" class="navbarItem__user-link">`
+                    html +=  `Tên shop: ${result[i].order.shop.shopName}`
+                    html +=  `</a>`
+                    html +=  `</li>`
+                    html +=  `<li class="navbarItem__user-item">`
+                    html +=  `<a href="" class="navbarItem__user-link">`
+                    html +=  `Địa chỉ shop: ${result[i].order.shop.shopAddress}`
+                    html +=  `</a>`
+                    html +=  `</li>`
+                    html +=  `<li class="navbarItem__user-item">`
+                    html +=  `<a href="" class="navbarItem__user-link">`
+                    html +=  `Địa chỉ nhận hàng: ${result[i].order.uAddress}`
+                    html +=  `</a>`
+                    html +=  `</li>`
+                    html +=  `</ul>`
+                    html +=  `</h3>`                
+                    html +=  `</td>`
 
 					html += `</tr>`
 				}

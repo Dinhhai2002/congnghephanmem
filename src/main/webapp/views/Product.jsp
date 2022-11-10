@@ -119,7 +119,7 @@
 								<div class="sort-bar">
 									<span class="sort-bar__label"> Sắp xếp theo </span>
 									<div class="sort-bar-by-options">
-										<button class="btn btn--primary">Tất cả sản phẩm</button>
+										<button onclick="location.href='/Shopee/product?index=0&page=1'" class="btn btn--primary">Tất cả sản phẩm</button>
 										<button class="btn">Mới Nhất</button>
 										<button class="btn">Bán Chạy</button>
 										<select class="sort-bar-by-options__price" id="select">

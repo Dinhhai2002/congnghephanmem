@@ -39,7 +39,28 @@ function purchase(e) {
 					if (s == 3) {
 						html += `<td><button id="orderStatus" onclick="editStatus(this, ${result[i].order.orderId})" value="${result[i].id}">Xác nhận đã giao</button></td>`
 						html += `<td><button id="orderStatus" onclick="editStatus(this, ${result[i].order.orderId})" value="${result[i].id}">Khách không nhận</button></td>`
-					}	
+					}
+					html += `<td>`
+                    html +=  `<h3 class="detail">Xem`
+                    html +=  `<ul class="navbarItem__user-list-detail">`
+                    html +=  `<li class="navbarItem__user-item">`
+                    html +=  `<a href="" class="navbarItem__user-link">`
+                    html +=  `Tên shop: ${result[i].order.shop.shopName}`
+                    html +=  `</a>`
+                    html +=  `</li>`
+                    html +=  `<li class="navbarItem__user-item">`
+                    html +=  `<a href="" class="navbarItem__user-link">`
+                    html +=  `Địa chỉ shop: ${result[i].order.shop.shopAddress}`
+                    html +=  `</a>`
+                    html +=  `</li>`
+                    html +=  `<li class="navbarItem__user-item">`
+                    html +=  `<a href="" class="navbarItem__user-link">`
+                    html +=  `Địa chỉ nhận hàng: ${result[i].order.uAddress}`
+                    html +=  `</a>`
+                    html +=  `</li>`
+                    html +=  `</ul>`
+                    html +=  `</h3>`                
+                    html +=  `</td>`	
 
 					html += `</tr>`
 				}

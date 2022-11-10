@@ -209,7 +209,7 @@
                                             <td>${o.pPrice} $</td>
                                             <td><a href="editP?id=${o.pId}" class="edit"
                                                 data-toggle="modal"><i class='bx bxs-pencil'></i></a> 
-                                                <a onclick="deleteModal(${o.pId})" class="delete" data-toggle="modal"><i class='bx bx-trash'></i></a>
+                                                <a onclick="deleteModal(${o.pId})" style="cursor: pointer;" class="delete" data-toggle="modal"><i class='bx bx-trash'></i></a>
                                             </td>
                                         </tr>
                                         
