@@ -152,6 +152,7 @@
 										<th>Hình ảnh</th>
 										<th>Giá</th>
 										<th>Tình trạng đơn hàng</th>
+										<th>Chi tiết đơn hàng</th>
 									</tr>
 
 								</thead>
@@ -180,6 +181,28 @@
 													<td><button id="orderStatus" onclick="editStatus(this)" value="${o.product.pId}">Mua lại</button></td>																										
 												</c:when>
 											</c:choose>
+											<td >
+                                               <h3 class="detail">xem
+                                                <ul class="navbarItem__user-list-detail">
+                                                    <li class="navbarItem__user-item">
+                                                        <a href="" class="navbarItem__user-link">
+                                                            Tài Khoản Của Tôi:Tran Dinh hai
+                                                        </a>
+                                                    </li>
+                                                    <li class="navbarItem__user-item">
+                                                        <a href="" class="navbarItem__user-link">
+                                                            Đơn Mua:Hiện tại là chưa có
+                                                        </a>
+                                                    </li>
+                                                    <li class="navbarItem__user-item">
+                                                        <a href="" class="navbarItem__user-link">
+                                                            Đăng Xuất:yes chắc chắn là vậy rồi
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                               </h3>
+                                               
+                                             </td>
 										</tr>
 									</c:forEach>
 								</tbody>
