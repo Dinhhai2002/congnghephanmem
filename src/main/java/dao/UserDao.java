@@ -95,7 +95,7 @@ public class UserDao {
  
     
     public void SignUp(String user,String fullname,String email,String Address,String password,String phoneNumber) {
-      	 String query = "insert into [user] values(?,?,?,?,?,?,null,1,0,null,getdate())";
+      	 String query = "insert into [user] values(?,?,?,?,?,?,1,0,null,getdate())";
            try {
                conn = new connect().getConnection();
                ps = conn.prepareStatement(query);
@@ -383,7 +383,7 @@ public class UserDao {
        }
        //login with google
        public void insertAcountGoogle(String user,String email,String image) {
-        	 String query = "insert into [user] values(?,null,?,null,null,null,null,1,1,?,getdate())";
+        	 String query = "insert into [user] values(?,null,?,null,null,null,1,1,?,getdate())";
              try {
                  conn = new connect().getConnection();
                  ps = conn.prepareStatement(query);

@@ -48,7 +48,7 @@
 						</div>
 					</div>
 					<div class="authForm__checkbox">
-                        <input type="checkbox" id="1" name="remember" value="">
+                        <input type="checkbox" id="1" name="remember" checked value="">
                             <label for="1"> Nhớ mật khẩu</label><br>
                     </div>
 					<div class="authForm__policy">
@@ -60,7 +60,7 @@
 						</div>
 					</div>
 					<div class="authForm__controls">
-						<a href="/Shopee/home?index=1"class="btn btn-hover">TRỞ LẠI</a>
+						<a href="/Shopee/home"class="btn btn-hover">TRỞ LẠI</a>
 						<button type="submit" class="btn btn--primary ml-8">ĐĂNG
 							NHẬP</button>
 					</div>

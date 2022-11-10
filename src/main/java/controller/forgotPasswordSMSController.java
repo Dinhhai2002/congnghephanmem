@@ -3,11 +3,8 @@ package controller;
 import java.io.IOException;
 import java.net.URI;
 import java.util.Arrays;
-import java.util.Properties;
 import java.util.Random;
 
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,22 +13,22 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.twilio.Twilio;
-import com.twilio.type.PhoneNumber;
 import com.twilio.rest.api.v2010.account.Message;
-
+import com.twilio.type.PhoneNumber;
 import dao.UserDao;
 import entity.User;
-@WebServlet(urlPatterns="/forgotPasswordSMS")
-public class forgotPasswordSMSController extends HttpServlet {
+
+@WebServlet(urlPatterns = {"/forgotPasswordSMS"})
+public class forgotPasswordSMSController extends HttpServlet  {
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/views/forgotpasswordSMS.jsp").forward(request, response);
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.getRequestDispatcher("/views/forgotpasswordSMS.jsp").forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String phoneNumber = request.getParameter("phoneNumber");
 		String username=request.getParameter("username");
-		RequestDispatcher dispatcher = null;
+		
 		int otpvalue = 0;
 		HttpSession mySession = request.getSession();
 		if(phoneNumber!=null && !phoneNumber.equals("") && username!=null && !username.equals("")) {
@@ -53,12 +50,12 @@ public class forgotPasswordSMSController extends HttpServlet {
 
 		       
 		        Message message = Message.creator(
-		            new com.twilio.type.PhoneNumber("+84"+phoneNumber),                //Recipient(s)
-		            new com.twilio.type.PhoneNumber("+19207108508"),    //Sender Phone No. - Find your Twilio phone number at https://www.twilio.com/console
-		            messageBody)
-		        .setMediaUrl(										//MMS, Comment out this and the next line if you don't want to attach picture to your message.
-		        		Arrays.asList(URI.create("https://demo.twilio.com/owl.png")))
-		        .create();
+		            new com.twilio.type.PhoneNumber("+84"+phoneNumber),               
+		            new com.twilio.type.PhoneNumber("+19207108508"),    
+		            messageBody).setMediaUrl(Arrays.asList(URI.create("https://demo.twilio.com/owl.png"))).create();						
+			        		
+		        
+		        
 		        System.out.println(message.getSid());
 				
 				}
@@ -83,4 +80,5 @@ public class forgotPasswordSMSController extends HttpServlet {
 			request.getRequestDispatcher("/views/forgotpasswordSMS.jsp").forward(request, response);
 		}
 	}
+	
 }
