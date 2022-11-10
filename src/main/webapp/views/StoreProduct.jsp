@@ -180,6 +180,7 @@
 													<td><button id="orderStatus" onclick="editStatus(this)" value="${o.product.pId}">Mua lại</button></td>																										
 												</c:when>
 											</c:choose>
+
 											<td>
                                                <h3 class="detail">Xem
                                                 <ul class="navbarItem__user-list-detail">
