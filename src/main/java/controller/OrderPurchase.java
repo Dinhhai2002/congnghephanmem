@@ -60,11 +60,13 @@ public class OrderPurchase extends HttpServlet {
 
 			if (action.equals("Đang giao")) {
 				List<OrderDetail> listO = orderDetailDao.findAllByStatusOfUser(acc, 3);
+				List<OrderDetail> list = orderDetailDao.findAllByStatusOfUser(acc, 4);
+				listO.addAll(list);
 				displayHTML(listO, resp);
 			}
 
 			if (action.equals("Đã giao")) {
-				List<OrderDetail> listO = orderDetailDao.findAllByStatusOfUser(acc, 4);
+				List<OrderDetail> listO = orderDetailDao.findAllByStatusOfUser(acc, 9);
 				displayHTML(listO, resp);
 			}
 

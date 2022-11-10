@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entity.OrderDetail;
-import controller.CartAddController;
 import dao.OrderDetailDao;
 
 @WebServlet(urlPatterns = { "/member/statusorder" })
@@ -33,7 +32,7 @@ public class SetStatusOrder extends HttpServlet{
 		
 		if(statusName.equals("Đã nhận được hàng")) {
 			html+="<td>Đã nhận</td>";
-			orderDetailDao.update(sid, 4);
+			orderDetailDao.update(sid, 9);
 			displayHTML(sid, html, resp);
 		}	
 		

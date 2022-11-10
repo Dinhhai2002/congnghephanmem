@@ -173,30 +173,30 @@
 													<td>Chờ xác nhận</td>
 													<td><button id="orderStatus" onclick="editStatus(this)" value="${o.id}">Hủy đơn</button></td>													
 												</c:when>
-												<c:when test="${s==3}">
-													<td><button id="orderStatus" onclick="editStatus(this)" value="${o.id}">Đã nhận được hàng</button></td>	
-													<td><button id="orderStatus" onclick="editStatus(this)" value="${o.id}">Hủy đơn</button></td>													
+												<c:when test="${s==4}">
+													<td><button id="orderStatus" onclick="editStatus(this)" value="${o.id}">Đã nhận được hàng</button></td>													
 												</c:when>
-												<c:when test="${s==4 or s==5}">
+												<c:when test="${s==9 or s==5}">
 													<td><button id="orderStatus" onclick="editStatus(this)" value="${o.product.pId}">Mua lại</button></td>																										
 												</c:when>
 											</c:choose>
-											<td >
-                                               <h3 class="detail">xem
+
+											<td>
+                                               <h3 class="detail">Xem
                                                 <ul class="navbarItem__user-list-detail">
                                                     <li class="navbarItem__user-item">
                                                         <a href="" class="navbarItem__user-link">
-                                                            Tài Khoản Của Tôi:Tran Dinh hai
+                                                            Tên shop: ${o.order.shop.shopName}
                                                         </a>
                                                     </li>
                                                     <li class="navbarItem__user-item">
                                                         <a href="" class="navbarItem__user-link">
-                                                            Đơn Mua:Hiện tại là chưa có
+                                                            Địa chỉ shop: ${o.order.shop.shopAddress}
                                                         </a>
                                                     </li>
                                                     <li class="navbarItem__user-item">
                                                         <a href="" class="navbarItem__user-link">
-                                                            Đăng Xuất:yes chắc chắn là vậy rồi
+                                                            Địa chỉ nhận hàng: ${o.order.uAddress}
                                                         </a>
                                                     </li>
                                                 </ul>
