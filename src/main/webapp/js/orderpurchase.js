@@ -30,12 +30,23 @@ function editStatus(btn) {
 	
 }
 
+function myMobileFunction(e) {
+	console.log("clickin");
+	if (document.querySelector('.search-item-result-on-mb-tb-list a.category-list__item-link-highlight') !== null) {
+		document.querySelector('.search-item-result-on-mb-tb-list a.category-list__item-link-highlight').classList.remove('category-list__item-link-highlight');
+	}
+	e.target.className = "search-item-result-on-mb-tb-link category-list__item-link-highlight";
+}
+
 function myFunction(e) {
 	if (document.querySelector('.category-list__list a.category-list__item-link-highlight') !== null) {
 		document.querySelector('.category-list__list a.category-list__item-link-highlight').classList.remove('category-list__item-link-highlight');
 	}
 	e.target.className = "category-list__item-link category-list__item-link-highlight";
 }
+
+
+
 
 
 var scrollLimit = 500;  // Amount after which ajax() call initializes

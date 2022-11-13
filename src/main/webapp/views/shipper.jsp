@@ -53,35 +53,35 @@
 				<!-- Body -->
 				<div class="row sm-gutter body-content">
 					<div class="col m-12 c-12 search-item-result-on-mb-tb hide-on-pc">
-						<ul class="row no-gutters search-item-result-on-mb-tb-list">
+						<ul onclick="myMobileFunction(event)" class="row no-gutters search-item-result-on-mb-tb-list">
 							<li class="col m-3 c-3 search-item-result-on-mb-tb-item">
-								<!-- border-primary color-primary --> <a href="#"
+								<!-- border-primary color-primary --> <a href="#" onclick="purchase(this)"
 								class="search-item-result-on-mb-tb-link category-list__item-link-highlight ">
 									<span class="search-item-result-on-mb-tb-text"> Nhận đơn </span>
 									<span class="separate"></span>
 							</a>
 							</li>
 							<li class="col m-3 c-3 search-item-result-on-mb-tb-item"><a
-								href="#" class="search-item-result-on-mb-tb-link "> <span
+								href="#" onclick="purchase(this)" class="search-item-result-on-mb-tb-link "> <span
 									class="search-item-result-on-mb-tb-text"> Chờ lấy hàng <span
 										class="separate"></span>
 								</span>
 							</a></li>
 							<li class="col m-3 c-3 search-item-result-on-mb-tb-item"><a
-								href="#" class="search-item-result-on-mb-tb-link"> <span
+								href="#" onclick="purchase(this)" class="search-item-result-on-mb-tb-link"> <span
 									class="search-item-result-on-mb-tb-text"> Chờ đi giao<span
 										class="separate"></span>
 								</span>
 							</a></li>
 							<li class="col m-3 c-3 search-item-result-on-mb-tb-item"><a
-								href="#" class="search-item-result-on-mb-tb-link"> <span
+								href="#" onclick="purchase(this)" class="search-item-result-on-mb-tb-link"> <span
 									class="search-item-result-on-mb-tb-text"> Đã giao <span
 										class="separate"></span>
 								</span>
 							</a></li>
 							
 							<li class="col m-3 c-3 search-item-result-on-mb-tb-item"><a
-								href="#" class="search-item-result-on-mb-tb-link"> <span
+								href="#" onclick="purchase(this)" class="search-item-result-on-mb-tb-link"> <span
 									class="search-item-result-on-mb-tb-text"> Khách không nhận <span
 										class="separate"></span>
 								</span>
