@@ -23,7 +23,7 @@
 	 <!-- =============== Navigation ================ -->
     <div class="container">
         <div class="navigation">
-            <ul>
+           <ul>
                 <li>
                     <a href="#">
                         <span class="icon">
@@ -34,7 +34,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="/Shopee/admin">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
@@ -43,7 +43,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="/Shopee/customer">
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
                         </span>
@@ -52,11 +52,11 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="/Shopee/category">
                         <span class="icon">
                             <ion-icon name="chatbubble-outline"></ion-icon>
                         </span>
-                        <span class="title">Messages</span>
+                        <span class="title">Category</span>
                     </a>
                 </li>
 
@@ -151,7 +151,18 @@
                         </thead>
 
                         <tbody>
+                        	
+                        <c:forEach items="${listCategory}" var="o">
                             <tr>
+                                <td>${o.cName }</td>
+                                <td><img class="customImg"src="${o.cImage}" alt="${o.cImage}"></td>
+                                <td class="customerEdit">
+                                    <a href="#editEmployeeModal"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                </td>
+                            </tr>
+                          </c:forEach>
+                          <tr>
                                 <td>Star Refrigerator</td>
                                 <td><img class="customImg"src="./assets/imgs/customer01.jpg" alt=""></td>
                                
@@ -160,24 +171,8 @@
                                     <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>Star Refrigerator</td>
-                                <td><img class="customImg"src="./assets/imgs/customer01.jpg" alt=""></td>
-                               
-                                <td class="customerEdit">
-                                    <a href="#editEmployeeModal"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Star Refrigerator</td>
-                                <td><img class="customImg"src="./assets/imgs/customer01.jpg" alt=""></td>
-                               
-                                <td class="customerEdit">
-                                    <a href="#editEmployeeModal"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                </td>
-                            </tr>
+                            
+                           
 
                             
 
@@ -248,7 +243,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">					
-                        <input name="id" value="${category.id }" hidden="">
+                        <input name="id" value="${category.id}" hidden="">
                             <div class="form-group">
                             <label>Tên danh sách:</label> <input type="text" class="form-control"
                             value="${category.name }" name="name" />
@@ -258,7 +253,7 @@
                             <img class="img-responsive" width="100px" src="./assets/imgs/customer01.jpg"
                             alt="">
                             <label>Ảnh đại diện</label> <input type="file" name="icon"
-                            value="${category.icon }" />
+                            value="${category.icon}" />
                             </div>
                             
                     </div>

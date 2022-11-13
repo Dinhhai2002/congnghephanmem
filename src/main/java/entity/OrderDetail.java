@@ -26,6 +26,7 @@ public class OrderDetail {
 		this.status = status;
 		this.createAt = createAt;
 	}
+
 	
 	
 	public OrderDetail(Order order, Product product, int count, float shipPrice, float totalPrice, OrderStatus status) {

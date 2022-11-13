@@ -47,15 +47,14 @@ public class CategoryAddController extends HttpServlet{
 					category.setcImage("category/" + fileName);
 				}
 			}
-			
 			cateDao.insertCategory(category);
 			resp.sendRedirect("shop-manager");
+			
+			
 		} catch (FileUploadException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	
 }
