@@ -9,6 +9,7 @@ import java.util.List;
 import connect.connect;
 import entity.Cart;
 import entity.CartItem;
+import entity.Category;
 import entity.Order;
 import entity.OrderStatus;
 import entity.Product;
@@ -159,6 +160,9 @@ public class OrderDao {
 		return orders;
 	}
 
+	
+	
+
 	public List<Cart> search(String keyword) {
 		// TODO Auto-generated method stub
 		return null;
@@ -166,7 +170,7 @@ public class OrderDao {
 
 	// dung
 	public Order findOneNew() {
-		String sql = "Select Top 1 * from [order] order by orderId DESC ";
+		String sql = "Select Top 1 * from [order] order by orderId DESC";
 		try {
 			conn = new connect().getConnection();
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -276,5 +280,6 @@ public class OrderDao {
 			// TODO: handle exception
 		}
 	}
+	
 
 }

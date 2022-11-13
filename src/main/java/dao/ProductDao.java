@@ -34,6 +34,7 @@ public class ProductDao {
 		}
 
 	}
+	
 	public List<Product> findAll() {
 		List<Product> products = new ArrayList<Product>();
 		String sql = "SELECT * FROM dbo.product";
