@@ -53,36 +53,35 @@
 				<!-- Body -->
 				<div class="row sm-gutter body-content">
 					<div class="col m-12 c-12 search-item-result-on-mb-tb hide-on-pc">
-						<ul onclick="myFunction(event)" class="row no-gutters search-item-result-on-mb-tb-list">
+						<ul onclick="myMobileFunction(event)" class="row no-gutters search-item-result-on-mb-tb-list">
 							<li class="col m-3 c-3 search-item-result-on-mb-tb-item">
-								<!-- border-primary color-primary --> <a href="#"
-								onclick="purchase(this)"
+								<!-- border-primary color-primary --> <a href="#" onclick="purchase(this)"
 								class="search-item-result-on-mb-tb-link category-list__item-link-highlight ">
 									<span class="search-item-result-on-mb-tb-text"> Nhận đơn </span>
 									<span class="separate"></span>
 							</a>
 							</li>
 							<li class="col m-3 c-3 search-item-result-on-mb-tb-item"><a
-								href="#"  onclick="purchase(this)"class="search-item-result-on-mb-tb-link "> <span
+								href="#" onclick="purchase(this)" class="search-item-result-on-mb-tb-link "> <span
 									class="search-item-result-on-mb-tb-text"> Chờ lấy hàng <span
 										class="separate"></span>
 								</span>
 							</a></li>
 							<li class="col m-3 c-3 search-item-result-on-mb-tb-item"><a
-								href="#" onclick="purchase(this)"class="search-item-result-on-mb-tb-link"> <span
+								href="#" onclick="purchase(this)" class="search-item-result-on-mb-tb-link"> <span
 									class="search-item-result-on-mb-tb-text"> Chờ đi giao<span
 										class="separate"></span>
 								</span>
 							</a></li>
 							<li class="col m-3 c-3 search-item-result-on-mb-tb-item"><a
-								href="#"onclick="purchase(this)" class="search-item-result-on-mb-tb-link"> <span
+								href="#" onclick="purchase(this)" class="search-item-result-on-mb-tb-link"> <span
 									class="search-item-result-on-mb-tb-text"> Đã giao <span
 										class="separate"></span>
 								</span>
 							</a></li>
 							
 							<li class="col m-3 c-3 search-item-result-on-mb-tb-item"><a
-								href="#" class="search-item-result-on-mb-tb-link"> <span
+								href="#" onclick="purchase(this)" class="search-item-result-on-mb-tb-link"> <span
 									class="search-item-result-on-mb-tb-text"> Khách không nhận <span
 										class="separate"></span>
 								</span>
@@ -141,7 +140,6 @@
 										<th>Hình ảnh</th>
 										<th>Giá</th>
 										<th>Tình trạng đơn hàng</th>
-										<th>Chi tiết đơn hàng</th>
 									</tr>
 
 								</thead>
@@ -151,14 +149,8 @@
 										<tr style="margin: 8px 0;">
 											<td>${o.order.user.uName}</td>
 											<td>${o.product.pName}</td>
-											<td>
-											<c:if test="${fn:contains(o.product.pImage, 'https')}">
-													<img src="${o.product.pImage}" alt=" ${o.product.pName}" style="width: 90px; height: 90px;">
-												</c:if>
-												<c:if test="${fn:contains(o.product.pImage, 'product')}">
-													<img src="${imgUrl}" alt=" ${o.product.pName}" style="width: 90px; height: 90px;">
-												</c:if>
-												</td>
+											<td><img src="${o.product.pImage}"
+												style="width: 90px; height: 90px;"></td>
 											<td>${o.totalPrice}</td>
 											<td>${o.status.nameStatus}</td>
 											<c:set var = "s" value = "${o.status.idStatus}"/>
@@ -178,17 +170,17 @@
                                                <h3 class="detail">Xem
                                                 <ul class="navbarItem__user-list-detail">
                                                     <li class="navbarItem__user-item">
-                                                        <a href="#" class="navbarItem__user-link">
+                                                        <a href="" class="navbarItem__user-link">
                                                             Tên shop: ${o.order.shop.shopName}
                                                         </a>
                                                     </li>
                                                     <li class="navbarItem__user-item">
-                                                        <a href="#" class="navbarItem__user-link">
+                                                        <a href="" class="navbarItem__user-link">
                                                             Địa chỉ shop: ${o.order.shop.shopAddress}
                                                         </a>
                                                     </li>
                                                     <li class="navbarItem__user-item">
-                                                        <a href="#" class="navbarItem__user-link">
+                                                        <a href="" class="navbarItem__user-link">
                                                             Địa chỉ nhận hàng: ${o.order.uAddress}
                                                         </a>
                                                     </li>
