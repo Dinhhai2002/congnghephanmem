@@ -144,4 +144,18 @@ public class ShopDao {
 		}
 		updateShop(oldShop);
 	}
+	public int getTotalShop() {
+		String query = "select count(*) from [shop]";
+		try {
+			conn = new connect().getConnection();
+            ps = conn.prepareStatement(query);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+            	return rs.getInt(1);
+            }
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return 0;
+	}
 }

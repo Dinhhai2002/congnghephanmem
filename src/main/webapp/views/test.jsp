@@ -5,21 +5,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Quản lý người dùng</title>
- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý danh mục</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap&subset=vietnamese" rel="stylesheet">
-    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'> 
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <!-- ======= Styles ====== -->
-	<link href="<c:url value="/css/customerAdmin.css"/>" rel="stylesheet"
-	type="text/css" />
+    <link rel="stylesheet" href="<c:url value="/css/categoryAdmin.css"/>">
 </head>
 <body>
- <div class="container">
+	 <!-- =============== Navigation ================ -->
+    <div class="container">
         <div class="navigation">
             <ul>
                 <li>
@@ -117,12 +119,23 @@
 
             <!-- ======================= Cards ================== -->
             <div class="cardBox">
-                
+                    <form role="form" action="add" method="post"
+                         enctype="multipart/form-data">
+                <div class="form-group">
+                <label>Tên danh mục:</label> <input class="form-control"
+                placeholder="please enter category Name" name="name" />
+                </div>
+                <div class="form-group">
+                <label>Ảnh đại diện</label> <input type="file" name="icon" />
+                </div>
+                <button type="submit" class="btn btn-default">Thêm</button>
+                <button type="reset" class="btn btn-primary">Hủy</button>
+                </form>
             </div>
 
             <!-- ================ Order Details List ================= -->
             <div class="details">
-                <div class="recentOrders">
+                <div class="rcentOrders">
                     <div class="cardHeader">
                         <h2>Recent Orders</h2>
                         <a href="#" class="btn">View All</a>
@@ -131,75 +144,44 @@
                     <table>
                         <thead>
                             <tr>
-                                <td>Name</td>
-                                <td>Price</td>
-                                <td>Payment</td>
-                                <td>Status</td>
-                                <td>Actions</td>
+                                <td >Name</td>
+                                <td >image</td>
+                                <td >Hành động</td>
                             </tr>
                         </thead>
 
                         <tbody>
                             <tr>
                                 <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status delivered">Delivered</span></td>
-                                <td>
+                                <td><img class="customImg"src="./assets/imgs/customer01.jpg" alt=""></td>
+                               
+                                <td class="customerEdit">
                                     <a href="#editEmployeeModal"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                    
+                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Star Refrigerator</td>
+                                <td><img class="customImg"src="./assets/imgs/customer01.jpg" alt=""></td>
+                               
+                                <td class="customerEdit">
+                                    <a href="#editEmployeeModal"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Star Refrigerator</td>
+                                <td><img class="customImg"src="./assets/imgs/customer01.jpg" alt=""></td>
+                               
+                                <td class="customerEdit">
+                                    <a href="#editEmployeeModal"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                     <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                 </td>
                             </tr>
 
-                            <tr>
-                                <td>Dell Laptop</td>
-                                <td>$110</td>
-                                <td>Due</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
+                            
 
-                            <tr>
-                                <td>Apple Watch</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status return">Return</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Addidas Shoes</td>
-                                <td>$620</td>
-                                <td>Due</td>
-                                <td><span class="status inProgress">In Progress</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status delivered">Delivered</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Dell Laptop</td>
-                                <td>$110</td>
-                                <td>Due</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Apple Watch</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status return">Return</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Addidas Shoes</td>
-                                <td>$620</td>
-                                <td>Due</td>
-                                <td><span class="status inProgress">In Progress</span></td>
-                            </tr>
+                            
                         </tbody>
                     </table>
                 </div>
@@ -266,26 +248,23 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">					
-                        <div class="form-group">
-                            <label>Name</label>
-                            <input value ="${user.uFullName}" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input value ="${user.uEmail}" type="email" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Address</label>
-                            <textarea class="form-control" required>${user.uAddress}</textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Phone</label>
-                            <input value ="${user.uPhone}" type="text" class="form-control" required>
-                        </div>					
+                        <input name="id" value="${category.id }" hidden="">
+                            <div class="form-group">
+                            <label>Tên danh sách:</label> <input type="text" class="form-control"
+                            value="${category.name}" name="name" />
+                            </div>
+                            <div class="form-group">
+                            <c:url value="/image?fname=${category.icon }" var="imgUrl"></c:url>
+                            <img class="img-responsive" width="100px" src="./assets/imgs/customer01.jpg"
+                            alt="">
+                            <label>Ảnh đại diện</label> <input type="file" name="icon"
+                            value="${category.icon}" />
+                            </div>
+                            
                     </div>
                     <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                        <input type="submit" class="btn btn-info" value="Save">
+                        <button type="submit" class="btn btn-default">Edit</button>
+                            <button type="reset" class="btn btn-primary">Reset</button>	
                     </div>
                 </form>
             </div>
@@ -313,10 +292,10 @@
         </div>
     </div>
     <!-- =========== Scripts =========  -->
-   <script src="<c:url value="/js/admin.js"/>"></script>
+    <script src="<c:url value="/js/admin.js"/>"></script>
 
     <!-- ====== ionicons ======= -->
-    <script type="module" src="<c:url value="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"/>"></script>
-    <script nomodule src="<c:url value="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"/>"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

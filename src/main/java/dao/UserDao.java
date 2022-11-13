@@ -3,8 +3,13 @@ package dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import connect.connect;
+import entity.Category;
+import entity.Product;
+import entity.Shop;
 import entity.User;
 
 public class UserDao {
@@ -92,6 +97,102 @@ public class UserDao {
         }
         return null;
    }
+ public int getTotalUser() {
+		String query = "select count(*) from [user]";
+		try {
+			conn = new connect().getConnection();
+         ps = conn.prepareStatement(query);
+         rs = ps.executeQuery();
+         while (rs.next()) {
+         	return rs.getInt(1);
+         }
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return 0;
+	}
+ public List<User> getAllUserArrByCreateAt() {
+		List<User> users = new ArrayList<>();
+		String query = "select * from [user] order by [createAt] DESC";
+
+		try {
+			conn = new connect().getConnection();
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while (rs.next()) {			
+				User user = new User();
+				user.setuId(rs.getInt("uId"));
+				user.setuName(rs.getString("uName"));
+				user.setuFullName(rs.getNString("uFullName"));
+				user.setuEmail(rs.getString("uEmail"));
+				user.setuAddress(rs.getString("uAddress"));
+				user.setuPassword(rs.getString("uPassword"));
+				user.setuPhone(rs.getString("uPhone"));
+				user.setIdRole(rs.getInt("idRole"));
+				user.setIsAccountGoogle(rs.getInt("isAccountGoogle"));
+				user.setuImage(rs.getString("uImage"));
+				user.setCreateAt(rs.getDate("createAt"));
+				users.add(user);
+			}
+		} catch (Exception e) {
+		}
+		return users;
+	}
+ public void deleteUser(String id) {
+	 String query = "Delete from [user] where uId = ?";
+	 try {
+			conn = new connect().getConnection();
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while (rs.next()) {			
+				ps.setString(1,id);
+				ps.executeUpdate();
+			}
+		} catch (Exception e) {
+		}
+ }
+ public User getUserById(String id) {
+	 String query ="select * from [user] where [uId] = ?";
+			 try {
+					conn = new connect().getConnection();
+					ps = conn.prepareStatement(query);
+					ps.setString(1,id);
+					rs = ps.executeQuery();
+					while (rs.next()) {			
+						return new User(rs.getInt(1),
+		                          rs.getString(2),
+		                          rs.getString(3),
+		                          rs.getString(4),
+		                          rs.getString(5),
+		                          rs.getString(6),
+		                          rs.getString(7),
+		                          rs.getInt(8),
+		                          rs.getInt(9),
+		                          rs.getString(10),
+		                         rs.getDate(11));
+					}
+				} catch (Exception e) {
+				}
+			return null;
+ }
+public void editUser(String uId,String fullname,String email,String Address,String phoneNumber) {
+	 String query = "update [user]\r\n" + 
+ 	 		"uFullName=?,uEmail=?,uAddress=?,uPhone=?\r\n" + 
+ 	 		"where uId=?";
+      try {
+          conn = new connect().getConnection();
+          ps = conn.prepareStatement(query);
+          ps.setString(1, fullname);
+          ps.setString(2, email);
+          ps.setString(3, Address);
+          ps.setString(4, phoneNumber);
+          ps.setString(5,uId);
+          ps.executeUpdate();
+          
+      } catch (Exception e) {
+      }
+      
+ }
  
     
     public void SignUp(String user,String fullname,String email,String Address,String password,String phoneNumber) {
@@ -427,5 +528,9 @@ public class UserDao {
              }
              
         }
+
+
+
+	
 
 }
