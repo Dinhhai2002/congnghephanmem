@@ -161,8 +161,15 @@
 									<c:forEach items="${listO}" var="o">
 										<tr style="margin: 8px 0;">
 											<td>${o.product.pName}</td>
-											<td><img src="${o.product.pImage}"
-												style="width: 90px; height: 90px;"></td>
+											<c:url value="/image?fname=${o.product.pImage}" var="imgUrl"></c:url>
+											<td>
+											<c:if test="${fn:contains(o.product.pImage, 'https')}">
+													<img src="${o.product.pImage}" alt=" ${o.product.pName}" style="width: 90px; height: 90px;">
+												</c:if>
+												<c:if test="${fn:contains(o.product.pImage, 'product')}">
+													<img src="${imgUrl}" alt=" ${o.product.pName}" style="width: 90px; height: 90px;">
+												</c:if>
+												</td>
 											<td>${o.totalPrice}</td>
 											<c:set var = "s" value = "${o.status.idStatus}"/>
 											<c:choose>
@@ -185,17 +192,17 @@
                                                <h3 class="detail">Xem
                                                 <ul class="navbarItem__user-list-detail">
                                                     <li class="navbarItem__user-item">
-                                                        <a href="" class="navbarItem__user-link">
+                                                        <a href="#" class="navbarItem__user-link">
                                                             Tên shop: ${o.order.shop.shopName}
                                                         </a>
                                                     </li>
                                                     <li class="navbarItem__user-item">
-                                                        <a href="" class="navbarItem__user-link">
+                                                        <a href="#" class="navbarItem__user-link">
                                                             Địa chỉ shop: ${o.order.shop.shopAddress}
                                                         </a>
                                                     </li>
                                                     <li class="navbarItem__user-item">
-                                                        <a href="" class="navbarItem__user-link">
+                                                        <a href="#" class="navbarItem__user-link">
                                                             Địa chỉ nhận hàng: ${o.order.uAddress}
                                                         </a>
                                                     </li>
