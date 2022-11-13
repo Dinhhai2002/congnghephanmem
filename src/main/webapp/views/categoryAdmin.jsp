@@ -23,7 +23,7 @@
 	 <!-- =============== Navigation ================ -->
     <div class="container">
         <div class="navigation">
-            <ul>
+           <ul>
                 <li>
                     <a href="#">
                         <span class="icon">
@@ -34,7 +34,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="/Shopee/admin">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
@@ -43,7 +43,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="/Shopee/customer">
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
                         </span>
@@ -52,11 +52,11 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="/Shopee/category">
                         <span class="icon">
                             <ion-icon name="chatbubble-outline"></ion-icon>
                         </span>
-                        <span class="title">Messages</span>
+                        <span class="title">Category</span>
                     </a>
                 </li>
 

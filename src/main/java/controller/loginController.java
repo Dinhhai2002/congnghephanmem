@@ -95,7 +95,7 @@ public class loginController extends HttpServlet {
 					}
 					else if(a.getIdRole()==2)
 					{
-						resp.sendRedirect("/Shopee/Admin");
+						resp.sendRedirect("/Shopee/admin");
 					}
 					else if(a.getIdRole()==4)
 					{
