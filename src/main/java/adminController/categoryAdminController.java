@@ -40,7 +40,7 @@ public class categoryAdminController extends HttpServlet{
 		req.setAttribute("listCategory", listCategory);
 		RequestDispatcher rq=req.getRequestDispatcher("/views/categoryAdmin.jsp");
 		rq.forward(req, resp);
-		super.doGet(req, resp);
+
 	}
 
 	@Override
