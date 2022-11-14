@@ -128,7 +128,7 @@
                 </div>
             </div>
 
-            <!-- ================ Order Details List ================= -->
+           <!-- ================ Order Details List ================= -->
            <div class="details">
                 <div class="recentOrders">
                     <div class="cardHeader">
@@ -228,5 +228,7 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     
+</body>
+</html>
 </body>
 </html>
