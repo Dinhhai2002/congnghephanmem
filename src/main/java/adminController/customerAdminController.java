@@ -38,7 +38,7 @@ public class customerAdminController  extends HttpServlet{
 		req.setAttribute("listUser", listUser);
 		RequestDispatcher rq=req.getRequestDispatcher("/views/customerAdmin.jsp");
 		rq.forward(req, resp);
-		super.doGet(req, resp);
+		
 		
 		
 		

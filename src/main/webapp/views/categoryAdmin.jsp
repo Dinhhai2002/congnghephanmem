@@ -29,7 +29,7 @@
                         <span class="icon">
                             <ion-icon name="logo-apple"></ion-icon>
                         </span>
-                        <span class="title">Brand Name</span>
+                        <span class="title">Admin</span>
                     </a>
                 </li>
 
@@ -38,7 +38,7 @@
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
-                        <span class="title">Dashboard</span>
+                        <span class="title">Trang chủ</span>
                     </a>
                 </li>
 
@@ -47,7 +47,7 @@
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
                         </span>
-                        <span class="title">Customers</span>
+                        <span class="title">Quản lí người dùng</span>
                     </a>
                 </li>
 
@@ -56,43 +56,18 @@
                         <span class="icon">
                             <ion-icon name="chatbubble-outline"></ion-icon>
                         </span>
-                        <span class="title">Category</span>
+                        <span class="title">Quản lí danh mục</span>
                     </a>
                 </li>
 
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="help-outline"></ion-icon>
-                        </span>
-                        <span class="title">Help</span>
-                    </a>
-                </li>
+               
 
                 <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="settings-outline"></ion-icon>
-                        </span>
-                        <span class="title">Settings</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <span class="icon">
-                            <ion-icon name="lock-closed-outline"></ion-icon>
-                        </span>
-                        <span class="title">Password</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
+                    <a href="/Shopee/login">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
-                        <span class="title">Sign Out</span>
+                        <span class="title">Đăng xuất</span>
                     </a>
                 </li>
             </ul>
@@ -264,6 +239,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <form action="deletecategory" method="post">
+
                     <div class="modal-header">						
                         <h4 class="modal-title">Xóa danh mục</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

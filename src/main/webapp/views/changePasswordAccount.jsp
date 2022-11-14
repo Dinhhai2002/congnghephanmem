@@ -96,7 +96,7 @@
                             <ul class="category-list__list">
                                 
                                <li class="category-list__item "><a href="/Shopee/myAccount"
-									class="category-list__item-link  active">
+									class="category-list__item-link  ">
 										<i class="category-list__item-icon fas fa-caret-right"></i>
 										Tài khoản cá nhân
 								</a></li>
