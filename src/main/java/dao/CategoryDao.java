@@ -105,7 +105,7 @@ public class CategoryDao {
 	public void editUpdateCategory(Category newCategory) {
 		Category oldCategory = findOne(newCategory.getcId());
 		oldCategory.setcName(newCategory.getcName());
-		if (oldCategory.getcImage() != null) {
+		if (newCategory.getcImage() != null) {
 			String fileName = oldCategory.getcImage();
 			File file = new File(Constant.dir + "/category/" + fileName);
 			if (file.exists()) {

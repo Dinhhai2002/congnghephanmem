@@ -9,12 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.CategoryDao;
-@WebServlet(urlPatterns = {"/deleteCategoryAdmin"})
+
+@WebServlet(urlPatterns = {"/deletecategory"})
 public class deleteCategoryAdminController extends HttpServlet{
 	CategoryDao cateDao = new CategoryDao();
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("text/html");
 		resp.setCharacterEncoding("UTF-8");
 		req.setCharacterEncoding("UTF-8");
