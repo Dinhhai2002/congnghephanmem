@@ -154,38 +154,32 @@
                        		<tr>
                                 <td>${o.id}</td>
                                 <td>${o.count}</td>
-                                <td>${o.totalPrice}</td>                               
-                                <td><span class="status delivered">Delivered</span></td>
+                                <td>${o.totalPrice}</td>     
+                                <td>
+                                <c:if test="${o.status == 'OrderStatus [idStatus=1, nameStatus=Chờ xác nhận]'}">
+                                	<span class="status pending">Chờ xác nhận</span>
+                                </c:if> 
+                                <c:if test="${o.status == 'OrderStatus [idStatus=2, nameStatus=Chờ lấy hàng]'}">
+                                	<span class="status waiting">Chờ lấy hàng</span>
+                                </c:if> 
+                                <c:if test="${o.status == 'OrderStatus [idStatus=3, nameStatus=Đang giao]'}">
+                                	<span class="status inProgress">Đang giao</span>
+                                </c:if> 
+                                <c:if test="${o.status == 'OrderStatus [idStatus=4, nameStatus=Đã giao]'}">
+                                	<span class="status delivered">Đã giao</span>
+                                </c:if>
+                                <c:if test="${o.status == 'OrderStatus [idStatus=5, nameStatus=Đã hủy]'}">
+                                	<span class="status return">Đã hủy</span>
+                                </c:if> 
+                                <c:if test="${o.status == 'OrderStatus [idStatus=6, nameStatus=Trả hàng]'}">
+                                	<span class="status cancel">Trả hàng</span>
+                                </c:if>                           
+                                </td>
+                               
                                 
                             </tr>
                          </c:forEach>
-                            <tr>
-                                <td>Star Refrigerator</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status delivered">Delivered</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Dell Laptop</td>
-                                <td>$110</td>
-                                <td>Due</td>
-                                <td><span class="status pending">Pending</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Apple Watch</td>
-                                <td>$1200</td>
-                                <td>Paid</td>
-                                <td><span class="status return">Return</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>Addidas Shoes</td>
-                                <td>$620</td>
-                                <td>Due</td>
-                                <td><span class="status inProgress">In Progress</span></td>
-                            </tr>
+                          
 
                         </tbody>
                     </table>
@@ -220,11 +214,14 @@
 	<script> 
 	let statusLabel=["Chờ xác nhận","Chờ lấy hàng","Đang giao","Đã giao","Đã hủy","Trả hàng"],statusInfo=[]
 	
-	
-	
-	
+		statusInfo.push(${orderdetail.countStatusByIdStatus(1)});
+		statusInfo.push(${orderdetail.countStatusByIdStatus(2)});
+		statusInfo.push(${orderdetail.countStatusByIdStatus(3)});
+		statusInfo.push(${orderdetail.countStatusByIdStatus(4)});
+		statusInfo.push(${orderdetail.countStatusByIdStatus(5)});
+		statusInfo.push(${orderdetail.countStatusByIdStatus(6)});
 		window.onload = function(){
-			cateChart("chartElement")
+			cateChart("chartElement",statusLabel,statusInfo)
 		}
 	</script>
     <!-- ====== ionicons ======= -->

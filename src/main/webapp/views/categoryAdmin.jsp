@@ -94,7 +94,7 @@
 
             <!-- ======================= Cards ================== -->
             <div class="cardBox">
-                    <form role="form" action="add" method="post"
+                    <form role="form" action="addCategoryAdmin" method="post"
                          enctype="multipart/form-data">
                 <div class="form-group">
                 <label>Tên danh mục:</label> <input class="form-control"
@@ -244,7 +244,7 @@
     <div id="deleteEmployeeModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form>
+                <form action="deleteCategoryAdmin" method="post">
                     <div class="modal-header">						
                         <h4 class="modal-title">Delete Product</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

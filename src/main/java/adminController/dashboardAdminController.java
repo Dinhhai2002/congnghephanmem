@@ -52,12 +52,16 @@ public class dashboardAdminController extends HttpServlet{
 		
 		List<OrderDetail> listOrder = orderdetail.find7OrderArrByCreateAt();
 		
-//		int[] arrStatus = null;
-//		for(int i =1;i<7;i++) {
-//		arrStatus[i] = orderdetail.countStatusByIdStatus(i);
+//		int[]  arrStatus = null;
+//		for(int i = 1 ;i<7;i++)
+//		{
+//		arrStatus[i-1] = orderdetail.countStatusByIdStatus(i);
 //		}
+//		req.setAttribute("arrStatus", arrStatus);
 //		
-//		req.setAttribute("status", arrStatus);
+		
+		req.setAttribute("orderdetail", orderdetail);
+		
 		
 		req.setAttribute("listOrder", listOrder);
 		List<User> listUser = userdao.getAllUserArrByCreateAt();
@@ -66,7 +70,7 @@ public class dashboardAdminController extends HttpServlet{
 		RequestDispatcher rq=req.getRequestDispatcher("/views/Admin.jsp");
 		
 		rq.forward(req, resp);
-		super.doGet(req, resp);
+
 	}
 
 	@Override
