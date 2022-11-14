@@ -72,7 +72,7 @@
                                         		<c:if test="${fn:contains(shop.shopImage, 'https')}">
 													<img src="${shop.shopImage}" alt=" ${shop.shopName}">
 												</c:if>
-												<c:if test="${fn:contains(shop.shopImage, 'product')}">
+												<c:if test="${fn:contains(shop.shopImage, 'shop')}">
 													<img src="${imgUrl}" alt=" ${shop.shopImage}">
 												</c:if>
                                             </div>
