@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -119,14 +119,14 @@
 
             <!-- ======================= Cards ================== -->
             <div class="cardBox">
-                    <form role="form" action="add" method="post"
+                    <form role="form" action="addCategoryAdmin" method="post"
                          enctype="multipart/form-data">
                 <div class="form-group">
                 <label>Tên danh mục:</label> <input class="form-control"
-                placeholder="please enter category Name" name="name" />
+                placeholder="Tên danh mục muốn thêm mới" name="name" />
                 </div>
                 <div class="form-group">
-                <label>Ảnh đại diện</label> <input type="file" name="icon" />
+                <label>Ảnh đại diện</label> <input type="file" name="image" />
                 </div>
                 <button type="submit" class="btn btn-default">Thêm</button>
                 <button type="reset" class="btn btn-primary">Hủy</button>
@@ -144,8 +144,8 @@
                     <table>
                         <thead>
                             <tr>
-                                <td >Name</td>
-                                <td >image</td>
+                                <td >Tên danh mục</td>
+                                <td >Hình ảnh</td>
                                 <td >Hành động</td>
                             </tr>
                         </thead>
@@ -155,28 +155,22 @@
                         <c:forEach items="${listCategory}" var="o">
                             <tr>
                                 <td>${o.cName }</td>
-                                <td><img class="customImg"src="${o.cImage}" alt="${o.cImage}"></td>
+                                <c:url value="/image?fname=${o.cImage}" var="imgUrl"></c:url>
+                                <td>
+                                <c:if test="${fn:contains(o.cImage, 'https')}">
+										<img style="width: 150px; height: 150px; object-fit: contain;" src="${o.cImage}" alt=" ${o.cName}">
+									</c:if>
+									<c:if test="${fn:contains(o.cImage, 'category')}">
+										<img style="width: 150px; height: 150px; object-fit: contain;" src="${imgUrl}" alt=" ${o.cName}">
+									</c:if>
+								</td>
                                 <td class="customerEdit">
-                                    <a href="#editEmployeeModal"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                    <a href="" onclick="editCategoryModal(${o.cId})" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                    <a href="" onclick="deleteCategoryModal(${o.cId})" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                 </td>
                             </tr>
                           </c:forEach>
-                          <tr>
-                                <td>Star Refrigerator</td>
-                                <td><img class="customImg"src="./assets/imgs/customer01.jpg" alt=""></td>
-                               
-                                <td class="customerEdit">
-                                    <a href="#editEmployeeModal"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                </td>
-                            </tr>
-                            
-                           
-
-                            
-
-                            
+                                                                                                                            
                         </tbody>
                     </table>
                 </div>
@@ -234,26 +228,26 @@
         </div>
     </div>
     <!-- Edit Modal HTML -->
-    <div id="editEmployeeModal" class="modal fade">
+    <div id="editCategoryModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form>
+                <form action="editcategory" method="post" enctype="multipart/form-data">
                     <div class="modal-header">						
-                        <h4 class="modal-title">Edit Employee</h4>
+                        <h4 class="modal-title">Chỉnh sửa danh mục</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">					
-                        <input name="id" value="${category.id}" hidden="">
+                        	<input id="editId" name="id" value="0" hidden="">
                             <div class="form-group">
-                            <label>Tên danh sách:</label> <input type="text" class="form-control"
-                            value="${category.name }" name="name" />
+                            <label>Tên danh mục:</label> <input id="editName" type="text" class="form-control"
+                            value="category" name="name" />
                             </div>
                             <div class="form-group">
-                            <c:url value="/image?fname=${category.icon }" var="imgUrl"></c:url>
-                            <img class="img-responsive" width="100px" src="./assets/imgs/customer01.jpg"
+                            
+                            <c:url value="/image?fname=image" var="imgUrl"></c:url>
+                            <img id="editImage" class="img-responsive" width="100px" src="/image?fname=image"
                             alt="">
-                            <label>Ảnh đại diện</label> <input type="file" name="icon"
-                            value="${category.icon}" />
+                            <label>Ảnh đại diện</label> <input type="file" name="image"/>
                             </div>
                             
                     </div>
@@ -266,17 +260,18 @@
         </div>
     </div>
     <!-- Delete Modal HTML -->
-    <div id="deleteEmployeeModal" class="modal fade">
+    <div id="deleteCategoryModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form>
+                <form action="deletecategory" method="post">
                     <div class="modal-header">						
-                        <h4 class="modal-title">Delete Product</h4>
+                        <h4 class="modal-title">Xóa danh mục</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
+                    <input id="deleteId" name="id" value="0" hidden="">
                     <div class="modal-body">					
-                        <p>Are you sure you want to delete these Records?</p>
-                        <p class="text-warning"><small>This action cannot be undone.</small></p>
+                        <p>Bạn có chắc muốn xóa?</p>
+                        <p class="text-warning"><small>Hành động này không thể hoàn tác</small></p>
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
