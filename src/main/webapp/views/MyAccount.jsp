@@ -126,32 +126,7 @@
 								</a></li>
 
 
-								<!-- <li class="category-list__item">
-                                    <a href="" class="category-list__item-link">
-                                        Máy In, Máy Scan & Máy Chiếu
-                                    </a>
-                                </li>
-                                <li class="category-list__item">
-                                    <a href="" class="category-list__item-link">
-                                        Phụ Kiện Máy Tính
-                                    </a>
-                                </li>
-                                <li class="category-list__item">
-                                    <a href="" class="category-list__item-link">
-                                        Laptop
-                                    </a>
-                                </li>
-                                <li class="category-list__item">
-                                    <a href="" class="category-list__item-link">
-                                        Khác
-                                    </a>
-                                </li>
-                                <li class="category-list__item">
-                                    <a href="" class="category-list__item-link">
-                                        Gaming
-                                    </a>
-                                </li> -->
-
+								
 
 							</ul>
 						</div>
@@ -202,27 +177,7 @@
 												placeholder="" />
 											<!-- <a style="font-size:20px;color:red;"href="">Thêm</a> -->
 										</div>
-										<div class="content_content_form">
-											<p class="content_content_form_text">Ảnh đại diện</p>
-											<div class="content_content_form_img">
-											 <c:if test="${empty sessionScope.acc.uImage}">
-												<img
-													style="width: 150px; height: 150px; object-fit: contain;"
-													class="img-responsive"
-													src="<c:url value="/img/anhdaidiennull.jpg"/>" alt="${sessionScope.acc.uName }">
-													</c:if>
-												<c:if test="${not empty sessionScope.acc.uImage}">
-												<c:url value="/image?fname=${User.uImage}" var="imgUrl"></c:url>
-												<img
-													style="width: 150px; height: 150px; object-fit: contain;"
-													class="img-responsive"
-													src="${imgUrl} alt="${sessionScope.acc.uName }">
-													</c:if>
-													 <input type="file" name="image" value="${category.icon }" />
-													
-											</div>
-
-										</div>
+										
 										<div class="content_content_form">
 											<p class="content_content_form_text">Địa chỉ</p>
 											<input name="address" value="${sessionScope.acc.uAddress}"class="content_content_form_input" type="text"

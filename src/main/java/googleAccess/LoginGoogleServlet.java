@@ -53,7 +53,7 @@ import entity.User;
 	    	 
 	    	  HttpSession session=request.getSession();
 				session.setAttribute("acc", userDao.CheckAccountforgotPassword(username, email));
-				RequestDispatcher dis = request.getRequestDispatcher("/home?index=1");
+				RequestDispatcher dis = request.getRequestDispatcher("/home");
 			      dis.forward(request, response);
 	    	  
 	      }
