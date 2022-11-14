@@ -90,11 +90,10 @@ function editStatus(btn) {
 }
 	
 function myMobileFunction(e) {
-	console.log("clickin");
-	if (document.querySelector('.search-item-result-on-mb-tb-list a.category-list__item-link-highlight') !== null) {
-		document.querySelector('.search-item-result-on-mb-tb-list a.category-list__item-link-highlight').classList.remove('category-list__item-link-highlight');
+	if (document.querySelector('.row.no-gutters.search-item-result-on-mb-tb-list a.category-list__item-link-highlight') != null) {
+		document.querySelector('.row.no-gutters.search-item-result-on-mb-tb-list a.category-list__item-link-highlight').classList.remove('category-list__item-link-highlight');
 	}
-	e.target.className = "search-item-result-on-mb-tb-link category-list__item-link-highlight";
+	e.target.parentElement.className = "search-item-result-on-mb-tb-link category-list__item-link-highlight";	
 }
 
 function myFunction(e) {
