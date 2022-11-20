@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.CategoryDao;
 
-@WebServlet(urlPatterns = {"/deletecategory"})
+@WebServlet(urlPatterns = {"/admin/category/delete"})
 public class deleteCategoryAdminController extends HttpServlet{
 	CategoryDao cateDao = new CategoryDao();
 

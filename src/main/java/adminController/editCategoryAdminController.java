@@ -22,7 +22,7 @@ import dao.CategoryDao;
 import entity.Category;
 import utils.Constant;
 
-@WebServlet(urlPatterns = {"/editcategory"})
+@WebServlet(urlPatterns = {"/admin/category/edit"})
 public class editCategoryAdminController extends HttpServlet{
 	/**
 	 * 
