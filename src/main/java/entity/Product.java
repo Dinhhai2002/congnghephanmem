@@ -18,7 +18,6 @@ public class Product {
 		super();
 	}
 	
-	
 	public Product(int pId, int pQuantity) {
 		super();
 		this.pId = pId;
