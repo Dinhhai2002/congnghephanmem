@@ -11,6 +11,7 @@ public class Product {
 	private String pDescription;
 	private int pQuantity;
 	private Category category;
+	
 	private Shop shop;
 	private Date createAt;
 	private Date updateAt;
