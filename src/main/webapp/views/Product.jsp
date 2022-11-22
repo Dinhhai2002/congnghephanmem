@@ -120,8 +120,8 @@
 									<span class="sort-bar__label"> Sắp xếp theo </span>
 									<div class="sort-bar-by-options">
 										<button onclick="location.href='/Shopee/product?index=0&page=1'" class="btn btn--primary">Tất cả sản phẩm</button>
-										<button class="btn">Mới Nhất</button>
-										<button class="btn">Bán Chạy</button>
+										<!-- <button class="btn">Mới Nhất</button>
+										<button class="btn">Bán Chạy</button> -->
 										<select class="sort-bar-by-options__price" id="select">
 
 											<div class="sort-bar-by-options__price-list">
@@ -137,7 +137,7 @@
 											</div>
 										</select>
 									</div>
-									<div class="sort-bar-mini-page-controller">
+									<!-- <div class="sort-bar-mini-page-controller">
 										<p class="sort-bar-mini-page-controller__state">
 											<span>1</span>/100
 										</p>
@@ -150,7 +150,7 @@
 											<i
 												class="sort-bar-mini-page-controller__icon fas fa-angle-right"></i>
 										</button>
-									</div>
+									</div> -->
 								</div>
 							</div>
 						</div>
@@ -177,11 +177,11 @@
 													<span>Yêu Thích</span>
 												</div>
 											</div>
-											<div class="search-item-result__item-discount">
+											<!-- <div class="search-item-result__item-discount">
 												<div class="search-item-result__item-discount-text">
 													<span>12%</span> GIẢM
 												</div>
-											</div>
+											</div> -->
 											<c:url value="/image?fname=${o.pImage}" var="imgUrl"></c:url>
 											<div class="search-item-result__item-overlay">
 												<c:if test="${fn:contains(o.pImage, 'https')}">
@@ -224,7 +224,9 @@
 												<span class="search-item-result__item-price">
 													₫${o.pPrice *1.2} </span>
 												<div class="search-item-result__item-price-saleoff">
-													<span> ₫${o.pPrice} </span>
+													<span> <fmt:formatNumber
+														type="number" pattern="#,###"
+														value="${o.pPrice}"></fmt:formatNumber>đ  </span>
 													<svg height="12" viewBox="0 0 20 12" width="20"
 														class="search-item-result__item-price-saleoff-icon">
                                                     <g fill="none"

@@ -20,7 +20,7 @@ import entity.OrderDetail;
 import entity.Shop;
 import entity.User;
 
-@WebServlet(urlPatterns = {"/shop-manager/order"})
+@WebServlet(urlPatterns = {"/admin/shop-manager/order"})
 public class ShopOrderManagementController extends HttpServlet {
 	OrderDetailDao orderDetailDao = new OrderDetailDao();
 	ShopDao shopDao = new ShopDao();
@@ -39,7 +39,7 @@ public class ShopOrderManagementController extends HttpServlet {
 		if (action == null) {
 			List<OrderDetail> listO = orderDetailDao.findAllByShopId(shop);
 			req.setAttribute("listO", listO);
-			RequestDispatcher rq = req.getRequestDispatcher("/views/shopOrderManagement.jsp");
+			RequestDispatcher rq = req.getRequestDispatcher("/views/AdminManager.jsp");
 			rq.forward(req, resp);
 		} else {
 			action = action.replaceAll("\\s\\s+", " ").trim();
@@ -55,6 +55,8 @@ public class ShopOrderManagementController extends HttpServlet {
 			
 			if (action.equals("Chờ shipper nhận đơn")) {
 				List<OrderDetail> listO = orderDetailDao.findAllByStatusOfShop(shop, 7);
+				List<OrderDetail> list = orderDetailDao.findAllByStatusOfShop(shop, 8);
+				listO.addAll(list);
 				displayHTML(listO, resp);
 			}
 

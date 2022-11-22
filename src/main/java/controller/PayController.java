@@ -95,7 +95,8 @@ public class PayController extends HttpServlet {
 		}
 		System.out.print(amount);
 		int iamount = (int) amount+10000;
-		orderId += "aaa"+orderDao.findIdOrder();
+		orderId += "shoppppp"+orderDao.findIdOrder();
+
 		//Date date = new Date(System.currentTimeMillis());
 		if (payment.equals("online")) {
 			

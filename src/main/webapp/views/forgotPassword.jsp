@@ -63,34 +63,29 @@ body {
 					<p>Change your password in three easy steps. This will help you
 						to secure your password!</p>
 					<ol class="list-unstyled">
-						<li><span class="text-primary text-medium">1. </span>Enter
-							your email address below.</li>
-						<li><span class="text-primary text-medium">2. </span>Our
-							system will send you an OTP to your email</li>
-						<li><span class="text-primary text-medium">3. </span>Enter the OTP on the 
-						next page</li>
+						<li><span class="text-primary text-medium">1. </span>Nhập email của bạn</li>
+						<li><span class="text-primary text-medium">2. </span>Mã OTP sẽ được gửi đến gmail của bạn</li>
+						<li><span class="text-primary text-medium">3. </span>Nhập Mã OTP để xác nhận quên mật khẩu</li>
 					</ol>
 				</div>
 				<form class="card mt-4" action="forgotPasswordEmail" method="post">
 					<div class="card-body">
 					<h3 style="color:red;">${mess}</h3>
 						<div class="form-group">
-							<label for="user-for-pass">Enter your username</label> <input
+							<label for="user-for-pass">Nhập tên username</label> <input
 								class="form-control" type="text" name="username"
 								id="user-for-pass" required="">
 						</div>
 						<div class="form-group">
-							<label for="email-for-pass">Enter your email address</label> <input
+							<label for="email-for-pass">Nhập email của bạn</label> <input
 								class="form-control" type="text" name="email" id="email-for-pass" required=""><small
-								class="form-text text-muted">Enter the registered email address . Then we'll
-								email a OTP to this address.</small>
+								class="form-text text-muted">Nhấn xác nhận OTP sẽ gửi đến email của bạn</small>
 						</div>
 						
 					</div>
 					<div class="card-footer">
-						<button class="btn btn-success" type="submit">Get New
-							Password</button>
-						<button class="btn btn-danger" type="submit">Back to
+						<button class="btn btn-success" type="submit">Submit</button>
+						<button onclick="location.href='/Shopee/login'"class="btn btn-danger" type="submit">Back to
 							Login</button>
 					</div>
 				</form>
