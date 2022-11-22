@@ -10,13 +10,13 @@ public class Product {
 	private String pImage;
 	private String pDescription;
 	private int pQuantity;
-	private Category category;
+	private Category category;	
+	private Shop shop;
 	private Date createAt;
 	private Date updateAt;
 	public Product() {
 		super();
 	}
-	
 	
 	public Product(int pId, int pQuantity) {
 		super();
