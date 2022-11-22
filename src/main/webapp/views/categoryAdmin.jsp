@@ -119,8 +119,8 @@
             <div class="details">
                 <div class="recentOrders">
                     <div class="cardHeader">
-                        <h2>Recent Orders</h2>
-                        <a href="#" class="btn">View All</a>
+                        <h2>Danh mục</h2>
+                        <!-- <a href="#" class="btn">Xem tất cả</a> -->
                     </div>
 
                     <table>
@@ -147,8 +147,8 @@
 									</c:if>
 								</td>
                                 <td class="customerEdit">
-                                    <a href="" onclick="editCategoryModal(${o.cId})" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                    <a href="" onclick="deleteCategoryModal(${o.cId})" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                    <a href="" onclick="editCategoryModal(${o.cId})" class="edit btn-link" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                    <a href="" onclick="deleteCategoryModal(${o.cId})" class="delete btn-link" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                 </td>
                             </tr>
                           </c:forEach>

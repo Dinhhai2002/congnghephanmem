@@ -62,7 +62,11 @@
                             <small></small>
                         </div>
                         <div class="authForm__group">
-                            <input id="address" name="address" type="text" class="authForm__input" placeholder="Nhập địa chỉ của bạn" >
+                            <input id="address" name="address" type="text" class="authForm__input" placeholder="Nhập địa chỉ tỉnh của bạn" >
+                            <small></small>
+                        </div>
+                        <div class="authForm__group">
+                            <input id="address" name="fullAddress" type="text" class="authForm__input" placeholder="Nhập địa chỉ đầy đủ của bạn" >
                             <small></small>
                         </div>
                         

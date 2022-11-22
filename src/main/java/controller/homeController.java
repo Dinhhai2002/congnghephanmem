@@ -43,7 +43,7 @@ public class homeController extends HttpServlet {
 		List<Category> listC = categoryDao.getAllCategory();
 
 		List<Product> list = productDao.getTop20Product();
-
+		
 		/*set data to jsp*/
 		//req.setAttribute("tag", index);
 		//req.setAttribute("endPage", endPage);

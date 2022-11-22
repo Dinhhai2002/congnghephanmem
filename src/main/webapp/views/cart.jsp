@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,7 +68,9 @@
                                             <td>
                                                 <img src="${map.value.product.pImage}">
                                             </td>
-                                            <td>${map.value.product.pPrice}</td>
+                                            <td><fmt:formatNumber
+														type="number" pattern="#,###"
+														value="${map.value.product.pPrice}"></fmt:formatNumber>đ </td>
                                             
                                                 <td class="align-middle">
                                                     <a href="/Shopee/member/cart-quantityincdec?action=sub&pId=${map.value.product.pId}"><button
@@ -76,7 +78,10 @@
                                             href="/Shopee/member/cart-quantityincdec?action=add&pId=${map.value.product.pId}"><button class="btnAdd">+</button></a></td>
                                            
                                             <td>
-                                                ${map.value.product.pPrice * map.value.count}
+                                            <fmt:formatNumber
+														type="number" pattern="#,###"
+														value="${map.value.product.pPrice * map.value.count}"></fmt:formatNumber>đ
+                                                
                                              </td>
                                             <td class="submit"><a href="/Shopee/member/cart-remove?pId=${map.value.product.pId}">Xóa</a></td>
                                         </tr>
@@ -90,7 +95,10 @@
                            
                        
                     </div>
+
+
                   	<c:choose>
+
 							<c:when test="${empty sessionScope.cart}">
 								<div style="text-align: center;" class="home-product-shipping">
 									<img
@@ -124,14 +132,17 @@
                                     value="${total + map.value.product.pPrice * map.value.count }"/>
                                     </c:forEach>
                                 <strong> 
-                                 ${total}vnđ</strong></li>
-                            <li class="list-item"><strong
+                                <fmt:formatNumber type="number" pattern="#,###" value="${total}"></fmt:formatNumber>đ</strong></li>
+														
+														
+                                
+                           <%--  <li class="list-item"><strong
                                 class="text-muted">Phí vận chuyển</strong><strong>10000 vnđ</strong></li>
                            <!--  <li class="list-item"><strong
                                 class="text-muted">VAT</strong><strong>10 $</strong></li> -->
                             <li class="list-item list-item-total"><strong
                                 class="text-muted">Tổng thanh toán</strong>
-                                <h5 class="font-weight-bold">${total + 10000}vnđ</h5></li>
+                                <h5 class="font-weight-bold">${total + 10000}vnđ</h5></li> --%>
                         </ul>
                         <a href="/Shopee/member/checkout"
                            class="btn_buy">Mua hàng</a>

@@ -93,7 +93,7 @@
                 <div class="card">
                     <div>
                         <div class="numbers">${totalShop}</div>
-                        <div class="cardName">Shops</div>
+                        <div class="cardName">Cửa hàng</div>
                     </div>
 
                     <div class="iconBx">
@@ -104,7 +104,7 @@
                 <div class="card">
                     <div>
                         <div class="numbers">${totalUser}</div>
-                        <div class="cardName">Users</div>
+                        <div class="cardName">Người dùng</div>
                     </div>
 
                     <div class="iconBx">
@@ -115,7 +115,7 @@
                 <div class="card">
                     <div>
                         <div class="numbers">${totalProduct}</div>
-                        <div class="cardName">Products</div>
+                        <div class="cardName">Sản phẩm</div>
                     </div>
 
                     <div class="iconBx">
@@ -123,36 +123,27 @@
                     </div>
                 </div>
 
-                <div class="card">
-                    <div>
-                        <div class="numbers">$7,842</div>
-                        <div class="cardName">Earning</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="cash-outline"></ion-icon>
-                    </div>
-                </div>
+               
             </div>
 
            <!-- ================ Order Details List ================= -->
            <div class="details">
                 <div class="recentOrders">
                     <div class="cardHeader">
-                        <h2>Recent Orders</h2>
-                        <a href="#" class="btn">View All</a>
+                        <h2>Đơn hàng</h2>
+                        
                     </div>
-                    <div class="flexWrapper">
+                    <%-- <div class="flexWrapper">
                     	<canvas id="chartElement" width="200" height="50"></canvas>
-                    </div>
+                    </div> --%>
 					
                     <table>
                         <thead>
                             <tr>
-                                <td>ORDER ID</td>
-                                <td>PRICE</td>
-                                <td>Payment</td>
-                                <td>Status</td>
+                                <td>Mã đơn hàng</td>
+                               
+                                <td>Giá tiền</td>
+                                <td>Trạng thái</td>
                             </tr>
                         </thead>
 
@@ -160,10 +151,10 @@
                         <c:forEach items="${listOrder}" var="o">
                        		<tr>
                                 <td>${o.id}</td>
-                                <td>${o.count}</td>
+                                
                                 <td>${o.totalPrice}</td>     
                                 <td>
-                                <c:if test="${o.status == 'OrderStatus [idStatus=1, nameStatus=Chờ xác nhận]'}">
+                                   <c:if test="${o.status == 'OrderStatus [idStatus=1, nameStatus=Chờ shop xác nhận]'}">
                                 	<span class="status pending">Chờ xác nhận</span>
                                 </c:if> 
                                 <c:if test="${o.status == 'OrderStatus [idStatus=2, nameStatus=Chờ lấy hàng]'}">
@@ -172,15 +163,28 @@
                                 <c:if test="${o.status == 'OrderStatus [idStatus=3, nameStatus=Đang giao]'}">
                                 	<span class="status inProgress">Đang giao</span>
                                 </c:if> 
-                                <c:if test="${o.status == 'OrderStatus [idStatus=4, nameStatus=Đã giao]'}">
+                                <c:if test="${o.status == 'OrderStatus [idStatus=4, nameStatus=Đã giao hàng]'}">
                                 	<span class="status delivered">Đã giao</span>
                                 </c:if>
-                                <c:if test="${o.status == 'OrderStatus [idStatus=5, nameStatus=Đã hủy]'}">
+                                <c:if test="${o.status == 'OrderStatus [idStatus=5, nameStatus=Khách đã hủy]'}">
                                 	<span class="status return">Đã hủy</span>
                                 </c:if> 
                                 <c:if test="${o.status == 'OrderStatus [idStatus=6, nameStatus=Trả hàng]'}">
                                 	<span class="status cancel">Trả hàng</span>
+                                </c:if> 
+                                <c:if test="${o.status == 'OrderStatus [idStatus=7, nameStatus=Chờ shipper nhận đơn]'}">
+                                	<span class="status cancel">Chờ nhận đơn</span>
+                                <c:if test="${o.status == 'OrderStatus [idStatus=8, nameStatus=Shipper nhận hàng]'}">
+                                	<span class="status cancel">Đã nhận hàng</span>
+                                <c:if test="${o.status == 'OrderStatus [idStatus=9, nameStatus=Đơn hàng đã giao dịch thành công]'}">
+                                	<span class="status cancel">Giao hàng thành công</span>
+                                <c:if test="${o.status == 'OrderStatus [idStatus=10, nameStatus=Shop đã hủy]'}">
+                                	<span class="status cancel">Shop đã hủy</span>
+                                </c:if> 
+                                </c:if> 
+                                </c:if> 
                                 </c:if>                           
+                                </td>                
                                 </td>
                                
                                 
@@ -194,14 +198,17 @@
                 <!-- ================= New Customers ================ -->
                 <div class="recentCustomers">
                     <div class="cardHeader">
-                        <h2>Recent Customers</h2>
+                        <h2>Người dùng</h2>
                     </div>
 			            <table>
 			                    <c:forEach items="${listUser}" var="o">
 			                        <tr>
+			                     
+			                        
 			                            <td width="60px">
 			                                <div class="imgBx"><img src="${o.uImage}" alt="${o.uImage}"></div>
 			                            </td>
+			                           
 			                            <td>
 			                                <h4>${o.uFullName} <br> <span>${o.uAddress}</span></h4>
 			                            </td>

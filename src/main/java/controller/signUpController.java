@@ -46,6 +46,7 @@ public class signUpController extends HttpServlet {
 		String email=request.getParameter("email");
 		String phoneNumber=request.getParameter("phoneNumber");
 		String address=request.getParameter("address");
+		String fullAddress=request.getParameter("fullAddress");
 		
 		RequestDispatcher dispatcher = null;
 		int otpvalue = 0;
@@ -119,6 +120,7 @@ public class signUpController extends HttpServlet {
 				mySession.setAttribute("password", BCrypt.hashpw(pass, BCrypt.gensalt(12)));
 				mySession.setAttribute("phoneNumber", phoneNumber);
 				mySession.setAttribute("address", address);
+				mySession.setAttribute("fullAddress", fullAddress);
 				response.sendRedirect("/Shopee/ValidateOtpSignup");
 				//request.setAttribute("status", "success");
 			}

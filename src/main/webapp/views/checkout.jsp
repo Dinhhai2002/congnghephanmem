@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+    <%@ include file="/taglib.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,7 +47,7 @@
                             <span>Số điện thoại</span>
                             <input type="text" value="${acc.uPhone}" id="phone" name="phone">
                              <span>Tỉnh/ Thành phố, Quận/Huyện, Phường/Xã</span>
-                            <input type="text" value="${acc.uAddress}" id="address" name="address" >
+                            <input type="text" value="${acc.uFullAddress}" id="address" name="address" >
                          <!--    <div class="row">
                                 <div class="col-4"><span>Expiry date:</span>
                                     <input placeholder="YY/MM">
@@ -81,10 +81,10 @@
                         <div class="row item">
                             <div class="col-4 align-self-center"><img class="img-fluid" src="${map.value.product.pImage}"></div>
                             <div class="col-8">
-     <!--  tien-->              <div class="row"><b>Đơn giá: ${map.value.product.pPrice}</b></div>
+     <!--  tien-->              <div class="row"><b>Đơn giá:<fmt:formatNumber type="number" pattern="#,###" value="${map.value.product.pPrice}"></fmt:formatNumber>vnđ </b></div>
                                 <div class="row text-muted">${map.value.product.pName}</div>
                                 <div class="row">Sô lượng:${map.value.count}</div>
-                                 <div class="row">Thành tiền:${map.value.product.pPrice * map.value.count}</div>
+                                 <div class="row">Thành tiền:<fmt:formatNumber type="number" pattern="#,###" value="${map.value.product.pPrice * map.value.count}"></fmt:formatNumber>vnđ</div>
                             </div>
                         </div>
                          </c:forEach>
@@ -98,9 +98,9 @@
 											<c:set var="total"
 											value="${total + map.value.product.pPrice * map.value.count }"/>
 											</c:forEach>
-                            <div class="col text-right"> ${total} vnđ</div>
+                            <div class="col text-right"><fmt:formatNumber type="number" pattern="#,###" value="${total}"></fmt:formatNumber>vnđ</div>
                         </div>
-                        <div class="row lower">
+                        <%-- <div class="row lower">
                             <div class="col text-left">Phí vận chuyển</div>
                             <div class="col text-right">10000 vnđ</div>
                         </div>
@@ -111,7 +111,7 @@
                        
                         <div class="row lower">
                             <div class="col text-left"><a href="#"><u>Thêm mã giảm giá</u></a></div>
-                        </div>
+                        </div> --%>
                         <input type="submit" value="Đặt hàng" />
                        <!--  <a href="Shopee/member/checkout" class="btn">Đặt hàng</a> -->
                         </form>
