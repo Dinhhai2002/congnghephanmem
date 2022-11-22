@@ -129,8 +129,6 @@ public class CartAddController extends HttpServlet{
 						httpSession.setAttribute("cart", map);
 			 		}
 				}
-				
-	
 	
 	@SuppressWarnings("unchecked")
 	private Map<Integer, CartItem> extracted(Object obj)

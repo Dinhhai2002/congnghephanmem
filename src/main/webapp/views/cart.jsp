@@ -132,9 +132,8 @@
                                     value="${total + map.value.product.pPrice * map.value.count }"/>
                                     </c:forEach>
                                 <strong> 
-                                <fmt:formatNumber type="number" pattern="#,###" value="${total}"></fmt:formatNumber>đ</strong></li>
-														
-														
+
+                                <fmt:formatNumber type="number" pattern="#,###" value="${total}"></fmt:formatNumber>đ</strong></li>						
                                 
                            <%--  <li class="list-item"><strong
                                 class="text-muted">Phí vận chuyển</strong><strong>10000 vnđ</strong></li>

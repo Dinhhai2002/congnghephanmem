@@ -30,7 +30,6 @@ public class connect {
 	public static void main(String[] args) {
 		try {
 			System.out.println(new connect().getConnection());
-			System.out.println(5000.0+100000.0);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
