@@ -9,7 +9,7 @@ function purchase(e) {
 	var html = ""; //declare this
 	var temp = ""; //declare this
 	$.ajax({
-		url: "/Shopee/shipper/order",
+		url: "/Shopee/admin/shipper/order",
 		type: 'GET',
 		contentType: 'application/json',
 		data: {
@@ -40,27 +40,7 @@ function purchase(e) {
 						html += `<td><button id="orderStatus" onclick="editStatus(this, ${result[i].order.orderId})" value="${result[i].id}">Xác nhận đã giao</button></td>`
 						html += `<td><button id="orderStatus" onclick="editStatus(this, ${result[i].order.orderId})" value="${result[i].id}">Khách không nhận</button></td>`
 					}
-					html += `<td>`
-                    html +=  `<h3 class="detail">Xem`
-                    html +=  `<ul class="navbarItem__user-list-detail">`
-                    html +=  `<li class="navbarItem__user-item">`
-                    html +=  `<a href="" class="navbarItem__user-link">`
-                    html +=  `Tên shop: ${result[i].order.shop.shopName}`
-                    html +=  `</a>`
-                    html +=  `</li>`
-                    html +=  `<li class="navbarItem__user-item">`
-                    html +=  `<a href="" class="navbarItem__user-link">`
-                    html +=  `Địa chỉ shop: ${result[i].order.shop.shopAddress}`
-                    html +=  `</a>`
-                    html +=  `</li>`
-                    html +=  `<li class="navbarItem__user-item">`
-                    html +=  `<a href="" class="navbarItem__user-link">`
-                    html +=  `Địa chỉ nhận hàng: ${result[i].order.uAddress}`
-                    html +=  `</a>`
-                    html +=  `</li>`
-                    html +=  `</ul>`
-                    html +=  `</h3>`                
-                    html +=  `</td>`	
+					
 
 					html += `</tr>`
 				}
@@ -130,7 +110,7 @@ function loadMore() {
 	/* tạo viên amount để Gọi và đếm classname là product */
 	var amount = document.getElementById("myTable").rows.length;
 	$.ajax({
-		url: "/Shopee/shipper/loadshipperorder", //send to Controller
+		url: "/Shopee/admin/shipper/loadshipperorder", //send to Controller
 		type: "get", //send it through get method
 		data: {
 			action: text,

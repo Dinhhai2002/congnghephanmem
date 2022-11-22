@@ -8,6 +8,7 @@ public class User {
 	private String uFullName;
 	private String uEmail;
 	private String uAddress;
+	private String uFullAddress;
 	private String uPassword;
 	private String uPhone;
 	private int idRole;
@@ -17,14 +18,15 @@ public class User {
 	public User() {
 		super();
 	}
-	public User(int uId, String uName, String uFullName, String uEmail, String uAddress, String uPassword,
-			String uPhone, int idRole, int isAccountGoogle, String uImage, Date createAt) {
+	public User(int uId, String uName, String uFullName, String uEmail, String uAddress, String uFullAddress,
+			String uPassword, String uPhone, int idRole, int isAccountGoogle, String uImage, Date createAt) {
 		super();
 		this.uId = uId;
 		this.uName = uName;
 		this.uFullName = uFullName;
 		this.uEmail = uEmail;
 		this.uAddress = uAddress;
+		this.uFullAddress = uFullAddress;
 		this.uPassword = uPassword;
 		this.uPhone = uPhone;
 		this.idRole = idRole;
@@ -61,6 +63,12 @@ public class User {
 	}
 	public void setuAddress(String uAddress) {
 		this.uAddress = uAddress;
+	}
+	public String getuFullAddress() {
+		return uFullAddress;
+	}
+	public void setuFullAddress(String uFullAddress) {
+		this.uFullAddress = uFullAddress;
 	}
 	public String getuPassword() {
 		return uPassword;
@@ -101,9 +109,9 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [uId=" + uId + ", uName=" + uName + ", uFullName=" + uFullName + ", uEmail=" + uEmail
-				+ ", uAddress=" + uAddress + ", uPassword=" + uPassword + ", uPhone=" + uPhone
-				+ ", idRole=" + idRole + ", isAccountGoogle=" + isAccountGoogle + ", uImage=" + uImage + ", createAt="
-				+ createAt + "]";
+				+ ", uAddress=" + uAddress + ", uFullAddress=" + uFullAddress + ", uPassword=" + uPassword + ", uPhone="
+				+ uPhone + ", idRole=" + idRole + ", isAccountGoogle=" + isAccountGoogle + ", uImage=" + uImage
+				+ ", createAt=" + createAt + "]";
 	}
 	
 }

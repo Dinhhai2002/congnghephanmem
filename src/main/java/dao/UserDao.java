@@ -87,10 +87,11 @@ public class UserDao {
                         rs.getString(5),
                         rs.getString(6),
                         rs.getString(7),
-                        rs.getInt(8),
+                        rs.getString(8),
                         rs.getInt(9),
-                        rs.getString(10),
-                       rs.getDate(11));
+                        rs.getInt(10),
+                        rs.getString(11),
+                       rs.getDate(12));
 
             }
         } catch (Exception e) {
@@ -160,16 +161,17 @@ public class UserDao {
 					rs = ps.executeQuery();
 					while (rs.next()) {			
 						return new User(rs.getInt(1),
-		                          rs.getString(2),
-		                          rs.getString(3),
-		                          rs.getString(4),
-		                          rs.getString(5),
-		                          rs.getString(6),
-		                          rs.getString(7),
-		                          rs.getInt(8),
-		                          rs.getInt(9),
-		                          rs.getString(10),
-		                         rs.getDate(11));
+								rs.getString(2),
+		                        rs.getString(3),
+		                        rs.getString(4),
+		                        rs.getString(5),
+		                        rs.getString(6),
+		                        rs.getString(7),
+		                        rs.getString(8),
+		                        rs.getInt(9),
+		                        rs.getInt(10),
+		                        rs.getString(11),
+		                       rs.getDate(12));
 					}
 				} catch (Exception e) {
 				}
@@ -195,8 +197,8 @@ public void editUser(String uId,String fullname,String email,String Address,Stri
  }
  
     
-    public void SignUp(String user,String fullname,String email,String Address,String password,String phoneNumber) {
-      	 String query = "insert into [user] values(?,?,?,?,?,?,1,0,null,getdate())";
+    public void SignUp(String user,String fullname,String email,String Address,String fullAddress,String password,String phoneNumber) {
+      	 String query = "insert into [user] values(?,?,?,?,?,?,?,1,0,null,getdate())";
            try {
                conn = new connect().getConnection();
                ps = conn.prepareStatement(query);
@@ -204,8 +206,10 @@ public void editUser(String uId,String fullname,String email,String Address,Stri
                ps.setString(2, fullname);
                ps.setString(3, email);
                ps.setString(4, Address);
-               ps.setString(5, password);
-               ps.setString(6, phoneNumber);
+               ps.setString(5, fullAddress);
+               
+               ps.setString(6, password);
+               ps.setString(7, phoneNumber);
                ps.executeUpdate();
                
            } catch (Exception e) {
@@ -226,16 +230,17 @@ public void editUser(String uId,String fullname,String email,String Address,Stri
               rs = ps.executeQuery();
               while (rs.next()) {
             	  return new User(rs.getInt(1),
-                          rs.getString(2),
+            			  rs.getString(2),
                           rs.getString(3),
                           rs.getString(4),
                           rs.getString(5),
                           rs.getString(6),
                           rs.getString(7),
-                          rs.getInt(8),
+                          rs.getString(8),
                           rs.getInt(9),
-                          rs.getString(10),
-                         rs.getDate(11));
+                          rs.getInt(10),
+                          rs.getString(11),
+                         rs.getDate(12));
               }
           } catch (Exception e) {
           }
@@ -333,16 +338,17 @@ public void editUser(String uId,String fullname,String email,String Address,Stri
             rs = ps.executeQuery();
             while (rs.next()) {
             	return new User(rs.getInt(1),
-                        rs.getString(2),
+            			rs.getString(2),
                         rs.getString(3),
                         rs.getString(4),
                         rs.getString(5),
                         rs.getString(6),
                         rs.getString(7),
-                        rs.getInt(8),
+                        rs.getString(8),
                         rs.getInt(9),
-                        rs.getString(10),
-                       rs.getDate(11));
+                        rs.getInt(10),
+                        rs.getString(11),
+                       rs.getDate(12));
             }
         } catch (Exception e) {
         }
@@ -359,16 +365,17 @@ public void editUser(String uId,String fullname,String email,String Address,Stri
                   rs = ps.executeQuery();
                   while (rs.next()) {
                 	  return new User(rs.getInt(1),
-                              rs.getString(2),
+                			  rs.getString(2),
                               rs.getString(3),
                               rs.getString(4),
                               rs.getString(5),
                               rs.getString(6),
                               rs.getString(7),
-                              rs.getInt(8),
+                              rs.getString(8),
                               rs.getInt(9),
-                              rs.getString(10),
-                             rs.getDate(11));
+                              rs.getInt(10),
+                              rs.getString(11),
+                             rs.getDate(12));
 
                   }
               } catch (Exception e) {
@@ -388,16 +395,17 @@ public void editUser(String uId,String fullname,String email,String Address,Stri
                 while (rs.next()) {
 
                 	return new User(rs.getInt(1),
-                            rs.getString(2),
+                			rs.getString(2),
                             rs.getString(3),
                             rs.getString(4),
                             rs.getString(5),
                             rs.getString(6),
                             rs.getString(7),
-                            rs.getInt(8),
+                            rs.getString(8),
                             rs.getInt(9),
-                            rs.getString(10),
-                           rs.getDate(11));
+                            rs.getInt(10),
+                            rs.getString(11),
+                           rs.getDate(12));
 
                 }
             } catch (Exception e) {
@@ -416,16 +424,17 @@ public void editUser(String uId,String fullname,String email,String Address,Stri
                 rs = ps.executeQuery();
                 while (rs.next()) {
                 	return new User(rs.getInt(1),
-                            rs.getString(2),
+                			rs.getString(2),
                             rs.getString(3),
                             rs.getString(4),
                             rs.getString(5),
                             rs.getString(6),
                             rs.getString(7),
-                            rs.getInt(8),
+                            rs.getString(8),
                             rs.getInt(9),
-                            rs.getString(10),
-                           rs.getDate(11));
+                            rs.getInt(10),
+                            rs.getString(11),
+                           rs.getDate(12));
                 }
             } catch (Exception e) {
             }
@@ -441,16 +450,17 @@ public void editUser(String uId,String fullname,String email,String Address,Stri
                 rs = ps.executeQuery();
                 while (rs.next()) {
                 	return new User(rs.getInt(1),
-                            rs.getString(2),
+                			rs.getString(2),
                             rs.getString(3),
                             rs.getString(4),
                             rs.getString(5),
                             rs.getString(6),
                             rs.getString(7),
-                            rs.getInt(8),
+                            rs.getString(8),
                             rs.getInt(9),
-                            rs.getString(10),
-                           rs.getDate(11));
+                            rs.getInt(10),
+                            rs.getString(11),
+                           rs.getDate(12));
                 }
             } catch (Exception e) {
             }
@@ -467,16 +477,17 @@ public void editUser(String uId,String fullname,String email,String Address,Stri
                 rs = ps.executeQuery();
                 while (rs.next()) {
                 	return new User(rs.getInt(1),
-                            rs.getString(2),
+                			rs.getString(2),
                             rs.getString(3),
                             rs.getString(4),
                             rs.getString(5),
                             rs.getString(6),
                             rs.getString(7),
-                            rs.getInt(8),
+                            rs.getString(8),
                             rs.getInt(9),
-                            rs.getString(10),
-                           rs.getDate(11));
+                            rs.getInt(10),
+                            rs.getString(11),
+                           rs.getDate(12));
                 }
             } catch (Exception e) {
             }
@@ -484,7 +495,7 @@ public void editUser(String uId,String fullname,String email,String Address,Stri
        }
        //login with google
        public void insertAcountGoogle(String user,String email,String image) {
-        	 String query = "insert into [user] values(?,null,?,null,null,null,1,1,?,getdate())";
+        	 String query = "insert into [user] values(?,null,?,null,null,null,null,1,1,?,getdate())";
              try {
                  conn = new connect().getConnection();
                  ps = conn.prepareStatement(query);

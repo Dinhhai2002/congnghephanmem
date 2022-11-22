@@ -6,7 +6,7 @@ function purchase(e) {
 	var html = ""; //declare this
 	var temp = ""; //declare this
 	$.ajax({
-		url: "/Shopee/shop-manager/order",
+		url: "/Shopee/admin/shop-manager/order",
 		type: 'GET',
 		contentType: 'application/json',
 		data: {
@@ -33,27 +33,7 @@ function purchase(e) {
 					if (s == 8) {
 						html += `<td><button id="orderStatus" onclick="editStatus(this)" value="${result[i].id}">Xác nhận shipper lấy hàng</button></td>`
 					}	
-					html += `<td>`
-                    html +=  `<h3 class="detail">Xem`
-                    html +=  `<ul class="navbarItem__user-list-detail">`
-                    html +=  `<li class="navbarItem__user-item">`
-                    html +=  `<a href="" class="navbarItem__user-link">`
-                    html +=  `Tên shop: ${result[i].order.shop.shopName}`
-                    html +=  `</a>`
-                    html +=  `</li>`
-                    html +=  `<li class="navbarItem__user-item">`
-                    html +=  `<a href="" class="navbarItem__user-link">`
-                    html +=  `Địa chỉ shop: ${result[i].order.shop.shopAddress}`
-                    html +=  `</a>`
-                    html +=  `</li>`
-                    html +=  `<li class="navbarItem__user-item">`
-                    html +=  `<a href="" class="navbarItem__user-link">`
-                    html +=  `Địa chỉ nhận hàng: ${result[i].order.uAddress}`
-                    html +=  `</a>`
-                    html +=  `</li>`
-                    html +=  `</ul>`
-                    html +=  `</h3>`                
-                    html +=  `</td>`
+					
 
 					html += `</tr>`
 				}

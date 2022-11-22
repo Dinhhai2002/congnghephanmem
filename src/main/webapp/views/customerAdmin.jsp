@@ -99,18 +99,21 @@
             <div class="details">
                 <div class="recentOrders">
                     <div class="cardHeader">
-                        <h2>Recent Orders</h2>
-                        <a href="#" class="btn">View All</a>
+                        <h2>Người dùng</h2>
+                        <a href="#" class="btn">Xem tất cả</a>
                     </div>
 
                     <table>
                         <thead>
                             <tr>
-                                <td>Name</td>
+                            	<td>Tên đăng nhập</td>
+                                <td>Họ và tên</td>
                                 <td>Email</td>
-                                <td>Address</td>
+                                <td>Điện thoại</td>
+                                <td>Địa chỉ</td>
+                                <td>Ngày tạo</td>
+                                <td>Thao tác</td>
                                 
-                                <td>Actions</td>
                             </tr>
                         </thead>
 
@@ -119,16 +122,17 @@
                         
                             <tr>
                                 <td>${o.uName}</td>
+                                <td>${o.uFullName}</td>
                                 <td>${o.uEmail}</td>
+                                <td>${o.uPhone}</td>
                                 <td>${o.uAddress}</td>
-                                
-                                <td>
-                                    <a href="#editEmployeeModal"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                    
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                <td>${o.createAt}</td>
+                                <td class="customerEdit">
+                                    <a href="" onclick="editEmployeeModal(${o.uId})"  class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                           			<a href="" onclick="deleteEmployeeModal(${o.uId})" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                 </td>
                             </tr>
-		</c:forEach>
+						</c:forEach>
                         </tbody>
                     </table>
                 </div>
