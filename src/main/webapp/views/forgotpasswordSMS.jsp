@@ -63,12 +63,9 @@ body {
 					<p>Change your password in three easy steps. This will help you
 						to secure your password!</p>
 					<ol class="list-unstyled">
-						<li><span class="text-primary text-medium">1. </span>Enter
-							your phone  below.</li>
-						<li><span class="text-primary text-medium">2. </span>Our
-							system will send you an OTP to your phone</li>
-						<li><span class="text-primary text-medium">3. </span>Enter the OTP on the 
-						next page</li>
+						<li><span class="text-primary text-medium">1. </span>Nhập số điện thoại của bạn</li>
+						<li><span class="text-primary text-medium">2. </span>Mã OTP sẽ được gửi đến số điện thoại của bạn</li>
+						<li><span class="text-primary text-medium">3. </span>Nhập Mã OTP để xác nhận quên mật khẩu</li>
 					</ol>
 				</div>
 				<form class="card mt-4" action="forgotPasswordSMS" method="post">
@@ -82,14 +79,13 @@ body {
 						<div class="form-group">
 							<label for="email-for-pass">Nhập số điện thoại</label> <input
 								class="form-control" type="text" name="phoneNumber" id="email-for-pass" required=""><small
-								class="form-text text-muted">Enter the registered email address . Then we'll
-								email a OTP to this address.</small>
+								class="form-text text-muted">Xác nhận mật khẩu sẽ được gửi đến</small>
 						</div>
 					</div>
 					<div class="card-footer">
 						<button class="btn btn-success" type="submit">Get New
 							Password</button>
-						<button class="btn btn-danger" type="submit">Back to
+						<button onclick="location.href='/Shopee/login'"class="btn btn-danger" type="submit">Back to
 							Login</button>
 					</div>
 				</form>

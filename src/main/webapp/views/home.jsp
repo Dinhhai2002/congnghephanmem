@@ -253,7 +253,9 @@
 												<span class="search-item-result__item-price">
 													₫${o.pPrice *1.2} </span>
 												<div class="search-item-result__item-price-saleoff">
-													<span> ₫${o.pPrice} </span>
+													<span> <fmt:formatNumber
+														type="number" pattern="#,###"
+														value="${o.pPrice}"></fmt:formatNumber>đ </span>
 													<svg height="12" viewBox="0 0 20 12" width="20"
 														class="search-item-result__item-price-saleoff-icon">
                                                     <g fill="none"

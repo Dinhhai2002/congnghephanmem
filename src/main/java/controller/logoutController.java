@@ -19,7 +19,7 @@ public class logoutController extends HttpServlet {
 		HttpSession session=req.getSession();
 		session.removeAttribute("acc");
 		session.removeAttribute("cart");
-		req.getRequestDispatcher("/home?index=1").forward(req, resp);
+		req.getRequestDispatcher("/home").forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

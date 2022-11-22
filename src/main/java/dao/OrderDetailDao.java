@@ -175,11 +175,12 @@ public class OrderDetailDao {
 
 	
 
-	public int countStatusByIdStatus(int id){
-		String query = "Select count(status) From [orderdetail]   where [status] =?";
+	public int countStatusByIdStatus(int status){
+		String query = "Select count(status) From [orderdetail] where [status]=?";
 		try {
 			conn = new connect().getConnection();
 	         ps = conn.prepareStatement(query);
+	         ps.setInt(1, status);
 	         rs = ps.executeQuery();
 	         while (rs.next()) {
 	          	return rs.getInt(1);
@@ -187,7 +188,7 @@ public class OrderDetailDao {
 	 		} catch (Exception e) {
 	 			// TODO: handle exception
 	 		}
-	 		return 0;
+	 	return -1;
 	}
 	public List<OrderDetail> findNext3Order(User user, int amount) {
 

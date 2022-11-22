@@ -99,7 +99,7 @@ public class loginController extends HttpServlet {
 					}
 					else if(a.getIdRole()==4)
 					{
-						resp.sendRedirect("/Shopee/shipper/order");
+						resp.sendRedirect("/Shopee/admin/shipper/order");
 					}
 					
 					System.out.print("success");

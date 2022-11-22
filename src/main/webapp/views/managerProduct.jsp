@@ -72,7 +72,7 @@
                                         		<c:if test="${fn:contains(shop.shopImage, 'https')}">
 													<img src="${shop.shopImage}" alt=" ${shop.shopName}">
 												</c:if>
-												<c:if test="${fn:contains(shop.shopImage, 'product')}">
+												<c:if test="${fn:contains(shop.shopImage, 'shop')}">
 													<img src="${imgUrl}" alt=" ${shop.shopImage}">
 												</c:if>
                                             </div>
@@ -99,7 +99,7 @@
                                         <a href="#"class="table-title-header" >
                                             Quản lý sản phẩm
                                         </a>
-                                        <a href="shop-manager/order" class="table-title-header"
+                                        <a href="/Shopee/admin/shop-manager/order" class="table-title-header"
                                             data-toggle="modal"> 
                                             <span>Đơn hàng</span></a>
                                         <a href="editShop?sid=${shop.shopId}" class="table-title-header"

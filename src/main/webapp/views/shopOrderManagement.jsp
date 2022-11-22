@@ -182,6 +182,7 @@
 											<td>${o.status.nameStatus}</td>
 											<c:set var = "s" value = "${o.status.idStatus}"/>
 											<c:choose>
+											
 												<c:when test="${s==1}">
 													<td><button id="orderStatus" onclick="editStatus(this)" value="${o.id}">Chốt đơn</button></td>
 													<td><button id="orderStatus" onclick="editStatus(this)" value="${o.id}">Từ chối</button></td>													
@@ -205,7 +206,7 @@
                                                     </li>
                                                     <li class="navbarItem__user-item">
                                                         <a href="" class="navbarItem__user-link">
-                                                            Địa chỉ nhận hàng: ${o.order.uAddress}
+                                                            Địa chỉ giao hàng: ${o.order.uAddress}
                                                         </a>
                                                     </li>
                                                 </ul>

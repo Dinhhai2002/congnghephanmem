@@ -95,7 +95,7 @@ form.addEventListener("submit",function(e)
 
     let isEmptyError=checkEmptyError([username,fullName,pass,repass,email,phoneNumber,address])
     let isEmailError=checkEmail(email);
-    let isLenghtUsername=checkLengthError(username,5,20);
+    let isLenghtUsername=checkLengthError(username,8,20);
     let isLenghtPassword=checkLengthError(pass,5,20);
     let isMatchpass=checkMatchPasswordError(pass,repass);
     if(isEmptyError|| isEmailError || isLenghtUsername || isLenghtPassword|| isMatchpass)

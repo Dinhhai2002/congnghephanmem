@@ -34,6 +34,7 @@ public class validateOtpSignUp extends HttpServlet {
 		String  email=(String) session.getAttribute("email");
 		String phoneNumber=(String) session.getAttribute("phoneNumber");
 		String address=(String) session.getAttribute("address");
+		String fullAddress=(String) session.getAttribute("fullAddress");
 		
 		
 		RequestDispatcher dispatcher=null;
@@ -42,7 +43,7 @@ public class validateOtpSignUp extends HttpServlet {
 		if (value==otp) 
 		{
 			UserDao userDao=new UserDao();
-			userDao.SignUp(username, fullname,email,address,pass,phoneNumber);
+			userDao.SignUp(username, fullname,email,address,fullAddress,pass,phoneNumber);
 				request.setAttribute("status", "success");
 			  response.sendRedirect("/Shopee/login");
 			

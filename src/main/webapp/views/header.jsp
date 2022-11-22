@@ -75,21 +75,15 @@ window.onpageshow = function(evt) {
                             <ul class="navbar__list flexible-box">
                                 <c:if test="${sessionScope.acc.idRole==3}">
                                 <li class="navbar__item">
-                                    <a href="" class="navbar__item-link medium-text">
+                                    <a href="/Shopee/shop-manager" class="navbar__item-link medium-text">
                                         managerProduct
                                     </a>
                                 </li> 
                             </c:if>
-                            <c:if test="${sessionScope.acc.idRole==2}">
-                                <li class="navbar__item">
-                                    <a href="" class="navbar__item-link medium-text">
-                                        Admin
-                                    </a>
-                                </li> 
-                            </c:if>
+                            
                             <c:if test="${sessionScope.acc.idRole==4}">
                                 <li class="navbar__item">
-                                    <a href="" class="navbar__item-link medium-text">
+                                    <a href="/Shopee/shipper/order" class="navbar__item-link medium-text">
                                         Shipper
                                     </a>
                                 </li> 

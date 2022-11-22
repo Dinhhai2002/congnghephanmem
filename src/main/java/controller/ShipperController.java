@@ -20,7 +20,7 @@ import entity.OrderDetail;
 import entity.Shop;
 import entity.User;
 
-@WebServlet(urlPatterns = {"/shipper/order"})
+@WebServlet(urlPatterns = {"/admin/shipper/order"})
 public class ShipperController extends HttpServlet{
 	OrderDetailDao orderDetailDao = new OrderDetailDao();
 	ShopDao shopDao = new ShopDao();
@@ -37,7 +37,7 @@ public class ShipperController extends HttpServlet{
 		if (action == null) {
 			List<OrderDetail> listO = orderDetailDao.findAllByStatus(7);
 			req.setAttribute("listO", listO);
-			RequestDispatcher rq = req.getRequestDispatcher("/views/shipper.jsp");
+			RequestDispatcher rq = req.getRequestDispatcher("/views/ShipperAdmin.jsp");
 			rq.forward(req, resp);
 		} else {
 			action = action.replaceAll("\\s\\s+", " ").trim();

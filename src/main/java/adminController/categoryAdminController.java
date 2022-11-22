@@ -14,7 +14,7 @@ import dao.CategoryDao;
 import dao.UserDao;
 import entity.Category;
 
-@WebServlet(urlPatterns="/category")
+@WebServlet(urlPatterns="/admin/category")
 public class categoryAdminController extends HttpServlet{
 
 	/**
@@ -40,7 +40,6 @@ public class categoryAdminController extends HttpServlet{
 		req.setAttribute("listCategory", listCategory);
 		RequestDispatcher rq=req.getRequestDispatcher("/views/categoryAdmin.jsp");
 		rq.forward(req, resp);
-		super.doGet(req, resp);
 	}
 
 	@Override
