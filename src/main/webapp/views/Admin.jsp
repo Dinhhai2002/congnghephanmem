@@ -32,7 +32,7 @@
                 </li>
 
                 <li>
-                    <a href="/Shopee/customer">
+                    <a href="/Shopee/admin/customer">
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
                         </span>
@@ -41,15 +41,22 @@
                 </li>
 
                 <li>
-                    <a href="/Shopee/category">
+                    <a href="/Shopee/admin/category">
                         <span class="icon">
                             <ion-icon name="chatbubble-outline"></ion-icon>
                         </span>
                         <span class="title">Quản lí danh mục</span>
                     </a>
                 </li>
-
-               
+                
+                <li>
+                    <a href="/Shopee/admin/product">
+                        <span class="icon">
+                            <ion-icon name="chatbubble-outline"></ion-icon>
+                        </span>
+                        <span class="title">Quản lí sản phẩm</span>
+                    </a>
+                </li>
 
                 <li>
                     <a href="/Shopee/login">

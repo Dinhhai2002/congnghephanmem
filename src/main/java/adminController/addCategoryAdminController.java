@@ -19,7 +19,7 @@ import dao.CategoryDao;
 import entity.Category;
 import utils.Constant;
 
-@WebServlet(urlPatterns = {"/addCategoryAdmin"})
+@WebServlet(urlPatterns = {"/admin/category/add"})
 public class addCategoryAdminController extends HttpServlet{
 		/**
 	 * 

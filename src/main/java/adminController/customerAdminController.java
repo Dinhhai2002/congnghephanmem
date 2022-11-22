@@ -17,7 +17,7 @@ import entity.OrderDetail;
 import entity.User;
 
 
-@WebServlet(urlPatterns="/customer")
+@WebServlet(urlPatterns="/admin/customer")
 public class customerAdminController  extends HttpServlet{
 	/**
 	 * 

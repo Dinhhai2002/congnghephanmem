@@ -38,11 +38,10 @@ public class ProductAddController extends HttpServlet {
 		Category category = new Category();
 		Shop shop = new Shop();
 		int dem = 0;
-		final int MAX_FILE_SIZE = 1024 * 1024 * 40; // 40MB
+		
 		DiskFileItemFactory diskFileItemFactory = new DiskFileItemFactory();
 		ServletFileUpload servletFileUpload = new ServletFileUpload(diskFileItemFactory);
 		servletFileUpload.setHeaderEncoding("utf-8");
-		servletFileUpload.setFileSizeMax(MAX_FILE_SIZE);
 		try {
 			resp.setContentType("text/html");
 			resp.setCharacterEncoding("UTF-8");
@@ -101,7 +100,7 @@ public class ProductAddController extends HttpServlet {
 				int id = a.getuId();
 				int shopId = shopDao.getShopIdByuId(id);
 				shop = shopDao.findOne(shopId);
-				product.setShop(shop);
+				
 				productDao.insertProduct(product);
 				resp.sendRedirect("shop-manager");
 			}

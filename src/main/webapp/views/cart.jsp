@@ -95,7 +95,10 @@
                            
                        
                     </div>
-                  <c:choose>
+
+
+                  	<c:choose>
+
 							<c:when test="${empty sessionScope.cart}">
 								<div style="text-align: center;" class="home-product-shipping">
 									<img

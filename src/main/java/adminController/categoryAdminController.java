@@ -14,7 +14,7 @@ import dao.CategoryDao;
 import dao.UserDao;
 import entity.Category;
 
-@WebServlet(urlPatterns="/category")
+@WebServlet(urlPatterns="/admin/category")
 public class categoryAdminController extends HttpServlet{
 
 	/**
