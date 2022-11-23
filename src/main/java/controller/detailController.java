@@ -19,7 +19,7 @@ import entity.Product;
 import entity.User;
 import entity.evaluate;
 
-@WebServlet(urlPatterns="/detail")
+@WebServlet(urlPatterns="/product/detail")
 public class detailController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
