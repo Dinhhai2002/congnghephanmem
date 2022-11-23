@@ -96,7 +96,7 @@
 
 									</div>
 									<div class="modal-footer">
-										<a href="/Shopee/shop-manager" type="button"
+										<a href="/Shopee/admin/shop-manager" type="button"
 											class="btn btn-default" data-dismiss="modal">Cancel</a> <input
 											type="submit" class="btn btn-info" value="Save">
 									</div>

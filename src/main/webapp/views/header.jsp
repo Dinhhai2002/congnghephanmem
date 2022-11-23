@@ -17,7 +17,7 @@ window.onpageshow = function(evt) {
                   			<c:if test="${sessionScope.acc!=null}">
                             <c:if test="${sessionScope.acc.idRole==3}">
                                 <li class="navbar__item">
-                                    <a href="/Shopee/shop-manager" class="navbar__item-link">
+                                    <a href="/Shopee/admin/shop-manager" class="navbar__item-link">
                                         Kênh Người Bán
                                     </a>
                                 </li>

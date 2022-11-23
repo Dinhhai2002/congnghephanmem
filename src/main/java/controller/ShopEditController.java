@@ -20,7 +20,7 @@ import dao.ShopDao;
 import entity.Shop;
 import utils.Constant;
 
-@WebServlet(urlPatterns = {"/editShop"})
+@WebServlet(urlPatterns = {"/admin/shop-manager/editShop"})
 public class ShopEditController extends HttpServlet {
 	ShopDao shopDao = new ShopDao();
 	@Override

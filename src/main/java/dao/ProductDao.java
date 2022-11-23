@@ -44,7 +44,9 @@ public class ProductDao {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				CategoryDao categoryDao = new CategoryDao();
+				ShopDao shopDao = new ShopDao();
 				Category category = categoryDao.findOne(rs.getInt("cateId"));
+				Shop shop = shopDao.findOne(rs.getInt("shopId"));
 
 				Product product = new Product();
 				product.setpId(rs.getInt("pId"));
@@ -54,6 +56,7 @@ public class ProductDao {
 				product.setpDescription(rs.getString("pDescription"));
 				product.setpQuantity(rs.getInt("pQuantity"));
 				product.setCategory(category);
+				product.setShop(shop);
 				products.add(product);
 			}
 		} catch (Exception e) {
@@ -71,8 +74,10 @@ public class ProductDao {
 			ps.setString(1, cateId);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				CategoryDao categoryDao = new CategoryDao();				
-				Category category = categoryDao.findOne(rs.getInt("cateId"));			
+				CategoryDao categoryDao = new CategoryDao();
+				ShopDao shopDao = new ShopDao();
+				Category category = categoryDao.findOne(rs.getInt("cateId"));
+				Shop shop = shopDao.findOne(rs.getInt("shopId"));
 
 				Product product = new Product();
 				product.setpId(rs.getInt("pId"));
@@ -82,6 +87,7 @@ public class ProductDao {
 				product.setpDescription(rs.getString("pDescription"));
 				product.setpQuantity(rs.getInt("pQuantity"));
 				product.setCategory(category);
+				product.setShop(shop);
 				products.add(product);
 			}
 		} catch (Exception e) {
@@ -117,7 +123,9 @@ public class ProductDao {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				CategoryDao categoryDao = new CategoryDao();
+				ShopDao shopDao = new ShopDao();
 				Category category = categoryDao.findOne(rs.getInt("cateId"));
+				Shop shop = shopDao.findOne(rs.getInt("shopId"));
 
 				Product product = new Product();
 				product.setpId(rs.getInt("pId"));
@@ -126,8 +134,9 @@ public class ProductDao {
 				product.setpImage(rs.getString("pImage"));
 				product.setpDescription(rs.getString("pDescription"));
 				product.setpQuantity(rs.getInt("pQuantity"));
-				product.setCategory(category);				
-				//product.setCreateAt(rs.getDate("createAt"));
+				product.setCategory(category);
+				product.setShop(shop);
+				// product.setCreateAt(rs.getDate("createAt"));
 				products.add(product);
 			}
 		} catch (Exception e) {
@@ -144,7 +153,9 @@ public class ProductDao {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				CategoryDao categoryDao = new CategoryDao();
+				ShopDao shopDao = new ShopDao();
 				Category category = categoryDao.findOne(rs.getInt("cateId"));
+				Shop shop = shopDao.findOne(rs.getInt("shopId"));
 
 				Product product = new Product();
 				product.setpId(rs.getInt("pId"));
@@ -154,7 +165,8 @@ public class ProductDao {
 				product.setpDescription(rs.getString("pDescription"));
 				product.setpQuantity(rs.getInt("pQuantity"));
 				product.setCategory(category);
-				product.setCreateAt(rs.getDate("createAt"));
+				product.setShop(shop);
+				// product.setCreateAt(rs.getDate("createAt"));
 				return product;
 			}
 		} catch (Exception e) {
@@ -225,7 +237,9 @@ public class ProductDao {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				CategoryDao categoryDao = new CategoryDao();
+				ShopDao shopDao = new ShopDao();
 				Category category = categoryDao.findOne(rs.getInt("cateId"));
+				Shop shop = shopDao.findOne(rs.getInt("shopId"));
 
 				Product product = new Product();
 				product.setpId(rs.getInt("pId"));
@@ -235,7 +249,8 @@ public class ProductDao {
 				product.setpDescription(rs.getString("pDescription"));
 				product.setpQuantity(rs.getInt("pQuantity"));
 				product.setCategory(category);
-				//product.setCreateAt(rs.getDate("createAt"));
+				product.setShop(shop);
+				// product.setCreateAt(rs.getDate("createAt"));
 				products.add(product);
 			}
 		} catch (Exception e) {
@@ -256,7 +271,9 @@ public class ProductDao {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				CategoryDao categoryDao = new CategoryDao();
+				ShopDao shopDao = new ShopDao();
 				Category category = categoryDao.findOne(rs.getInt("cateId"));
+				Shop shop = shopDao.findOne(rs.getInt("shopId"));
 
 				Product product = new Product();
 				product.setpId(rs.getInt("pId"));
@@ -266,7 +283,42 @@ public class ProductDao {
 				product.setpDescription(rs.getString("pDescription"));
 				product.setpQuantity(rs.getInt("pQuantity"));
 				product.setCategory(category);
-				//product.setCreateAt(rs.getDate("createAt"));
+				product.setShop(shop);
+				// product.setCreateAt(rs.getDate("createAt"));
+				products.add(product);
+			}
+		} catch (Exception e) {
+		}
+		return products;
+	}
+	
+	public List<Product> pagingProductByShopId(int shopId, int index) {
+		List<Product> products = new ArrayList<>();
+		String query = "select * from product where shopId = ? order by pId offset ? rows fetch next ? rows only";
+
+		try {
+			conn = new connect().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, shopId);
+			ps.setInt(2, (index - 1) * pageSize);
+			ps.setInt(3, pageSize);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				CategoryDao categoryDao = new CategoryDao();
+				ShopDao shopDao = new ShopDao();
+				Category category = categoryDao.findOne(rs.getInt("cateId"));
+				Shop shop = shopDao.findOne(rs.getInt("shopId"));
+
+				Product product = new Product();
+				product.setpId(rs.getInt("pId"));
+				product.setpName(rs.getString("pName"));
+				product.setpPrice(rs.getInt("pPrice"));
+				product.setpImage(rs.getString("pImage"));
+				product.setpDescription(rs.getString("pDescription"));
+				product.setpQuantity(rs.getInt("pQuantity"));
+				product.setCategory(category);
+				product.setShop(shop);
+				// product.setCreateAt(rs.getDate("createAt"));
 				products.add(product);
 			}
 		} catch (Exception e) {
@@ -286,7 +338,9 @@ public class ProductDao {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				CategoryDao categoryDao = new CategoryDao();
+				ShopDao shopDao = new ShopDao();
 				Category category = categoryDao.findOne(rs.getInt("cateId"));
+				Shop shop = shopDao.findOne(rs.getInt("shopId"));
 
 				Product product = new Product();
 				product.setpId(rs.getInt("pId"));
@@ -296,7 +350,8 @@ public class ProductDao {
 				product.setpDescription(rs.getString("pDescription"));
 				product.setpQuantity(rs.getInt("pQuantity"));
 				product.setCategory(category);
-				product.setCreateAt(rs.getDate("createAt"));
+				product.setShop(shop);
+				// product.setCreateAt(rs.getDate("createAt"));
 				products.add(product);
 			}
 		} catch (Exception e) {
@@ -305,7 +360,7 @@ public class ProductDao {
 	}
 
 	public void insertProduct(Product product) {
-		String query = "insert into product values(?,?,?,?,?,?,default,null)";
+		String query = "insert into product values(?,?,?,?,?,?,?,default,null)";
 		try {
 			conn = new connect().getConnection();
 			ps = conn.prepareStatement(query);
@@ -315,6 +370,7 @@ public class ProductDao {
 			ps.setString(4, product.getpDescription());
 			ps.setInt(5, product.getpQuantity());
 			ps.setInt(6, product.getCategory().getcId());
+			ps.setInt(7, product.getShop().getShopId());
 			ps.executeUpdate();
 
 		} catch (Exception e) {
@@ -384,7 +440,9 @@ public class ProductDao {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				CategoryDao categoryDao = new CategoryDao();
+				ShopDao shopDao = new ShopDao();
 				Category category = categoryDao.findOne(rs.getInt("cateId"));
+				Shop shop = shopDao.findOne(rs.getInt("shopId"));
 
 				Product product = new Product();
 				product.setpId(rs.getInt("pId"));
@@ -394,6 +452,7 @@ public class ProductDao {
 				product.setpDescription(rs.getString("pDescription"));
 				product.setpQuantity(rs.getInt("pQuantity"));
 				product.setCategory(category);
+				product.setShop(shop);
 				// product.setCreateAt(rs.getDate("createAt"));
 				products.add(product);
 			}
@@ -412,7 +471,9 @@ public class ProductDao {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				CategoryDao categoryDao = new CategoryDao();
+				ShopDao shopDao = new ShopDao();
 				Category category = categoryDao.findOne(rs.getInt("cateId"));
+				Shop shop = shopDao.findOne(rs.getInt("shopId"));
 
 				Product product = new Product();
 				product.setpId(rs.getInt("pId"));
@@ -422,6 +483,7 @@ public class ProductDao {
 				product.setpDescription(rs.getString("pDescription"));
 				product.setpQuantity(rs.getInt("pQuantity"));
 				product.setCategory(category);
+				product.setShop(shop);
 				// product.setCreateAt(rs.getDate("createAt"));
 				products.add(product);
 			}
@@ -442,7 +504,9 @@ public class ProductDao {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				CategoryDao categoryDao = new CategoryDao();
+				ShopDao shopDao = new ShopDao();
 				Category category = categoryDao.findOne(rs.getInt("cateId"));
+				Shop shop = shopDao.findOne(rs.getInt("shopId"));
 
 				Product product = new Product();
 				product.setpId(rs.getInt("pId"));
@@ -452,6 +516,7 @@ public class ProductDao {
 				product.setpDescription(rs.getString("pDescription"));
 				product.setpQuantity(rs.getInt("pQuantity"));
 				product.setCategory(category);
+				product.setShop(shop);
 				// product.setCreateAt(rs.getDate("createAt"));
 				products.add(product);
 			}
@@ -471,7 +536,9 @@ public class ProductDao {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				CategoryDao categoryDao = new CategoryDao();
+				ShopDao shopDao = new ShopDao();
 				Category category = categoryDao.findOne(rs.getInt("cateId"));
+				Shop shop = shopDao.findOne(rs.getInt("shopId"));
 
 				Product product = new Product();
 				product.setpId(rs.getInt("pId"));
@@ -481,6 +548,7 @@ public class ProductDao {
 				product.setpDescription(rs.getString("pDescription"));
 				product.setpQuantity(rs.getInt("pQuantity"));
 				product.setCategory(category);
+				product.setShop(shop);
 				// product.setCreateAt(rs.getDate("createAt"));
 				products.add(product);
 			}
@@ -501,7 +569,9 @@ public class ProductDao {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				CategoryDao categoryDao = new CategoryDao();
+				ShopDao shopDao = new ShopDao();
 				Category category = categoryDao.findOne(rs.getInt("cateId"));
+				Shop shop = shopDao.findOne(rs.getInt("shopId"));
 
 				Product product = new Product();
 				product.setpId(rs.getInt("pId"));
@@ -511,6 +581,7 @@ public class ProductDao {
 				product.setpDescription(rs.getString("pDescription"));
 				product.setpQuantity(rs.getInt("pQuantity"));
 				product.setCategory(category);
+				product.setShop(shop);
 				// product.setCreateAt(rs.getDate("createAt"));
 				products.add(product);
 			}
@@ -529,7 +600,9 @@ public class ProductDao {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				CategoryDao categoryDao = new CategoryDao();
+				ShopDao shopDao = new ShopDao();
 				Category category = categoryDao.findOne(rs.getInt("cateId"));
+				Shop shop = shopDao.findOne(rs.getInt("shopId"));
 
 				Product product = new Product();
 				product.setpId(rs.getInt("pId"));
@@ -539,7 +612,8 @@ public class ProductDao {
 				product.setpDescription(rs.getString("pDescription"));
 				product.setpQuantity(rs.getInt("pQuantity"));
 				product.setCategory(category);
-				product.setCreateAt(rs.getDate("createAt"));
+				product.setShop(shop);
+				// product.setCreateAt(rs.getDate("createAt"));
 				products.add(product);
 			}
 		} catch (Exception e) {
