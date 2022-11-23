@@ -99,10 +99,10 @@
                                         <a href="#"class="table-title-header" >
                                             Quản lý sản phẩm
                                         </a>
-                                        <a href="/Shopee/admin/shop-manager/order" class="table-title-header"
+                                        <a href="shop-manager/order" class="table-title-header"
                                             data-toggle="modal"> 
                                             <span>Đơn hàng</span></a>
-                                        <a href="editShop?sid=${shop.shopId}" class="table-title-header"
+                                        <a href="shop-manager/editShop?sid=${shop.shopId}" class="table-title-header"
                                             data-toggle="modal"> 
                                             <span>Chỉnh sửa thông tin shop</span></a>
                                     </div>

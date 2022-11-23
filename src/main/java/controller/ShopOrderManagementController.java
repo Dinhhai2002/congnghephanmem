@@ -65,12 +65,12 @@ public class ShopOrderManagementController extends HttpServlet {
 				displayHTML(listO, resp);
 			}
 
-			if (action.equals("Đang giao")) {
+			if (action.equals("Đang đi giao")) {
 				List<OrderDetail> listO = orderDetailDao.findAllByStatusOfShop(shop, 3);
 				displayHTML(listO, resp);
 			}
 
-			if (action.equals("Đã giao")) {
+			if (action.equals("Đã đi giao")) {
 				List<OrderDetail> listO = orderDetailDao.findAllByStatusOfShop(shop, 4);
 				List<OrderDetail> list = orderDetailDao.findAllByStatusOfShop(shop, 9);
 				listO.addAll(list);
