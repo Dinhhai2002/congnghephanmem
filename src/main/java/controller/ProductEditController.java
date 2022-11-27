@@ -19,26 +19,35 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import dao.CategoryDao;
 import dao.ProductDao;
 import dao.ShopDao;
-import dao.UserDao;
 import entity.Category;
 import entity.Product;
 import entity.Shop;
 import entity.User;
 import utils.Constant;
 
-@WebServlet(urlPatterns = { "/admin/addP" })
-public class ProductAddController extends HttpServlet {
+@WebServlet(urlPatterns = { "/admin/editP" })
+public class ProductEditController extends HttpServlet {
 	ProductDao productDao = new ProductDao();
 	CategoryDao cateDao = new CategoryDao();
 	ShopDao shopDao = new ShopDao();
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setContentType("text/html");
+		resp.setCharacterEncoding("UTF-8");
+		req.setCharacterEncoding("UTF-8");
+		int id = Integer.parseInt(req.getParameter("id"));
+		Product p = productDao.findOne(id);
+		List<Category> listC = cateDao.getAllCategory();
 
+		req.setAttribute("product", p);
+		req.setAttribute("listC", listC);
+		req.getRequestDispatcher("/views/EditProduct.jsp").forward(req, resp);
+	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Product product = new Product();
 		Category category = new Category();
 		Shop shop = new Shop();
-		int dem = 0;
-		
 		DiskFileItemFactory diskFileItemFactory = new DiskFileItemFactory();
 		ServletFileUpload servletFileUpload = new ServletFileUpload(diskFileItemFactory);
 		servletFileUpload.setHeaderEncoding("utf-8");
@@ -48,7 +57,9 @@ public class ProductAddController extends HttpServlet {
 			req.setCharacterEncoding("UTF-8");
 			List<FileItem> items = servletFileUpload.parseRequest(req);
 			for (FileItem item : items) {
-				if (item.getFieldName().equals("name")) {
+				if (item.getFieldName().equals("id")) {
+					product.setpId(Integer.parseInt(item.getString("utf-8")));
+				} else if (item.getFieldName().equals("name")) {
 					product.setpName(item.getString("utf-8"));
 				} else if (item.getFieldName().equals("price")) {
 					String price = item.getString("utf-8");
@@ -76,8 +87,9 @@ public class ProductAddController extends HttpServlet {
 							product.setpImage("product/" + fileName);
 						}
 					} else {
-						dem++;
+						product.setpImage(null);
 					}
+
 				}
 			}
 			HttpSession session = req.getSession();
@@ -86,34 +98,29 @@ public class ProductAddController extends HttpServlet {
 			int shopId = shopDao.getShopIdByuId(id);
 			shop = shopDao.findOne(shopId);
 			product.setShop(shop);
-			if (dem != 0) {
-				List<Product> list = productDao.getProductByShopId(shopId);
-				List<Category> listC = cateDao.getAllCategory();
-				req.setAttribute("listP", list);
-				req.setAttribute("listC", listC);
-				req.setAttribute("mess", "Thêm không thành công! Vui lòng thêm hình ảnh sản phẩm");
-				req.getRequestDispatcher("/views/managerProduct.jsp").forward(req, resp);
-			}
-			else if(productDao.isProductExist(product.getpName(), shop.getShopId())>0) {
-				List<Product> list = productDao.getProductByShopId(shopId);
-				List<Category> listC = cateDao.getAllCategory();
-				req.setAttribute("listP", list);
-				req.setAttribute("listC", listC);
-				req.setAttribute("mess", "Sản phẩm đã tồn tại! Vui lòng kiểm tra lại");
-				req.getRequestDispatcher("/views/managerProduct.jsp").forward(req, resp);
-			}
-
-			else {
-				productDao.insertProduct(product);
-				resp.sendRedirect("shop-manager");
-			}
-
+			productDao.editUpdateProduct(product);
+			resp.sendRedirect("shop-manager");
 		} catch (FileUploadException e) {
 			e.printStackTrace();
-			
+			int id = Integer.parseInt(req.getParameter("id"));
+			Product p = productDao.findOne(id);
+			List<Category> listC = cateDao.getAllCategory();
+
+			req.setAttribute("product", p);
+			req.setAttribute("listC", listC);
+			req.setAttribute("mess", "Chỉnh sửa không thành công");
+			req.getRequestDispatcher("/views/EditProduct.jsp").forward(req, resp);
 		} catch (Exception e) {
 			e.printStackTrace();
+			int id = Integer.parseInt(req.getParameter("id"));
+			Product p = productDao.findOne(id);
+			List<Category> listC = cateDao.getAllCategory();
+
+			req.setAttribute("product", p);
+			req.setAttribute("listC", listC);
+			req.setAttribute("mess", "Chỉnh sửa không thành công");
+			req.getRequestDispatcher("/views/EditProduct.jsp").forward(req, resp);
 		}
 	}
-
+	
 }
