@@ -177,7 +177,7 @@ window.onpageshow = function(evt) {
                                     <i class='bx bx-chevron-left' ></i>
                                 </a>
                             </div>
-                            <form action="searchproduct" method="Get" class="header-with-search__search-section">
+                            <form action="/Shopee/product/searchproduct" method="Get" class="header-with-search__search-section">
                                 <div class="searchbar">
                                     <div class="searchbar__main">
                                         <div class="searchbar-input">

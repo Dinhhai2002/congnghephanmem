@@ -16,7 +16,7 @@ import dao.ProductDao;
 import entity.Category;
 import entity.Product;
 
-@WebServlet(urlPatterns="/searchproduct")
+@WebServlet(urlPatterns="/product/searchproduct")
 
 public class SearchController extends HttpServlet {
 	ProductDao productDao=new ProductDao();
