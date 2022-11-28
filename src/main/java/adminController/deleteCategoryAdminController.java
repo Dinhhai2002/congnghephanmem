@@ -21,7 +21,7 @@ public class deleteCategoryAdminController extends HttpServlet{
 		req.setCharacterEncoding("UTF-8");
 		int cId = Integer.parseInt(req.getParameter("id"));
 		cateDao.deleteCategory(cId);
-		resp.sendRedirect("category");
+		resp.sendRedirect("/Shopee/admin/category");
 	}
 	
 }

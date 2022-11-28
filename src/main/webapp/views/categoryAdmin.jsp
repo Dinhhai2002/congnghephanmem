@@ -101,7 +101,7 @@
 
             <!-- ======================= Cards ================== -->
             <div class="cardBox">
-                    <form role="form" action="addCategoryAdmin" method="post"
+                    <form role="form" action="category/add" method="post"
                          enctype="multipart/form-data">
                 <div class="form-group">
                 <label>Tên danh mục:</label> <input class="form-control"
@@ -165,12 +165,13 @@
     <div id="addEmployeeModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="add" method="post">
+                <form action="category/add" method="post" enctype="multipart/form-data">
                     <div class="modal-header">						
                         <h4 class="modal-title">Add Product</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
-                    <div class="modal-body">					
+                    <div class="modal-body">
+                    <input id="editId" name="id" value="0" hidden="">					
                         <div class="form-group">
                             <label>Name</label>
                             <input name="name" type="text" class="form-control" required>
@@ -213,7 +214,7 @@
     <div id="editCategoryModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="editcategory" method="post" enctype="multipart/form-data">
+                <form action="category/edit" method="post" enctype="multipart/form-data">
                     <div class="modal-header">						
                         <h4 class="modal-title">Chỉnh sửa danh mục</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -245,8 +246,7 @@
     <div id="deleteCategoryModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="deletecategory" method="post">
-
+                <form action="category/delete" method="post">
                     <div class="modal-header">						
                         <h4 class="modal-title">Xóa danh mục</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

@@ -200,27 +200,28 @@
     <div id="editEmployeeModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form>
+                <form action="/Shopee/admin/customer/edit" method="post" enctype="multipart/form-data">
                     <div class="modal-header">						
-                        <h4 class="modal-title">Edit Employee</h4>
+                        <h4 class="modal-title">Chỉnh sửa người dùng</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
+                    <input id="editId" name="id" value="0" hidden="">
                     <div class="modal-body">					
                         <div class="form-group">
-                            <label>Name</label>
-                            <input value ="${user.uFullName}" type="text" class="form-control" required>
+                            <label>Tên</label>
+                            <input value ="${user.uFullName}" id="editName" name="name" type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Email</label>
-                            <input value ="${user.uEmail}" type="email" class="form-control" required>
+                            <input value ="${user.uEmail}" id="editEmail" name="email" type="email" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label>Address</label>
-                            <textarea class="form-control" required>${user.uAddress}</textarea>
+                            <label>Địa chỉ</label>
+                            <input  value="${user.uAddress}" id="editAddress" name="address" type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label>Phone</label>
-                            <input value ="${user.uPhone}" type="text" class="form-control" required>
+                            <label>Số điện thoại</label>
+                            <input value ="${user.uPhone}" id="editPhone" name="phone" type="text" class="form-control" required>
                         </div>					
                     </div>
                     <div class="modal-footer">
@@ -235,14 +236,15 @@
     <div id="deleteEmployeeModal" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form>
+                <form action="deletecategory" method="post">
                     <div class="modal-header">						
-                        <h4 class="modal-title">Delete Product</h4>
+                        <h4 class="modal-title">Xóa sản phẩm</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
+                    <input id="deleteId" name="id" value="0" hidden="">
                     <div class="modal-body">					
-                        <p>Are you sure you want to delete these Records?</p>
-                        <p class="text-warning"><small>This action cannot be undone.</small></p>
+                        <p>Bạn có thực sự muốn xóa?</p>
+                        <p class="text-warning"><small>Hành động này không thể hoàn tác</small></p>
                     </div>
                     <div class="modal-footer">
                         <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">

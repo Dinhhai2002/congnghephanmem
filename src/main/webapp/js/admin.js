@@ -33,6 +33,37 @@ function editCategoryModal(param) {
 	$("#editCategoryModal").modal('show');
 }
 
+function deleteEmployeeModal(param) {
+	document.getElementById('deleteId').setAttribute('value', param);
+	$("#deleteEmployeeModal").modal('show');
+}
+
+function editEmployeeModal(param) {
+	editEmployee(param);
+	$("#editEmployeeModal").modal('show');
+}
+function editEmployee(param){
+	$.ajax({
+		url: "/Shopee/admin/customer/edit",
+		type: 'GET',
+		contentType: 'application/json',
+		data: {
+			id: param
+		},
+		success: function(result) {	
+			console.log(result);	
+			document.getElementById('editId').setAttribute('value', result.uId);
+			document.getElementById('editName').setAttribute('value', result.uFullName);
+			document.getElementById('editEmail').setAttribute('value', result.uEmail);
+			document.getElementById('editAddress').setAttribute('value', result.uAddress);
+			document.getElementById('editPhone').setAttribute('value', result.uPhone);	
+		},
+		error: function() {
+			alert("Lỗi không lấy được dữ liệu")
+		}
+	});
+}
+
 function editCategory(param){
 	$.ajax({
 		url: "/Shopee/admin/category/edit",
@@ -49,8 +80,7 @@ function editCategory(param){
 				document.getElementById('editImage').setAttribute('src', result.cImage);
 			}else{
 				document.getElementById('editImage').setAttribute('src', 'http://localhost:8080/Shopee/image?fname=' + result.cImage);
-			}
-				
+			}		
 		},
 		error: function() {
 			alert("Lỗi không lấy được dữ liệu")
