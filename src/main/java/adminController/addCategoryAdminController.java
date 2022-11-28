@@ -52,12 +52,14 @@ public class addCategoryAdminController extends HttpServlet{
 					}
 				}
 				cateDao.insertCategory(category);
-				resp.sendRedirect("category");
+				resp.sendRedirect("/Shopee/admin/category");
 				
 			} catch (FileUploadException e) {
 				e.printStackTrace();
+				resp.sendRedirect("/Shopee/admin/category");
 			} catch (Exception e) {
 				e.printStackTrace();
+				resp.sendRedirect("/Shopee/admin/category");
 			}
 		}
 }

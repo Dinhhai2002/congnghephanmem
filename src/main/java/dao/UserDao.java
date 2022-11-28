@@ -1,5 +1,6 @@
 package dao;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,6 +12,7 @@ import entity.Category;
 import entity.Product;
 import entity.Shop;
 import entity.User;
+import utils.Constant;
 
 public class UserDao {
 
@@ -77,7 +79,6 @@ public class UserDao {
             ps = conn.prepareStatement(query);
             ps.setString(1, user);
             ps.setString(2, pass);
-            
             rs = ps.executeQuery();
             while (rs.next()) {
              return new User(rs.getInt(1),
@@ -539,6 +540,48 @@ public void editUser(String uId,String fullname,String email,String Address,Stri
              }
              
         }
+
+
+
+	public void editUpdateUser(User newUser) {
+		User oldUser = get(newUser.getuId());
+		oldUser.setuName(newUser.getuFullName());
+		oldUser.setuEmail(newUser.getuEmail());
+		oldUser.setuAddress(newUser.getuAddress());
+		oldUser.setuPhone(newUser.getuPhone());
+		
+		if (newUser.getuImage() != null) {
+			String fileName = oldUser.getuImage();
+			File file = new File(Constant.dir + "/user/" + fileName);
+			if (file.exists()) {
+				file.delete();
+			}
+			oldUser.setuImage(newUser.getuImage());
+		}
+		updateUser(oldUser);
+		
+	}
+
+
+
+	private void updateUser(User user) {
+		String query = "update [user] set uFullName=?, uEmail=?, uAddress=?,uPhone=?  \r\n" + "where uId = ? ";
+		try {
+			conn = new connect().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, user.getuName());
+			ps.setString(2, user.getuEmail());
+			ps.setString(3, user.getuAddress());
+			ps.setString(4, user.getuPhone());
+			ps.setInt(5,user.getuId());
+			
+			ps.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 
 
 
