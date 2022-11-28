@@ -87,16 +87,44 @@ public class ProductAddController extends HttpServlet {
 			shop = shopDao.findOne(shopId);
 			product.setShop(shop);
 			if (dem != 0) {
-				List<Product> list = productDao.getProductByShopId(shopId);
+				String index = req.getParameter("index");
+				if(index==null) {
+					index="1";
+				}
+				int page = Integer.parseInt(index);
+				int pageSize = productDao.pageSize;
+				int count = productDao.getTotalProductByShopId(shopId);
+				int endPage = count/pageSize;
+				if(count%pageSize > 0) {
+					endPage++;
+				}
+				List<Product> list = productDao.pagingProductByShopId(shopId, page);
 				List<Category> listC = cateDao.getAllCategory();
+				req.setAttribute("endPage", endPage);
+				req.setAttribute("tag", page);
+				req.setAttribute("shop", shop);
 				req.setAttribute("listP", list);
 				req.setAttribute("listC", listC);
 				req.setAttribute("mess", "Thêm không thành công! Vui lòng thêm hình ảnh sản phẩm");
 				req.getRequestDispatcher("/views/managerProduct.jsp").forward(req, resp);
 			}
 			else if(productDao.isProductExist(product.getpName(), shop.getShopId())>0) {
-				List<Product> list = productDao.getProductByShopId(shopId);
+				String index = req.getParameter("index");
+				if(index==null) {
+					index="1";
+				}
+				int page = Integer.parseInt(index);
+				int pageSize = productDao.pageSize;
+				int count = productDao.getTotalProductByShopId(shopId);
+				int endPage = count/pageSize;
+				if(count%pageSize > 0) {
+					endPage++;
+				}
+				List<Product> list = productDao.pagingProductByShopId(shopId, page);
 				List<Category> listC = cateDao.getAllCategory();
+				req.setAttribute("endPage", endPage);
+				req.setAttribute("tag", page);
+				req.setAttribute("shop", shop);
 				req.setAttribute("listP", list);
 				req.setAttribute("listC", listC);
 				req.setAttribute("mess", "Sản phẩm đã tồn tại! Vui lòng kiểm tra lại");
