@@ -121,6 +121,42 @@ public class OrderDao {
 		}
 		return null;
 	}
+	public List<Order> findAll() {
+		List<Order> orders = new ArrayList<Order>();
+		String sql = "SELECT * FROM [order] WHERE orderId = ? ";
+		try {
+			conn = new connect().getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				UserDao userDao = new UserDao();
+				ShopDao shopDao = new ShopDao();
+				User user = userDao.get(rs.getInt("uId"));
+				User shipper = userDao.get(rs.getInt("deliveryId"));
+				Shop shop = shopDao.findOne(rs.getInt("shopId"));
+
+				Order order = new Order();
+				order.setOrderId(rs.getInt("orderId"));
+				order.setUser(user);
+				order.setShop(shop);
+				order.setuName(rs.getString("uName"));
+				order.setDelivery(shipper);
+				order.setuPhone(rs.getString("uPhone"));
+				order.setuAddress(rs.getString("uAddress"));
+				order.setPaidBefore(rs.getBoolean("isPaidBefore"));
+				order.setAmountFromUser(rs.getFloat("amountFromUser"));
+				order.setAmountFromShop(rs.getFloat("amountFromShop"));
+				order.setAmountToShop(rs.getFloat("amountToShop"));
+				order.setAmountToShipper(rs.getFloat("amountToShipper"));
+				order.setCreateAt(rs.getDate("createAt"));
+				orders.add(order);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 	// Lấy tất cả đơn hàng của user hiện có
 	public List<Order> findAllByuid(User user) {

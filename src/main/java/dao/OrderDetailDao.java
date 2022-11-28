@@ -137,6 +137,113 @@ public class OrderDetailDao {
 		}
 		return orderDetails;
 	}
+	public List<OrderDetail> findAll() {
+		List<OrderDetail> orderDetails = new ArrayList<OrderDetail>();
+		String sql = "Select * From [order] \r\n"
+				+ "	inner join orderdetail on [order].orderId=orderdetail.orderId\r\n";
+		try {
+			conn = new connect().getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				OrderDao orderDao = new OrderDao();
+				ProductDao productDao = new ProductDao();
+				
+				OrderStatusDao orderStatusDao = new OrderStatusDao();
+
+				Order order = orderDao.findOne(rs.getInt("orderId"));
+				Product product = productDao.findOne(rs.getInt("productId"));
+				OrderStatus orderStatus = orderStatusDao.findOne(rs.getInt("status"));
+
+				OrderDetail orderDetail = new OrderDetail();
+				orderDetail.setId(rs.getInt("id"));
+				orderDetail.setOrder(order);
+				orderDetail.setProduct(product);
+				
+				orderDetail.setCount(rs.getInt("count"));
+				orderDetail.setCount(rs.getInt("shipPrice"));
+				orderDetail.setTotalPrice(rs.getInt("totalPrice"));
+				orderDetail.setStatus(orderStatus);
+				orderDetail.setCreateAt(rs.getDate("createAt"));
+				orderDetails.add(orderDetail);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return orderDetails;
+	}
+	public List<OrderDetail> findbyDate(String fromday, String today) {
+		List<OrderDetail> orderDetails = new ArrayList<OrderDetail>();
+		String sql = "Select * From [order] \r\n"
+				+ "	inner join orderdetail on [order].orderId=orderdetail.orderId\r\n WHERE orderdetail.[createAt] BETWEEN ? AND ? order by orderdetail.[createAt]";
+		try {
+			conn = new connect().getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, fromday);
+	         ps.setString(2, today);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				OrderDao orderDao = new OrderDao();
+				ProductDao productDao = new ProductDao();
+				
+				OrderStatusDao orderStatusDao = new OrderStatusDao();
+
+				Order order = orderDao.findOne(rs.getInt("orderId"));
+				Product product = productDao.findOne(rs.getInt("productId"));
+				OrderStatus orderStatus = orderStatusDao.findOne(rs.getInt("status"));
+
+				OrderDetail orderDetail = new OrderDetail();
+				orderDetail.setId(rs.getInt("id"));
+				orderDetail.setOrder(order);
+				orderDetail.setProduct(product);
+				
+				orderDetail.setCount(rs.getInt("count"));
+				orderDetail.setCount(rs.getInt("shipPrice"));
+				orderDetail.setTotalPrice(rs.getInt("totalPrice"));
+				orderDetail.setStatus(orderStatus);
+				orderDetail.setCreateAt(rs.getDate("createAt"));
+				orderDetails.add(orderDetail);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return orderDetails;
+	}
+	public List<OrderDetail> findAllgroupbyCreateAt() {
+		List<OrderDetail> orderDetails = new ArrayList<OrderDetail>();
+		String sql = "Select * From [order] \r\n"
+				+ "	inner join orderdetail on [order].orderId=orderdetail.orderId\r\n";
+		try {
+			conn = new connect().getConnection();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				OrderDao orderDao = new OrderDao();
+				ProductDao productDao = new ProductDao();
+				
+				OrderStatusDao orderStatusDao = new OrderStatusDao();
+
+				Order order = orderDao.findOne(rs.getInt("orderId"));
+				Product product = productDao.findOne(rs.getInt("productId"));
+				OrderStatus orderStatus = orderStatusDao.findOne(rs.getInt("status"));
+
+				OrderDetail orderDetail = new OrderDetail();
+				orderDetail.setId(rs.getInt("id"));
+				orderDetail.setOrder(order);
+				orderDetail.setProduct(product);
+				
+				orderDetail.setCount(rs.getInt("count"));
+				orderDetail.setCount(rs.getInt("shipPrice"));
+				orderDetail.setTotalPrice(rs.getInt("totalPrice"));
+				orderDetail.setStatus(orderStatus);
+				orderDetail.setCreateAt(rs.getDate("createAt"));
+				orderDetails.add(orderDetail);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return orderDetails;
+	}
 
 	
 	public List<OrderDetail> findAllByShopId(Shop shop) {
@@ -576,75 +683,8 @@ public class OrderDetailDao {
 	// select all order status
 	
 	
-	public List<OrderDetail> find7OrderArrByCreateAt() {
-		List<OrderDetail> orderDetails = new ArrayList<OrderDetail>();
-		String sql = " Select top 7 * From [order] \r\n"
-				+ "	inner join orderdetail on [order].orderId=orderdetail.orderId\r\n"
-				+ "	order by [order].[createAt] DESC";
-		try {
-			conn = new connect().getConnection();
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				OrderDao orderDao = new OrderDao();
-				ProductDao productDao = new ProductDao();
-				OrderStatusDao orderStatusDao = new OrderStatusDao();
 
-				Order order = orderDao.findOne(rs.getInt("orderId"));
-				Product product = productDao.findOne(rs.getInt("productId"));
-				OrderStatus orderStatus = orderStatusDao.findOne(rs.getInt("status"));
 
-				OrderDetail orderDetail = new OrderDetail();
-				orderDetail.setId(rs.getInt("id"));
-				orderDetail.setOrder(order);
-				orderDetail.setProduct(product);
-				orderDetail.setCount(rs.getInt("count"));
-				orderDetail.setCount(rs.getInt("shipPrice"));
-				orderDetail.setTotalPrice(rs.getInt("totalPrice"));
-				orderDetail.setStatus(orderStatus);
-				orderDetail.setCreateAt(rs.getDate("createAt"));
-				orderDetails.add(orderDetail);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return orderDetails;
-	}
-	public List<OrderDetail> findAllOrderArrByCreateAt() {
-		List<OrderDetail> orderDetails = new ArrayList<OrderDetail>();
-		String sql = " Select * From [order] \r\n"
-				+ "	inner join orderdetail on [order].orderId=orderdetail.orderId\r\n"
-				+ "	order by [order].[createAt] DESC";
-		try {
-			conn = new connect().getConnection();
-			PreparedStatement ps = conn.prepareStatement(sql);
-
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				OrderDao orderDao = new OrderDao();
-				ProductDao productDao = new ProductDao();
-				OrderStatusDao orderStatusDao = new OrderStatusDao();
-
-				Order order = orderDao.findOne(rs.getInt("orderId"));
-				Product product = productDao.findOne(rs.getInt("productId"));
-				OrderStatus orderStatus = orderStatusDao.findOne(rs.getInt("status"));
-
-				OrderDetail orderDetail = new OrderDetail();
-				orderDetail.setId(rs.getInt("id"));
-				orderDetail.setOrder(order);
-				orderDetail.setProduct(product);
-				orderDetail.setCount(rs.getInt("count"));
-				orderDetail.setCount(rs.getInt("shipPrice"));
-				orderDetail.setTotalPrice(rs.getInt("totalPrice"));
-				orderDetail.setStatus(orderStatus);
-				orderDetail.setCreateAt(rs.getDate("createAt"));
-				orderDetails.add(orderDetail);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return orderDetails;
-	}
 	
 
 	public List<OrderDetail> findNext3ShopOrderByStatus(Shop shop, int status, int amount) {

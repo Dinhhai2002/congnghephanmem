@@ -8,6 +8,8 @@
 <title>Admin</title>
 <link  rel="stylesheet" href="<c:url value="/css/admin.css"/>" >
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </head>
 <body>
 	<div class="container">
@@ -130,64 +132,104 @@
            <div class="details">
                 <div class="recentOrders">
                     <div class="cardHeader">
-                        <h2>Đơn hàng</h2>
-                        
+                        <h2>Tổng doanh thu</h2>
                     </div>
-                    <%-- <div class="flexWrapper">
+                    
+                    <!--<div>
+                    	<td> 
+                    	<tr>Theo ngày</tr>
+                    	<tr>
+	                    	<input type="text" id="datetime" placeholder="Select time"/>
+	                    </tr>
+                    	</td>
+                	
+                    </div>  --> 
+                     
+                   <!-- 
+                   <form>
+                    	<span>
+                    		<label for ="day">Ngày:</label>
+                    		<select name = "day" id="day"></select>
+                    	</span>
+                    	<span>
+                    		<label for ="month">Tháng:</label>
+                    		<select name = "month" id="month"></select>
+                    	</span>
+                    	<span>
+                    		<label for ="year">Năm:</label>
+                    		<select name = "year" id="year"></select>
+                    	</span>                 
+                    	<button type="submit">Theo ngày</button>
+                    	<button type="submit">Theo tháng</button>
+                    	<button type="submit">Theo năm</button>
+                    </form>
+                     --> 
+                     
+                    <form action="" method="get">
+						  <label for="from">Từ ngày:</label>
+						  <input type="date" id="fromday" name="fromday">
+						  <label for="to">Đến ngày:</label>
+						  <input type="date" id="today" name="today">
+						  <input type="submit" value="Thống kê" />
+						  
+					</form>
+                   
+                    <div class="flexWrapper">
                     	<canvas id="chartElement" width="200" height="50"></canvas>
-                    </div> --%>
+                    </div>
 					
                     <table>
                         <thead>
                             <tr>
                                 <td>Mã đơn hàng</td>
-                               
                                 <td>Giá tiền</td>
+                                <td>Ngày tạo</td>
                                 <td>Trạng thái</td>
+                                
+                                
                             </tr>
                         </thead>
 
                         <tbody>
-                        <c:forEach items="${listOrder}" var="o">
+                        <c:forEach items="${listSelectOrderDetail}" var="o">
                        		<tr>
-                                <td>${o.id}</td>
-                                
+                                <td>${o.id}</td>                             
                                 <td>${o.totalPrice}</td>     
+                                <td>${o.createAt}
                                 <td>
                                    <c:if test="${o.status == 'OrderStatus [idStatus=1, nameStatus=Chờ shop xác nhận]'}">
                                 	<span class="status pending">Chờ xác nhận</span>
-                                </c:if> 
-                                <c:if test="${o.status == 'OrderStatus [idStatus=2, nameStatus=Chờ lấy hàng]'}">
-                                	<span class="status waiting">Chờ lấy hàng</span>
-                                </c:if> 
-                                <c:if test="${o.status == 'OrderStatus [idStatus=3, nameStatus=Đang giao]'}">
-                                	<span class="status inProgress">Đang giao</span>
-                                </c:if> 
-                                <c:if test="${o.status == 'OrderStatus [idStatus=4, nameStatus=Đã giao hàng]'}">
-                                	<span class="status delivered">Đã giao</span>
-                                </c:if>
-                                <c:if test="${o.status == 'OrderStatus [idStatus=5, nameStatus=Khách đã hủy]'}">
-                                	<span class="status return">Đã hủy</span>
-                                </c:if> 
-                                <c:if test="${o.status == 'OrderStatus [idStatus=6, nameStatus=Trả hàng]'}">
-                                	<span class="status cancel">Trả hàng</span>
-                                </c:if> 
-                                <c:if test="${o.status == 'OrderStatus [idStatus=7, nameStatus=Chờ shipper nhận đơn]'}">
-                                	<span class="status cancel">Chờ nhận đơn</span>
-                                <c:if test="${o.status == 'OrderStatus [idStatus=8, nameStatus=Shipper nhận hàng]'}">
-                                	<span class="status cancel">Đã nhận hàng</span>
-                                <c:if test="${o.status == 'OrderStatus [idStatus=9, nameStatus=Đơn hàng đã giao dịch thành công]'}">
-                                	<span class="status cancel">Giao hàng thành công</span>
-                                <c:if test="${o.status == 'OrderStatus [idStatus=10, nameStatus=Shop đã hủy]'}">
-                                	<span class="status cancel">Shop đã hủy</span>
-                                </c:if> 
-                                </c:if> 
-                                </c:if> 
-                                </c:if>                           
+	                                </c:if> 
+	                                <c:if test="${o.status == 'OrderStatus [idStatus=2, nameStatus=Chờ lấy hàng]'}">
+	                                	<span class="status waiting">Chờ lấy hàng</span>
+	                                </c:if> 
+	                                <c:if test="${o.status == 'OrderStatus [idStatus=3, nameStatus=Đang giao]'}">
+	                                	<span class="status inProgress">Đang giao</span>
+	                                </c:if> 
+	                                <c:if test="${o.status == 'OrderStatus [idStatus=4, nameStatus=Đã giao hàng]'}">
+	                                	<span class="status delivered">Đã giao</span>
+	                                </c:if>
+	                                <c:if test="${o.status == 'OrderStatus [idStatus=5, nameStatus=Khách đã hủy]'}">
+	                                	<span class="status return">Đã hủy</span>
+	                                </c:if> 
+	                                <c:if test="${o.status == 'OrderStatus [idStatus=6, nameStatus=Trả hàng]'}">
+	                                	<span class="status cancel">Trả hàng</span>
+	                                </c:if> 
+	                                <c:if test="${o.status == 'OrderStatus [idStatus=7, nameStatus=Chờ shipper nhận đơn]'}">
+	                                	<span class="status cancel">Chờ nhận đơn</span>
+	                                </c:if> 
+	                                <c:if test="${o.status == 'OrderStatus [idStatus=8, nameStatus=Shipper nhận hàng]'}">
+	                                	<span class="status cancel">Đã nhận hàng</span>
+	                                </c:if> 
+	                                <c:if test="${o.status == 'OrderStatus [idStatus=9, nameStatus=Đơn hàng đã giao dịch thành công]'}">
+	                                	<span class="status cancel">Giao hàng thành công</span>
+	                                </c:if> 
+	                                <c:if test="${o.status == 'OrderStatus [idStatus=10, nameStatus=Shop đã hủy]'}">
+	                                	<span class="status cancel">Shop đã hủy</span>
+	                                </c:if> 
+                                                         
                                 </td>                
-                                </td>
                                
-                                
                             </tr>
                          </c:forEach>
                           
@@ -214,10 +256,8 @@
 			                            </td>
 			                        </tr>
 								</c:forEach> 
-								
 			             </table>
-                   	
-                </div>
+               	 </div>
             </div>
         </div>
     </div>
@@ -226,24 +266,29 @@
     <script src="<c:url value="/js/admin.js"/>"></script>
     <script src="<c:url value ="/js/stats.js" />"></script>
     <script src="<c:url value ="/js/managerProduct.js" />"></script>
+
 	<script> 
-	let statusLabel=["Chờ xác nhận","Chờ lấy hàng","Đang giao","Đã giao","Đã hủy","Trả hàng"],statusInfo=[]
+	//var xValues = [50,60,70,80,90,100,110,120,130,140,150];
+	//var yValues = ['7','8','8','9','9','9','10','11','14','14','15'];
 	
-		statusInfo.push(${orderdetail.countStatusByIdStatus(1)});
-		statusInfo.push(${orderdetail.countStatusByIdStatus(2)});
-		statusInfo.push(${orderdetail.countStatusByIdStatus(3)});
-		statusInfo.push(${orderdetail.countStatusByIdStatus(4)});
-		statusInfo.push(${orderdetail.countStatusByIdStatus(5)});
-		statusInfo.push(${orderdetail.countStatusByIdStatus(6)});
+	
+	
+	
+	let xValues=[], yValues=[]; 
+			<c:forEach items="${listThongKe2}" var ="o">	
+			yValues.push('${o.createAt}');
+			xValues.push('${o.total}');
+		</c:forEach>
 		window.onload = function(){
-			cateChart("chartElement",statusLabel,statusInfo)
+			cateChart("chartElement",xValues,yValues)
 		}
-	</script>
-    <!-- ====== ionicons ======= -->
+	
+		</script>
+	 
+	    <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     
-</body>
-</html>
+    
 </body>
 </html>

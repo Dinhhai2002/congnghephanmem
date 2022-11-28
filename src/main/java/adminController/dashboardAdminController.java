@@ -1,6 +1,8 @@
 package adminController;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -11,11 +13,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.OrderDao;
 import dao.OrderDetailDao;
 import dao.ProductDao;
 import dao.ShopDao;
+import dao.ThongKeDao;
 import dao.UserDao;
+import entity.Order;
 import entity.OrderDetail;
+import entity.ThongKe;
 import entity.User;
 
 @WebServlet(urlPatterns="/admin")
@@ -56,27 +62,41 @@ public class dashboardAdminController extends HttpServlet{
 			
 					
 			OrderDetailDao orderdetail = new OrderDetailDao();
+			OrderDao order = new OrderDao();
 			
 			
-			List<OrderDetail> listOrder = orderdetail.find7OrderArrByCreateAt();
-			
-//			int[]  arrStatus = null;
-//			for(int i = 1 ;i<7;i++)
-//			{
-//			arrStatus[i-1] = orderdetail.countStatusByIdStatus(i);
-//			}
-//			req.setAttribute("arrStatus", arrStatus);
-//			
-			
+			List<OrderDetail> listOrderDetail = orderdetail.findAll();
+			List<Order> listOrder = order.findAll();
 			req.setAttribute("orderdetail", orderdetail);
+			req.setAttribute("order", orderdetail);
 			
 			
+			req.setAttribute("listOrderDetail", listOrderDetail);
 			req.setAttribute("listOrder", listOrder);
+			
 			List<User> listUser = userdao.getAllUserArrByCreateAt();
 			
 			req.setAttribute("listUser", listUser);
-			RequestDispatcher rq=req.getRequestDispatcher("/views/Admin.jsp");
 			
+			long millis=System.currentTimeMillis();  
+			Date date = new Date(millis);   
+			String dateString = date.toString();
+			ThongKeDao thongkedao = new ThongKeDao();
+			List<ThongKe> listThongKe = thongkedao.getDoanhThu("2000-1-1",dateString);
+			
+			
+			String fromday =req.getParameter("fromday");
+			String today =req.getParameter("today");	
+
+			
+			List<ThongKe> listSelectThongKe = thongkedao.getDoanhThu(fromday, today);
+			List<OrderDetail> listSelectOrderDetail = orderdetail.findbyDate(fromday,today);
+			
+			req.setAttribute("listThongKe2", listSelectThongKe);
+			req.setAttribute("listThongKe", listThongKe);
+			req.setAttribute("listSelectOrderDetail", listSelectOrderDetail);
+			
+			RequestDispatcher rq=req.getRequestDispatcher("/views/Admin.jsp");	
 			rq.forward(req, resp);
 		}
 		
@@ -85,8 +105,7 @@ public class dashboardAdminController extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		super.doPost(req, resp);
+		
 	}
-
+	
 }

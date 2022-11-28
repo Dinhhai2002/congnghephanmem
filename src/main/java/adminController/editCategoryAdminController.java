@@ -76,7 +76,7 @@ public class editCategoryAdminController extends HttpServlet{
 				}
 			}
 			cateDao.editUpdateCategory(category);
-			resp.sendRedirect("category");
+			resp.sendRedirect("/Shopee/admin/category");
 		} catch (FileUploadException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
