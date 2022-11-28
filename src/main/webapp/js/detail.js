@@ -51,7 +51,7 @@ $(document).ready(function() {
 		var pId = $('#PID').val();
 		$.ajax({
 			type: "GET",
-			url: "member/cart-add",
+			url: "/Shopee/member/cart-add",
 			data: {
 				pId: pId,
 				quantity: num,

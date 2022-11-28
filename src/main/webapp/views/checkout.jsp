@@ -45,7 +45,7 @@
           
                             <input type="text" value="${acc.uFullName}" id="username" name="name">
                             <span>Số điện thoại</span>
-                            <input type="number" value="${acc.uPhone}" id="phone" name="phone">
+                            <input type="text" value="${acc.uPhone}" id="phone" name="phone">
                              <span>Tỉnh/ Thành phố, Quận/Huyện, Phường/Xã</span>
                             <input type="text" value="${acc.uFullAddress}" id="address" name="address" >
                          <!--    <div class="row">
