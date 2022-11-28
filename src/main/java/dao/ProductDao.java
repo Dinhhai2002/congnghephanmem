@@ -221,6 +221,23 @@ public class ProductDao {
 		}
 		return 0;
 	}
+	
+	public int isProductExist(String pName, int shopId) {
+		String query = "select count(*) from product where pName like ? and shopId = ?";
+		try {
+			conn = new connect().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, pName);
+			ps.setInt(2, shopId);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return 0;
+	}
 
 	public int pageSize = 35;
 	public int beginProduct = 15;

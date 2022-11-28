@@ -76,7 +76,7 @@ public class ShopEditController extends HttpServlet {
 				}
 			}
 			shopDao.editUpdateShop(shop);
-			resp.sendRedirect("shop-manager");
+			resp.sendRedirect("/Shopee/admin/shop-manager");
 		} catch (FileUploadException e) {
 			e.printStackTrace();
 		} catch (Exception e) {

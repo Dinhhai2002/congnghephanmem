@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,7 +59,9 @@
 
                             <p class="price-detail-wrap">
                                 <span class="price h3 text-warning"> <span
-                                    class="currency"></span><span class="num">${p.pPrice}</span>
+                                    class="currency"></span><span class="num"><fmt:formatNumber
+														type="number" pattern="#,###"
+														value="${p.pPrice}"></fmt:formatNumber>₫</span>
                                 </span>
                                 <!--<span>/per kg</span>-->
                             </p>
@@ -185,7 +187,9 @@
                                             </span>
                                             <div class="search-item-result__item-price-saleoff">
                                                 <span>
-                                                    ₫${o.pPrice}
+                                                    <fmt:formatNumber
+														type="number" pattern="#,###"
+														value="${o.pPrice}"></fmt:formatNumber>
                                                 </span>
                                                 <svg height="12" viewBox="0 0 20 12" width="20"
                                                     class="search-item-result__item-price-saleoff-icon">

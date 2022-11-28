@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="/taglib.jsp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,9 +68,7 @@
                                             <td>
                                                 <img src="${map.value.product.pImage}">
                                             </td>
-                                            <td><fmt:formatNumber
-														type="number" pattern="#,###"
-														value="${map.value.product.pPrice}"></fmt:formatNumber>đ </td>
+<td>${map.value.product.pPrice}</td>
                                             
                                                 <td class="align-middle">
                                                     <a href="/Shopee/member/cart-quantityincdec?action=sub&pId=${map.value.product.pId}"><button
@@ -78,10 +76,7 @@
                                             href="/Shopee/member/cart-quantityincdec?action=add&pId=${map.value.product.pId}"><button class="btnAdd">+</button></a></td>
                                            
                                             <td>
-                                            <fmt:formatNumber
-														type="number" pattern="#,###"
-														value="${map.value.product.pPrice * map.value.count}"></fmt:formatNumber>đ
-                                                
+                                                ${map.value.product.pPrice * map.value.count}
                                              </td>
                                             <td class="submit"><a href="/Shopee/member/cart-remove?pId=${map.value.product.pId}">Xóa</a></td>
                                         </tr>
@@ -95,10 +90,7 @@
                            
                        
                     </div>
-
-
                   	<c:choose>
-
 							<c:when test="${empty sessionScope.cart}">
 								<div style="text-align: center;" class="home-product-shipping">
 									<img
@@ -116,8 +108,48 @@
                         
                     </div>
                     </div>
+                    
+                    
+                    
+                    <c:choose>
+							<c:when test="${empty sessionScope.cart}">
+								
+							</c:when>
+							<c:otherwise>
+								 <div class="row sm-gutter body-content">
+                       
+                        <div class="col l-10 lo-10 m-12 c-12">
+                    <h3 class="title">Thành tiền</h3>
+                    <div class="p-4">
+                        <ul class="list-unstyled mb-4">
+                            <li class="list-item"><strong
+                                class="text-muted">Tổng tiền hàng</strong>
+                                <c:set var="total" value="${0}"/>
+                                <c:forEach 
+                                    items="${sessionScope.cart}" var="map">
+                                    <c:set var="total"
+                                    value="${total + map.value.product.pPrice * map.value.count }"/>
+                                    </c:forEach>
+<strong> 
+                                 ${total}vnđ</strong></li>
+                           <!--  <li class="list-item"><strong
+                                class="text-muted">Phí vận chuyển</strong><strong>10000 vnđ</strong></li> -->
+                           <!--  <li class="list-item"><strong
+                                class="text-muted">VAT</strong><strong>10 $</strong></li> -->
+                           <%--  <li class="list-item list-item-total"><strong
+                                class="text-muted">Tổng tiền hàng</strong>
+                                <h5 class="font-weight-bold">${total}vnđ</h5></li> --%>
+                        </ul>
+                        <a href="/Shopee/member/checkout"
+                           class="btn_buy">Mua hàng</a>
+                    </div>
+                </div>
+            </div>
+							</c:otherwise>
+						</c:choose>
+                    
 
-                    <div class="row sm-gutter body-content">
+                   <%--  <div class="row sm-gutter body-content">
                        
                         <div class="col l-10 lo-10 m-12 c-12">
                     <h3 class="title">Thành tiền</h3>
@@ -132,22 +164,20 @@
                                     value="${total + map.value.product.pPrice * map.value.count }"/>
                                     </c:forEach>
                                 <strong> 
-
-                                <fmt:formatNumber type="number" pattern="#,###" value="${total}"></fmt:formatNumber>đ</strong></li>						
-                                
-                           <%--  <li class="list-item"><strong
-                                class="text-muted">Phí vận chuyển</strong><strong>10000 vnđ</strong></li>
+                                 ${total}vnđ</strong></li>
+                           <!--  <li class="list-item"><strong
+                                class="text-muted">Phí vận chuyển</strong><strong>10000 vnđ</strong></li> -->
                            <!--  <li class="list-item"><strong
                                 class="text-muted">VAT</strong><strong>10 $</strong></li> -->
                             <li class="list-item list-item-total"><strong
-                                class="text-muted">Tổng thanh toán</strong>
-                                <h5 class="font-weight-bold">${total + 10000}vnđ</h5></li> --%>
+                                class="text-muted">Tổng tiền hàng</strong>
+                                <h5 class="font-weight-bold">${total}vnđ</h5></li>
                         </ul>
                         <a href="/Shopee/member/checkout"
                            class="btn_buy">Mua hàng</a>
                     </div>
                 </div>
-            </div>
+            </div> --%>
 
       
     
@@ -159,4 +189,3 @@
 </body>
 
 </html>
-

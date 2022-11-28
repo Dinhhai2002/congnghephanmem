@@ -177,7 +177,7 @@ window.onpageshow = function(evt) {
                                     <i class='bx bx-chevron-left' ></i>
                                 </a>
                             </div>
-                            <form action="searchproduct" method="Get" class="header-with-search__search-section">
+                            <form action="/Shopee/product/searchproduct" method="Get" class="header-with-search__search-section">
                                 <div class="searchbar">
                                     <div class="searchbar__main">
                                         <div class="searchbar-input">
@@ -185,7 +185,7 @@ window.onpageshow = function(evt) {
                                                
                                                 <i class='searchbar-input__icon-on-mb-tb-icon bx bx-search' ></i>
                                             </div>
-                                            <input value="${txtSearch}" name="txtS" type="text" class="searchbar-input__input"
+                                            <input value="${txtS}" name="txtS" type="text" class="searchbar-input__input"
                                                 placeholder="Nhập từ khóa tìm kiếm">
                                             
                                         </div>
