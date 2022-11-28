@@ -224,7 +224,8 @@
 
     <!-- =========== Scripts =========  -->
     <script src="<c:url value="/js/admin.js"/>"></script>
-    <script src="<c:url value ="/js/stats.js" />"><</script>
+    <script src="<c:url value ="/js/stats.js" />"></script>
+    <script src="<c:url value ="/js/managerProduct.js" />"></script>
 	<script> 
 	let statusLabel=["Chờ xác nhận","Chờ lấy hàng","Đang giao","Đã giao","Đã hủy","Trả hàng"],statusInfo=[]
 	
