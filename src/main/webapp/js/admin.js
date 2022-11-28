@@ -1,28 +1,6 @@
 /**
  * 
  */
-let selectImage=document.getElementById('idImage');
-const text=document.getElementById('text');
-const file=document.getElementById('file');
-
-selectImage.onchange=displayvaluechange;
-function displayvaluechange(){
-    if(this.value=="link")
-    {
-        text.style.display="block";
-        file.style.display="none";
-        file.name="image1";
-        text.name="image";
-    }
-    if(this.value=="file")
-    {
-        file.style.display="block";
-        text.style.display="none";
-        text.name="image1";
-        file.name="image";
-    }
-    
-}
 // add hovered class to selected list item
 let list = document.querySelectorAll(".navigation li");
 
