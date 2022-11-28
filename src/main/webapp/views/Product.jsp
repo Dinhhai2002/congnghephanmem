@@ -97,7 +97,7 @@
 							<ul class="category-list__list">
 								<c:forEach items="${listCC}" var="o">
 									<li class="category-list__item "><a
-										href="product?index=${o.cId}&page=1"
+										href="/Shopee/product?index=${o.cId}&page=1"
 										class="category-list__item-link ${cid==o.cId?"category-list__item-link-highlight":""} ">
 											<i class="category-list__item-icon fas fa-caret-right"></i>
 											${o.cName}

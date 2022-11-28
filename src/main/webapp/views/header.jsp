@@ -185,7 +185,7 @@ window.onpageshow = function(evt) {
                                                
                                                 <i class='searchbar-input__icon-on-mb-tb-icon bx bx-search' ></i>
                                             </div>
-                                            <input value="${txtSearch}" name="txtS" type="text" class="searchbar-input__input"
+                                            <input value="${txtS}" name="txtS" type="text" class="searchbar-input__input"
                                                 placeholder="Nhập từ khóa tìm kiếm">
                                             
                                         </div>
