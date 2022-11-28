@@ -4,7 +4,7 @@ function cateChart(id,xValues,yValues){
   const data = {
   labels: yValues,
   datasets: [{
-    label: 'Tổng doanh thu',
+    label: 'Doanh thu',
     data: xValues,
     fill: false,
     borderColor: 'rgb(75, 192, 192)',

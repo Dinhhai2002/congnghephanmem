@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="/taglib.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,7 +68,9 @@
                                             <td>
                                                 <img src="${map.value.product.pImage}">
                                             </td>
-<td>${map.value.product.pPrice}</td>
+                                            
+<td><fmt:formatNumber type="number" pattern="#,###" value="${map.value.product.pPrice}">
+                                            </fmt:formatNumber></td>
                                             
                                                 <td class="align-middle">
                                                     <a href="/Shopee/member/cart-quantityincdec?action=sub&pId=${map.value.product.pId}"><button
@@ -76,7 +78,9 @@
                                             href="/Shopee/member/cart-quantityincdec?action=add&pId=${map.value.product.pId}"><button class="btnAdd">+</button></a></td>
                                            
                                             <td>
-                                                ${map.value.product.pPrice * map.value.count}
+                                            <fmt:formatNumber type="number" pattern="#,###" value="${map.value.product.pPrice * map.value.count}">
+                                            </fmt:formatNumber>
+                                                
                                              </td>
                                             <td class="submit"><a href="/Shopee/member/cart-remove?pId=${map.value.product.pId}">Xóa</a></td>
                                         </tr>
@@ -130,8 +134,9 @@
                                     <c:set var="total"
                                     value="${total + map.value.product.pPrice * map.value.count }"/>
                                     </c:forEach>
-<strong> 
-                                 ${total}vnđ</strong></li>
+<strong> <fmt:formatNumber type="number" pattern="#,###" value="${total}">
+                                            </fmt:formatNumber>
+                                 vnđ</strong></li>
                            <!--  <li class="list-item"><strong
                                 class="text-muted">Phí vận chuyển</strong><strong>10000 vnđ</strong></li> -->
                            <!--  <li class="list-item"><strong

@@ -58,7 +58,20 @@ public class OrderDetailDao {
 			e.printStackTrace();
 		}
 	}
-
+	public int getTongDoanhThu() {
+		String sql ="Select sum(totalPrice) from orderdetail";
+		try {
+			conn = new connect().getConnection();
+         ps = conn.prepareStatement(sql);
+         rs = ps.executeQuery();
+         while (rs.next()) {
+         	return rs.getInt(1);
+         }
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return 0;
+	}
 	public OrderDetail findOne(int id) {
 		String sql = "SELECT * FROM [orderdetail] WHERE id = ? ";
 		try {

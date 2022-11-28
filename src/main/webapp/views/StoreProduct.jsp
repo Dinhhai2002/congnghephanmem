@@ -170,7 +170,9 @@
 													<img src="${imgUrl}" alt=" ${o.product.pName}" style="width: 90px; height: 90px;">
 												</c:if>
 												</td>
-											<td>${o.totalPrice}</td>
+											<td><fmt:formatNumber
+														type="number" pattern="#,###"
+														value="${o.totalPrice}"></fmt:formatNumber>₫</td>
 											<c:set var = "s" value = "${o.status.idStatus}"/>
 											<c:choose>
 											<c:when test="${s!=1 and s!=7}">

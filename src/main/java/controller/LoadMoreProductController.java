@@ -34,7 +34,7 @@ public class LoadMoreProductController extends HttpServlet{
 				imgUrl = "http://localhost:8080/Shopee/image?fname="+o.getpImage();
 			}
 			out.println("<div class=\"col l-2-4 lo-3 m-4 c-6 search-item-result__item\">\r\n"
-					+ "									<a href=\"/Shopee/detail?pId="+o.getpId()+"&quantity=1&action=\"\r\n"
+					+ "									<a href=\"/Shopee/product/detail?pId="+o.getpId()+"&quantity=1&action=\"\r\n"
 					+ "										class=\"search-item-result__item-link\">\r\n"
 					+ "										<div class=\"search-item-result__item-bgc\">\r\n"
 					+ "\r\n"

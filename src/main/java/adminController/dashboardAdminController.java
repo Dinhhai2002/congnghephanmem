@@ -1,7 +1,6 @@
 package adminController;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Date;
 import java.util.List;
 
@@ -56,6 +55,7 @@ public class dashboardAdminController extends HttpServlet{
 			int totalShop = shopdao.getTotalShop();
 			int totalProduct = productdao.getTotalProduct();
 			
+			
 			req.setAttribute("totalUser", totalUser);
 			req.setAttribute("totalShop", totalShop);
 			req.setAttribute("totalProduct", totalProduct);
@@ -63,12 +63,12 @@ public class dashboardAdminController extends HttpServlet{
 					
 			OrderDetailDao orderdetail = new OrderDetailDao();
 			OrderDao order = new OrderDao();
-			
-			
+			int doanhthu = orderdetail.getTongDoanhThu();			
 			List<OrderDetail> listOrderDetail = orderdetail.findAll();
 			List<Order> listOrder = order.findAll();
 			req.setAttribute("orderdetail", orderdetail);
 			req.setAttribute("order", orderdetail);
+			req.setAttribute("doanhthu", doanhthu);
 			
 			
 			req.setAttribute("listOrderDetail", listOrderDetail);
