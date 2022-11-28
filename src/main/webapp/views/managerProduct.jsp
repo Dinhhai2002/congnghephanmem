@@ -206,7 +206,9 @@
 											</c:if>
                                                 
                                             </td>
-                                            <td>${o.pPrice} $</td>
+                                            <td><fmt:formatNumber
+														type="number" pattern="#,###"
+														value="${o.pPrice}"></fmt:formatNumber>đ</td>
                                             <td><a href="editP?id=${o.pId}" class="edit"
                                                 data-toggle="modal"><i class='bx bxs-pencil'></i></a> 
                                                 <a onclick="deleteModal(${o.pId})" style="cursor: pointer;" class="delete" data-toggle="modal"><i class='bx bx-trash'></i></a>
