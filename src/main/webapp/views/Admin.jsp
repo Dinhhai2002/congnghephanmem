@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ include file="/taglib.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,7 +78,7 @@
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
 
-                <div class="search">
+                <!-- <div class="search">
                     <label>
                         <input type="text" placeholder="Search here">
                         <ion-icon name="search-outline"></ion-icon>
@@ -87,7 +87,7 @@
 
                 <div class="user">
                     <img src="assets/imgs/customer01.jpg" alt="">
-                </div>
+                </div> -->
             </div>
 
             <!-- ======================= Cards ================== -->
@@ -124,6 +124,19 @@
                         <ion-icon name="chatbubbles-outline"></ion-icon>
                     </div>
                 </div>
+                <div class="card">
+                    <div>
+                        <div class="numbers"><fmt:formatNumber
+														type="number" pattern="#,###"
+														value="${doanhthu}"></fmt:formatNumber>₫</div>
+                        <div class="cardName">Tổng doanh thu</div>
+                    </div>
+
+                    <div class="iconBx">
+                        <ion-icon name="chatbubbles-outline"></ion-icon>
+                    </div>
+                </div>
+                
 
                
             </div>
@@ -194,7 +207,9 @@
                         <c:forEach items="${listSelectOrderDetail}" var="o">
                        		<tr>
                                 <td>${o.id}</td>                             
-                                <td>${o.totalPrice}</td>     
+                                <td><fmt:formatNumber
+														type="number" pattern="#,###"
+														value="${o.totalPrice}"></fmt:formatNumber>₫</td>     
                                 <td>${o.createAt}
                                 <td>
                                    <c:if test="${o.status == 'OrderStatus [idStatus=1, nameStatus=Chờ shop xác nhận]'}">

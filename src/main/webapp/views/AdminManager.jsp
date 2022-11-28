@@ -162,28 +162,7 @@
 													<td><button id="orderStatus" onclick="editStatus(this)" value="${o.id}">Xác nhận shipper lấy hàng</button></td>									
 												</c:when>									
 											</c:choose>
-											<td>
-                                               <h3 class="detail">Xem
-                                               	<%-- <ul class="navbarItem__user-list-detail">
-                                                    <li class="navbarItem__user-item">
-                                                        <a href="" class="navbarItem__user-link">
-                                                            Tên shop: ${o.order.shop.shopName}
-                                                        </a>
-                                                    </li>
-                                                    <li class="navbarItem__user-item">
-                                                        <a href="" class="navbarItem__user-link">
-                                                            Địa chỉ shop: ${o.order.shop.shopAddress}
-                                                        </a>
-                                                    </li>
-                                                    <li class="navbarItem__user-item">
-                                                        <a href="" class="navbarItem__user-link">
-                                                            Địa chỉ giao hàng: ${o.order.uAddress}
-                                                        </a>
-                                                    </li>
-                                                </ul> --%>
-                                               </h3>
-                                               
-                                             </td>
+											
 										</tr>
 									</c:forEach>
                           
