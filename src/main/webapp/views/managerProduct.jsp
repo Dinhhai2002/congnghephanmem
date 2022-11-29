@@ -219,10 +219,21 @@
                                 </tbody>
                             </table>
                 
-                            <div style="text-align:center;" class="home-product-shipping">
-                                <img src="../assets/img/null.png" alt="">
-                                <p>Chưa có đơn hàng</p>
-                            </div>  
+                            <c:choose>
+							<c:when test="${empty listP}">
+								<div style="text-align: center;" class="home-product-shipping">
+									<img
+										src="https://ucarecdn.com/796ac032-6154-40cd-ad78-ad87a3069ed2/7102456.png"
+										alt="" style="width: 90px; height: 90px;">
+									<p>Chưa có hàng đăng bán</p>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div style="text-align: center;" class="home-product-shipping">
+
+								</div>
+							</c:otherwise>
+						</c:choose> 
                        
                     </div>                   
                         

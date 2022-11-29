@@ -252,7 +252,7 @@
                     <form name="Myform" method="post"class="row sm-gutter comment">
                     <input name="usernamecomment" value="${sessionScope.acc.uName}" hidden/>
                         <h3 class="comment-header">Bình luận</h3>
-                        <textarea class="comment-content"name="content" id="" cols="30" rows="10"></textarea>
+                        <textarea class="comment-content"name="content" id="" cols="30" rows="10" required></textarea>
                         <button type="submit">Đăng</button>
                     </form>
                     <div class="row sm-gutter comment-detail">
