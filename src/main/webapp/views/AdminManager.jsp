@@ -169,7 +169,23 @@
 
                         </tbody>
                     </table>
+                    <c:choose>
+							<c:when test="${empty listO}">
+								<div style="text-align: center;" class="home-product-shipping">
+									<img
+										src="https://icons.veryicon.com/png/o/miscellaneous/contribution/empty-box-1.png"
+										alt="" style="width: 90px; height: 90px;">
+									<p>Chưa có đơn hàng</p>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div style="text-align: center;" class="home-product-shipping">
+
+								</div>
+							</c:otherwise>
+						</c:choose>
                 </div>
+                	
                 <!-- ================= New Customers ================ -->
                 
             </div>
