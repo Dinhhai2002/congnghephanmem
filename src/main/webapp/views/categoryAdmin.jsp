@@ -101,7 +101,7 @@
 
             <!-- ======================= Cards ================== -->
             <div class="cardBox">
-                    <form role="form" action="category/add" method="post"
+                <form role="form" action="category/add" method="post"
                          enctype="multipart/form-data">
                 <div class="form-group">
                 <label>Tên danh mục:</label> <input class="form-control"

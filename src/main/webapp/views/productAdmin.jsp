@@ -81,13 +81,35 @@
 				<div class="toggle">
 					<ion-icon name="menu-outline"></ion-icon>
 				</div>
-
+				
+				<form action="/Shopee/admin/product/search" method="Get" class="header-with-search__search-section">
+                                <div class="searchbar">
+                                    <div class="searchbar__main">
+                                        <div class="searchbar-input">
+                                            <div class="searchbar-input__icon-on-mb-tb hide-on-pc">
+                                               
+                                                <i class='searchbar-input__icon-on-mb-tb-icon bx bx-search' ></i>
+                                            </div>
+                                            <input value="${txtS}" name="txtS" type="text" class="searchbar-input__input"
+                                                placeholder="Nhập từ khóa tìm kiếm">
+                                            
+                                        </div>
+                                       
+                                    </div>
+                                    <button type="submit" class="btn btn--primary hide-on-mb-tb">
+                                        <!-- <button class="btn-solid-primary"> -->
+                                     
+                                        <i class='searchbar-search-icon bx bx-search' ></i>
+                                    </button>
+                                </div>
+                                
+              </form>
 				<!-- <div class="search">
 					<label> <input type="text" placeholder="Search here">
 						<ion-icon name="search-outline"></ion-icon>
 					</label>
 				</div>
-
+				
 				<div class="user">
 					<img src="assets/imgs/customer01.jpg" alt="">
 				</div> -->
@@ -98,50 +120,55 @@
 				<a href="#addProductModal" class="btn btn-info" data-toggle="modal"><i
 					class="material-icons">&#xE147;</i> <span>Thêm sản phẩm mới</span></a>
 			</div>
+			<c:if test="${isSearch == 1}">
+									<c:set var = "productUrl" value = "search?txtS=${txtS}&page="/>
+								</c:if>
+								<c:if test="${isSearch == 0}">
+									<c:set var = "productUrl" value = "search?index=${cid}&page="/>
+								</c:if>
 			<div class="clearfix">
-                            
                                 <ul class="pagination">
                                 <c:if test="${tag > 1}">
-								<li class="page-item disabled"><a href="product?index=${tag-1}">Previous</a></li>
+								<li class="page-item disabled"><a href="${productUrl}${tag-1}">Previous</a></li>
 							</c:if>
 							<c:if test="${endPage < 10}">
 								<c:forEach begin="1" end="${endPage}" var="i">
-									<li class="page-item ${tag == i?"active":""}"><a href="product?index=${i}" class="page-link">${i}</a></li>
+									<li class="page-item ${tag == i?"active":""}"><a href="${productUrl}${i}" class="page-link">${i}</a></li>
 								</c:forEach>
 							</c:if>
 
 							<c:if test="${endPage >= 10}">
 								<c:if test="${tag <= 4}">
 									<c:forEach begin="1" end="5" var="i">
-										<li class="page-item ${tag == i?"active":""}"><a href="product?index=${i}" class="page-link ${tag == i?"active":""}">${i}</a></li>
+										<li class="page-item ${tag == i?"active":""}"><a href="${productUrl}${i}" class="page-link ${tag == i?"active":""}">${i}</a></li>
 									</c:forEach>
 									<li class="page-item"><span
 										class="page-link">...</span></li>
 									<c:forEach begin="${endPage}" end="${endPage}" var="i">
-										<li class="page-item ${tag == i?"active":""}"><a href="product?index=${i}" class="page-link ${tag == i?"active":""}">${i}</a></li>
+										<li class="page-item ${tag == i?"active":""}"><a href="${productUrl}${i}" class="page-link ${tag == i?"active":""}">${i}</a></li>
 									</c:forEach>
 								</c:if>
 								<c:if test="${tag > 4 && tag < endPage - 4}">
 
-									<li class="page-item ${tag == i?"active":""}"><a href="product?index=1" class="page-link ${tag == i?"active":""}">1</a></li>
+									<li class="page-item ${tag == i?"active":""}"><a href="${productUrl}1" class="page-link ${tag == i?"active":""}">1</a></li>
 
 									<li class="page-item"><span
 										class="page-link">...</span></li>
 									<c:forEach begin="${tag - 1}" end="${tag + 2}" var="i">
-										<li class="page-item ${tag == i?"active":""}"><a href="product?index=${i}" class="page-link ${tag == i?"active":""}">${i}</a></li>
+										<li class="page-item ${tag == i?"active":""}"><a href="${productUrl}${i}" class="page-link ${tag == i?"active":""}">${i}</a></li>
 									</c:forEach>
 									<li class="page-item"><span
 										class="page-link">...</span></li>
 									<c:forEach begin="${endPage}" end="${endPage}" var="i">
-										<li class="page-item ${tag == i?"active":""}"><a href="product?index=${i}" class="page-link ${tag == i?"active":""}">${i}</a></li>
+										<li class="page-item ${tag == i?"active":""}"><a href="${productUrl}{i}" class="page-link ${tag == i?"active":""}">${i}</a></li>
 									</c:forEach>
 								</c:if>
 								<c:if test="${tag == endPage - 4}">
-									<li class="page-item ${tag == i?"active":""}"><a href="product?index=1" class="page-link ${tag == i?"active":""}">1</a></li>
+									<li class="page-item ${tag == i?"active":""}"><a href="${productUrl}1" class="page-link ${tag == i?"active":""}">1</a></li>
 									<li class="page-item"><span
 										class="page-link">...</span></li>
 									<c:forEach begin="${tag - 2}" end="${endPage}" var="i">
-										<li class="page-item"><a href="product?index=${i}" class="page-link ${tag == i?"active":""}">${i}</a></li>
+										<li class="page-item"><a href="${productUrl}${i}" class="page-link ${tag == i?"active":""}">${i}</a></li>
 									</c:forEach>
 								</c:if>
 								<c:if test="${tag > endPage - 4}">
@@ -149,14 +176,14 @@
 									<li class="page-item"><span
 										class="page-link">...</span></li>
 									<c:forEach begin="${endPage - 5}" end="${endPage}" var="i">
-										<li class="page-item ${tag == i?"active":""}"><a href="product?index=${i}" class="page-link">${i}</a></li>
+										<li class="page-item ${tag == i?"active":""}"><a href="${productUrl}${i}" class="page-link">${i}</a></li>
 									</c:forEach>
 								</c:if>
 							</c:if>
 
 
 							<c:if test="${tag < endPage}">
-								<li class="page-item"><a href="product?index=${tag+1}" class="page-link">Next</a></li>
+								<li class="page-item"><a href="${productUrl}${tag+1}" class="page-link">Next</a></li>
 							</c:if>
                                     
                                 </ul>

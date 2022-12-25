@@ -58,7 +58,7 @@ public class ProductAdminController extends HttpServlet{
 			}
 			List<Category> listC = cateDao.getAllCategory();
 			List<Product> list = productDao.pagingProductAdmin(page);
-		
+			
 			req.setAttribute("endPage", endPage);
 			req.setAttribute("tag", page);
 			req.setAttribute("listP", list);
