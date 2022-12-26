@@ -111,31 +111,60 @@
 									class="category-list__item-link category-list__item-link-highlight">
 										<i class="category-list__item-icon fas fa-caret-right"></i>
 										Tất cả
+										 <!-- <span class="number">3</span> -->
 								</a></li>
 								<li class="category-list__item"><a href="#"
 									onclick="purchase(this)" class="category-list__item-link">
 										<i class="category-list__item-icon fas fa-caret-right"></i>Chờ
 										xác nhận
-								</a></li>
+										
+									
+										 
+								</a><c:choose>
+									<c:when test="${choxacnhan>'0'}">
+										<span class="number">${choxacnhan}</span>
+									</c:when>
+									<c:otherwise>
+										
+									</c:otherwise>
+									</c:choose></li>
 								<li class="category-list__item"><a href="#"
 									onclick="purchase(this)" class="category-list__item-link">
 										<i class="category-list__item-icon fas fa-caret-right"></i>Chờ
 										lấy hàng
-								</a></li>
+										 
+								</a><c:choose>
+									<c:when test="${cholayhang>'0'}">
+										<span class="number">${cholayhang}</span>
+									</c:when>
+									<c:otherwise>
+										
+									</c:otherwise>
+									</c:choose></li>
 								<li class="category-list__item"><a href="#"
 									onclick="purchase(this)" class="category-list__item-link">
 										<i class="category-list__item-icon fas fa-caret-right"></i>Đang
 										giao
-								</a></li>
+										 
+								</a><c:choose>
+									<c:when test="${danggiao>'0'}">
+										<span class="number">${danggiao}</span>
+									</c:when>
+									<c:otherwise>
+										
+									</c:otherwise>
+									</c:choose></li>
 								<li class="category-list__item"><a href="#"
 									onclick="purchase(this)" class="category-list__item-link">
 										<i class="category-list__item-icon fas fa-caret-right"></i>Đã
 										giao
+										 	
 								</a></li>
 								<li class="category-list__item"><a href="#"
 									onclick="purchase(this)" class="category-list__item-link">
 										<i class="category-list__item-icon fas fa-caret-right"></i>Đã
 										hủy
+										<!--  <span class="number">3</span> -->
 								</a></li>
 							</ul>
 						</div>
@@ -170,7 +199,9 @@
 													<img src="${imgUrl}" alt=" ${o.product.pName}" style="width: 90px; height: 90px;">
 												</c:if>
 												</td>
-											<td>${o.totalPrice}</td>
+											<td><fmt:formatNumber
+														type="number" pattern="#,###"
+														value="${o.totalPrice}"></fmt:formatNumber>₫</td>
 											<c:set var = "s" value = "${o.status.idStatus}"/>
 											<c:choose>
 											<c:when test="${s!=1 and s!=7}">

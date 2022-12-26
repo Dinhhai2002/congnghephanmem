@@ -102,7 +102,7 @@ public class PayController extends HttpServlet {
 			
 			Set<Integer> set1 = orderCheck.keySet();
 			for (Integer key1 : set1) {
-				float x= orderCheck.get(key1).getAmountFromUser()+10000;
+				float x= orderCheck.get(key1).getAmountFromUser();
 				orderCheck.get(key1).setAmountFromUser(x);//--Tiền user trả 
 				orderCheck.get(key1).setAmountFromShop((float) ((x)*0.005));//Tiền shop trả cho hệ thống
 				orderCheck.get(key1).setAmountToShop(x-(float) ((x)*0.005));//Tiền Shop được nhận
@@ -184,7 +184,7 @@ public class PayController extends HttpServlet {
 			
 			Set<Integer> set1 = orderCheck.keySet();
 			for (Integer key1 : set1) {
-				float x= orderCheck.get(key1).getAmountFromUser()+10000;
+				float x= orderCheck.get(key1).getAmountFromUser();
 				orderCheck.get(key1).setAmountFromUser(x);//--Tiền user trả 
 				orderCheck.get(key1).setAmountFromShop((float) ((x)*0.005));//Tiền shop trả cho hệ thống
 				orderCheck.get(key1).setAmountToShop(x-(float) ((x)*0.005));//Tiền Shop được nhận

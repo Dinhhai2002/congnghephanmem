@@ -273,11 +273,10 @@
 															class="fas fa-star"></i> <i class="fas fa-star"></i> <i
 															class="fas fa-star"></i>
 													</div>
-													<span>Đã bán 5</span>
+													<!-- <span>Đã bán 5</span> -->
 												</div>
 											</div>
-											<p class="search-item-result__item-location">TP. Hồ Chí
-												Minh</p>
+											<p class="search-item-result__item-location">${o.shop.shopAddress}</p>
 										</div>
 									</a>
 								</div>

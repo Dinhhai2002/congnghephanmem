@@ -37,6 +37,9 @@ public class OrderPurchase extends HttpServlet {
 		if (action == null) {
 			List<OrderDetail> listO = orderDetailDao.findAllByuid(acc);
 			req.setAttribute("listO", listO);
+			req.setAttribute("choxacnhan", orderDetailDao.count(1));
+			req.setAttribute("cholayhang", orderDetailDao.count(2));
+			req.setAttribute("danggiao", orderDetailDao.count(3));		
 			RequestDispatcher rq = req.getRequestDispatcher("/views/StoreProduct.jsp");
 			rq.forward(req, resp);
 		} else {
