@@ -770,6 +770,23 @@ public class OrderDetailDao {
 		}
 	}
 	
+	public int count(int status){
+		String query = "SELECT COUNT(*) FROM orderdetail \r\n"
+				+ "Where orderdetail.status = ?";
+		try {
+			conn = new connect().getConnection();
+	         ps = conn.prepareStatement(query);
+	         ps.setInt(1, status);
+	         rs = ps.executeQuery();
+	         while (rs.next()) {
+	          	return rs.getInt(1);
+	          }
+	 		} catch (Exception e) {
+	 			// TODO: handle exception
+	 		}
+	 	return -1;
+	}
+	
 	public static void main(String[] args) {
 		try {
 			OrderDetailDao orderDetailDao = new OrderDetailDao();
@@ -782,7 +799,7 @@ public class OrderDetailDao {
 			//List<OrderDetail> listO = orderDetailDao.findNext3OrderByStatus(user, 1, 3);
 			//order.setAmountFromUser(0);
 			//orderDao.update(order);
-			System.out.println(listO.toString());
+			System.out.println(orderDetailDao.count(1));
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

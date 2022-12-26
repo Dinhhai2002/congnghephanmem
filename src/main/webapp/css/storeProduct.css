@@ -79,3 +79,9 @@ td>img{
         object-fit: contain;
     }
 }
+.number{
+    background-color: var(--primary);
+    color:#fff;
+    padding: 6px 6px;
+    border-radius: 50%;
+}
